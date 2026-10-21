@@ -288,6 +288,11 @@ object Conditionals {
                 state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == false
             UniqueType.ConditionalAdjacentTo -> state.relevantTile?.isAdjacentTo(conditional.params[0], state.relevantCiv) == true
             UniqueType.ConditionalNotAdjacentTo -> state.relevantTile?.isAdjacentTo(conditional.params[0], state.relevantCiv) == false
+            UniqueType.ConditionalTileOverUnit ->
+                state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true &&
+                    state.relevantTile!!.getUnits().any {
+                            it.matchesFilter(conditional.params[1])
+                        }
             UniqueType.ConditionalTileAdjacentToUnit ->
                     state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true &&
                     state.relevantTile!!.neighbors.any {
