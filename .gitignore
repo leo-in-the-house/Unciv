@@ -197,3 +197,9 @@ detekt/reports.html
 /.github/workflows/unciv.wixpdb
 /.github/workflows/wix-msi-files/
 /desktop/packr/*
+.run/Desktop.run.xml
+gradle.properties
+gradle/gradle-daemon-jvm.properties
+gradle/libs.versions.toml
+gradle/wrapper/gradle-wrapper.properties
+settings.gradle.kts
