@@ -18,7 +18,7 @@
 
 ## What is this?
 
-An open source, moddability-focused Android and Desktop remake of Civ V, made with [LibGDX](https://github.com/libgdx/libgdx).
+A fork of an open source, moddability-focused Android and Desktop remake of Civ V, made with [LibGDX], designed to be custom built for a mod (https://github.com/libgdx/libgdx).
 
 ## Is this any good?
 
