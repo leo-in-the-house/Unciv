@@ -79,6 +79,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Triggerable
 
+??? example  "Gain [amount] opinion with [civFilter] Civilizations with reason [comment]"
+	Example: "Gain [3] opinion with [City-States] Civilizations with reason [comment]"
+
+	Applicable to: Triggerable
+
 ??? example  "Adopt [policy/belief]"
 	Example: "Adopt [Oligarchy]"
 

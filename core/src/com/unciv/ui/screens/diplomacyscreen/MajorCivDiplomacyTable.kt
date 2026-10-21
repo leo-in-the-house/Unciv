@@ -223,8 +223,13 @@ class MajorCivDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
                 continue
 
             val diplomaticModifier = DiplomaticModifiers.safeValueOf(modifier.key)
-                ?: continue // This modifier is from the future, you cannot understand it yet
-            var text = diplomaticModifier.text.tr() + " "
+
+            var text = modifier.key
+            
+            if (diplomaticModifier != null) {
+                text = diplomaticModifier.text.tr() + " "
+            }
+            
             if (modifier.value > 0) text += "+"
             val roundedValue = modifier.value.roundToInt()
             text += roundedValue

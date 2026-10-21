@@ -907,6 +907,7 @@ enum class UniqueType(
     OneTimeGainPopulation("[amount] population [cityFilter]", UniqueTarget.Triggerable),  // used in CN tower
     OneTimeGainPopulationRandomCity("[amount] population in a random city", UniqueTarget.Triggerable),
     OneTimeDiscoverTech("Discover [tech]", UniqueTarget.Triggerable),
+    OneTimeOpinionChange("Gain [amount] opinion with [civFilter] Civilizations with reason [comment]", UniqueTarget.Triggerable),
     OneTimeAdoptPolicyOrBelief("Adopt [policy/belief]", UniqueTarget.Triggerable),
     OneTimeRemovePolicy("Remove [policyFilter]", UniqueTarget.Triggerable),
     OneTimeRemovePolicyRefund("Remove [policyFilter] and refund [amount]% of its cost", UniqueTarget.Triggerable),

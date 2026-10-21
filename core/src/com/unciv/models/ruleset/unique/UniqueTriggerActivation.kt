@@ -636,6 +636,24 @@ object UniqueTriggerActivation {
                     true
                 }
             }
+            UniqueType.OneTimeOpinionChange -> {
+                if (civInfo.isSpectator()) return null
+
+                return {
+                    for (otherCiv in civInfo.gameInfo.civilizations)
+                    {
+                        var civFilter = unique.params[1]
+                        if (otherCiv.matchesFilter(civFilter) && otherCiv.civID != civInfo.civID && !otherCiv.isBarbarian) {
+                            civInfo.getDiplomacyManager(otherCiv)!!
+                                .setModifier(unique.params[2], unique.params[0].toFloat())
+                        }
+                    }
+                    
+                    if (notification != null)
+                        civInfo.addNotification(notification, NotificationCategory.General, NotificationIcon.Diplomacy)
+                    true
+                }
+            }
 
             UniqueType.OneTimeProvideResources -> {
                 val resourceName = unique.params[1]

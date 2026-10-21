@@ -679,7 +679,11 @@ class DiplomacyManager() : IsPartOfGameInfoSerialization {
     }
 
     fun setModifier(modifier: DiplomaticModifiers, amount: Float) {
-        diplomaticModifiers[modifier.name] = amount
+        setModifier(modifier.name, amount)
+    }
+
+    fun setModifier(modifierName: String, amount: Float, limit: Float? = null) {
+        if (!hasModifier(modifierName))  diplomaticModifiers[modifierName] = amount
     }
 
     @Readonly
@@ -691,6 +695,10 @@ class DiplomacyManager() : IsPartOfGameInfoSerialization {
     internal fun removeModifier(modifier: DiplomaticModifiers) = diplomaticModifiers.remove(modifier.name)
     @Readonly
     fun hasModifier(modifier: DiplomaticModifiers) = diplomaticModifiers.containsKey(modifier.name)
+
+    @Readonly
+    fun hasModifier(modifierName: String) = diplomaticModifiers.containsKey(modifierName)
+
     
     fun replaceModifier(oldModifier: DiplomaticModifiers, newModifier: DiplomaticModifiers, amount: Float) {
         removeModifier(oldModifier)
