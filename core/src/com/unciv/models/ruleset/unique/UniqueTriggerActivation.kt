@@ -1363,6 +1363,22 @@ object UniqueTriggerActivation {
                     true
                 }
             }
+
+            UniqueType.OneTimeAddImprovement -> {
+                if (tile == null) return null
+                val improvementName = unique.params[0]
+                val improvement = ruleset.tileImprovements[improvementName] ?: return null
+
+                return {
+                    // Remove the original improvement
+                    if (tile.tileImprovement != null) {
+                        tile.removeImprovement()
+                    }
+
+                    tile.setImprovement(improvement)
+                    true
+                }
+            }
             
             UniqueType.OneTimeTakeOverTilesInRadius -> {
                 if (tile == null) return null
