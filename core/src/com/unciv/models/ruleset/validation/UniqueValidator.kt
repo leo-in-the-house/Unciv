@@ -84,7 +84,7 @@ class UniqueValidator(val ruleset: Ruleset, private val tryFixUnknownUniques: Bo
     }
 
     private val performanceHeavyConditionals = setOf(UniqueType.ConditionalNeighborTiles, UniqueType.ConditionalAdjacentTo,
-        UniqueType.ConditionalNotAdjacentTo
+        UniqueType.ConditionalNotAdjacentTo, UniqueType.ConditionalAdjacentToThisUnit, UniqueType.ConditionalDistanceToThisUnit
     )
 
     @Readonly

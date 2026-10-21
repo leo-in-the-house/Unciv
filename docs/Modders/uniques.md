@@ -4012,6 +4012,26 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Conditional
 
+??? example  "&lt;in [tileFilter] tiles adjacent to [mapUnitFilter] units&gt;"
+	Example: "&lt;in [Farm] tiles adjacent to [Wounded] units&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;in [tileFilter] tiles within [positiveAmount] distance to [mapUnitFilter] units&gt;"
+	Example: "&lt;in [Farm] tiles within [3] distance to [Wounded] units&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;in [tileFilter] tiles adjacent to this unit&gt;"
+	Example: "&lt;in [Farm] tiles adjacent to this unit&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;in [tileFilter] tiles within [positiveAmount] distance to this unit&gt;"
+	Example: "&lt;in [Farm] tiles within [3] distance to this unit&gt;"
+
+	Applicable to: Conditional
+
 ??? example  "&lt;on water maps&gt;"
 	Applicable to: Conditional
 

@@ -872,6 +872,18 @@ enum class UniqueType(
 
     ConditionalNotAdjacentTo("in tiles not adjacent to [tileFilter] tiles", UniqueTarget.Conditional),
 
+    ConditionalTileAdjacentToUnit("in [tileFilter] tiles adjacent to [mapUnitFilter] units", UniqueTarget.Conditional),
+
+    ConditionalTileDistanceToUnit("in [tileFilter] tiles within [positiveAmount] distance to [mapUnitFilter] units", UniqueTarget.Conditional),
+
+    ConditionalAdjacentToThisUnit("in [tileFilter] tiles adjacent to this unit", UniqueTarget.Conditional),
+
+    ConditionalDistanceToThisUnit("in [tileFilter] tiles within [positiveAmount] distance to this unit", UniqueTarget.Conditional),
+
+    //ConditionalUnitAdjacentToUnit("for [mapUnitFilter] units adjacent to this unit", UniqueTarget.Conditional),
+
+    //ConditionalUnitDistanceToUnit("for [mapUnitFilter] units within [positiveAmount] distance to this unit", UniqueTarget.Conditional),
+
 
     /////// area conditionals
     ConditionalOnWaterMaps("on water maps", UniqueTarget.Conditional),

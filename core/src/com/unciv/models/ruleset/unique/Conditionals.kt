@@ -288,6 +288,24 @@ object Conditionals {
                 state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == false
             UniqueType.ConditionalAdjacentTo -> state.relevantTile?.isAdjacentTo(conditional.params[0], state.relevantCiv) == true
             UniqueType.ConditionalNotAdjacentTo -> state.relevantTile?.isAdjacentTo(conditional.params[0], state.relevantCiv) == false
+            UniqueType.ConditionalTileAdjacentToUnit ->
+                    state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true &&
+                    state.relevantTile!!.neighbors.any {
+                        it.getUnits().any {
+                                it.matchesFilter(conditional.params[1])
+                        }
+                    }
+           UniqueType.ConditionalTileDistanceToUnit ->
+                    state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true &&
+                    state.relevantTile!!.getTilesInDistance(conditional.params[1].toInt()).any {
+                        it.getUnits().any {
+                                it.matchesFilter(conditional.params[2])
+                        } 
+                    }
+            UniqueType.ConditionalAdjacentToThisUnit -> state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true && state.relevantTile?.aerialDistanceTo(state.relevantUnit!!.getTile()) == 1
+            UniqueType.ConditionalDistanceToThisUnit -> state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true && state.relevantTile?.aerialDistanceTo(state.relevantUnit!!.getTile())!! <= conditional.params[1].toInt()
+            //UniqueType.ConditionalUnitAdjacentToUnit -> state.relevantUnit?.getTile()?.matchesFilter(conditional.params[0], state.relevantCiv) == true && state.relevantUnit?.getTile()?.aerialDistanceTo(state.relevantUnit!!.getTile()) == 1
+            //UniqueType.ConditionalUnitDistanceToUnit -> state.relevantUnit?.getTile()?.matchesFilter(conditional.params[0], state.relevantCiv) == true && state.relevantUnit?.getTile()?.aerialDistanceTo(state.relevantUnit!!.getTile())!! <= conditional.params[1].toInt()
             UniqueType.ConditionalFightingInTiles ->
                 state.attackedTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true
             UniqueType.ConditionalNearTiles ->
@@ -312,7 +330,6 @@ object Conditionals {
                         state.relevantTile!!.neighbors.any {
                         it.getUnits().any {
                             it != state.relevantUnit &&
-                                it.civ == state.relevantCiv &&
                                 it.matchesFilter(conditional.params[0])
                         }
                     }
