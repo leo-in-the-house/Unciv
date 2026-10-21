@@ -671,8 +671,8 @@ class ModManagementScreen private constructor(
         refreshInstalledModActions(mod.ruleset!!)
         val deleteText = "Delete [${cleanModName(mod.name)}]"
         rightSideButton.setText(deleteText.tr())
-        // Don't let the player think he can delete Vanilla and G&K rulesets
-        rightSideButton.isEnabled = mod.ruleset.folderLocation!=null
+        // Don't let the player think he can delete Vanilla and G&K rulesets (or Pokepunk for this fork)
+        rightSideButton.isEnabled = mod.ruleset.folderLocation!=null && !mod.name.equals("Pokepunk")
         showModDescription(mod.name)
         rightSideButton.clearActivationActions(ActivationTypes.Tap)  // clearListeners would also kill mouseover styling
         rightSideButton.onClick {
