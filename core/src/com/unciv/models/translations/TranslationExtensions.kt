@@ -329,7 +329,8 @@ private fun String.translateConditionals(language: String, hideIcons: Boolean, f
     return sb.toString()
 }
 
-/** No brackets of any kind, just a single word */
+/** No brackets of any kind, just a single word 
+ * Replace | with or */
 @Readonly
 private fun String.translateIndividualWord(language: String, hideIcons: Boolean, hideStatIcons: Boolean): String {
     if (Stats.isStats(this)) {
@@ -338,6 +339,7 @@ private fun String.translateIndividualWord(language: String, hideIcons: Boolean,
     }
 
     val translationBeforeNumberScan = UncivGame.Current.translations.getText(this, language, TranslationCache.activeMods)
+        .replace("|", " or ")
     val translation = if (translationBeforeNumberScan.none { it.isDigit() }) translationBeforeNumberScan else {
         val langData = TranslationCache.getLangData()
         translationBeforeNumberScan.replace(langData.numberRegex) {
@@ -345,7 +347,8 @@ private fun String.translateIndividualWord(language: String, hideIcons: Boolean,
             langData.reformat(numericString) ?: numericString
         }
     }
-
+    
+    
     val stat = Stat.safeValueOf(this)
     if (!hideStatIcons && stat != null) return stat.character + translation
 
