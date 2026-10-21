@@ -376,6 +376,21 @@ enum class Countables(
         override fun getKnownValuesForAutocomplete(ruleset: Ruleset) = setOf<String>()
         override val example: String = "[Desert] Tiles"
     },
+
+
+    TileFilterTilesCity("[tileFilter] Tiles in this city") {
+        override fun eval(parameterText: String, gameContext: GameContext): Int? {
+            val city = gameContext.city ?: return null
+            val filter = parameterText.getPlaceholderParameters()[0]
+            return city.getTiles().count { it.matchesFilter(filter, city.civ) }
+        }
+        override fun getErrorSeverity(parameterText: String, ruleset: Ruleset): UniqueType.UniqueParameterErrorSeverity? {
+            return UniqueParameterType.TileFilter.getTranslatedErrorSeverity(parameterText, ruleset)
+        }
+
+        override fun getKnownValuesForAutocomplete(ruleset: Ruleset) = setOf<String>()
+    },
+    
     TileResources {
         override val documentationHeader = "Resource name - From [TileResources.json](Mod-file-structure/3-Map-related-JSON-files.md#tileresourcesjson)"
         override val documentationStrings = listOf(
