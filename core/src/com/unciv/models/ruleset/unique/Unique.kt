@@ -235,6 +235,8 @@ class Unique(val text: String, val sourceObjectType: UniqueTarget? = null, val s
                     }
                 }
                 resultingUnique = resultingUnique.replaceFirst("[$parameter]", "[$replacementText]")
+                resultingUnique = resultingUnique.replace("} {", " and ")
+                resultingUnique = resultingUnique.replace("|", " or ")
             }
             finalPossibleUniques += resultingUnique
         }

@@ -8,6 +8,7 @@ object MultiFilter {
     private const val andPrefixChar = '{'
     private const val andPrefix = andPrefixChar.toString()
     private const val andSeparator = "} {"
+    private const val orSeparator = "|"
     private const val andSuffixChar = '}'
     private const val andSuffix = andSuffixChar.toString()
     private const val notPrefix = "non-["
@@ -15,10 +16,11 @@ object MultiFilter {
     private const val notSuffix = notSuffixChar.toString()
 
     /**
-     *  Implements `and` and `not` logic on top of a [filterFunction].
+     *  Implements `and`, 'or' and `not` logic on top of a [filterFunction].
      *
      *  Syntax:
      *      - `and`: `{filter1} {filter2}`... (can repeat as needed)
+     *      - `or`: `filter1|filter2`... (can repeat as needed)
      *      - `not`: `non-[filter]`
      *  @param input The complex filtering term
      *  @param filterFunction The single filter implementation
@@ -33,6 +35,9 @@ object MultiFilter {
         if (isAnd(input))
             return getAndFilters(input)
                 .all { multiFilter(it, filterFunction, forUniqueValidityTests) }
+        if (isOr(input))
+            return getOrFilters(input)
+                .any { multiFilter(it, filterFunction, forUniqueValidityTests) }
         if (isNot(input)) {
             //same as `return multiFilter() == forUniqueValidityTests`, but clearer
             val internalResult = multiFilter(getNotFilter(input), filterFunction, forUniqueValidityTests)
@@ -48,6 +53,10 @@ object MultiFilter {
             @LocalState val filters = getAndFilters(input)
             filters.flatMap { getAllSingleFilters(it) }
         }
+        isOr(input) -> {
+            @LocalState val filters = getOrFilters(input)
+            filters.flatMap { getAllSingleFilters(it) }
+        }
         isNot(input) ->
             // Simply remove "non" syntax
             getAllSingleFilters(getNotFilter(input))
@@ -56,6 +65,8 @@ object MultiFilter {
     
     @Pure fun isAnd(input: String) = input.startsWith(andPrefixChar) && input.endsWith(andSuffixChar) && input.contains(andSeparator)
     @Pure fun getAndFilters(input: String) = input.removeSurrounding(andPrefix, andSuffix).splitToSequence(andSeparator)
+    @Pure fun isOr(input: String) = input.contains(orSeparator)
+    @Pure fun getOrFilters(input: String) = input.splitToSequence(orSeparator)
     @Pure fun isNot(input: String) = input.endsWith(notSuffixChar) && input.startsWith(notPrefix)
     @Pure fun getNotFilter(input: String) = input.removeSurrounding(notPrefix, notSuffix)
 }
