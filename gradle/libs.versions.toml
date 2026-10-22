@@ -1,7 +1,7 @@
 [versions]
 #must stay in sync with kotlin and gradle major.minor versions:
 #noinspection AndroidGradlePluginVersion
-agp = "9.2.0"
+agp = "9.4.1"
 
 kotlin = "2.4.20"
 coroutines = "1.10.2" # 1.11.0 causes IDEA profiler to break :( 

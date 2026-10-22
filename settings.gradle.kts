@@ -6,6 +6,9 @@ pluginManagement {
         gradlePluginPortal() // So other plugins can be resolved
     }
 }
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
 
 include("desktop", "core", "tests", "server")
 
