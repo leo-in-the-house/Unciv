@@ -305,18 +305,19 @@ internal class BaseRulesetValidator(
                 "${promotion.name} references unit type $unitType, which does not exist!",
                 RulesetErrorSeverity.ErrorOptionsOnly, promotion
             )
-            checkPromotionsInSameRowColumnForUnitType(promotion, unitType, lines)
         }
+        checkPromotionsInSameRowColumnForUnitType(promotion, lines)
     }
 
-    private fun checkPromotionsInSameRowColumnForUnitType(promotion: Promotion, unitType: String, lines: RulesetErrorList) {
+    private fun checkPromotionsInSameRowColumnForUnitType(promotion: Promotion, lines: RulesetErrorList) {
         for (otherPromotion in ruleset.unitPromotions.values)
         {
             if (promotion == otherPromotion) continue
             for (unitType in promotion.unitTypes) {
                 if (unitType !in otherPromotion.unitTypes) continue
                 if (promotion.column == otherPromotion.column && promotion.row == otherPromotion.row) {
-                    lines.add("Promotions ${promotion.name} and ${otherPromotion.name} have the same position: ${promotion.row}/${promotion.column}", sourceObject = promotion)
+                    lines.add("Promotions ${promotion.name} and ${otherPromotion.name} have the same position: ${promotion.row}/${promotion.column}", 
+                        RulesetErrorSeverity.ErrorOptionsOnly, sourceObject = promotion)
                     break;
                 }
             }
