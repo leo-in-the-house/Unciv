@@ -81,12 +81,13 @@ class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: W
             descriptionTable.add(Fonts.movement + unit.getMovementString()).padRight(10f)
 
             val baseUnit = unit.getBaseUnit()
-            if (!unit.isCivilian())
-                descriptionTable.add(Fonts.strength + baseUnit.strength.tr()).padRight(10f)
 
-            if (baseUnit.rangedStrength != 0)
-                descriptionTable.add(Fonts.rangedStrength + baseUnit.rangedStrength.tr())
+            if (baseUnit.attackStrength != 0)
+                descriptionTable.add(Fonts.attackStrength + baseUnit.attackStrength.tr())
                     .padRight(10f)
+            
+            if (!unit.isCivilian())
+                descriptionTable.add(Fonts.defenseStrength + baseUnit.defenseStrength.tr()).padRight(10f)
 
             if (baseUnit.isRanged())
                 descriptionTable.add(Fonts.range + unit.getRange().tr()).padRight(10f)

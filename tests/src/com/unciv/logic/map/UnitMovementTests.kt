@@ -11,7 +11,6 @@ import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.logic.map.tile.Tile
 import com.unciv.models.UnitActionType
 import com.unciv.models.metadata.GameSettings.PathfindingAlgorithm
-import com.unciv.models.metadata.GameSettings.PathfindingAlgorithm.ClassicPathfinding
 import com.unciv.models.metadata.GameSettings.PathfindingAlgorithm.AStarPathfinding
 import com.unciv.models.ruleset.nation.Nation
 import com.unciv.models.ruleset.unique.UniqueType
@@ -501,7 +500,7 @@ class UnitMovementTests(private val pathfindingAlgorithm: PathfindingAlgorithm) 
             "May Paradrop to [Water] tiles up to [2] tiles away"
         ).apply {
             movement = 2
-            strength = 1
+            defenseStrength = 1
         }
         val transport = testGame.addUnit(transportBaseUnit.name, civInfo, origin)
         // Freed from the carrier first, so the two real payloads can fill it to capacity below -

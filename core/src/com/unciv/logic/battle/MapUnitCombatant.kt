@@ -39,8 +39,7 @@ class MapUnitCombatant(val unit: MapUnit) : ICombatant {
         val state = GameContext(this, defender, this.getTile(), CombatAction.Attack)
         var extraStrength = 0
         unit.forEachMatchingUnique(UniqueType.StrengthAmount, state) { extraStrength += it.params[0].toInt() }
-        return if (isRanged()) unit.baseUnit.rangedStrength + extraStrength
-        else unit.baseUnit.strength + extraStrength
+        return unit.baseUnit.attackStrength + extraStrength
     }
 
     override fun getDefendingStrength(attacker: ICombatant?): Int {
@@ -50,9 +49,7 @@ class MapUnitCombatant(val unit: MapUnit) : ICombatant {
         unit.forEachMatchingUnique(UniqueType.StrengthAmount, state) { extraStrength += it.params[0].toInt() }
         return if (unit.isEmbarked() && !isCivilian())
             unit.civ.getEra().embarkDefense
-        else if (isRanged() && attackedByRanged)
-            unit.baseUnit.rangedStrength + extraStrength
-        else unit.baseUnit.strength + extraStrength
+        else unit.baseUnit.defenseStrength + extraStrength
     }
 
     override fun getUnitType(): UnitType {

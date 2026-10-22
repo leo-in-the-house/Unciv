@@ -73,13 +73,13 @@ enum class UnitOverviewTabColumn(
         override fun getEntryString(item: MapUnitView): String? = getActionText(item)?.tr() // to retain the icon for e.g. unit action
     },
 
-    Strength(Fonts.strength.toString(), "Strength", true) {
+    AttackStrength(Fonts.attackStrength.toString(), "Attack strength", true) {
         override val defaultSort get() = SortableGrid.SortDirection.Descending
-        override fun getEntryValue(item: MapUnitView) = item.getBaseUnit().strength
+        override fun getEntryValue(item: MapUnitView) = item.getBaseUnit().attackStrength
     },
-    RangedStrength(Fonts.rangedStrength.toString(), "Ranged strength", true) {
+    DefenseStrength(Fonts.defenseStrength.toString(), "Defense Strength", true) {
         override val defaultSort get() = SortableGrid.SortDirection.Descending
-        override fun getEntryValue(item: MapUnitView) = item.getBaseUnit().rangedStrength
+        override fun getEntryValue(item: MapUnitView) = item.getBaseUnit().defenseStrength
     },
     Movement(Fonts.movement.toString(), "Movement", true) {
         override val defaultSort get() = SortableGrid.SortDirection.Descending

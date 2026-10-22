@@ -105,7 +105,7 @@ class Speed : RulesetObject() {
         add("Diplomatic deal duration: [$dealDuration] turns${Fonts.turn}")
         add("Gold gift influence gain modifier: [${goldGiftModifier * 100}]%${Fonts.gold}")
         add("City-state tribute scaling interval: [${cityStateTributeScalingInterval}] turns${Fonts.turn}")
-        add("Barbarian spawn modifier: [${barbarianModifier * 100}]%${Fonts.strength}")
+        add("Barbarian spawn modifier: [${barbarianModifier * 100}]%${Fonts.defenseStrength}")
         add("Golden age length modifier: [${goldenAgeLengthModifier * 100}]%${Fonts.happiness}")
         add("Adjacent city religious pressure: [$religiousPressureAdjacentCity]${Fonts.faith}")
         add("Peace deal duration: [$peaceDealDuration] turns${Fonts.turn}")

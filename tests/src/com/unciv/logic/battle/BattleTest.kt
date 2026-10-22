@@ -404,7 +404,7 @@ class BattleTest(private val pathfindingAlgorithm: PathfindingAlgorithm) {
     @Test
     fun `should always destroy unit directly hit by nuke`() {
         // given
-        val megaWarrior = testGame.createBaseUnit("Sword").apply { strength = 1_000_000 }
+        val megaWarrior = testGame.createBaseUnit("Sword").apply { defenseStrength = 1_000_000 }
         val defenderUnit = testGame.addUnit(megaWarrior.name, defenderCiv, testGame.getTile(0,1))
 
         testGame.addCity(attackerCiv, testGame.getTile(0,1))
@@ -536,7 +536,7 @@ class BattleTest(private val pathfindingAlgorithm: PathfindingAlgorithm) {
         // given
         val unitType = testGame.createBaseUnit("Archery",
             "[This Unit] takes [5] damage <upon damaging a [Test] unit>")
-        unitType.rangedStrength = 10
+        unitType.attackStrength = 10
         val attackerUnit = testGame.addUnit(unitType.name, attackerCiv, testGame.getTile(0,1))
         attackerUnit.currentMovement = 2f
         defaultDefenderUnit.health = 1

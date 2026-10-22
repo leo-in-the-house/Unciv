@@ -42,8 +42,8 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     override var cost: Int = -1
     override var hurryCostModifier: Int = 0
     var movement: Int = 0
-    var strength: Int = 0
-    var rangedStrength: Int = 0
+    var attackStrength: Int = 0
+    var defenseStrength: Int = 0
     var religiousStrength: Int = 0
     var range: Int = 2
     var interceptRange = 0
@@ -591,8 +591,8 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     }
 
 
-    @Readonly fun isRanged() = rangedStrength > 0
-    @Readonly fun isMelee() = !isRanged() && strength > 0
+    @Readonly fun isRanged() = attackStrength > 0
+    @Readonly fun isMelee() = !isRanged() && defenseStrength > 0
     val isMilitary by lazy { isRanged() || isMelee() }
     @Readonly fun isCivilian() = !isMilitary
 
@@ -618,10 +618,10 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
     @Readonly
     private fun evaluateForce(): Int {
-        if (strength == 0 && rangedStrength == 0) return 0
+        if (defenseStrength == 0 && attackStrength == 0) return 0
 
-        var power = strength.toFloat().pow(1.5f)
-        var rangedPower = rangedStrength.toFloat().pow(1.45f)
+        var power = defenseStrength.toFloat().pow(1.5f)
+        var rangedPower = attackStrength.toFloat().pow(1.45f)
 
         // Value ranged naval units less
         if (isWaterUnit) {

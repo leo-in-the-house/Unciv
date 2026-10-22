@@ -210,8 +210,8 @@ class TurnManager(val civInfo: Civilization) {
         val spawnCity = civInfo.cities.maxByOrNull { random.nextInt(it.population.population + 10) } ?: return
         val spawnTile = spawnCity.getTiles().maxByOrNull { rateTileForRevoltSpawn(it) } ?: return
         val unitToSpawn = civInfo.gameInfo.ruleset.units.values.asSequence().filter {
-            it.uniqueTo == null && it.isMelee() && it.isLandUnit
-                    && !it.hasUnique(UniqueType.CannotAttack) && it.isBuildable(civInfo)
+            it.uniqueTo == null && it.isMelee() && it.isLandUnit && it.attackStrength > 0
+                && !it.hasUnique(UniqueType.CannotAttack) && it.isBuildable(civInfo)
         }.maxByOrNull {
             random.nextInt(1000)
         } ?: return

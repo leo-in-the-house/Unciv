@@ -54,7 +54,7 @@ class CityStateFunctions(val civInfo: Civilization) {
                 if (uniqueNation == null || !uniqueNation.isMajorCiv) continue // Must be from a major civ
                 if (uniqueNation in usedMajorCivs) continue // But not from a major civ in the game
                 if (!ruleset.unitTypes[unit.unitType]!!.isLandUnit()) continue // Must be a land unit
-                if (unit.strength <= 0 && unit.rangedStrength <= 0) continue // Must be a military unit
+                if (unit.defenseStrength <= 0 && unit.attackStrength <= 0) continue // Must be a military unit
                 units.add(unit)
             }
             return units

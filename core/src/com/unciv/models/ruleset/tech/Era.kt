@@ -50,7 +50,7 @@ class Era : RulesetObject() {
     override fun makeLink() = "Era/$name"
     override fun getCivilopediaTextHeader() = FormattedLine(name, header = 2, color = getHexColor())
     override fun getCivilopediaTextLines(ruleset: Ruleset) = buildCivilopediaText {
-        add("Embarked strength: [$embarkDefense]${Fonts.strength}")
+        add("Embarked strength: [$embarkDefense]${Fonts.defenseStrength}")
         add("Base unit buy cost: [$baseUnitBuyCost]${Fonts.gold}")
         add("Research agreement cost: [$researchAgreementCost]${Fonts.gold}")
         space()

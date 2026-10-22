@@ -61,7 +61,7 @@ class Difficulty : RulesetObject() {
         add("{Building cost modifier}: ${buildingCostModifier.toPercent()}% ${Fonts.production}")
         add("{Policy cost modifier}: ${policyCostModifier.toPercent()}% ${Fonts.culture}")
         add("{Unhappiness modifier}: ${unhappinessModifier.toPercent()}%")
-        add("{Bonus vs. Barbarians}: ${barbarianBonus.toPercent()}% ${Fonts.strength}")
+        add("{Bonus vs. Barbarians}: ${barbarianBonus.toPercent()}% ${Fonts.defenseStrength}")
         add("{Barbarian spawning delay}: $barbarianSpawnDelay")
 
         if (playerBonusStartingUnits.isNotEmpty()) {

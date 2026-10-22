@@ -7,9 +7,6 @@ import com.unciv.GUI
 import com.unciv.UncivGame
 import com.unciv.ui.components.MayaCalendar
 import com.unciv.ui.components.extensions.getReadonlyPixmap
-import com.unciv.ui.components.fonts.Fonts.extractPixmapFromTextureRegion
-import com.unciv.ui.components.fonts.Fonts.font
-import com.unciv.ui.components.fonts.Fonts.fontImplementation
 import java.nio.ByteOrder
 import kotlin.math.ceil
 
@@ -137,8 +134,8 @@ object Fonts {
 
     //region Symbols added to font from atlas textures
     const val turn = '⏳'               // U+23F3 'hourglass'
-    const val strength = '†'            // U+2020 'dagger'
-    const val rangedStrength = '‡'      // U+2021 'double dagger'
+    const val defenseStrength = '†'            // U+2020 'dagger'
+    const val attackStrength = '‡'      // U+2021 'double dagger'
     const val movement = '➡'            // U+27A1 'black rightwards arrow'
     const val range = '…'               // U+2026 'horizontal ellipsis'
     const val health = '♡'              // U+2661 'white heart suit'
@@ -183,8 +180,8 @@ object Fonts {
      */
     val allSymbols = mapOf(
         turn to "EmojiIcons/Turn",
-        strength to "StatIcons/Strength",
-        rangedStrength to "StatIcons/RangedStrength",
+        defenseStrength to "StatIcons/Strength",
+        attackStrength to "StatIcons/RangedStrength",
         range to "StatIcons/Range",
         movement to "StatIcons/Movement",
         production to "EmojiIcons/Production",

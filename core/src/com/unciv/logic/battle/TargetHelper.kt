@@ -135,6 +135,8 @@ object TargetHelper {
                 unit = combatant.unit, tile = tile, 
                 ourCombatant = combatant, theirCombatant = tileCombatant, combatAction = CombatAction.Attack)
 
+            if (!combatant.canAttack())
+                return false
             if (combatant.hasUnique(UniqueType.CannotAttack, gameContext))
                 return false
 

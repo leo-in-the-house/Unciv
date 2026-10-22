@@ -28,8 +28,8 @@ object BaseUnitDescriptions {
     @Readonly
     fun getShortDescription(baseUnit: BaseUnit, uniqueExclusionFilter: Unique.() -> Boolean = {false}): String {
         val infoList = mutableListOf<String>()
-        if (baseUnit.strength != 0) infoList += "${baseUnit.strength.tr()}${Fonts.strength}"
-        if (baseUnit.rangedStrength != 0) infoList += "${baseUnit.rangedStrength.tr()}${Fonts.rangedStrength}"
+        if (baseUnit.defenseStrength != 0) infoList += "${baseUnit.defenseStrength.tr()}${Fonts.defenseStrength}"
+        if (baseUnit.attackStrength != 0) infoList += "${baseUnit.attackStrength.tr()}${Fonts.attackStrength}"
         if (baseUnit.movement != 2) infoList += "${baseUnit.movement.tr()}${Fonts.movement}"
         for (promotion in baseUnit.promotions)
             infoList += promotion.tr()
@@ -61,10 +61,10 @@ object BaseUnitDescriptions {
         }
 
         var strengthLine = ""
-        if (baseUnit.strength != 0) {
-            strengthLine += "${baseUnit.strength}${Fonts.strength}, "
-            if (baseUnit.rangedStrength != 0)
-                strengthLine += "${baseUnit.rangedStrength}${Fonts.rangedStrength}, ${baseUnit.range}${Fonts.range}, "
+        if (baseUnit.defenseStrength != 0) {
+            strengthLine += "${baseUnit.defenseStrength}${Fonts.defenseStrength}, "
+            if (baseUnit.attackStrength != 0)
+                strengthLine += "${baseUnit.attackStrength}${Fonts.attackStrength}, ${baseUnit.range}${Fonts.range}, "
         }
         lines += "$strengthLine${baseUnit.movement}${Fonts.movement}"
 
@@ -98,9 +98,9 @@ object BaseUnitDescriptions {
         }
 
         val stats = ArrayList<String>()
-        if (strength != 0) stats += "$strength${Fonts.strength}"
-        if (rangedStrength != 0) {
-            stats += "$rangedStrength${Fonts.rangedStrength}"
+        if (defenseStrength != 0) stats += "$defenseStrength${Fonts.defenseStrength}"
+        if (attackStrength != 0) {
+            stats += "$attackStrength${Fonts.attackStrength}"
             stats += "$range${Fonts.range}"
         }
         if (movement != 0 && ruleset.unitTypes[unitType]?.isAirUnit() != true)
@@ -268,16 +268,16 @@ object BaseUnitDescriptions {
 
     private fun getDifferences(ruleset: Ruleset, originalUnit: BaseUnit, betterUnit: BaseUnit):
             Sequence<Pair<String, String?>> = sequence {
-        if (betterUnit.strength != originalUnit.strength)
-            yield("${Fonts.strength} {[${betterUnit.strength}] vs [${originalUnit.strength}]}" to null)
+        if (betterUnit.defenseStrength != originalUnit.defenseStrength)
+            yield("${Fonts.defenseStrength} {[${betterUnit.defenseStrength}] vs [${originalUnit.defenseStrength}]}" to null)
 
-        if (betterUnit.rangedStrength > 0 && originalUnit.rangedStrength == 0)
-            yield("[Gained] ${Fonts.rangedStrength} [${betterUnit.rangedStrength}] ${Fonts.range} [${betterUnit.range}]" to null)
-        else if (betterUnit.rangedStrength == 0 && originalUnit.rangedStrength > 0)
-            yield("[Lost] ${Fonts.rangedStrength} [${originalUnit.rangedStrength}] ${Fonts.range} [${originalUnit.range}]" to null)
+        if (betterUnit.attackStrength > 0 && originalUnit.attackStrength == 0)
+            yield("[Gained] ${Fonts.attackStrength} [${betterUnit.attackStrength}] ${Fonts.range} [${betterUnit.range}]" to null)
+        else if (betterUnit.attackStrength == 0 && originalUnit.attackStrength > 0)
+            yield("[Lost] ${Fonts.attackStrength} [${originalUnit.attackStrength}] ${Fonts.range} [${originalUnit.range}]" to null)
         else {
-            if (betterUnit.rangedStrength != originalUnit.rangedStrength)
-                yield("${Fonts.rangedStrength} " + "{[${betterUnit.rangedStrength}] vs [${originalUnit.rangedStrength}]}" to null)
+            if (betterUnit.attackStrength != originalUnit.attackStrength)
+                yield("${Fonts.attackStrength} " + "{[${betterUnit.attackStrength}] vs [${originalUnit.attackStrength}]}" to null)
             if (betterUnit.range != originalUnit.range)
                 yield("${Fonts.range} {[${betterUnit.range}] vs [${originalUnit.range}]}" to null)
         }

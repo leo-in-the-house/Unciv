@@ -251,15 +251,15 @@ class TestGame(vararg addGlobalUniques: String, forUITesting: Boolean = false) {
     fun addDefaultMeleeUnitWithUniques(civInfo: Civilization, tile: Tile, vararg uniques: String) : MapUnit {
         val createBaseUnit = createBaseUnit("Sword", *uniques)
         createBaseUnit.movement = 2
-        createBaseUnit.strength = 8
+        createBaseUnit.defenseStrength = 8
         return this.addUnit(createBaseUnit.name, civInfo, tile)
     }
 
     fun addDefaultRangedUnitWithUniques(civInfo: Civilization, tile: Tile, vararg uniques: String) : MapUnit {
         val createBaseUnit = createBaseUnit("Archery", *uniques)
         createBaseUnit.movement = 2
-        createBaseUnit.strength = 5
-        createBaseUnit.rangedStrength = 7
+        createBaseUnit.defenseStrength = 5
+        createBaseUnit.attackStrength = 7
         createBaseUnit.range = 2
         return this.addUnit(createBaseUnit.name, civInfo, tile)
     }

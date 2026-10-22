@@ -554,7 +554,7 @@ object NextTurnAutomation {
                     && it.movement.canReach(tile) 
             }
             .sortedBy { it.currentTile.aerialDistanceTo(tile) }
-            .maxByOrNull { it.baseUnit.strength } // could be more sophisticated based on promotions, movement speed etc.
+            .maxByOrNull { it.baseUnit.defenseStrength } // could be more sophisticated based on promotions, movement speed etc.
         
         val settlersToAccompany = civInfo.units.getCivUnits()
             .filter { it.isCivilian() && it.hasUnique(UniqueType.FoundCity) }

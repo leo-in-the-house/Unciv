@@ -116,7 +116,7 @@ class BattleTable(val worldScreen: WorldScreen) : Table() {
         val unit = worldScreen.bottomUnitTable.selectedUnit ?: return null
         // A selected unit may have just changed owner (gifted, captured) - it is then no longer ours to attack with
         if (unit.tryGetMapUnitView() == null) return null
-        if (unit.isCivilian() || unit.hasUnique(UniqueType.CannotAttack)) return null
+        if (!unit.canAttack()) return null
         return unit
     }
 
@@ -191,11 +191,11 @@ class BattleTable(val worldScreen: WorldScreen) : Table() {
 
         addSeparator().pad(0f)
 
-        val attackIcon = if (attacker.isRanged()) Fonts.rangedStrength else Fonts.strength
+        val attackIcon = if (attacker.isRanged()) Fonts.attackStrength else Fonts.defenseStrength
         val defenceIcon =
             if (attacker.isRanged() && defender.isRanged() && !defender.isCity() && !(defender is MapUnitCombatantView && defender.getUnitView().isEmbarked()))
-                Fonts.rangedStrength
-            else Fonts.strength // use strength icon if attacker is melee, defender is melee, defender is a city, or defender is embarked
+                Fonts.attackStrength
+            else Fonts.defenseStrength // use strength icon if attacker is melee, defender is melee, defender is a city, or defender is embarked
         add(attacker.getAttackingStrength(defender).tr() + attackIcon)
         add(defender.getDefendingStrength(attacker).tr() + defenceIcon).row()
 
@@ -431,7 +431,7 @@ class BattleTable(val worldScreen: WorldScreen) : Table() {
 
         addSeparator().pad(0f)
 
-        val attackIcon = Fonts.rangedStrength
+        val attackIcon = Fonts.attackStrength
         add(attacker.getAttackingStrength().tr() + attackIcon)
         add("???$attackIcon").row()
 

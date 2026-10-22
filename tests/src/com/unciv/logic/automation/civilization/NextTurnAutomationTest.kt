@@ -97,9 +97,9 @@ class NextTurnAutomationTest(private val algorithm: PathfindingAlgorithm) {
     @Test
     fun `unit destroyed during an earlier promotion is not promoted or automated`() {
         // Civilian has no vanilla promotion tree, so Lead is the only promotion these units can buy.
-        val actorBase = testGame.createBaseUnit("Civilian").apply { movement = 2; strength = 8 }
-        val victimBase = testGame.createBaseUnit("Civilian").apply { movement = 2; strength = 8 }
-        val bystanderBase = testGame.createBaseUnit("Civilian").apply { movement = 2; strength = 8 }
+        val actorBase = testGame.createBaseUnit("Civilian").apply { movement = 2; defenseStrength = 8 }
+        val victimBase = testGame.createBaseUnit("Civilian").apply { movement = 2; defenseStrength = 8 }
+        val bystanderBase = testGame.createBaseUnit("Civilian").apply { movement = 2; defenseStrength = 8 }
         // Granted, not chosen: empty unitTypes cannot be bought, but can be applied.
         val doom = testGame.createUnitPromotion("[This Unit] is destroyed")
         val lead = testGame.createUnitPromotion("[${victimBase.name}] units gain the [${doom.name}] promotion")

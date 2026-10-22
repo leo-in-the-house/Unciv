@@ -221,7 +221,7 @@ class UnitUniquesTests {
             "Can carry [2] [Aircraft] units"
         ).apply {
             movement = 2
-            strength = 1
+            defenseStrength = 1
         }
         val originalBaseUnit = game.createBaseUnit(
             "Aircraft Carrier",
@@ -229,7 +229,7 @@ class UnitUniquesTests {
             "Can transform to [${transformedBaseUnit.name}]"
         ).apply {
             movement = 2
-            strength = 1
+            defenseStrength = 1
         }
         val original = game.addUnit(originalBaseUnit.name, civ, tile)
         val payload = game.addUnit("Fighter", civ, tile)

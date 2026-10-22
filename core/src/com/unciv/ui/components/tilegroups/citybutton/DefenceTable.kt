@@ -2,7 +2,6 @@ package com.unciv.ui.components.tilegroups.citybutton
 
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.utils.Align
-import com.unciv.GUI
 import com.unciv.logic.civilization.Civilization
 import com.unciv.ui.components.extensions.colorFromRGB
 import com.unciv.ui.components.extensions.toLabel
@@ -33,7 +32,7 @@ internal class DefenceTable(cityView: ForeignCityView, selectedCiv: Civilization
         }
 
         val cityStrength = cityView.getDefendingStrength()
-        val cityStrengthLabel = "${Fonts.strength}$cityStrength"
+        val cityStrengthLabel = "${Fonts.defenseStrength}$cityStrength"
             .toLabel(fontSize = 12, alignment = Align.center)
         add(cityStrengthLabel).grow().center()
     }

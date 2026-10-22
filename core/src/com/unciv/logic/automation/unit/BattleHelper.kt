@@ -18,7 +18,7 @@ object BattleHelper {
     /** Returns true if the unit cannot further move this turn - NOT if an attack was successful! */
     fun tryAttackNearbyEnemy(unitView: MapUnitView, stayOnTile: Boolean = false): Boolean {
         val unit = unitView.getUnit()
-        if (unitView.hasUnique(UniqueType.CannotAttack)) return false
+        if (!unitView.canAttack()) return false
         val distanceToTiles = unit.movement.getDistanceToTiles()
         val attackableEnemies = TargetHelper.getAttackableEnemies(unit, distanceToTiles, stayOnTile=stayOnTile)
             // Only take enemies we can fight without dying or are made to die

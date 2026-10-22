@@ -244,7 +244,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         // which effectively removes those techs from the game and causes all sorts of problems
         val barbarianCiv = gameInfo.getBarbarianCivilization()
         val unitList = gameInfo.ruleset.units.values
-            .filter { it.isMilitary &&
+            .filter { it.isMilitary && 
                 !(it.hasUnique(UniqueType.CannotAttack) ||
                     it.hasUnique(UniqueType.CannotBeBarbarian)) &&
                 (if (naval) it.isWaterUnit else !it.isWaterUnit) &&

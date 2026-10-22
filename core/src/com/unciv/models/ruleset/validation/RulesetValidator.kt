@@ -494,7 +494,7 @@ open class RulesetValidator protected constructor(
         if (unit.replaces == unit.name)
             lines.add("${unit.name} replaces itself!")
 
-        if (unit.isMilitary && unit.strength == 0)  // Should only match ranged units with 0 strength
+        if (unit.isMilitary && unit.defenseStrength == 0)  // Should only match ranged units with 0 strength
             lines.add("${unit.name} is a military unit but has no assigned strength!", sourceObject = unit)
 
         val pixelUnitTexturePattern = Regex("TileSets/[^/]+/Units/${unit.name}")

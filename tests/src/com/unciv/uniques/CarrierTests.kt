@@ -38,7 +38,7 @@ class CarrierTests {
             "Can carry [1] [Aircraft] units",
             "Can carry [1] [MyFighters] units",
             "Can carry [1] [MyBombers] units")
-        carrierBase.strength = 10 // Otherwise it's a civilian, and we don't look for carriers in Tile.civilianUnit
+        carrierBase.defenseStrength = 10 // Otherwise it's a civilian, and we don't look for carriers in Tile.civilianUnit
         fighterInCity = game.addUnit(fighterBase.name, civ, city.getCenterTile())
         bomberInCity = game.addUnit(bomberBase.name, civ, city.getCenterTile())
         carrier = game.addUnit(carrierBase.name, civ, waterTile)

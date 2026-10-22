@@ -304,7 +304,7 @@ object Battle {
     }
 
     private fun tryEarnFromKilling(civUnit: ICombatant, defeatedUnit: MapUnitCombatant) {
-        val unitStr = max(defeatedUnit.unit.baseUnit.strength, defeatedUnit.unit.baseUnit.rangedStrength)
+        val unitStr = max(defeatedUnit.unit.baseUnit.defenseStrength, defeatedUnit.unit.baseUnit.attackStrength)
         val unitCost = defeatedUnit.unit.baseUnit.cost
 
         val bonusUniques = getKillUnitPlunderUniques(civUnit, defeatedUnit)
@@ -858,22 +858,22 @@ object Battle {
     @Readonly
     internal fun getExtraRangedAttackFakeUnits(attacker: MapUnitCombatant): List<FakeUnitForExtraRangedAttack> =
         attacker.unit.getMatchingUniques(UniqueType.ExtraRangedAttack).map { unique ->
-            val baseRangedStrengthForExtraAttack = (attacker.unit.baseUnit.strength *
+            val baseAttackStrengthForExtraAttack = (attacker.unit.baseUnit.defenseStrength *
                 unique.params[0].toFloat() / 100).toInt()
-            FakeUnitForExtraRangedAttack(attacker, baseRangedStrengthForExtraAttack)
+            FakeUnitForExtraRangedAttack(attacker, baseAttackStrengthForExtraAttack)
         }.toList()
 
     /** This has all the properties and methods of [mapUnitCombatant] (via delegation)
      *  **except** for [isRanged] and [getAttackingStrength]
      */
-    internal class FakeUnitForExtraRangedAttack(val mapUnitCombatant: MapUnitCombatant, val baseRangedStrength: Int) : ICombatant by mapUnitCombatant {
+    internal class FakeUnitForExtraRangedAttack(val mapUnitCombatant: MapUnitCombatant, val baseAttackStrength: Int) : ICombatant by mapUnitCombatant {
         override fun getAttackingStrength(defender: ICombatant?): Int {
             val state = GameContext(this, defender, this.getTile(), CombatAction.Attack)
             var extraStrength = 0
             mapUnitCombatant.unit.forEachMatchingUnique(UniqueType.StrengthAmount, state) {
                 extraStrength += it.params[0].toInt()
             }
-            return baseRangedStrength + extraStrength // Is always ranged
+            return baseAttackStrength + extraStrength // Is always ranged
         }
 
         override fun isRanged(): Boolean {

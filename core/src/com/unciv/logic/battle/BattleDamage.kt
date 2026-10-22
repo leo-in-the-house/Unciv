@@ -341,13 +341,13 @@ object BattleDamage {
         randomnessFactor: Float,
     ): Float {
         // https://forums.civfanatics.com/threads/getting-the-combat-damage-math.646582/#post-15468029
-        val strongerToWeakerRatio =
+        /*val strongerToWeakerRatio =
             attackerToDefenderRatio.pow(if (attackerToDefenderRatio < 1) -1 else 1)
         var ratioModifier = (((strongerToWeakerRatio + 3) / 4).pow(4) + 1) / 2
         if (damageToAttacker && attackerToDefenderRatio > 1 || !damageToAttacker && attackerToDefenderRatio < 1) // damage ratio from the weaker party is inverted
-            ratioModifier = ratioModifier.pow(-1)
-        val randomCenteredAround30 = 24 + 12 * randomnessFactor
-        return randomCenteredAround30 * ratioModifier
+            ratioModifier = ratioModifier.pow(-1)*/
+        //val randomCenteredAround30 = 24 + 12 * randomnessFactor
+        return attackerToDefenderRatio
     }
 }
 enum class CombatAction {

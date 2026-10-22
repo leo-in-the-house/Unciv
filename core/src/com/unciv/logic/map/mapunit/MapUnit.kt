@@ -460,6 +460,8 @@ class MapUnit : IsPartOfGameInfoSerialization {
     fun canAttack(): Boolean {
         if (!hasMovement()) return false
         if (isCivilian()) return false
+        if (baseUnit.hasUnique(UniqueType.CannotAttack)) return false
+        if (baseUnit.attackStrength <= 0) return false
         return attacksThisTurn < maxAttacksPerTurn()
     }
 
