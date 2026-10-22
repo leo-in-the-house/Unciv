@@ -250,6 +250,9 @@ class MapUnit : IsPartOfGameInfoSerialization {
     val type: UnitType
         get() = baseUnit.type
 
+    val secondaryType: UnitType?
+        get() = baseUnit.secondaryType
+
     @Readonly fun getMovementString(): String {
         // DecimalFormat("0.#") would use _system_ Locale, and a subsequent tr() might misread the thousands separator.
         // Therefore, settings-dependent Locale->NumberFormat, and avoid double translation.

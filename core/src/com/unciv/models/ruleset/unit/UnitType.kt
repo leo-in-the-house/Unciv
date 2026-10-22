@@ -11,7 +11,8 @@ import yairm210.purity.annotations.Readonly
 enum class UnitMovementType { // The types of tiles the unit can by default enter
     Land, // Only land tiles except when certain techs are researched
     Water, // Only water tiles
-    Air // Only city tiles and carrying units
+    Air, // Only city tiles and carrying units
+    Other // The movement type will not be checked, this is for secondary types only
 }
 
 class UnitType() : RulesetObject() {
@@ -50,7 +51,7 @@ class UnitType() : RulesetObject() {
     override fun getSortGroup(ruleset: Ruleset): Int = (unitMovementType?.ordinal ?: 100) * 2 + (if (name.startsWith("Domain: ")) 0 else 1)
     override fun getSubCategory(ruleset: Ruleset): String? = unitMovementType?.name ?: "Other"
 
-    @Readonly fun isUsed(ruleset: Ruleset) = ruleset.units.values.any { it.unitType == name }
+    @Readonly fun isUsed(ruleset: Ruleset) = ruleset.units.values.any { it.unitType == name || (it.secondaryUnitType.isNotEmpty() && it.secondaryUnitType == name)}
 
     companion object {
         val City = UnitType("City", "Land")

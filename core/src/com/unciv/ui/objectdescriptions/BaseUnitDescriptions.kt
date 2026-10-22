@@ -91,6 +91,11 @@ object BaseUnitDescriptions {
         // Don't call baseUnit.getType() here - coming from the main menu baseUnit isn't fully initialized
         val unitTypeLink = ruleset.unitTypes[unitType]?.makeLink() ?: ""
         add("{Unit type}: {$unitType}", unitTypeLink)
+        
+        if (secondaryUnitType.isNotEmpty()) {
+            val secondaryUnitTypeLink = ruleset.unitTypes[secondaryUnitType]?.makeLink() ?: ""
+            add("{Secondary unit type}: {$secondaryUnitType}", secondaryUnitTypeLink)
+        }
 
         val stats = ArrayList<String>()
         if (strength != 0) stats += "$strength${Fonts.strength}"
@@ -220,6 +225,7 @@ object BaseUnitDescriptions {
                     UnitMovementType.Land -> "#ffc080"
                     UnitMovementType.Water -> "#80d0ff"
                     UnitMovementType.Air -> "#e0e0ff"
+                    UnitMovementType.Other -> "#ffffff"
                 }
                 add("Domain: [${it.name}]", link = "UnitType/Domain: [${it.name}]", color = color)
                 separator()

@@ -48,9 +48,11 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     var range: Int = 2
     var interceptRange = 0
     var unitType: String = ""
+    var secondaryUnitType: String = "" //This is only used for promotions!
 
     val type by lazy { ruleset.unitTypes[unitType]
         ?: throw Exception("Unit $name has unit type $unitType which is not present in ruleset!") }
+    val secondaryType by lazy { ruleset.unitTypes[secondaryUnitType] } //Can be null
     override var requiredTech: String? = null
     var requiredResource: String? = null
 
@@ -501,7 +503,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
             val isRelevantPromotion = filter == "relevant"
                     && civInfo.gameInfo.ruleset.unitPromotions.values
-                .any { it.name == promotion && unit.type.name in it.unitTypes }
+                .any { it.name == promotion && (unit.type.name in it.unitTypes || (unit.secondaryType != null && unit.secondaryType!!.name in it.unitTypes))}
 
             if (isRelevantPromotion || unit.matchesFilter(filter)) {
                 unit.promotions.addPromotion(promotion, isFree = true)
@@ -551,6 +553,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
             else -> {
                 if (filter == unitType) return true
+                if (filter == secondaryUnitType) return true
                 else if (filter == name) return true
                 else if (filter == replaces) return true
                 

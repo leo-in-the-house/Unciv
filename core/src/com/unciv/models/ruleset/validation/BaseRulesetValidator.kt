@@ -308,6 +308,20 @@ internal class BaseRulesetValidator(
         }
     }
 
+    private fun checkPromotionsInSameRowColumnForUnitType(promotion: Promotion, unitType: String, lines: RulesetErrorList) {
+        for (otherPromotion in ruleset.unitPromotions.values)
+        {
+            if (promotion == otherPromotion) continue
+            for (unitType in promotion.unitTypes) {
+                if (unitType !in otherPromotion.unitTypes) continue
+                if (promotion.column == otherPromotion.column && promotion.row == otherPromotion.row) {
+                    lines.add("Promotions ${promotion.name} and ${otherPromotion.name} have the same position: ${promotion.row}/${promotion.column}", sourceObject = promotion)
+                    break;
+                }
+            }
+        }
+    }
+
     private fun checkPromotionCircularReferences(lines: RulesetErrorList) {
         val promotionsUnlockedByPrerequisite = HashMap<String, MutableList<Promotion>>()
         for (promotion in ruleset.unitPromotions.values) {
@@ -510,7 +524,15 @@ internal class BaseRulesetValidator(
             if (!ruleset.unitPromotions.containsKey(promotion))
                 lines.add("${unit.name} contains promotion $promotion which does not exist!", sourceObject = unit)
         checkUnitType(unit.unitType) {
-            lines.add("${unit.name} is of type ${unit.unitType}, which does not exist!", sourceObject = unit)
+            lines.add(
+                "${unit.name} is of type ${unit.unitType}, which does not exist!",
+                sourceObject = unit
+            )
+        }
+        if (unit.secondaryUnitType.isNotEmpty()) {
+            checkUnitType(unit.secondaryUnitType) {
+                lines.add("${unit.name} is of type ${unit.secondaryUnitType}, which does not exist!", sourceObject = unit)
+            }
         }
 
         // We should ignore conditionals here - there are condition implementations on this out there that require a game state (and will test false without)

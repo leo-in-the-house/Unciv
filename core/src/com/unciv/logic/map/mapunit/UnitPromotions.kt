@@ -193,7 +193,8 @@ class UnitPromotions : IsPartOfGameInfoSerialization {
     fun getPromotionTreeCandidates(): List<AvailablePromotion> {
         val state = unit.cache.state
         return unit.civ.gameInfo.ruleset.unitPromotions.values
-            .filter { unit.baseUnit.unitType in it.unitTypes || it.name in promotions }
+            .filter { it.name in promotions || unit.baseUnit.unitType in it.unitTypes 
+                || unit.baseUnit.secondaryUnitType in it.unitTypes}
             .map { promotion ->
                 val blocked = promotion.hasUnique(UniqueType.Unavailable, state)
                     || promotion.getMatchingUniques(UniqueType.OnlyAvailable, GameContext.IgnoreConditionals)

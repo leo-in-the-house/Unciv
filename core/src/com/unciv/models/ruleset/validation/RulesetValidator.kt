@@ -396,9 +396,6 @@ open class RulesetValidator protected constructor(
         if (promotion.row < -1) lines.add("Promotion ${promotion.name} has invalid row value: ${promotion.row}", sourceObject = promotion)
         if (promotion.column < 0) lines.add("Promotion ${promotion.name} has invalid column value: ${promotion.column}", sourceObject = promotion)
         if (promotion.row == -1) return
-        for (otherPromotion in ruleset.unitPromotions.values)
-            if (promotion != otherPromotion && promotion.column == otherPromotion.column && promotion.row == otherPromotion.row)
-                lines.add("Promotions ${promotion.name} and ${otherPromotion.name} have the same position: ${promotion.row}/${promotion.column}", sourceObject = promotion)
     }
 
     protected open fun addResourceErrors(lines: RulesetErrorList) {
