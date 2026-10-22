@@ -89,6 +89,9 @@ class TileImprovementFunctions(val tile: Tile) {
             tile.isCityCenter() -> isNormalizeCheck && improvement.name == Constants.cityCenter
 
             // First we handle a few special improvements
+            improvement.isAncientRuinsEquivalent() && improvement.terrainsCanBeBuiltOn.contains("Land") && !(tile.isLand) -> false
+            improvement.isAncientRuinsEquivalent() && improvement.terrainsCanBeBuiltOn.contains("Water") && !(tile.isWater) -> false
+
 
             // Can only cancel if there is actually an improvement being built
             improvement.name == Constants.cancelImprovementOrder -> (tile.improvementInProgress != null)
