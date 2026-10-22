@@ -1368,6 +1368,18 @@ object UniqueTriggerActivation {
                 if (tile == null) return null
                 val improvementName = unique.params[0]
                 val improvement = ruleset.tileImprovements[improvementName] ?: return null
+                if (tile.tileImprovement != null) return null
+
+                return {
+                    tile.setImprovement(improvement)
+                    true
+                }
+            }
+
+            UniqueType.OneTimeReplaceImprovement -> {
+                if (tile == null) return null
+                val improvementName = unique.params[0]
+                val improvement = ruleset.tileImprovements[improvementName] ?: return null
 
                 return {
                     // Remove the original improvement

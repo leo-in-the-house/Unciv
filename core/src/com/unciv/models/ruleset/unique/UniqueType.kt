@@ -965,6 +965,7 @@ enum class UniqueType(
     OneTimeAddResource("Add [resource] to this tile", UniqueTarget.Triggerable),
 
     OneTimeAddImprovement("Add [improvementName] improvement to this tile", UniqueTarget.Triggerable),
+    OneTimeReplaceImprovement("Add [improvementName] improvement to this tile replacing the existing improvement", UniqueTarget.Triggerable),
     OneTimeRemoveResourcesFromTile("Remove [resourceFilter] resources from this tile", UniqueTarget.Triggerable),
     OneTimeRemoveImprovementsFromTile("Remove [improvementFilter] improvements from this tile", UniqueTarget.Triggerable),
 

@@ -64,6 +64,7 @@ class UiUnitAction(
                     UniqueType.OneTimeChangeTerrain -> ImageGetter.getUnitActionPortrait("Transform", size)
                     UniqueType.OneTimeAddResource -> ImageGetter.getResourcePortrait(associatedUnique.params[0], size)
                     UniqueType.OneTimeAddImprovement -> ImageGetter.getImprovementPortrait(associatedUnique.params[0], size)
+                    UniqueType.OneTimeReplaceImprovement -> ImageGetter.getImprovementPortrait(associatedUnique.params[0], size)
                     UniqueType.OneTimeRemoveResourcesFromTile, UniqueType.OneTimeRemoveImprovementsFromTile -> ImageGetter.getUnitActionPortrait("Pillage", size)
                     UniqueType.OneTimeGainPopulation, UniqueType.OneTimeGainPopulationRandomCity -> ImageGetter.getStatIcon("Population", size)
                     UniqueType.OneTimeGainStat -> ImageGetter.getStatIcon(associatedUnique.params[1], size)
