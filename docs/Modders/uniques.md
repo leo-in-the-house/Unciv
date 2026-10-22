@@ -860,6 +860,16 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global
 
+??? example  "Enables [mapUnitFilter] units to enter [terrainName] tiles"
+	Example: "Enables [Wounded] units to enter [Forest] tiles"
+
+	Applicable to: Global
+
+??? example  "Prevents [mapUnitFilter] units from entering [terrainName] tiles"
+	Example: "Prevents [Wounded] units from entering [Forest] tiles"
+
+	Applicable to: Global
+
 ??? example  "Land units may cross [terrainName] tiles after the first [baseUnitFilter] is earned"
 	Example: "Land units may cross [Forest] tiles after the first [Melee] is earned"
 
@@ -2119,6 +2129,16 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 ??? example  "Can build [improvementFilter/terrainFilter] improvements on tiles"
 	Example: "Can build [All Road] improvements on tiles"
+
+	Applicable to: Unit
+
+??? example  "Can enter [terrainName] tiles"
+	Example: "Can enter [Forest] tiles"
+
+	Applicable to: Unit
+
+??? example  "Cannot enter [terrainName] tiles"
+	Example: "Cannot enter [Forest] tiles"
 
 	Applicable to: Unit
 

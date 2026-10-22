@@ -721,6 +721,7 @@ class UnitMovement(val unit: MapUnit) {
 
     enum class CannotMoveToReason{
         TerrainImpassable,
+        UnitCannotEnterTerrain,
         BoatCannotGoOnLand,
         CannotEmbark,
         CannotEnterOcean,
@@ -814,8 +815,17 @@ class UnitMovement(val unit: MapUnit) {
             // helicopters can pass through impassable tiles like mountains
             if (!unit.cache.canPassThroughImpassableTiles && !(unit.cache.canEnterIceTiles && tile.terrainFeatureObjects.any { it.isIce })
                 // carthage-like uniques sometimes allow passage through impassible tiles
-                && !(unit.civ.passThroughImpassableUnlocked && unit.civ.passableImpassables.contains(tile.lastTerrain.name)))
+                && !(unit.civ.passThroughImpassableUnlocked && unit.civ.passableImpassables.contains(tile.lastTerrain.name))
+                && !(unit.getMatchingUniques(UniqueType.MayCrossTerrain).any { tile.matchesFilter(it.params[0]) })
+                && !(unit.civ.getMatchingUniques(UniqueType.UnitsMayCrossTerrain).any { unit.matchesFilter(it.params[0]) && tile.matchesFilter(it.params[1]) }))
                 return CannotMoveToReason.TerrainImpassable
+        }
+        else {
+            if (unit.civ.getMatchingUniques(UniqueType.UnitsMayNotCrossTerrain).any { unit.matchesFilter(it.params[0]) && tile.matchesFilter(it.params[1]) }
+                || unit.getMatchingUniques(UniqueType.MayNotCrossTerrain).any { tile.matchesFilter(it.params[0]) })
+            {
+                return CannotMoveToReason.UnitCannotEnterTerrain
+            }
         }
         if (tile.isLand
             && unit.baseUnit.isWaterUnit

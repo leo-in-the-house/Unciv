@@ -211,6 +211,8 @@ enum class UniqueType(
     // ToDo: make per unit and use unit filters? "Enables embarkation <for [land] units>"
     LandUnitEmbarkation("Enables embarkation for land units", UniqueTarget.Global),
     UnitsMayEnterOcean("Enables [mapUnitFilter] units to enter ocean tiles", UniqueTarget.Global),
+    UnitsMayCrossTerrain("Enables [mapUnitFilter] units to enter [terrainName] tiles", UniqueTarget.Global),
+    UnitsMayNotCrossTerrain("Prevents [mapUnitFilter] units from entering [terrainName] tiles", UniqueTarget.Global),
     LandUnitsCrossTerrainAfterUnitGained("Land units may cross [terrainName] tiles after the first [baseUnitFilter] is earned", UniqueTarget.Global),
     EnemyUnitsSpendExtraMovement("Enemy [mapUnitFilter] units must spend [positiveAmount] extra movement points when inside your territory", UniqueTarget.Global),
 
@@ -421,6 +423,8 @@ enum class UniqueType(
     CanRemoveHeresy("Can remove other religions from cities", UniqueTarget.UnitAction),
     MayFoundReligion("May found a religion", UniqueTarget.UnitAction),
     MayEnhanceReligion("May enhance a religion", UniqueTarget.UnitAction),
+    MayCrossTerrain("Can enter [terrainName] tiles", UniqueTarget.Unit),
+    MayNotCrossTerrain("Cannot enter [terrainName] tiles", UniqueTarget.Unit),
 
     AddInCapital("Can be added to [comment] in the Capital", UniqueTarget.Unit),
     PreventSpreadingReligion("Prevents spreading of religion to the city it is next to", UniqueTarget.Unit),
