@@ -117,7 +117,6 @@ class MapUnitView internal constructor(
     @Readonly fun isNuclearWeapon(): Boolean = unit.isNuclearWeapon()
     @Readonly fun getNukeBlastRadius(): Int = unit.getNukeBlastRadius()
     @Readonly fun cannotMove(): Boolean = unit.cache.cannotMove
-    @Readonly fun canAttack(): Boolean = unit.canAttack()
     @Readonly fun isAutomatingRoadConnection(): Boolean = unit.isAutomatingRoadConnection()
     @Readonly fun rulesetHasRoadImprovement(): Boolean = unit.currentTile.ruleset.roadImprovement != null
     @Readonly fun getReachableTilesInCurrentTurn(): List<TileView> =
