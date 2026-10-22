@@ -305,6 +305,7 @@ internal class BaseRulesetValidator(
                 "${promotion.name} references unit type $unitType, which does not exist!",
                 RulesetErrorSeverity.ErrorOptionsOnly, promotion
             )
+            checkPromotionsInSameRowColumnForUnitType(promotion, unitType, lines)
         }
     }
 
