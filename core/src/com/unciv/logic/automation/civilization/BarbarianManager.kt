@@ -195,7 +195,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
             var nearbyBarbarians = 0
             tile.forEachTileInDistance(4) { if (it.militaryUnit?.civ?.isBarbarian == true) nearbyBarbarians++ }
             // Too many barbarians around already?
-            if (nearbyBarbarians > 2)
+            if (nearbyBarbarians > 10)
                 return null
         }
 
@@ -222,7 +222,8 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         allegiance: Civilization = gameInfo.getBarbarianCivilization()
     ): MapUnit? {
         updateBarbarianTech()
-        val unitToSpawn = chooseBarbarianUnit(naval)
+        val currentTile = gameInfo.tileMap.get(position)
+        val unitToSpawn = chooseBarbarianUnit(naval, currentTile)
             ?: return null // return null if we didn't find a unit
         val spawnedUnit = gameInfo.tileMap.placeUnitNearTile(position, unitToSpawn, allegiance)
         return spawnedUnit
@@ -238,7 +239,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
     }
 
     @Readonly
-    private fun chooseBarbarianUnit(naval: Boolean): BaseUnit? {
+    private fun chooseBarbarianUnit(naval: Boolean, tile: Tile): BaseUnit? {
         // if we don't make this into a separate list then the retain() will happen on the Tech keys,
         // which effectively removes those techs from the game and causes all sorts of problems
         val barbarianCiv = gameInfo.getBarbarianCivilization()
@@ -246,8 +247,8 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
             .filter { it.isMilitary &&
                 !(it.hasUnique(UniqueType.CannotAttack) ||
                     it.hasUnique(UniqueType.CannotBeBarbarian)) &&
-                (if (naval) it.isWaterUnit else it.isLandUnit) &&
-                it.isBuildable(barbarianCiv) }
+                (if (naval) it.isWaterUnit else !it.isWaterUnit) &&
+                it.canSpawnAsBarbarian(barbarianCiv, tile) }
 
         if (unitList.isEmpty()) return null // No naval tech yet? Mad modders?
 

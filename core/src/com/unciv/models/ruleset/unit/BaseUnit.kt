@@ -7,6 +7,7 @@ import com.unciv.logic.city.City
 import com.unciv.logic.city.CityConstructions
 import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.map.mapunit.MapUnit
+import com.unciv.logic.map.tile.Tile
 import com.unciv.models.Counter
 import com.unciv.models.ruleset.INonPerpetualConstruction
 import com.unciv.models.ruleset.RejectionReason
@@ -226,6 +227,37 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
     override fun getRejectionReasons(cityConstructions: CityConstructions): Sequence<RejectionReason> =
         getRejectionReasons(cityConstructions.city.civ, cityConstructions.city)
+    
+    @Readonly
+    fun getRejectionReasonsForBarbarians(
+        civ: Civilization,
+        tile: Tile? = null,
+    ): Sequence<RejectionReason> = sequence {
+
+        val stateForConditionals = civ.state
+        
+        for (unique in getMatchingUniques(UniqueType.OnlyAvailable, GameContext.IgnoreConditionals))
+            yieldAll(canSpawnBarbarianAtTile(unique, civ, tile))
+
+        for (unique in getMatchingUniques(UniqueType.CanOnlyBeBuiltWhen, GameContext.IgnoreConditionals))
+            yieldAll(canSpawnBarbarianAtTile(unique, civ, tile))
+
+        for (requiredTech: String in requiredTechs())
+            if (!civ.tech.isResearched(requiredTech))
+                yield(RejectionReasonType.RequiresTech.toInstance("$requiredTech not researched"))
+
+        for (obsoleteTech: String in techsAtWhichNoLongerAvailable())
+            if (civ.tech.isResearched(obsoleteTech))
+                yield(RejectionReasonType.Obsoleted.toInstance("Obsolete by $obsoleteTech"))
+
+        if (hasUnique(UniqueType.Unbuildable, stateForConditionals))
+            yield(RejectionReasonType.Unbuildable.toInstance())
+        
+        if (getMatchingUniques(UniqueType.MaxNumberBuildable, stateForConditionals).any {
+                civ.civConstructions.countConstructedObjects(this@BaseUnit) >= it.params[0].toInt()
+            })
+            yield(RejectionReasonType.MaxNumberBuildable.toInstance())
+    }
 
     @Readonly
     fun getRejectionReasons(
@@ -362,10 +394,69 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
         }
     }
 
+    @Readonly
+    private fun canSpawnBarbarianAtTile(unique: Unique, civ: Civilization, tile: Tile?): Sequence<RejectionReason> = sequence {
+        for (conditional in unique.modifiers) {
+            // We yield a rejection only when conditionals are NOT met
+            if (Conditionals.conditionalApplies(unique, conditional, civ.state))
+                continue
+            when (conditional.type) {
+                UniqueType.ConditionalInTiles -> {
+                    if (tile?.matchesFilter(conditional.params[0], civ) == false)
+                    {
+                        yield(RejectionReasonType.CannotBeBuilt.toInstance(
+                            "Cannot be built except in" + 
+                                " (${conditional.params[0]})"))
+                    }
+                }
+                UniqueType.ConditionalInTilesNot -> {
+                    if (tile?.matchesFilter(conditional.params[0], civ) == true)
+                    {
+                        yield(RejectionReasonType.CannotBeBuilt.toInstance(
+                            "Cannot be built in" +
+                                " (${conditional.params[0]})"))
+                    }
+                }
+                UniqueType.ConditionalNearTiles -> {
+                    if (tile?.getTilesInDistance(conditional.params[0].toInt())?.any {
+                            it.matchesFilter(conditional.params[1], civ)
+                        } == false)
+                    {
+                        yield(RejectionReasonType.CannotBeBuilt.toInstance(
+                            "Cannot be built except near" +
+                                " (${conditional.params[0]}) (${conditional.params[1]})"))
+                    }
+                }
+
+                UniqueType.ConditionalBeforeEra -> {
+                    val era = civ.gameInfo.ruleset.eras[conditional.params[0]]
+                    if (era == null) yield(RejectionReasonType.RequiresEra.toInstance())
+                    if (civ.getEraNumber() >= era!!.eraNumber) yield(RejectionReasonType.RequiresEra.toInstance())
+                }
+                UniqueType.ConditionalDuringEra -> {
+                    val era = civ.gameInfo.ruleset.eras[conditional.params[0]]
+                    if (era == null) yield(RejectionReasonType.RequiresEra.toInstance())
+                    if (civ.getEraNumber() != era!!.eraNumber) yield(RejectionReasonType.RequiresEra.toInstance())
+                }
+                UniqueType.ConditionalStartingFromEra -> {
+                    val era = civ.gameInfo.ruleset.eras[conditional.params[0]] 
+                    if (era == null) yield(RejectionReasonType.RequiresEra.toInstance())
+                    if (civ.getEraNumber() < era!!.eraNumber) yield(RejectionReasonType.RequiresEra.toInstance())
+                }
+                else -> {
+                        yield(RejectionReasonType.ShouldNotBeDisplayed.toInstance())
+                    }
+            }
+        }
+    }
+
     @Readonly fun isBuildable(civInfo: Civilization) = getRejectionReasons(civInfo).none()
 
     override fun isBuildable(cityConstructions: CityConstructions): Boolean =
             getRejectionReasons(cityConstructions).none()
+
+
+    @Readonly fun canSpawnAsBarbarian(civInfo: Civilization, tile: Tile) = getRejectionReasonsForBarbarians(civInfo, tile).none()
 
     fun construct(cityConstructions: CityConstructions, boughtWith: Stat?): MapUnit? {
         val civInfo = cityConstructions.city.civ

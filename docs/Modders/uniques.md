@@ -218,6 +218,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Triggerable
 
+??? example  "Add [improvementName] improvement to this tile replacing the existing improvement"
+	Example: "Add [Trading Post] improvement to this tile replacing the existing improvement"
+
+	Applicable to: Triggerable
+
 ??? example  "Remove [resourceFilter] resources from this tile"
 	Example: "Remove [Strategic] resources from this tile"
 

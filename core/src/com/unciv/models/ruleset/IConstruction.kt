@@ -249,6 +249,7 @@ enum class RejectionReasonType(val shouldShow: Boolean, val errorMessage: String
     Obsoleted(false, "Obsolete"),
     RequiresTech(false, "Required tech not researched"),
     RequiresPolicy(false, "Requires a specific policy!"),
+    RequiresEra(false, "Requires a specific era or set of eras!"),
     MorePolicyBranches(false, "Hidden until more policy branches are fully adopted"),
 
     RequiresNearbyResource(false, "Requires a certain resource being exploited nearby"),
