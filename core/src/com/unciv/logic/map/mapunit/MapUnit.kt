@@ -104,8 +104,9 @@ class MapUnit : IsPartOfGameInfoSerialization {
 
     class UnitStatus(
         val name: String,
-        /** Decreases at *start on next turn* so defensive statuses persist on enemy turns */
-        var turnsLeft: Int
+        /** Positive statuses decrease at *start on next turn* so defensive statuses persist on enemy turns */
+        var turnsLeft: Int,
+        var isAilment: Boolean = false
     ) : IsPartOfGameInfoSerialization {
         @Suppress("unused") // for deserialization
         constructor() : this("", 1)
@@ -118,7 +119,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
         }
 
         @Readonly
-        fun clone() = UnitStatus(name, turnsLeft)
+        fun clone() = UnitStatus(name, turnsLeft, isAilment)
     }
 
     var statusMap = HashMap<String, UnitStatus>()
@@ -462,7 +463,12 @@ class MapUnit : IsPartOfGameInfoSerialization {
         if (isCivilian()) return false
         if (baseUnit.hasUnique(UniqueType.CannotAttack)) return false
         if (baseUnit.attackStrength <= 0) return false
-        return attacksThisTurn < maxAttacksPerTurn()
+        
+        var cannotAttack = false
+        forEachMatchingUnique(UniqueType.CannotAttack, checkCivInfoUniques = true){ unique ->
+            cannotAttack = true
+        }
+        return !cannotAttack && attacksThisTurn < maxAttacksPerTurn()
     }
 
     @Readonly
@@ -1216,14 +1222,14 @@ class MapUnit : IsPartOfGameInfoSerialization {
     @Readonly fun getStatus(name:String): UnitStatus? = statusMap[name]
     @Readonly fun hasStatus(name:String): Boolean = getStatus(name) != null
 
-    fun setStatus(name:String, turns:Int){
+    fun setStatus(name:String, turns:Int, isAilment: Boolean = false){
         val existingStatus = getStatus(name)
         if (existingStatus != null){
             if (turns > existingStatus.turnsLeft) existingStatus.turnsLeft = turns
             return
         }
 
-        val status = UnitStatus(name, turns)
+        val status = UnitStatus(name, turns, isAilment)
         status.setTransients(this)
         statusMap[status.name] = status
         updateUniques()

@@ -1227,7 +1227,8 @@ object UniqueTriggerActivation {
                 if (unit == null) return null
                 if (unique.params[1] !in unit.civ.gameInfo.ruleset.unitPromotions) return null
                 return {
-                    unit.setStatus(unique.params[1], unique.params[2].toInt())
+                    var statusPromotion = unit.civ.gameInfo.ruleset.unitPromotions[unique.params[1]]
+                    unit.setStatus(unique.params[1], unique.params[2].toInt(), statusPromotion!!.isAilment)
                     if (notification != null)
                         unit.civ.addNotification(notification, MapUnitAction(unit), NotificationCategory.Units, unit.name, unique.params[1])
                     true

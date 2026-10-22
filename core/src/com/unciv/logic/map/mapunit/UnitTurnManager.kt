@@ -61,6 +61,13 @@ class UnitTurnManager(val unit: MapUnit) {
         for (unique in unit.getTriggeredUniques(UniqueType.TriggerUponEndingTurnInTile)
                 { unit.getTile().matchesFilter(it.params[0], unit.civ) })
             UniqueTriggerActivation.triggerUnique(unique, unit)
+
+        for (status in unit.statusMap.values.toList()){
+            if (status.isAilment) {
+                status.turnsLeft--
+                if (status.turnsLeft <= 0) unit.removeStatus(status.name)
+            }
+        }
     }
 
 
@@ -170,8 +177,10 @@ class UnitTurnManager(val unit: MapUnit) {
         unit.attacksSinceTurnStart.clear()
         
         for (status in unit.statusMap.values.toList()){
-            status.turnsLeft--
-            if (status.turnsLeft <= 0) unit.removeStatus(status.name)
+            if (!status.isAilment) {
+                status.turnsLeft--
+                if (status.turnsLeft <= 0) unit.removeStatus(status.name)
+            }
         }
         unit.updateUniques()
     }

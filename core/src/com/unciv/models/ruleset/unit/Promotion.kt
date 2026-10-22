@@ -23,9 +23,13 @@ class Promotion : RulesetObject() {
     val outerColorObject by lazy { if (outerColor == null) null else colorFromRGB(outerColor!!)}
 
 
-    /** This marks the promotions as a status */
+    /** When enabled, this marks the promotions as a status */
     var isStatus = false
 
+    /** When enabled, this marks the promotions as a status to decrease at the end of turn instead of start */
+    var isAilment = false
+    
+    
     /** Used as **column** hint in the current [PromotionPickerScreen]
      *  This is no longer a direct position, it is used to sort before an automatic distribution.
      *  -1 determines that the modder has not set a position */
