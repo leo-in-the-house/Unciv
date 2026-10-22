@@ -2,6 +2,7 @@ package com.unciv.view
 
 import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.map.mapunit.MapUnit
+import com.unciv.logic.map.mapunit.UnitPromotions
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.ruleset.unit.BaseUnit
 import yairm210.purity.annotations.Readonly
@@ -19,6 +20,7 @@ open class ForeignMapUnitView(internal open val unit: MapUnit, viewer: Civilizat
     val instanceName: String? get() = unit.instanceName
     val currentMovement: Float get() = unit.currentMovement
     val attacksThisTurn: Int get() = unit.attacksThisTurn
+    var statuses = unit.statusMap
 
     // Navigation
     @Deprecated("Scheduled for removal - views should unwrap() instead")

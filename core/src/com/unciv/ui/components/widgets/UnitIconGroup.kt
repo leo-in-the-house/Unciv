@@ -78,7 +78,7 @@ private class FlagBackground(drawable: TextureRegionDrawable, size: Float) : Ima
 
 }
 
-/** Displays the unit's icon and action */
+/** Displays the unit's icon, action, and statuses */
 class UnitIconGroup(val unitView: ForeignMapUnitView, val size: Float) : NonTransformGroup() {
     var actionGroup: Group? = null
 
@@ -124,6 +124,16 @@ class UnitIconGroup(val unitView: ForeignMapUnitView, val size: Float) : NonTran
                 .surroundWithThinCircle()
             actionGroup!!.setPosition(size/2, 0f)
             addActor(actionGroup)
+        }
+        
+        //Add status promotions
+        var statusOffset = 0f
+        
+        for (status in unitView.statuses.values) {
+                var promotionIcon = ImageGetter.getPromotionPortrait(status.name, 15f * 0.9f)
+                promotionIcon.setPosition(-5 + statusOffset, -15f)
+                addActor(promotionIcon)
+                statusOffset += 15f
         }
 
         if (unitView.unitHealth < 100) { // add health bar

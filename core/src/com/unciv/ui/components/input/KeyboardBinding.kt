@@ -45,7 +45,7 @@ enum class KeyboardBinding(
 
     // Worldscreen
     DeselectOrQuit(Category.WorldScreen, "Deselect then Quit", KeyCharAndCode.BACK),
-    Menu(Category.WorldScreen, KeyCharAndCode.TAB),
+    Menu(Category.WorldScreen, KeyCharAndCode.ESC),
     NextTurn(Category.WorldScreen),
     NextTurnAlternate(Category.WorldScreen, KeyCharAndCode.SPACE),
     AutoPlayMenu(Category.WorldScreen, "Open AutoPlay menu", KeyCharAndCode.UNKNOWN),  // 'a' is already assigned to map panning
