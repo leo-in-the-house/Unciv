@@ -191,13 +191,10 @@ class BattleTable(val worldScreen: WorldScreen) : Table() {
 
         addSeparator().pad(0f)
 
-        val attackIcon = if (attacker.isRanged()) Fonts.attackStrength else Fonts.defenseStrength
-        val defenceIcon =
-            if (attacker.isRanged() && defender.isRanged() && !defender.isCity() && !(defender is MapUnitCombatantView && defender.getUnitView().isEmbarked()))
-                Fonts.attackStrength
-            else Fonts.defenseStrength // use strength icon if attacker is melee, defender is melee, defender is a city, or defender is embarked
-        add(attacker.getAttackingStrength(defender).tr() + attackIcon)
-        add(defender.getDefendingStrength(attacker).tr() + defenceIcon).row()
+        val attackIcon = Fonts.attackStrength
+        val defenceIcon = Fonts.defenseStrength 
+        add(attacker.getAttackingStrength(defender).tr() + attackIcon + " " + attacker.getDefendingStrength(defender).tr() + defenceIcon)
+        add(defender.getAttackingStrength(attacker).tr() + attackIcon + " " + defender.getDefendingStrength(defender).tr() + defenceIcon).row()
 
         val attackerModifiers =
                 attacker.getAttackModifiers(defender, tileToAttackFromView).map {
@@ -432,7 +429,10 @@ class BattleTable(val worldScreen: WorldScreen) : Table() {
         addSeparator().pad(0f)
 
         val attackIcon = Fonts.attackStrength
-        add(attacker.getAttackingStrength().tr() + attackIcon)
+        val defenceIcon = Fonts.defenseStrength
+
+        add(attacker.getAttackingStrength().tr() + attackIcon + " " + attacker.getDefendingStrength().tr() + defenceIcon)
+
         add("???$attackIcon").row()
 
         val attackerModifiers =

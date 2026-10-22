@@ -301,8 +301,8 @@ object BattleDamage {
     ): Int {
         if (attacker.isRanged() && !attacker.isAirUnit()) return 0
         if (defender.isCivilian()) return 0
-        val ratio = getAttackingStrength(attacker, defender, tileToAttackFrom) / getDefendingStrength(
-                attacker, defender, tileToAttackFrom)
+        val ratio = getAttackingStrength(defender, attacker, tileToAttackFrom) / getDefendingStrength(
+            defender, attacker, tileToAttackFrom)
         return (damageModifier(ratio, true, randomnessFactor) * getHealthDependantDamageRatio(defender)).roundToInt()
     }
 
@@ -347,7 +347,7 @@ object BattleDamage {
         if (damageToAttacker && attackerToDefenderRatio > 1 || !damageToAttacker && attackerToDefenderRatio < 1) // damage ratio from the weaker party is inverted
             ratioModifier = ratioModifier.pow(-1)*/
         //val randomCenteredAround30 = 24 + 12 * randomnessFactor
-        return attackerToDefenderRatio
+        return attackerToDefenderRatio * 100
     }
 }
 enum class CombatAction {
