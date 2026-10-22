@@ -447,7 +447,7 @@ class MapGenerator(val ruleset: Ruleset, private val coroutineScope: CoroutineSc
         fun isPlaceable(improvement: TileImprovement, tile: Tile) =
             tile.improvementFunctions.canImprovementBeBuiltHere(improvement, gameContext = GameContext.IgnoreConditionals)
 
-        val suitableTiles = map.values.filter { it.isLand && !it.isImpassible()
+        val suitableTiles = map.values.filter { (it.isLand || it.isWater) && !it.isImpassible()
                 && ruinsEquivalents.values.any { improvement -> isPlaceable(improvement, it) } }
         val locations = randomness.chooseSpreadOutLocations(
                 (suitableTiles.size * ruleset.modOptions.constants.ancientRuinCountMultiplier).roundToInt(),

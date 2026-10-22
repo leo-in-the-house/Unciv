@@ -80,11 +80,17 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         // Before we do the expensive stuff, do a roll to see if we will place a camp at all
         if (!forTesting && gameInfo.turns > 1 && rng.nextBoolean())
             return
+        
+        var oceanCamp = rng.nextInt(3) == 0
 
         // Barbarians will only spawn in places that no one can see
         val allViewableTiles = gameInfo.civilizations.asSequence().filterNot { it.isBarbarian || it.isSpectator() }
             .flatMap { it.viewableTiles }.toHashSet()
-        val fogTiles = tileMap.values.filter { it.isLand && it !in allViewableTiles }
+        val fogTiles = tileMap.values.filter { 
+            var isValidTile = it.isLand
+            if (oceanCamp) isValidTile = it.isOcean
+            isValidTile && it !in allViewableTiles 
+        }
 
         val fogTilesPerCamp = (tileMap.values.size.toFloat().pow(0.4f)).toInt() // Approximately
 
@@ -112,14 +118,14 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
             !it.isImpassible()
                     && it.resource == null
                     && it.terrainFeatureObjects.none { feature -> feature.hasUnique(UniqueType.RestrictedBuildableImprovements) }
-                    && it.neighbors.any { neighbor -> neighbor.isLand }
+                    && (!oceanCamp && it.neighbors.any { neighbor -> neighbor.isLand })
                     && it !in tooCloseToCapitals
                     && it !in tooCloseToCamps
         }.toMutableList()
 
         var tile: Tile?
         var addedCamps = 0
-        var biasCoast = rng.nextInt(6) == 0
+        var biasCoast = !oceanCamp && rng.nextInt(6) == 0
 
         // Add the camps
         while (addedCamps < campsToAdd) {
@@ -134,7 +140,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
             } else
                 tile = viableTiles.random(rng)
 
-            createNewCamp(tile, rng)
+            createNewCamp(tile, rng, oceanCamp)
             notifyCivsOfBarbarianEncampment(tile)
             addedCamps++
 
@@ -162,9 +168,13 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
     }
 
     /** Creates a new camp without any checks - Does not affect notifications */
-    fun createNewCamp(tile: Tile, rng: Random = tile.stateThisTile.stateBasedRandom("createNewCamp")) {
+    fun createNewCamp(tile: Tile, rng: Random = tile.stateThisTile.stateBasedRandom("createNewCamp"), oceanCamp: Boolean = false) {
         val candidates = this.gameInfo.ruleset.tileImprovements.values
-            .filter { it.isBarbarianCampEquivalent(tile.stateThisTile) }
+            .filter { 
+                var campHasRightTerrain = it.terrainsCanBeBuiltOn.contains("Land")
+                if (oceanCamp) campHasRightTerrain = it.terrainsCanBeBuiltOn.contains("Ocean")
+                campHasRightTerrain && it.isBarbarianCampEquivalent(tile.stateThisTile)  
+            }
         val improvement = candidates.randomOrNull(rng)?.name ?: Constants.barbarianEncampment
         tile.setImprovement(improvement)
         val newCamp = BarbarianEncampment(tile.position)
