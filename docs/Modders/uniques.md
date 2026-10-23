@@ -2397,6 +2397,16 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global, Unit
 
+??? example  "Cannot attack [combatantFilter] units"
+	Example: "Cannot attack [City] units"
+
+	Applicable to: Unit
+
+??? example  "Cannot attack [tileFilter] tiles"
+	Example: "Cannot attack [Farm] tiles"
+
+	Applicable to: Unit
+
 ??? example  "Can only attack [combatantFilter] units"
 	Example: "Can only attack [City] units"
 
