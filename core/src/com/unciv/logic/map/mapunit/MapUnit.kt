@@ -537,6 +537,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
         isEmbarked() -> 0 // embarked units can't heal
         health >= 100 -> 0 // No need to heal if at max health
         hasUnique(UniqueType.HealOnlyByPillaging, checkCivInfoUniques = true) -> 0
+        hasUnique(UniqueType.NoHealing, checkCivInfoUniques = true) -> 0
         else -> rankTileForHealing(getTile(), noTerrainDamage = true)
     }
 

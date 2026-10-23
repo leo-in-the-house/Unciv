@@ -48,7 +48,7 @@ object UnitActionsPillage {
                 val freePillage = unit.hasUnique(UniqueType.NoMovementToPillage, checkCivInfoUniques = true)
                 if (!freePillage) unit.useMovementPoints(1f)
 
-                if (pillagingImprovement) { // only Improvements heal HP
+                if (pillagingImprovement && !(unit.hasUnique(UniqueType.NoHealing))) { // only Improvements heal HP
                     var healAmount = 25f
                     unit.forEachMatchingUnique(UniqueType.PercentHealthFromPillaging, checkCivInfoUniques = true) { unique ->
                         healAmount *= unique.params[0].toPercent()
