@@ -245,6 +245,7 @@ enum class RejectionReasonType(val shouldShow: Boolean, val errorMessage: String
     UniqueToOtherNation(false, "Unique to another nation"),
     ReplacedByOurUnique(false, "Our unique replaces this"),
     CannotBeBuilt(false, "Cannot be built by this nation"),
+    OutOfSupply(false, "We have insufficient supply"),
 
     Obsoleted(false, "Obsolete"),
     RequiresTech(false, "Required tech not researched"),

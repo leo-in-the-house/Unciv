@@ -227,7 +227,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
             && rejectionReasons.all { it.type == RejectionReasonType.Unbuildable }) return true
         return false
     }
-
+    
     override fun getRejectionReasons(cityConstructions: CityConstructions): Sequence<RejectionReason> =
         getRejectionReasons(cityConstructions.city.civ, cityConstructions.city)
     
@@ -282,6 +282,11 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
         for (unique in getMatchingUniques(UniqueType.Unavailable, stateForConditionals))
             yield(RejectionReasonType.ShouldNotBeDisplayed.toInstance())
+        
+        //We don't have access to unit supply modifier uniques on BaseUnit, so let's just let players build a unit that potentially exceeds the supply
+        //They'll eat a production penalty as punishment anyways
+        if (civ.stats.getUnitSupply() <= civ.stats.getUnitSupplyConsumption())
+            yield(RejectionReasonType.OutOfSupply.toInstance())
 
         if (city != null)
             for (unique in getMatchingUniques(UniqueType.RequiresPopulation))
