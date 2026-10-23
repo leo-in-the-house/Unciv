@@ -32,6 +32,7 @@ class UnitType() : RulesetObject() {
     @Pure fun isLandUnit() = unitMovementType == UnitMovementType.Land || unitMovementType == UnitMovementType.Amphibious
     @Pure fun isWaterUnit() = unitMovementType == UnitMovementType.Water || unitMovementType == UnitMovementType.Amphibious
     @Pure fun isAirUnit() = unitMovementType == UnitMovementType.Air
+    @Pure fun isAmphibiousUnit() = unitMovementType == UnitMovementType.Amphibious
 
     /** Implements [UniqueParameterType.UnitTypeFilter][com.unciv.models.ruleset.unique.UniqueParameterType.UnitTypeFilter] */
     @Readonly

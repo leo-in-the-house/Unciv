@@ -254,8 +254,8 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         val unitList = gameInfo.ruleset.units.values
             .filter { it.isMilitary && 
                 !(it.hasUnique(UniqueType.CannotAttack) ||
-                    it.hasUnique(UniqueType.CannotBeBarbarian)) &&
-                (if (naval) it.isWaterUnit else !it.isWaterUnit) &&
+                    it.hasUnique(UniqueType.CannotBeBarbarian)) && (it.isAmphibiousUnit() ||
+                (if (naval) it.isWaterUnit else !it.isWaterUnit )) &&
                 it.canSpawnAsBarbarian(barbarianCiv, tile) }
 
         if (unitList.isEmpty()) return null // No naval tech yet? Mad modders?

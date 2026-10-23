@@ -599,6 +599,8 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     val isLandUnit by lazy { type.isLandUnit() }
     val isWaterUnit by lazy { type.isWaterUnit() }
     @Readonly fun isAirUnit() = type.isAirUnit()
+    @Readonly fun isAmphibiousUnit() = type.isAmphibiousUnit()
+
 
     @Readonly
     fun isProbablySiegeUnit() = isRanged()

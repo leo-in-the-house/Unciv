@@ -202,7 +202,7 @@ class UnitMovement(val unit: MapUnit) {
 
             // When comparing booleans, we get false first, so we need to negate the isLand / isCityState checks
             // By order of preference: 1. Land tiles 2. Aerial distance 3. Not city states
-            val comparison: Comparator<Tile> = if (unit.type.isLandUnit())
+            val comparison: Comparator<Tile> = if (unit.type.isLandUnit() && !(unit.baseUnit.isAmphibiousUnit()))
                 compareBy({!it.isLand}, {it.aerialDistanceTo(destination)}, ::isUnfriendlyCityState)
             else compareBy({it.aerialDistanceTo(destination)}, ::isUnfriendlyCityState)
 
@@ -829,6 +829,7 @@ class UnitMovement(val unit: MapUnit) {
         }
         if (tile.isLand
             && unit.baseUnit.isWaterUnit
+            && !(unit.baseUnit.isAmphibiousUnit())
             && !tile.isCityCenter())
             return CannotMoveToReason.BoatCannotGoOnLand
 
@@ -837,7 +838,7 @@ class UnitMovement(val unit: MapUnit) {
                 unit.civ.getMatchingUniques(UniqueType.UnitsMayEnterOcean)
                     .any { unit.matchesFilter(it.params[0]) }
         }
-        if (tile.isWater && unit.baseUnit.isLandUnit && !unit.cache.canMoveOnWater) {
+        if (tile.isWater && unit.baseUnit.isLandUnit && !(unit.baseUnit.isAmphibiousUnit()) && !unit.cache.canMoveOnWater) {
             if (!unit.civ.tech.unitsCanEmbark) return CannotMoveToReason.CannotEmbark
             if (unit.cache.cannotEmbark) return CannotMoveToReason.CannotEmbark
             if (tile.isOcean && !unit.civ.tech.embarkedUnitsCanEnterOcean && !unitSpecificAllowOcean)
@@ -860,7 +861,7 @@ class UnitMovement(val unit: MapUnit) {
         if (firstUnit != null && unit.civ != firstUnit.civ) {
             // Allow movement through unguarded, at-war Civilian Unit. Capture on the way
             // But not for Embarked Units capturing on Water
-            if (!(unit.baseUnit.isLandUnit && tile.isWater && !unit.cache.canMoveOnWater)
+            if (!(unit.baseUnit.isLandUnit && !(unit.baseUnit.isAmphibiousUnit()) && tile.isWater && !unit.cache.canMoveOnWater)
                 && firstUnit.isCivilian() && unit.civ.isAtWarWith(firstUnit.civ))
                 return null
             // Cannot enter hostile tile with any unit in there
