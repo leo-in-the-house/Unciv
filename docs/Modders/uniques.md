@@ -1095,10 +1095,34 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global
 
+??? example  "[relativeAmount]% Attack Strength"
+	Multiple bonuses stack additively: +50% + +50% = +100%
+
+	Example: "[+20]% Attack Strength"
+
+	Applicable to: Global, Unit
+
+??? example  "[relativeAmount]% Defense Strength"
+	Multiple bonuses stack additively: +50% + +50% = +100%
+
+	Example: "[+20]% Defense Strength"
+
+	Applicable to: Global, Unit
+
 ??? example  "[relativeAmount]% Strength"
 	Multiple bonuses stack additively: +50% + +50% = +100%
 
 	Example: "[+20]% Strength"
+
+	Applicable to: Global, Unit
+
+??? example  "[relativeAmount] Attack Strength"
+	Example: "[+20] Attack Strength"
+
+	Applicable to: Global, Unit
+
+??? example  "[relativeAmount] Defense Strength"
+	Example: "[+20] Defense Strength"
 
 	Applicable to: Global, Unit
 
@@ -2186,10 +2210,34 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Unit
 
+??? example  "[relativeAmount]% Attack Strength"
+	Multiple bonuses stack additively: +50% + +50% = +100%
+
+	Example: "[+20]% Attack Strength"
+
+	Applicable to: Global, Unit
+
+??? example  "[relativeAmount]% Defense Strength"
+	Multiple bonuses stack additively: +50% + +50% = +100%
+
+	Example: "[+20]% Defense Strength"
+
+	Applicable to: Global, Unit
+
 ??? example  "[relativeAmount]% Strength"
 	Multiple bonuses stack additively: +50% + +50% = +100%
 
 	Example: "[+20]% Strength"
+
+	Applicable to: Global, Unit
+
+??? example  "[relativeAmount] Attack Strength"
+	Example: "[+20] Attack Strength"
+
+	Applicable to: Global, Unit
+
+??? example  "[relativeAmount] Defense Strength"
+	Example: "[+20] Defense Strength"
 
 	Applicable to: Global, Unit
 
@@ -2209,6 +2257,16 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Example: "[+20]% to Flank Attack bonuses"
 
 	Applicable to: Global, Unit
+
+??? example  "[relativeAmount]% Attack Strength for enemy [mapUnitFilter] units in adjacent [tileFilter] tiles"
+	Example: "[+20]% Attack Strength for enemy [Wounded] units in adjacent [Farm] tiles"
+
+	Applicable to: Unit
+
+??? example  "[relativeAmount]% Defense Strength for enemy [mapUnitFilter] units in adjacent [tileFilter] tiles"
+	Example: "[+20]% Defense Strength for enemy [Wounded] units in adjacent [Farm] tiles"
+
+	Applicable to: Unit
 
 ??? example  "[relativeAmount]% Strength for enemy [mapUnitFilter] units in adjacent [tileFilter] tiles"
 	Example: "[+20]% Strength for enemy [Wounded] units in adjacent [Farm] tiles"

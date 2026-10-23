@@ -444,12 +444,21 @@ enum class UniqueType(
     AutomationPrimaryAction("Automation is a primary action", UniqueTarget.Unit, flags = UniqueFlag.setOfHiddenToUsers),
 
     // Strength bonuses
+    AttackStrength("[relativeAmount]% Attack Strength", UniqueTarget.Unit, UniqueTarget.Global,
+        docDescription = ADDITIVE_BONUS_EXPLANATION),
+    DefenseStrength("[relativeAmount]% Defense Strength", UniqueTarget.Unit, UniqueTarget.Global,
+        docDescription = ADDITIVE_BONUS_EXPLANATION),
     Strength("[relativeAmount]% Strength", UniqueTarget.Unit, UniqueTarget.Global,
         docDescription = ADDITIVE_BONUS_EXPLANATION),
+
+    AttackStrengthAmount("[relativeAmount] Attack Strength", UniqueTarget.Unit, UniqueTarget.Global),
+    DefenseStrengthAmount("[relativeAmount] Defense Strength", UniqueTarget.Unit, UniqueTarget.Global),
     StrengthAmount("[relativeAmount] Strength", UniqueTarget.Unit, UniqueTarget.Global),
     StrengthNearCapital("[relativeAmount]% Strength decreasing with distance from the capital", UniqueTarget.Unit, UniqueTarget.Global),
     FlankAttackBonus("[relativeAmount]% to Flank Attack bonuses", UniqueTarget.Unit, UniqueTarget.Global,
         docDescription = MULTIPLICATIVE_BONUS_EXPLANATION),
+    AttackStrengthForAdjacentEnemies("[relativeAmount]% Attack Strength for enemy [mapUnitFilter] units in adjacent [tileFilter] tiles", UniqueTarget.Unit),
+    DefenseStrengthForAdjacentEnemies("[relativeAmount]% Defense Strength for enemy [mapUnitFilter] units in adjacent [tileFilter] tiles", UniqueTarget.Unit),
     StrengthForAdjacentEnemies("[relativeAmount]% Strength for enemy [mapUnitFilter] units in adjacent [tileFilter] tiles", UniqueTarget.Unit),
     StrengthBonusInRadius("[relativeAmount]% Strength bonus for [mapUnitFilter] units within [amount] tiles", UniqueTarget.Unit),
 

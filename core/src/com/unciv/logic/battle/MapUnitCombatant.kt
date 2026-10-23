@@ -39,6 +39,7 @@ class MapUnitCombatant(val unit: MapUnit) : ICombatant {
         val state = GameContext(this, defender, this.getTile(), CombatAction.Attack)
         var extraStrength = 0
         unit.forEachMatchingUnique(UniqueType.StrengthAmount, state) { extraStrength += it.params[0].toInt() }
+        unit.forEachMatchingUnique(UniqueType.AttackStrengthAmount, state) { extraStrength += it.params[0].toInt() }
         return unit.baseUnit.attackStrength + extraStrength
     }
 
@@ -47,6 +48,7 @@ class MapUnitCombatant(val unit: MapUnit) : ICombatant {
         val state = GameContext(this, attacker, this.getTile(), CombatAction.Defend)
         var extraStrength = 0
         unit.forEachMatchingUnique(UniqueType.StrengthAmount, state) { extraStrength += it.params[0].toInt() }
+        unit.forEachMatchingUnique(UniqueType.DefenseStrengthAmount, state) { extraStrength += it.params[0].toInt() }
         return if (unit.isEmbarked() && !isCivilian())
             unit.civ.getEra().embarkDefense
         else unit.baseUnit.defenseStrength + extraStrength

@@ -858,7 +858,7 @@ object Battle {
     @Readonly
     internal fun getExtraRangedAttackFakeUnits(attacker: MapUnitCombatant): List<FakeUnitForExtraRangedAttack> =
         attacker.unit.getMatchingUniques(UniqueType.ExtraRangedAttack).map { unique ->
-            val baseAttackStrengthForExtraAttack = (attacker.unit.baseUnit.defenseStrength *
+            val baseAttackStrengthForExtraAttack = (attacker.unit.baseUnit.attackStrength *
                 unique.params[0].toFloat() / 100).toInt()
             FakeUnitForExtraRangedAttack(attacker, baseAttackStrengthForExtraAttack)
         }.toList()
@@ -871,6 +871,9 @@ object Battle {
             val state = GameContext(this, defender, this.getTile(), CombatAction.Attack)
             var extraStrength = 0
             mapUnitCombatant.unit.forEachMatchingUnique(UniqueType.StrengthAmount, state) {
+                extraStrength += it.params[0].toInt()
+            }
+            mapUnitCombatant.unit.forEachMatchingUnique(UniqueType.AttackStrengthAmount, state) {
                 extraStrength += it.params[0].toInt()
             }
             return baseAttackStrength + extraStrength // Is always ranged

@@ -100,6 +100,16 @@ object BattleDamage {
         combatant.unit.forEachMatchingUnique(UniqueType.Strength, conditionalState, checkCivInfoUniques = true) { unique ->
             modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
         }
+        if (conditionalState.combatAction == CombatAction.Attack) {
+            combatant.unit.forEachMatchingUnique(UniqueType.AttackStrength, conditionalState, checkCivInfoUniques = true) { unique ->
+                modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
+            }
+        }
+        if (conditionalState.combatAction == CombatAction.Defend) {
+            combatant.unit.forEachMatchingUnique(UniqueType.DefenseStrength, conditionalState, checkCivInfoUniques = true) { unique ->
+                modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
+            }
+        }
 
         // e.g., Mehal Sefari https://civilization.fandom.com/wiki/Mehal_Sefari_(Civ5)
         for (unique in combatant.getMatchingUniques(
@@ -126,8 +136,28 @@ object BattleDamage {
             .flatMap { it.getMatchingUniques(UniqueType.StrengthForAdjacentEnemies) }
             .filter { combatant.matchesFilter(it.params[1]) && combatant.getTile().matchesFilter(it.params[2]) }
             .maxByOrNull { it.params[0] }
+        
         if (strengthMalus != null) {
             modifiers.add("Adjacent enemy units", strengthMalus.params[0].toInt())
+        }
+
+        if (conditionalState.combatAction == CombatAction.Attack) {
+            val attackStrengthMalus = adjacentUnits.filter { it.civ.isAtWarWith(combatant.getCivInfo()) }
+                .flatMap { it.getMatchingUniques(UniqueType.AttackStrengthForAdjacentEnemies) }
+                .filter { combatant.matchesFilter(it.params[1]) && combatant.getTile().matchesFilter(it.params[2]) }
+                .maxByOrNull { it.params[0] }
+            if (attackStrengthMalus != null) {
+                modifiers.add("Adjacent attacking enemy units", attackStrengthMalus.params[0].toInt())
+            }
+        }
+        if (conditionalState.combatAction == CombatAction.Defend) {
+            val defendStrengthMalus = adjacentUnits.filter { it.civ.isAtWarWith(combatant.getCivInfo()) }
+                .flatMap { it.getMatchingUniques(UniqueType.DefenseStrengthForAdjacentEnemies) }
+                .filter { combatant.matchesFilter(it.params[1]) && combatant.getTile().matchesFilter(it.params[2]) }
+                .maxByOrNull { it.params[0] }
+            if (defendStrengthMalus != null) {
+                modifiers.add("Adjacent defending enemy units", defendStrengthMalus.params[0].toInt())
+            }
         }
         return modifiers
     }

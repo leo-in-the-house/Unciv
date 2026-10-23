@@ -603,9 +603,10 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
 
     @Readonly
-    fun isProbablySiegeUnit() = isRanged()
-            && getMatchingUniques(UniqueType.Strength, GameContext.IgnoreConditionals)
-                .any { it.params[0].toInt() > 0 && it.hasModifier(UniqueType.ConditionalVsCity) }
+    fun isProbablySiegeUnit() = getMatchingUniques(UniqueType.Strength, GameContext.IgnoreConditionals)
+                .any { it.params[0].toInt() > 0 && it.hasModifier(UniqueType.ConditionalVsCity) } || 
+        getMatchingUniques(UniqueType.AttackStrength, GameContext.IgnoreConditionals)
+        .any { it.params[0].toInt() > 0 && it.hasModifier(UniqueType.ConditionalVsCity) }
 
 
     @Transient @Cache
@@ -653,23 +654,18 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
         for (unique in allUniques) {
             when (unique.type) {
+                UniqueType.AttackStrength -> {
+                    if (unique.params[0].toInt() <= 0) continue
+                    highestConditionalPowerBonus = (unique.params[0].toInt() / 2f).toPercent()
+                }
+                UniqueType.DefenseStrength -> {
+                    if (unique.params[0].toInt() <= 0) continue
+                    highestConditionalPowerBonus = (unique.params[0].toInt() / 2f).toPercent()
+                }
                 UniqueType.Strength -> {
                     if (unique.params[0].toInt() <= 0) continue
                     
-                    if (unique.hasModifier(UniqueType.ConditionalVsUnits)) { // Bonus vs some units - a quarter of the bonus
-                        highestConditionalPowerBonus = (unique.params[0].toInt() / 4f).toPercent()
-                    } else if (
-                        unique.modifiers.any {
-                            it.type == UniqueType.ConditionalVsCity // City Attack - half the bonus
-                                || it.type == UniqueType.ConditionalAttacking // Attack - half the bonus
-                                || it.type == UniqueType.ConditionalDefending // Defense - half the bonus
-                                || it.type == UniqueType.ConditionalFightingInTiles
-                        } // Bonus in terrain or feature - half the bonus
-                    ) {
-                        highestConditionalPowerBonus = (unique.params[0].toInt() / 2f).toPercent()
-                    } else {
-                        highestConditionalPowerBonus = (unique.params[0].toInt()).toPercent() // Static bonus
-                    }
+                    highestConditionalPowerBonus = (unique.params[0].toInt()).toPercent() // Static bonus
                 }
                 UniqueType.StrengthNearCapital ->
                     if (unique.params[0].toInt() > 0)

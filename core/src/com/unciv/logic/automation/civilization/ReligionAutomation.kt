@@ -393,6 +393,10 @@ object ReligionAutomation {
                     10f * (unique.stats.sum() / unique.params[1].toFloat())
                 UniqueType.Strength ->
                     unique.params[0].toFloat() * 3f//combat strength from beliefs is very strong
+                UniqueType.AttackStrength ->
+                    unique.params[0].toFloat() * 1.5f//combat strength from beliefs is very strong
+                UniqueType.DefenseStrength ->
+                    unique.params[0].toFloat() * 1.5f//combat strength from beliefs is very strong
                 UniqueType.ReligionSpreadDistance ->
                     (10f + unique.params[0].toFloat()) * goodEarlyModifier
                 UniqueType.NaturalReligionSpreadStrength ->
