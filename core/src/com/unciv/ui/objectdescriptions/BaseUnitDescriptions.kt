@@ -224,6 +224,7 @@ object BaseUnitDescriptions {
                 val color = when (it) {
                     UnitMovementType.Land -> "#ffc080"
                     UnitMovementType.Water -> "#80d0ff"
+                    UnitMovementType.Amphibious -> "#02e0e0"
                     UnitMovementType.Air -> "#e0e0ff"
                     UnitMovementType.Other -> "#ffffff"
                 }
