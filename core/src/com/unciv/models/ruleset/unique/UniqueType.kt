@@ -922,10 +922,11 @@ enum class UniqueType(
     ///////////////////////////////////////// region 09 TRIGGERED ONE-TIME /////////////////////////////////////////
 
 
-    OneTimeFreeUnit("Free [unit] appears", UniqueTarget.Triggerable),  // used in Policies, Buildings
-    OneTimeAmountFreeUnits("[positiveAmount] free [unit] units appear", UniqueTarget.Triggerable), // used in Buildings
-    OneTimeRebel("A [unit] rebels", UniqueTarget.Triggerable),  // used in Policies, Buildings
-    OneTimeAmountRebels("[positiveAmount] [unit]s rebel", UniqueTarget.Triggerable), // used in Buildings
+    OneTimeFreeUnit("Free [mapUnitFilter] appears", UniqueTarget.Triggerable),  // used in Policies, Buildings
+    OneTimeAmountFreeUnits("[positiveAmount] free [mapUnitFilter] units appear", UniqueTarget.Triggerable), // used in Buildings
+    OneTimeRebel("A [mapUnitFilter] rebels", UniqueTarget.Triggerable),  // used in Policies, Buildings
+    OneTimeRebelOnTile("A [mapUnitFilter] rebels on the current tile", UniqueTarget.Triggerable),  // used in Policies, Buildings
+    OneTimeAmountRebels("[positiveAmount] [mapUnitFilter]s rebel", UniqueTarget.Triggerable), // used in Buildings
     OneTimeFreeUnitRuins("Free [unit] found in the ruins", UniqueTarget.Ruins), // Differs from "Free [] appears" in that it spawns near the ruins instead of in a city
     OneTimeFreePolicy("Free Social Policy", UniqueTarget.Triggerable), // used in Buildings
     OneTimeAmountFreePolicies("[positiveAmount] Free Social Policies", UniqueTarget.Triggerable),  // Not used in Vanilla

@@ -25,23 +25,28 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Triggerable, Global
 
-??? example  "Free [unit] appears"
-	Example: "Free [Musketman] appears"
+??? example  "Free [mapUnitFilter] appears"
+	Example: "Free [Wounded] appears"
 
 	Applicable to: Triggerable
 
-??? example  "[positiveAmount] free [unit] units appear"
-	Example: "[3] free [Musketman] units appear"
+??? example  "[positiveAmount] free [mapUnitFilter] units appear"
+	Example: "[3] free [Wounded] units appear"
 
 	Applicable to: Triggerable
 
-??? example  "A [unit] rebels"
-	Example: "A [Musketman] rebels"
+??? example  "A [mapUnitFilter] rebels"
+	Example: "A [Wounded] rebels"
 
 	Applicable to: Triggerable
 
-??? example  "[positiveAmount] [unit]s rebel"
-	Example: "[3] [Musketman]s rebel"
+??? example  "A [mapUnitFilter] rebels on the current tile"
+	Example: "A [Wounded] rebels on the current tile"
+
+	Applicable to: Triggerable
+
+??? example  "[positiveAmount] [mapUnitFilter]s rebel"
+	Example: "[3] [Wounded]s rebel"
 
 	Applicable to: Triggerable
 

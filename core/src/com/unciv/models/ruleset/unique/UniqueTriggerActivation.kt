@@ -178,8 +178,9 @@ object UniqueTriggerActivation {
             }
 
             UniqueType.OneTimeFreeUnit -> {
-                val unitName = unique.params[0]
-                val baseUnit = ruleset.units[unitName] ?: return null
+                val viableUnits = ruleset.units.values.filter { it.matchesFilter(unique.params[0]) }
+                if (viableUnits.isEmpty()) return null
+                val baseUnit = viableUnits.random(rng)
                 val civUnit = civInfo.getEquivalentUnit(baseUnit)
                 if (civUnit.isCityFounder() && civInfo.isOneCityChallenger())
                     return null
@@ -219,8 +220,9 @@ object UniqueTriggerActivation {
             }
 
             UniqueType.OneTimeAmountFreeUnits -> {
-                val unitName = unique.params[1]
-                val baseUnit = ruleset.units[unitName] ?: return null
+                val viableUnits = ruleset.units.values.filter { it.matchesFilter(unique.params[1]) }
+                if (viableUnits.isEmpty()) return null
+                val baseUnit = viableUnits.random(rng)
                 val civUnit = civInfo.getEquivalentUnit(baseUnit)
                 if (civUnit.isCityFounder() && civInfo.isOneCityChallenger())
                     return null
@@ -276,8 +278,9 @@ object UniqueTriggerActivation {
             UniqueType.OneTimeRebel -> {
                 val barbarians = civInfo.gameInfo.getCivilizationOrNull(Constants.barbarians)
                     ?: return null // Barbs can be deselected as new-game option
-                val unitName = unique.params[0]
-                val baseUnit = ruleset.units[unitName] ?: return null
+                val viableUnits = ruleset.units.values.filter { it.matchesFilter(unique.params[0]) }
+                if (viableUnits.isEmpty()) return null
+                val baseUnit = viableUnits.random(rng)
                 val civUnit = civInfo.getEquivalentUnit(baseUnit)
                 if (civUnit.isCityFounder() && civInfo.isOneCityChallenger())
                     return null
@@ -307,11 +310,46 @@ object UniqueTriggerActivation {
                 }
                 return { placeUnit() }
             }
+            UniqueType.OneTimeRebelOnTile -> {
+                val barbarians = civInfo.gameInfo.getCivilizationOrNull(Constants.barbarians)
+                    ?: return null // Barbs can be deselected as new-game option
+                val viableUnits = ruleset.units.values.filter { it.matchesFilter(unique.params[0]) }
+                if (viableUnits.isEmpty()) return null
+                val baseUnit = viableUnits.random(rng)
+                val civUnit = civInfo.getEquivalentUnit(baseUnit)
+                if (civUnit.isCityFounder() && civInfo.isOneCityChallenger())
+                    return null
+
+                fun placeUnit(): Boolean {
+                    if (tile == null) return false
+                    
+                    val placedUnit = civInfo.gameInfo.tileMap.placeUnitNearTile(
+                        tile.position,
+                        baseUnit,
+                        barbarians
+                    ) ?: return false
+
+                    val notificationText = getNotificationText(
+                        notification, triggerNotificationText,
+                        "[1] [${civUnit.name}] has rebelled against us!"
+                    )
+                    if (notificationText != null)
+                        civInfo.addNotification(
+                            notificationText,
+                            MapUnitAction(placedUnit),
+                            NotificationCategory.Units,
+                            placedUnit.name
+                        )
+                    return true
+                }
+                return { placeUnit() }
+            }
             UniqueType.OneTimeAmountRebels -> {
                 val barbarians = civInfo.gameInfo.getCivilizationOrNull(Constants.barbarians)
                     ?: return null // Barbs can be deselected as new-game option
-                val unitName = unique.params[1]
-                val baseUnit = ruleset.units[unitName] ?: return null
+                val viableUnits = ruleset.units.values.filter { it.matchesFilter(unique.params[1]) }
+                if (viableUnits.isEmpty()) return null
+                val baseUnit = viableUnits.random(rng)
                 val civUnit = civInfo.getEquivalentUnit(baseUnit)
                 if (civUnit.isCityFounder() && civInfo.isOneCityChallenger())
                     return null
