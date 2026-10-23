@@ -383,9 +383,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
             supply += unique.params[0].toInt()
         }
         civ.forEachMatchingUnique(UniqueType.UnitSupplyCost) { unique ->
-            if (matchesFilter(unique.params[0])) {
-                supply += unique.params[1].toInt()
-            }
+            supply += unique.params[1].toInt()
         }
         
         return supply
