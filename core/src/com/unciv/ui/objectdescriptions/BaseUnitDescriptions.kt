@@ -226,6 +226,7 @@ object BaseUnitDescriptions {
                     UnitMovementType.Water -> "#80d0ff"
                     UnitMovementType.Amphibious -> "#02e0e0"
                     UnitMovementType.Air -> "#e0e0ff"
+                    UnitMovementType.Airborne -> "#e0e0ff"
                     UnitMovementType.Other -> "#ffffff"
                 }
                 add("Domain: [${it.name}]", link = "UnitType/Domain: [${it.name}]", color = color)

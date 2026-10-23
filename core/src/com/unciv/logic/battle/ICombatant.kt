@@ -48,6 +48,16 @@ interface ICombatant {
         if (this is CityCombatant) return false
         return (this as MapUnitCombatant).unit.baseUnit.isLandUnit
     }
+    @Readonly
+    fun isAmphibiousUnit(): Boolean {
+        if (this is CityCombatant) return false
+        return (this as MapUnitCombatant).unit.baseUnit.isAmphibiousUnit()
+    }
+    @Readonly
+    fun isAirborneUnit(): Boolean {
+        if (this is CityCombatant) return false
+        return (this as MapUnitCombatant).unit.baseUnit.isAirborneUnit()
+    }
     @Readonly fun isCity(): Boolean = this is CityCombatant
     @Readonly fun isCivilian() = this is MapUnitCombatant && this.unit.isCivilian()
     

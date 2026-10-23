@@ -44,6 +44,10 @@ object MovementCost {
         considerZoneOfControl: Boolean = true,
     ): Float {
         val civ = unit.civ
+        
+        //Airborne units ignore terrain movement costs
+        if (unit.baseUnit.isAirborneUnit())
+            return 1f
 
         if (unit.cache.cannotMove) return 100f
 

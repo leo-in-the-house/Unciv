@@ -12,6 +12,7 @@ enum class UnitMovementType { // The types of tiles the unit can by default ente
     Land, // Only land tiles except when certain techs are researched
     Water, // Only water tiles
     Amphibious, //Both water and land tiles, but not vulnerable to anti-air
+    Airborne, //Both water and land tiles, ignores terrain effects, and is vulnerable to anti-air
     Air, // Only city tiles and carrying units
     Other // The movement type will not be checked, this is for secondary types only
 }
@@ -29,10 +30,11 @@ class UnitType() : RulesetObject() {
 
     @Readonly fun getMovementType() = unitMovementType
 
-    @Pure fun isLandUnit() = unitMovementType == UnitMovementType.Land || unitMovementType == UnitMovementType.Amphibious
-    @Pure fun isWaterUnit() = unitMovementType == UnitMovementType.Water || unitMovementType == UnitMovementType.Amphibious
+    @Pure fun isLandUnit() = unitMovementType == UnitMovementType.Land || unitMovementType == UnitMovementType.Amphibious || unitMovementType == UnitMovementType.Airborne
+    @Pure fun isWaterUnit() = unitMovementType == UnitMovementType.Water || unitMovementType == UnitMovementType.Amphibious || unitMovementType == UnitMovementType.Airborne
     @Pure fun isAirUnit() = unitMovementType == UnitMovementType.Air
-    @Pure fun isAmphibiousUnit() = unitMovementType == UnitMovementType.Amphibious
+    @Pure fun isAmphibiousUnit() = unitMovementType == UnitMovementType.Amphibious || unitMovementType == UnitMovementType.Airborne
+    @Pure fun isAirborneUnit() = unitMovementType == UnitMovementType.Airborne
 
     /** Implements [UniqueParameterType.UnitTypeFilter][com.unciv.models.ruleset.unique.UniqueParameterType.UnitTypeFilter] */
     @Readonly

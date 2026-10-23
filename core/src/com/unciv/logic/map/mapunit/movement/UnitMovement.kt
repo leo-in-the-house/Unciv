@@ -814,6 +814,7 @@ class UnitMovement(val unit: MapUnit) {
             // special exception - ice tiles are technically impassible, but some units can move through them anyway
             // helicopters can pass through impassable tiles like mountains
             if (!unit.cache.canPassThroughImpassableTiles && !(unit.cache.canEnterIceTiles && tile.terrainFeatureObjects.any { it.isIce })
+                && !(unit.baseUnit.isAirborneUnit())
                 // carthage-like uniques sometimes allow passage through impassible tiles
                 && !(unit.civ.passThroughImpassableUnlocked && unit.civ.passableImpassables.contains(tile.lastTerrain.name))
                 && !(unit.getMatchingUniques(UniqueType.MayCrossTerrain).any { tile.matchesFilter(it.params[0]) })
