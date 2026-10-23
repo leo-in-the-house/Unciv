@@ -41,6 +41,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
 
     override var cost: Int = -1
     override var hurryCostModifier: Int = 0
+    var supplyCost: Int = 1
     var movement: Int = 0
     var attackStrength: Int = 0
     var defenseStrength: Int = 0

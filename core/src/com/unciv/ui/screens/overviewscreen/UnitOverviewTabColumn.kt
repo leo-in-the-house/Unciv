@@ -69,11 +69,16 @@ enum class UnitOverviewTabColumn(
         }
     },
 
+    SupplyCost ("Supply Cost") {
+        override val defaultSort get() = SortableGrid.SortDirection.Descending
+        override fun getEntryValue(item: MapUnitView) = item.getUnitSupplyCost()
+    },
+
     Action {
         override fun getEntryString(item: MapUnitView): String? = getActionText(item)?.tr() // to retain the icon for e.g. unit action
     },
 
-    AttackStrength(Fonts.attackStrength.toString(), "Attack strength", true) {
+    AttackStrength(Fonts.attackStrength.toString(), "Attack Strength", true) {
         override val defaultSort get() = SortableGrid.SortDirection.Descending
         override fun getEntryValue(item: MapUnitView) = item.getBaseUnit().attackStrength
     },

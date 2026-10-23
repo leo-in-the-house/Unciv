@@ -375,6 +375,21 @@ class MapUnit : IsPartOfGameInfoSerialization {
         return tempUniquesMap.getTriggeredUniques(trigger, gameContext, triggerFilter)
     }
 
+    @Readonly
+    fun getUnitSupplyCost(): Int {
+        var supply = baseUnit.supplyCost
+
+        forEachMatchingUnique(UniqueType.IndividualUnitSupplyCost) { unique ->
+            supply += unique.params[0].toInt()
+        }
+        civ.forEachMatchingUnique(UniqueType.UnitSupplyCost) { unique ->
+            if (matchesFilter(unique.params[0])) {
+                supply += unique.params[1].toInt()
+            }
+        }
+        
+        return supply
+    }
 
     /** Gets *per turn* resource requirements - does not include immediate costs for stockpiled resources.
      * StateForConditionals is assumed to regarding this mapUnit*/

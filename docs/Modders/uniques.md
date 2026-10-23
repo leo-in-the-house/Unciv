@@ -490,6 +490,25 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global
 
+??? example  "[relativeAmount] Supply Limit"
+	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
+
+	Example: "[+20] Supply Limit"
+
+	Applicable to: Global, FollowerBelief, Building
+
+??? example  "[amount]% Supply Limit"
+	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
+
+	Example: "[3]% Supply Limit"
+
+	Applicable to: Global, FollowerBelief, Building
+
+??? example  "[mapUnitFilter] costs [amount] Supply"
+	Example: "[Wounded] costs [3] Supply"
+
+	Applicable to: Global, FollowerBelief, Building
+
 ??? example  "Nullifies [stat] [cityFilter]"
 	Example: "Nullifies [Culture] [in all cities]"
 
@@ -1100,6 +1119,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global
 
+??? example  "Costs [amount] Supply"
+	Example: "Costs [3] Supply"
+
+	Applicable to: Global, Unit
+
 ??? example  "[relativeAmount]% Attack Strength"
 	Multiple bonuses stack additively: +50% + +50% = +100%
 
@@ -1585,6 +1609,25 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: FounderBelief, FollowerBelief
 
+??? example  "[relativeAmount] Supply Limit"
+	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
+
+	Example: "[+20] Supply Limit"
+
+	Applicable to: Global, FollowerBelief, Building
+
+??? example  "[amount]% Supply Limit"
+	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
+
+	Example: "[3]% Supply Limit"
+
+	Applicable to: Global, FollowerBelief, Building
+
+??? example  "[mapUnitFilter] costs [amount] Supply"
+	Example: "[Wounded] costs [3] Supply"
+
+	Applicable to: Global, FollowerBelief, Building
+
 ??? example  "[relativeAmount]% Production when constructing [buildingFilter] buildings [cityFilter]"
 	Multiple bonuses stack additively: +50% + +50% = +100%
 
@@ -1804,6 +1847,25 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Example: "[3]% of [Culture] from every [All Road] in the city added to [Iron]"
 
 	Applicable to: Building
+
+??? example  "[relativeAmount] Supply Limit"
+	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
+
+	Example: "[+20] Supply Limit"
+
+	Applicable to: Global, FollowerBelief, Building
+
+??? example  "[amount]% Supply Limit"
+	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
+
+	Example: "[3]% Supply Limit"
+
+	Applicable to: Global, FollowerBelief, Building
+
+??? example  "[mapUnitFilter] costs [amount] Supply"
+	Example: "[Wounded] costs [3] Supply"
+
+	Applicable to: Global, FollowerBelief, Building
 
 ??? example  "Consumes [amount] [resource]"
 	Example: "Consumes [3] [Iron]"
@@ -2214,6 +2276,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	This unique is automatically hidden from users.
 
 	Applicable to: Unit
+
+??? example  "Costs [amount] Supply"
+	Example: "Costs [3] Supply"
+
+	Applicable to: Global, Unit
 
 ??? example  "[relativeAmount]% Attack Strength"
 	Multiple bonuses stack additively: +50% + +50% = +100%

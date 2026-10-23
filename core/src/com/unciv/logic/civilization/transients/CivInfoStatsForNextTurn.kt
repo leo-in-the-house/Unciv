@@ -138,10 +138,25 @@ class CivInfoStatsForNextTurn(val civInfo: Civilization) {
     fun getUnitSupply(): Int {
         /* TotalSupply = BaseSupply + NumCities*modifier + Population*modifier
         * In civ5, it seems population modifier is always 0.5, so i hardcoded it down below */
-        var supply = getBaseUnitSupply() + getUnitSupplyFromCities() + getUnitSupplyFromPop()
+        var supply = getBaseUnitSupply() + getUnitSupplyFromCities() + getUnitSupplyFromPop() + getUnitSupplyFromUniques()
 
         if (civInfo.isMajorCiv() && civInfo.playerType == PlayerType.AI)
             supply = (supply*(1f + civInfo.getDifficulty().aiUnitSupplyModifier)).toInt()
+        return supply
+    }
+
+
+    @Readonly
+    fun getUnitSupplyFromUniques(): Int {
+        var supply = 0
+
+        civInfo.forEachMatchingUnique(UniqueType.SupplyLimit) { unique ->
+            supply += unique.params[0].toInt()
+        }
+        civInfo.forEachMatchingUnique(UniqueType.SupplyLimitPercent) { unique ->
+            supply.times(unique.params[0].toPercent())
+        }
+
         return supply
     }
 
@@ -168,7 +183,18 @@ class CivInfoStatsForNextTurn(val civInfo: Civilization) {
         }
         return totalSupply.toInt()
     }
-    @Readonly fun getUnitSupplyDeficit(): Int = max(0,civInfo.units.getCivUnitsSize() - getUnitSupply())
+
+    @Readonly
+    fun getUnitSupplyConsumption(): Int {
+        var supplyConsumed = 0
+        
+        for (unit in civInfo.units.getCivUnits()) {
+            supplyConsumed += unit.getUnitSupplyCost()
+        }
+        return supplyConsumed
+    }
+    
+    @Readonly fun getUnitSupplyDeficit(): Int = max(0,getUnitSupplyConsumption() - getUnitSupply())
 
     /** Per each supply missing, a player gets -10% production. Capped at -70%. */
     @Readonly fun getUnitSupplyProductionPenalty(): Float = -min(getUnitSupplyDeficit() * 10f, 70f)

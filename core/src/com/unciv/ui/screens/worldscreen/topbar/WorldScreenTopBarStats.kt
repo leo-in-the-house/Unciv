@@ -36,13 +36,18 @@ internal class WorldScreenTopBarStats(topbar: WorldScreenTopBar) : ScalingTableW
     private val faithPerTurnLabel = "+0"
         .toLabel(colorFromRGB(168, 196, 241), 14)
 
+    private val supplyLabel = "0/".toLabel(colorFromRGB(0, 80, 241)) // #a8c4f1
+
+    private val maxSupplyLabel = "0".toLabel(colorFromRGB(0, 80, 241)) // #a8c4f1
     private val happinessContainer = Group()
 
     // These are all to improve performance IE reduce update time (was 150 ms on my phone, which is a lot!)
     private val malcontentColor = colorFromRGB(239,83,80) // Color.valueOf("ef5350")
     private val happinessColor = colorFromRGB(92, 194, 77) // Color.valueOf("8cc24d")
+    private val supplyColor = colorFromRGB(0, 125, 255)
     private val malcontentImage = ImageGetter.getStatIcon("Malcontent")
     private val happinessImage = ImageGetter.getStatIcon("Happiness")
+    private val supplyImage = ImageGetter.getStatIcon("Supply")
 
     private val worldScreen = topbar.worldScreen
 
@@ -93,6 +98,12 @@ internal class WorldScreenTopBarStats(topbar: WorldScreenTopBar) : ScalingTableW
                 .height(Constants.defaultFontSize.toFloat()).top()
         }
 
+        fun addMaxSupplyLabel(label: Label) {
+            add(label).padRight(padRightBetweenStats)
+        }
+
+        addStat("Supply", supplyLabel, EmpireOverviewCategories.Units, true)
+        addMaxSupplyLabel(maxSupplyLabel)
 
         addStat("Gold", goldLabel, EmpireOverviewCategories.Stats, true)
         addPerTurnLabel(goldPerTurnLabel)
@@ -126,6 +137,9 @@ internal class WorldScreenTopBarStats(topbar: WorldScreenTopBar) : ScalingTableW
 
         val nextTurnStats = civInfo.stats.statsForNextTurn
 
+        supplyLabel.setText(civInfo.stats.getUnitSupplyConsumption().tr() + " /") 
+        maxSupplyLabel.setText(civInfo.stats.getUnitSupply().tr())
+        
         goldLabel.setText(civInfo.gold.tr())
         goldPerTurnLabel.setText(rateLabel(nextTurnStats.gold))
 

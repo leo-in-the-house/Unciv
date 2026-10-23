@@ -139,21 +139,21 @@ EmojiIcons/Happiness
   index: -1
 EmojiIcons/Production
   rotate: false
-  xy: 1849, 1443
+  xy: 1936, 1545
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: -1
 EmojiIcons/Science
   rotate: false
-  xy: 682, 1061
+  xy: 1957, 1429
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: -1
 EmojiIcons/Turn
   rotate: false
-  xy: 682, 945
+  xy: 775, 1189
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
@@ -198,6 +198,34 @@ OtherIcons/Stop
   xy: 208, 1431
   size: 100, 100
   orig: 100, 100
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Circle
+  rotate: false
+  xy: 553, 1849
+  size: 178, 178
+  orig: 178, 178
+  offset: 0, 0
+  index: -1
+OtherIcons/Circle
+  rotate: false
+  xy: 553, 1849
+  size: 178, 178
+  orig: 178, 178
+  offset: 0, 0
+  index: -1
+ResourceIcons/Circle
+  rotate: false
+  xy: 553, 1849
+  size: 178, 178
+  orig: 178, 178
+  offset: 0, 0
+  index: -1
+StatIcons/Circle
+  rotate: false
+  xy: 553, 1849
+  size: 178, 178
+  orig: 178, 178
   offset: 0, 0
   index: -1
 ImprovementIcons/Citadel
@@ -398,14 +426,14 @@ ImprovementIcons/Road
   index: -1
 ImprovementIcons/Terrace farm
   rotate: false
-  xy: 1396, 1170
+  xy: 1504, 1285
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 ImprovementIcons/Trading post
   rotate: false
-  xy: 1504, 1177
+  xy: 1525, 1393
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
@@ -1140,14 +1168,14 @@ OtherIcons/Star
   index: -1
 OtherIcons/Swap
   rotate: false
-  xy: 1396, 1278
+  xy: 1396, 1170
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 OtherIcons/Timer
   rotate: false
-  xy: 1504, 1285
+  xy: 1504, 1177
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
@@ -1161,21 +1189,21 @@ OtherIcons/Triangle
   index: -1
 OtherIcons/Turn right
   rotate: false
-  xy: 1612, 1285
+  xy: 1612, 1177
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 OtherIcons/Tyrannosaurus
   rotate: false
-  xy: 1612, 1177
+  xy: 1633, 1393
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 OtherIcons/UnitNameGroups
   rotate: false
-  xy: 1633, 1393
+  xy: 1720, 1285
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
@@ -1189,7 +1217,7 @@ OtherIcons/WLTKD
   index: -1
 OtherIcons/Wonders
   rotate: false
-  xy: 1828, 1177
+  xy: 1849, 1393
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
@@ -1220,34 +1248,6 @@ ResourceIcons/Cattle
   xy: 190, 1323
   size: 100, 100
   orig: 100, 100
-  offset: 0, 0
-  index: -1
-ResourceIcons/Circle
-  rotate: false
-  xy: 553, 1849
-  size: 178, 178
-  orig: 178, 178
-  offset: 0, 0
-  index: -1
-ImprovementIcons/Circle
-  rotate: false
-  xy: 553, 1849
-  size: 178, 178
-  orig: 178, 178
-  offset: 0, 0
-  index: -1
-OtherIcons/Circle
-  rotate: false
-  xy: 553, 1849
-  size: 178, 178
-  orig: 178, 178
-  offset: 0, 0
-  index: -1
-StatIcons/Circle
-  rotate: false
-  xy: 553, 1849
-  size: 178, 178
-  orig: 178, 178
   offset: 0, 0
   index: -1
 ResourceIcons/Citrus
@@ -1441,35 +1441,35 @@ ResourceIcons/Sugar
   index: -1
 ResourceIcons/Truffles
   rotate: false
-  xy: 1525, 1393
+  xy: 1612, 1285
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 ResourceIcons/Uranium
   rotate: false
-  xy: 1720, 1285
+  xy: 1720, 1177
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 ResourceIcons/Whales
   rotate: false
-  xy: 1720, 1177
+  xy: 1741, 1393
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 ResourceIcons/Wheat
   rotate: false
-  xy: 1741, 1393
+  xy: 1828, 1285
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 ResourceIcons/Wine
   rotate: false
-  xy: 1828, 1285
+  xy: 1828, 1177
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
@@ -1546,14 +1546,14 @@ TileIcons/Worked
   index: -1
 StatIcons/Range
   rotate: false
-  xy: 775, 1189
+  xy: 1994, 1545
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: -1
 StatIcons/RangedStrength
   rotate: false
-  xy: 680, 1297
+  xy: 1994, 1487
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
@@ -1581,9 +1581,16 @@ StatIcons/Specialist
   index: -1
 StatIcons/Strength
   rotate: false
-  xy: 682, 1003
+  xy: 1957, 1371
   size: 50, 50
   orig: 50, 50
+  offset: 0, 0
+  index: -1
+StatIcons/Supply
+  rotate: false
+  xy: 1396, 1278
+  size: 100, 100
+  orig: 100, 100
   offset: 0, 0
   index: -1
 TileIcons/Blockaded

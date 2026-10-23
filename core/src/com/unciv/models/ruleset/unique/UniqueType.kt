@@ -69,6 +69,17 @@ enum class UniqueType(
     BonusStatsFromCityStates("[relativeAmount]% [stat] from City-States", UniqueTarget.Global),
     StatPercentFromTradeRoutes("[relativeAmount]% [stat] from Trade Routes", UniqueTarget.Global),
 
+    // Supply
+    
+
+    SupplyLimit("[relativeAmount] Supply Limit", UniqueTarget.Global, UniqueTarget.Building, UniqueTarget.FollowerBelief,
+        docDescription = MULTIPLICATIVE_BONUS_EXPLANATION),
+
+    SupplyLimitPercent("[amount]% Supply Limit", UniqueTarget.Global, UniqueTarget.Building, UniqueTarget.FollowerBelief,
+        docDescription = MULTIPLICATIVE_BONUS_EXPLANATION),
+
+    UnitSupplyCost("[mapUnitFilter] costs [amount] Supply", UniqueTarget.Global, UniqueTarget.Building, UniqueTarget.FollowerBelief),  
+    
     NullifiesStat("Nullifies [stat] [cityFilter]", UniqueTarget.Global),
     NullifiesGrowth("Nullifies Growth [cityFilter]", UniqueTarget.Global),
 
@@ -443,6 +454,7 @@ enum class UniqueType(
 
     AutomationPrimaryAction("Automation is a primary action", UniqueTarget.Unit, flags = UniqueFlag.setOfHiddenToUsers),
 
+    IndividualUnitSupplyCost("Costs [amount] Supply", UniqueTarget.Unit, UniqueTarget.Global),
     // Strength bonuses
     AttackStrength("[relativeAmount]% Attack Strength", UniqueTarget.Unit, UniqueTarget.Global,
         docDescription = ADDITIVE_BONUS_EXPLANATION),
