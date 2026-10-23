@@ -196,7 +196,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
             // Empty camp - spawn a defender
             if (tile.militaryUnit == null)
                 // Try spawning a unit on this tile, return null if unsuccessful
-                return spawnUnit(tile.position, false)
+                return spawnUnit(tile.position, tile.isWater)
 
             // Don't spawn wandering barbs too early
             if (gameInfo.turns < 10)
@@ -209,12 +209,10 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
                 return null
         }
 
-        val canSpawnNaval = gameInfo.turns > 30
         val validTiles = tile.neighbors.toList().filterNot {
             it.isImpassible()
                 || it.isCityCenter()
                 || it.getFirstUnit() != null
-                || (it.isWater && !canSpawnNaval)
                 || (it.terrainHasUnique(UniqueType.FreshWater) && it.isWater) // No Lakes
         }
         if (validTiles.isEmpty())
@@ -222,7 +220,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
 
         val rng = gameInfo.getBarbarianCivilization().state.stateBasedRandom("BarbarianManager.spawnBarbarian")
         // Attempt to spawn a barbarian on a valid tile
-        return spawnUnit(tile.position, validTiles.random(rng).isWater, allegiance) 
+        return spawnUnit(tile.position, tile.isWater, allegiance) 
     }
 
     /** Attempts to spawn a barbarian on [position], returns true if successful and false if unsuccessful. */

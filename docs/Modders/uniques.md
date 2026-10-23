@@ -1195,6 +1195,9 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global, Unit
 
+??? example  "Cannot heal"
+	Applicable to: Global, Unit
+
 ??? example  "Can only heal by pillaging"
 	Applicable to: Global, Unit
 
@@ -2358,6 +2361,9 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Heals [amount] damage if it kills a unit"
 	Example: "Heals [3] damage if it kills a unit"
 
+	Applicable to: Global, Unit
+
+??? example  "Cannot heal"
 	Applicable to: Global, Unit
 
 ??? example  "Can only heal by pillaging"
