@@ -140,6 +140,18 @@ object TargetHelper {
             if (combatant.hasUnique(UniqueType.CannotAttack, gameContext))
                 return false
 
+            if (combatant.unit.getMatchingUniques(UniqueType.CannotAttackUnits, gameContext).run {
+                    any { tileCombatant.matchesFilter(it.params[0]) }
+                }
+            )
+                return false
+
+            if (combatant.unit.getMatchingUniques(UniqueType.CannotAttackTiles, gameContext).run {
+                    any { tile.matchesFilter(it.params[0]) }
+                }
+            )
+                return false
+            
             if (combatant.unit.getMatchingUniques(UniqueType.CanOnlyAttackUnits, gameContext).run {
                     any() && none { tileCombatant.matchesFilter(it.params[0]) }
                 }

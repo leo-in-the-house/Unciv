@@ -488,6 +488,8 @@ enum class UniqueType(
     StatsWhenSpreading("When spreading religion to a city, gain [amount] times the amount of followers of other religions as [stat]", UniqueTarget.Unit, UniqueTarget.Global),
 
     // Attack restrictions
+    CannotAttackUnits("Cannot attack [combatantFilter] units", UniqueTarget.Unit),
+    CannotAttackTiles("Cannot attack [tileFilter] tiles", UniqueTarget.Unit),
     CanOnlyAttackUnits("Can only attack [combatantFilter] units", UniqueTarget.Unit),
     CanOnlyAttackTiles("Can only attack [tileFilter] tiles", UniqueTarget.Unit),
     CannotAttack("Cannot attack", UniqueTarget.Unit),
