@@ -138,7 +138,9 @@ class CivInfoStatsForNextTurn(val civInfo: Civilization) {
     fun getUnitSupply(): Int {
         /* TotalSupply = BaseSupply + NumCities*modifier + Population*modifier
         * In civ5, it seems population modifier is always 0.5, so i hardcoded it down below */
-        var supply = getBaseUnitSupply() + getUnitSupplyFromCities() + getUnitSupplyFromPop() + getUnitSupplyFromUniques()
+        var supply = getBaseUnitSupply() + getUnitSupplyFromCities() + getUnitSupplyFromPop()
+
+        supply = getUnitSupplyFromUniques(supply)
 
         if (civInfo.isMajorCiv() && civInfo.playerType == PlayerType.AI)
             supply = (supply*(1f + civInfo.getDifficulty().aiUnitSupplyModifier)).toInt()
@@ -147,17 +149,17 @@ class CivInfoStatsForNextTurn(val civInfo: Civilization) {
 
 
     @Readonly
-    fun getUnitSupplyFromUniques(): Int {
-        var supply = 0
-
+    fun getUnitSupplyFromUniques(supply: Int): Int {
+        var newSupply = supply
+        
         civInfo.forEachMatchingUnique(UniqueType.SupplyLimit) { unique ->
-            supply += unique.params[0].toInt()
+            newSupply += unique.params[0].toInt()
         }
         civInfo.forEachMatchingUnique(UniqueType.SupplyLimitPercent) { unique ->
-            supply.times(unique.params[0].toPercent())
+            newSupply = (newSupply * unique.params[0].toPercent()).toInt()
         }
 
-        return supply
+        return newSupply
     }
 
     @Readonly

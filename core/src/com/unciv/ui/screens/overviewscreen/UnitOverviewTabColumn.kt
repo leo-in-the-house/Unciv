@@ -69,7 +69,7 @@ enum class UnitOverviewTabColumn(
         }
     },
 
-    SupplyCost ("Supply Cost") {
+    SupplyCost ("Supply Cost", "Supply Cost", true) {
         override val defaultSort get() = SortableGrid.SortDirection.Descending
         override fun getEntryValue(item: MapUnitView) = item.getUnitSupplyCost()
     },

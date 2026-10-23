@@ -52,7 +52,7 @@ internal object UnitSupplyTable {
             it.addLabeledValue("Base Supply", stats.getBaseUnitSupply())
             it.addLabeledValue("Cities", stats.getUnitSupplyFromCities())
             it.addLabeledValue("Population", stats.getUnitSupplyFromPop())
-            it.addLabeledValue("Bonuses", stats.getUnitSupplyFromUniques())
+            it.addLabeledValue("Bonuses", stats.getUnitSupply() - stats.getBaseUnitSupply() - stats.getUnitSupplyFromCities() - stats.getUnitSupplyFromPop())
             it.addSeparator()
             it.addLabeledValue("Total Supply", stats.getUnitSupply())
             it.addLabeledValue("In Use", stats.getUnitSupplyConsumption())
