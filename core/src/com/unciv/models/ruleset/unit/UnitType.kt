@@ -43,6 +43,8 @@ class UnitType() : RulesetObject() {
             "Land" -> isLandUnit()
             "Water" -> isWaterUnit()
             "Air" -> isAirUnit()
+            "Amphibious" -> isAmphibiousUnit()
+            "Airborne" -> isAirborneUnit()
             else -> filter == name || hasTagUnique(filter)
         }
     }

@@ -1341,6 +1341,26 @@ object UniqueTriggerActivation {
                 }
             }
 
+            UniqueType.OneTimeRemoveFeaturesFromTile -> {
+                if (tile == null) return null
+                return {
+                    val featureName = unique.params[0]
+                    val currentTileImprovement = tile.tileImprovement
+                    // We removed a terrain (e.g. Forest) and the improvement (e.g. Lumber mill) requires it!
+                    if (currentTileImprovement != null && tile.terrainFeatures.any {
+                            currentTileImprovement.terrainsCanBeBuiltOn.contains(it) && it == featureName
+                        } && !currentTileImprovement.terrainsCanBeBuiltOn.contains(tile.baseTerrain)
+                    ) tile.removeImprovement()
+
+                    if (tile.improvement == featureName) tile.removeImprovement()
+                    else {
+                        //This will not trigger a production bonus
+                        tile.removeTerrainFeature(featureName)
+                    }
+                    true
+                }
+            }
+
             UniqueType.OneTimeRemoveImprovementsFromTile -> {
                 if (tile == null) return null
                 val tileImprovement = tile.tileImprovement ?: return null

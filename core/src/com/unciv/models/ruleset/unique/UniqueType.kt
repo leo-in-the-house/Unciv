@@ -635,6 +635,8 @@ enum class UniqueType(
         docDescription = "Removes the promotion/status from the unit -" +
                 " this is not a cost, units will be able to activate the action even without the promotion/status. " +
                 "To limit, use <with the [promotion] promotion> conditional"),
+    UnitActionRemoveFeature("removing the [terrainFeature] feature on this tile", UniqueTarget.UnitActionModifier),
+    UnitActionRemoveResource("removing the[resourceFilter] resource on this tile", UniqueTarget.UnitActionModifier),
     UnitActionOnce("once", UniqueTarget.UnitActionModifier),
     UnitActionLimitedTimes("[positiveAmount] times", UniqueTarget.UnitActionModifier),
     UnitActionExtraLimitedTimes("[nonNegativeAmount] additional time(s)", UniqueTarget.UnitActionModifier),
@@ -997,6 +999,7 @@ enum class UniqueType(
     OneTimeReplaceImprovement("Add [improvementName] improvement to this tile replacing the existing improvement", UniqueTarget.Triggerable),
     OneTimeRemoveResourcesFromTile("Remove [resourceFilter] resources from this tile", UniqueTarget.Triggerable),
     OneTimeRemoveImprovementsFromTile("Remove [improvementFilter] improvements from this tile", UniqueTarget.Triggerable),
+    OneTimeRemoveFeaturesFromTile("Remove [terrainFeature] features from this tile", UniqueTarget.Triggerable),
 
     UnitsGainPromotion("[mapUnitFilter] units gain the [promotion] promotion", UniqueTarget.Triggerable,
         docDescription = "Works only with promotions that are valid for the unit's type - or for promotions that do not specify any."),  // Not used in Vanilla

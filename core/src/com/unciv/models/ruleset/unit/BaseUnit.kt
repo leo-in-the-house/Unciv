@@ -551,6 +551,8 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
             "Land" -> isLandUnit
             "Water" -> isWaterUnit
             "Air" -> isAirUnit()
+            "Amphibious" -> isAmphibiousUnit()
+            "Airborne" -> isAirborneUnit()
             "non-air" -> !isAirUnit()
 
             "Nuclear Weapon" -> isNuclearWeapon()

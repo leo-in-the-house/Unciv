@@ -238,6 +238,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Triggerable
 
+??? example  "Remove [terrainFeature] features from this tile"
+	Example: "Remove [Hill] features from this tile"
+
+	Applicable to: Triggerable
+
 ??? example  "[mapUnitFilter] units gain the [promotion] promotion"
 	Works only with promotions that are valid for the unit's type - or for promotions that do not specify any.
 
@@ -4508,6 +4513,16 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: UnitActionModifier
 
+??? example  "&lt;removing the [terrainFeature] feature on this tile&gt;"
+	Example: "&lt;removing the [Hill] feature on this tile&gt;"
+
+	Applicable to: UnitActionModifier
+
+??? example  "&lt;removing the[resourceFilter] resource on this tile&gt;"
+	Example: "&lt;removing the[Strategic] resource on this tile&gt;"
+
+	Applicable to: UnitActionModifier
+
 ??? example  "&lt;once&gt;"
 	Applicable to: UnitActionModifier
 
@@ -4652,6 +4667,6 @@ There is a conversion affecting dashes and leading/trailing blanks. Please make 
 *[tileFilter]: Anything that can be used either in an improvementFilter or in a terrainFilter can be used here, plus 'unimproved'
 *[unitNameGroup]: The name of a unit name group found in UnitNameGroups.json, or one of their unique tags.
 *[unitTriggerTarget]: `This Unit` or `Target Unit`.
-*[unitType]: Can be 'Land', 'Water', 'Air', any unit type, a filtering Unique on a unit type.
+*[unitType]: Can be 'Land', 'Water', 'Air', 'Amphibious', 'Airborne', any unit type, a filtering Unique on a unit type.
 *[validationWarning]: Suppresses one specific Ruleset validation warning. This can specify the full text verbatim including correct upper/lower case, or it can be a wildcard case-insensitive simple pattern starting and ending in an asterisk ('*'). If the suppression unique is used within an object or as modifier (not ModOptions), the wildcard symbols can be omitted, as selectivity is better due to the limited scope.
 *[victoryType]: The name of any victory type: 'Cultural', 'Diplomatic', 'Domination', 'Scientific', 'Time' or one of your mod's VictoryTypes.json names.

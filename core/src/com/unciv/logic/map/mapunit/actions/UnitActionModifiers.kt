@@ -1,6 +1,7 @@
 package com.unciv.logic.map.mapunit.actions
 
 import com.unciv.logic.map.mapunit.MapUnit
+import com.unciv.logic.map.tile.RoadStatus
 import com.unciv.models.ruleset.unique.Unique
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.stats.Stat
@@ -81,6 +82,24 @@ object UnitActionModifiers {
         return true
     }
 
+    @Readonly
+    private fun canConsumeResourceOnTile(unit: MapUnit, actionUnique: Unique): Boolean {
+        val tile = unit.getTile() ?: return false
+
+        for (conditional in actionUnique.getModifiers(UniqueType.UnitActionRemoveFeature)) {
+            val featureName = conditional.params[0]
+            if (tile.terrainFeatures.filter { it == featureName}.isEmpty()) {
+                return false
+            }
+        }
+        for (conditional in actionUnique.getModifiers(UniqueType.UnitActionRemoveResource)) {
+            if (tile.tileResource == null || !tile.tileResource!!.matchesFilter(conditional.params[0])) {
+                return false
+            }
+        }
+        return true
+    }
+
     /** Checks if this Action Unique can be executed, based on action modifiers
      * @param unit: The specific unit executing the Action
      * @param actionUnique: Unique that defines the Action
@@ -92,6 +111,7 @@ object UnitActionModifiers {
         if (getMovementPointsRequired(actionUnique) > ceil(unit.currentMovement).toInt()) return false
         if (!canSpendStatsCost(unit, actionUnique)) return false
         if (!canSpendStockpileCost(unit, actionUnique)) return false
+        if (!canConsumeResourceOnTile(unit, actionUnique)) return false
         return true
     }
 
@@ -126,6 +146,37 @@ object UnitActionModifiers {
                     val resource = unit.civ.gameInfo.ruleset.tileResources[resourceName]
                     if (resource != null && resource.isStockpiled)
                         unit.civ.gainStockpiledResource(resource, -amount)
+                }
+
+                UniqueType.UnitActionRemoveFeature -> {
+                    val featureName = conditional.params[0]
+                    val tile = unit.getTile()
+                    if (tile != null) {
+                        val currentTileImprovement = tile.tileImprovement
+                        // We removed a terrain (e.g. Forest) and the improvement (e.g. Lumber mill) requires it!
+                        if (currentTileImprovement != null && tile.terrainFeatures.any {
+                                currentTileImprovement.terrainsCanBeBuiltOn.contains(it) && it == featureName
+                            } && !currentTileImprovement.terrainsCanBeBuiltOn.contains(tile.baseTerrain)
+                        ) tile.removeImprovement()
+
+                        if (tile.improvement == featureName) tile.removeImprovement()
+                        else {
+                            //This will not trigger a production bonus
+                            tile.removeTerrainFeature(featureName)
+                        }
+                    }
+                }
+
+                UniqueType.UnitActionRemoveResource -> {
+                    val resourceFilter = conditional.params[0]
+                    val tile = unit.getTile()
+                    if (tile != null && tile.tileResource != null) {
+                        if (tile.tileResource!!.matchesFilter(resourceFilter))
+                        {
+                            tile.tileResource = null
+                            tile.resourceAmount = 0
+                        }
+                    }
                 }
                 UniqueType.UnitActionRemovingPromotion -> {
                     val promotionName = conditional.params[0]
@@ -192,6 +243,20 @@ object UnitActionModifiers {
             effects += stockpileString.removePrefix(" ") // drop leading space
         }
 
+        if (actionUnique.hasModifier(UniqueType.UnitActionRemoveFeature)) {
+            var tileFeatureString = ""
+            for (conditionals in actionUnique.getModifiers(UniqueType.UnitActionRemoveFeature))
+                tileFeatureString += " ${conditionals.params[0]} "
+            effects += tileFeatureString.removePrefix(" ") // drop leading space
+        }
+
+        if (actionUnique.hasModifier(UniqueType.UnitActionRemoveResource)) {
+            var tileResourceString = ""
+            for (conditionals in actionUnique.getModifiers(UniqueType.UnitActionRemoveResource))
+                tileResourceString += " ${conditionals.params[0]} "
+            effects += tileResourceString.removePrefix(" ") // drop leading space
+        }
+        
         if (actionUnique.hasModifier(UniqueType.UnitActionConsumeUnit)
             || actionUnique.hasModifier(UniqueType.UnitActionAfterWhichConsumed) && usagesLeft(unit, actionUnique) == 1
         ) effects += Fonts.death.toString()

@@ -159,9 +159,9 @@ enum class UniqueParameterType(
     },
 
     /** Implemented by [UnitType.matchesFilter][com.unciv.models.ruleset.unit.UnitType.matchesFilter] */
-    UnitTypeFilter("unitType", "Water", "Can be 'Land', 'Water', 'Air', any unit type, a filtering Unique on a unit type", "Unit Type Filters") {
+    UnitTypeFilter("unitType", "Water", "Can be 'Land', 'Water', 'Air', 'Amphibious', 'Airborne', any unit type, a filtering Unique on a unit type", "Unit Type Filters") {
         override val staticKnownValues = setOf(
-            "Land", "Water", "Air",
+            "Land", "Water", "Air","Amphibious","Airborne"
         )
         override fun getErrorSeverity(parameterText: String, ruleset: Ruleset):
             UniqueType.UniqueParameterErrorSeverity? = getErrorSeverityForFilter(parameterText, ruleset)
