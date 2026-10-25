@@ -435,6 +435,17 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
                                 " (${conditional.params[0]}) (${conditional.params[1]})"))
                     }
                 }
+                UniqueType.ConditionalNotNearTiles -> {
+                    if (tile?.getTilesInDistance(conditional.params[0].toInt())?.any {
+                            it.matchesFilter(conditional.params[1], civ)
+                        } == true)
+                    {
+                        yield(RejectionReasonType.CannotBeBuilt.toInstance(
+                            "Cannot be built near" +
+                                " (${conditional.params[0]}) (${conditional.params[1]})"))
+                    }
+                }
+
 
                 UniqueType.ConditionalBeforeEra -> {
                     val era = civ.gameInfo.ruleset.eras[conditional.params[0]]

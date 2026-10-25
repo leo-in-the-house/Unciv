@@ -897,6 +897,7 @@ enum class UniqueType(
     ConditionalInTiles("in [tileFilter] tiles", UniqueTarget.Conditional),
     ConditionalInTilesNot("in tiles without [tileFilter]", UniqueTarget.Conditional),
     ConditionalNearTiles("within [positiveAmount] tiles of a [tileFilter]", UniqueTarget.Conditional),
+    ConditionalNotNearTiles("not within [positiveAmount] tiles of a [tileFilter]", UniqueTarget.Conditional),
 
     ConditionalAdjacentTo("in tiles adjacent to [tileFilter] tiles", UniqueTarget.Conditional),
 

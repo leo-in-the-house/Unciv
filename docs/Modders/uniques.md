@@ -4183,6 +4183,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Conditional
 
+??? example  "&lt;not within [positiveAmount] tiles of a [tileFilter]&gt;"
+	Example: "&lt;not within [3] tiles of a [Farm]&gt;"
+
+	Applicable to: Conditional
+
 ??? example  "&lt;in tiles adjacent to [tileFilter] tiles&gt;"
 	Example: "&lt;in tiles adjacent to [Farm] tiles&gt;"
 

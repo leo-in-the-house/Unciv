@@ -317,6 +317,10 @@ object Conditionals {
                 state.relevantTile != null && state.relevantTile!!.getTilesInDistance(conditional.params[0].toInt()).any {
                     it.matchesFilter(conditional.params[1], state.relevantCiv)
                 }
+            UniqueType.ConditionalNotNearTiles ->
+                state.relevantTile != null && state.relevantTile!!.getTilesInDistance(conditional.params[0].toInt()).none {
+                    it.matchesFilter(conditional.params[1], state.relevantCiv)
+                }
 
             UniqueType.ConditionalVsLargerCiv -> {
                 val yourCities = state.relevantCiv?.cities?.size ?: 1
