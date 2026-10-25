@@ -210,10 +210,9 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         }
 
         val validTiles = tile.neighbors.toList().filterNot {
-            it.isImpassible()
+            (it.isImpassible() && !(it.isLand)) //Allow mountains to spawn
                 || it.isCityCenter()
                 || it.getFirstUnit() != null
-                || (it.terrainHasUnique(UniqueType.FreshWater) && it.isWater) // No Lakes
         }
         if (validTiles.isEmpty())
             return null
