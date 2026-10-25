@@ -233,7 +233,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         val currentTile = gameInfo.tileMap.get(position)
         val unitToSpawn = chooseBarbarianUnit(naval, currentTile)
             ?: return null // return null if we didn't find a unit
-        val spawnedUnit = gameInfo.tileMap.placeUnitNearTile(position, unitToSpawn, allegiance)
+        val spawnedUnit = allegiance.units.placeUnitNearTile(position, unitToSpawn)
         return spawnedUnit
     }
 

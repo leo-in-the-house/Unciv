@@ -654,6 +654,7 @@ class TileMap(initialCapacity: Int = 10) : IsPartOfGameInfoSerialization {
     }
 
     /** Tries to place the [unitName] into the [Tile] closest to the given [position]
+     * NOTE: this function does not handle uniques when the unit is spawned, call UnitManager.placeUnitNearTile instead
      * @param position where to try to place the unit (or close - max 10 tiles distance)
      * @param unitName name of the [BaseUnit][com.unciv.models.ruleset.unit.BaseUnit] to create and place
      * @param civInfo civilization to assign unit to

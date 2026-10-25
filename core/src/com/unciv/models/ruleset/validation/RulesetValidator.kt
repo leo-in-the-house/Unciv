@@ -638,7 +638,7 @@ open class RulesetValidator protected constructor(
             text += "\n\t\t\"outerColor\": [${(newOuterColor.r * 255).toInt()}, ${(newOuterColor.g * 255).toInt()}, ${(newOuterColor.b * 255).toInt()}],"
             text += "\n\t\t\"innerColor\": [${(newInnerColor.r * 255).toInt()}, ${(newInnerColor.g * 255).toInt()}, ${(newInnerColor.b * 255).toInt()}],"
 
-            lines.add(text, RulesetErrorSeverity.WarningOptionsOnly, nation)
+            lines.add(text, RulesetErrorSeverity.OK, nation)
         }
     }
 
