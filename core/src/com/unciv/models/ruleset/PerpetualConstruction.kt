@@ -48,6 +48,7 @@ sealed class PerpetualConstruction(override var name: String, val description: S
     object Gold : StatConversion(Stat.Gold)
     object Culture : StatConversion(Stat.Culture)
     object Faith : StatConversion(Stat.Faith)
+    object Water : StatConversion(Stat.Water)
     object Food : StatConversion(Stat.Food)
     object Idle : PerpetualConstruction("Nothing", "The city will not produce anything.") {
         override fun getProductionTooltip(city: City, withIcon: Boolean) = ""

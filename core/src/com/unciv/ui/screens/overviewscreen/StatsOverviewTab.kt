@@ -26,6 +26,7 @@ class StatsOverviewTab(
     private val unhappinessTable = UnhappinessTable()
     private val goldAndSliderTable = Table()
     private val goldTable = Table()
+    private val waterTable = Table()
     private val scienceTable = Table()
     private val cultureTable = Table()
     private val faithTable = Table()
@@ -44,6 +45,7 @@ class StatsOverviewTab(
 
         happinessTable.defaults().pad(5f)
         goldTable.defaults().pad(5f)
+        waterTable.defaults().pad(5f)
         scienceTable.defaults().pad(5f)
         cultureTable.defaults().pad(5f)
         faithTable.defaults().pad(5f)
@@ -52,7 +54,7 @@ class StatsOverviewTab(
         unhappinessTable.update()
 
         goldAndSliderTable.add(goldTable).row()
-        if (viewingPlayer.ruleset.modOptions.hasUnique(UniqueType.ConvertGoldToScience))
+        if (viewingPlayer.ruleset.modOptions.hasUnique(UniqueType.ConvertGoldToScience) || viewingPlayer.hasUnique(UniqueType.ConvertGoldToScience))
             goldAndSliderTable.addGoldSlider()
 
         update()
@@ -61,6 +63,7 @@ class StatsOverviewTab(
             yield(happinessTable)
             if (unhappinessTable.show) yield(unhappinessTable)
             yield(goldAndSliderTable)
+            yield(waterTable)
             yield(scienceTable)
             yield(cultureTable)
             if (isReligionEnabled) yield(faithTable)
@@ -95,6 +98,7 @@ class StatsOverviewTab(
         val statMap = viewingPlayer.getStatMapForNextTurn()
         updateHappinessTable()
         goldTable.updateStatTable(Stat.Gold, statMap)
+        waterTable.updateStatTable(Stat.Water, statMap)
         scienceTable.updateStatTable(Stat.Science, statMap)
         cultureTable.updateStatTable(Stat.Culture, statMap)
         if (isReligionEnabled) faithTable.updateStatTable(Stat.Faith, statMap)

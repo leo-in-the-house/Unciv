@@ -109,6 +109,7 @@ enum class CityOverviewTabColumn : ISortableGridContentProvider<City, EmpireOver
     },
 
     Food,
+    Water,
     Gold,
     Science,
     Production,

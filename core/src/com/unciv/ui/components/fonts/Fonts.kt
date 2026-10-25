@@ -142,6 +142,7 @@ object Fonts {
     const val production = '⚙'          // U+2699 'gear'
     const val gold = '¤'                // U+00A4 'currency sign'
     const val food = '⁂'                // U+2042 'asterism' (to avoid 🍏 U+1F34F 'green apple' needing 2 symbols in utf-16 and 4 in utf-8)
+    const val water = '⛲'                // U+26F2 'fountain' (💧 U+1F4A7 'droplet')
     const val science = '⍾'             // U+237E 'bell symbol' (🧪 U+1F9EA 'test tube', 🔬 U+1F52C 'microscope')
     const val culture = '♪'             // U+266A 'eighth note' (🎵 U+1F3B5 'musical note')
     const val happiness = '⌣'           // U+2323 'smile' (😀 U+1F600 'grinning face')
@@ -187,6 +188,7 @@ object Fonts {
         production to "EmojiIcons/Production",
         gold to "EmojiIcons/Gold",
         food to "EmojiIcons/Food",
+        water to "EmojiIcons/Water",
         science to "EmojiIcons/Science",
         culture to "EmojiIcons/Culture",
         happiness to "EmojiIcons/Happiness",

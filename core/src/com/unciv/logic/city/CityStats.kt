@@ -542,6 +542,7 @@ class CityStats(val city: City) {
         for (entry in newFinalStatList.values) {
             entry.gold *= statPercentBonusesSum.gold.toPercent()
             entry.culture *= statPercentBonusesSum.culture.toPercent()
+            entry.water *= statPercentBonusesSum.water.toPercent()
             entry.food *= statPercentBonusesSum.food.toPercent()
             entry.faith *= statPercentBonusesSum.faith.toPercent()
         }

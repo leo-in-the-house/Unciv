@@ -16,6 +16,7 @@ enum class Stat(
 ) : GameResource {
     Production(NotificationIcon.Production, UncivSound.Click, Fonts.production, colorFromHex(0xc14d00)),
     Food(NotificationIcon.Food, UncivSound.Click, Fonts.food, colorFromHex(0x24A348)),
+    Water(NotificationIcon.Water, UncivSound.Click, Fonts.water, colorFromHex(0x12ccee)),
     Gold(NotificationIcon.Gold, UncivSound.Coin, Fonts.gold, colorFromHex(0xffeb7f)),
     Science(NotificationIcon.Science, UncivSound.Chimes, Fonts.science, colorFromHex(0x8c9dff)),
     Culture(NotificationIcon.Culture, UncivSound.Paper, Fonts.culture, colorFromHex(0x8b60ff)),

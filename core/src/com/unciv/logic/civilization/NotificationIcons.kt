@@ -21,6 +21,7 @@ object NotificationIcon {
     const val Diplomacy = "OtherIcons/Diplomacy"
     const val Faith = "StatIcons/Faith"
     const val Food = "StatIcons/Food"
+    const val Water = "StatIcons/Water"
     const val Gold = "StatIcons/Gold"
     const val Growth = "StatIcons/Population"
     const val Happiness = "StatIcons/Happiness"

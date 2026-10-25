@@ -128,6 +128,7 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
                 when {
                     PerpetualConstruction.Science.isBuildable(cityConstructions) && !allTechsAreResearched -> PerpetualConstruction.Science
                     PerpetualConstruction.Gold.isBuildable(cityConstructions) -> PerpetualConstruction.Gold
+                    PerpetualConstruction.Water.isBuildable(cityConstructions) -> PerpetualConstruction.Water
                     PerpetualConstruction.Culture.isBuildable(cityConstructions) && !civInfo.policies.allPoliciesAdopted(true) -> PerpetualConstruction.Culture
                     PerpetualConstruction.Faith.isBuildable(cityConstructions) -> PerpetualConstruction.Faith
                     else -> PerpetualConstruction.Idle

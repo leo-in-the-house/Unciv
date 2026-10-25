@@ -15,6 +15,7 @@ import yairm210.purity.annotations.*
 open class Stats(
     var production: Float = 0f,
     var food: Float = 0f,
+    var water: Float = 0f,
     var gold: Float = 0f,
     var science: Float = 0f,
     var culture: Float = 0f,
@@ -28,6 +29,7 @@ open class Stats(
         return when(stat) {
             Stat.Production -> production
             Stat.Food -> food
+            Stat.Water -> food
             Stat.Gold -> gold
             Stat.Science -> science
             Stat.Culture -> culture
@@ -40,6 +42,7 @@ open class Stats(
         when(stat) {
             Stat.Production -> production = value
             Stat.Food -> food = value
+            Stat.Water -> water = value
             Stat.Gold -> gold = value
             Stat.Science -> science = value
             Stat.Culture -> culture = value
@@ -56,6 +59,7 @@ open class Stats(
     fun equals(otherStats: Stats): Boolean {
         return production == otherStats.production
                 && food == otherStats.food
+                && water == otherStats.water
                 && gold == otherStats.gold
                 && science == otherStats.science
                 && culture == otherStats.culture
@@ -72,6 +76,7 @@ open class Stats(
     fun isEmpty() = (
             production == 0f
             && food == 0f
+            && water == 0f
             && gold == 0f
             && science == 0f
             && culture == 0f
@@ -82,6 +87,7 @@ open class Stats(
     fun clear() {
         production = 0f
         food = 0f
+        water = 0f
         gold = 0f
         science = 0f
         culture = 0f
@@ -95,6 +101,7 @@ open class Stats(
     fun add(other: Stats): Stats {
         production += other.production
         food += other.food
+        water += other.water
         gold += other.gold
         science += other.science
         culture += other.culture
@@ -137,6 +144,7 @@ open class Stats(
     operator fun times(number: Float) = Stats(
         production * number,
         food * number,
+        water * number,
         gold * number,
         science * number,
         culture * number,
@@ -149,6 +157,7 @@ open class Stats(
     fun timesInPlace(number: Float) {
         production *= number
         food *= number
+        water *= number
         gold *= number
         science *= number
         culture *= number
@@ -164,6 +173,7 @@ open class Stats(
      * Apply weighting for Production Ranking */
     fun applyRankingWeights() {
         food *= 14
+        water *= 6
         production *= 12.01f // tie break Production vs gold
         gold *= 6 // 2 gold worth about 1 production
         science *= 9.01f // 4 Science better than 3 Production
@@ -216,6 +226,7 @@ open class Stats(
     fun asSequence() = sequence {
         if (production != 0f) yield(StatValuePair(Stat.Production, production))
         if (food != 0f) yield(StatValuePair(Stat.Food, food))
+        if (water != 0f) yield(StatValuePair(Stat.Water, water))
         if (gold != 0f) yield(StatValuePair(Stat.Gold, gold))
         if (science != 0f) yield(StatValuePair(Stat.Science, science))
         if (culture != 0f) yield(StatValuePair(Stat.Culture, culture))
@@ -224,16 +235,16 @@ open class Stats(
     }
 
     @Readonly
-    /** Fast aggregate: Sum over all seven stats */
-    fun sum() = production + food + gold + science + culture + happiness + faith
+    /** Fast aggregate: Sum over all eight stats */
+    fun sum() = production + food + water + gold + science + culture + happiness + faith
     @Readonly
-    /** Fast aggregate: Min of all seven stats */
-    fun min() = production.coerceAtMost(food).coerceAtMost(gold)
+    /** Fast aggregate: Min of all eight stats */
+    fun min() = production.coerceAtMost(food).coerceAtMost(water).coerceAtMost(gold)
         .coerceAtMost(science).coerceAtMost(culture)
         .coerceAtMost(happiness).coerceAtMost(faith)
     @Readonly
-    /** Fast aggregate: Max of all seven stats */
-    fun max() = production.coerceAtLeast(food).coerceAtLeast(gold)
+    /** Fast aggregate: Max of all eight stats */
+    fun max() = production.coerceAtLeast(food).coerceAtMost(water).coerceAtLeast(gold)
         .coerceAtLeast(science).coerceAtLeast(culture)
         .coerceAtLeast(happiness).coerceAtLeast(faith)
 

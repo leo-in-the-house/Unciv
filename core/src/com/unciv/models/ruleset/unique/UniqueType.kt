@@ -1142,7 +1142,7 @@ enum class UniqueType(
 
     // Formerly `ModOptionsConstants`
     DiplomaticRelationshipsCannotChange("Diplomatic relationships cannot change", UniqueTarget.ModOptions, flags = UniqueFlag.setOfNoConditionals),
-    ConvertGoldToScience("Can convert gold to science with sliders", UniqueTarget.ModOptions, flags = UniqueFlag.setOfNoConditionals),
+    ConvertGoldToScience("Can convert gold to science with sliders", UniqueTarget.ModOptions, UniqueTarget.Global, flags = UniqueFlag.setOfNoConditionals),
     AllowCityStatesSpawnUnits("Allow City States to spawn with additional units", UniqueTarget.ModOptions, flags = UniqueFlag.setOfNoConditionals),
     TradeCivIntroductions("Can trade civilization introductions for [positiveAmount] Gold", UniqueTarget.ModOptions, flags = UniqueFlag.setOfNoConditionals),
     DisableReligion("Disable religion", UniqueTarget.ModOptions, flags = UniqueFlag.setOfNoConditionals),
