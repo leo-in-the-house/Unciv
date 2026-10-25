@@ -24,7 +24,9 @@ internal class WorldScreenTopBarResources(topbar: WorldScreenTopBar) : ScalingTa
     private val turnsLabel = "Turns: 0/400".toLabel()
     private data class ResourceActors(val resource: TileResource, val label: Label, val icon: Group)
     private val resourceActors = ArrayList<ResourceActors>(12)
+    private val accumulatedResourceActors = ArrayList<ResourceActors>(12)
     private val resourcesWrapper = Table()
+    private val accumulatedResourceWrapper = Table()
     val worldScreen = topbar.worldScreen
 
     // Note: For a proper functioning of the "shift floating buttons down when cramped" feature, it is
@@ -48,6 +50,8 @@ internal class WorldScreenTopBarResources(topbar: WorldScreenTopBar) : ScalingTa
 
         resourcesWrapper.defaults().space(defaultPad)
         resourcesWrapper.touchable = Touchable.enabled
+        accumulatedResourceWrapper.defaults().space(defaultPad)
+        accumulatedResourceWrapper.touchable = Touchable.enabled
 
         turnsLabel.onClick {
             if (worldScreen.selectedCiv.isLongCountDisplay()) {
@@ -60,21 +64,43 @@ internal class WorldScreenTopBarResources(topbar: WorldScreenTopBar) : ScalingTa
         resourcesWrapper.onClick {
             worldScreen.openEmpireOverview(EmpireOverviewCategories.Resources)
         }
+        accumulatedResourceWrapper.onClick {
+            worldScreen.openEmpireOverview(EmpireOverviewCategories.Resources)
+        }
+
 
         val strategicResources = worldScreen.gameInfo.ruleset.tileResources.values
-            .filter { it.resourceType == ResourceType.Strategic && !it.isCityWide }
+            .filter { it.resourceType == ResourceType.Strategic && it.isStockpiled == true && !it.isCityWide }
+        
         for (resource in strategicResources) {
             val resourceImage = ImageGetter.getResourcePortrait(resource.name, iconSize)
             val resourceLabel = "0".toLabel()
             resourceActors += ResourceActors(resource, resourceLabel, resourceImage)
         }
 
-        add(turnsLabel)
-
         // in case the icons are configured higher than a label, we add a dummy - height will be measured once before it's updated
         if (resourceActors.isNotEmpty()) {
             resourcesWrapper.add(resourceActors[0].icon)
-            add(resourcesWrapper)
+            add(turnsLabel)
+            add(resourcesWrapper).row()
+        }
+        else{
+            add(turnsLabel).row()
+        }
+
+        val accumulatedStrategicResources = worldScreen.gameInfo.ruleset.tileResources.values
+            .filter { it.resourceType == ResourceType.Strategic && it.isStockpiled == false && !it.isCityWide }
+
+        for (resource in accumulatedStrategicResources) {
+            val resourceImage = ImageGetter.getResourcePortrait(resource.name, iconSize)
+            val resourceLabel = "0".toLabel()
+            accumulatedResourceActors += ResourceActors(resource, resourceLabel, resourceImage)
+        }
+
+        // in case the icons are configured higher than a label, we add a dummy - height will be measured once before it's updated
+        if (accumulatedResourceActors.isNotEmpty()) {
+            accumulatedResourceWrapper.add(accumulatedResourceActors[0].icon)
+            add(accumulatedResourceWrapper)
         }
     }
 
@@ -87,6 +113,8 @@ internal class WorldScreenTopBarResources(topbar: WorldScreenTopBar) : ScalingTa
         turnsLabel.setText(Fonts.turn + "\u2004" + civInfo.gameInfo.turns.tr() + "\u2004|\u2004" + yearText) // U+2004: Three-Per-Em Space
 
         resourcesWrapper.clearChildren()
+        accumulatedResourceWrapper.clearChildren()
+        
         val civResources = civInfo.getCivResourcesByName()
         val civResourceSupply = civInfo.getCivResourceSupply()
         for ((index, resourceActors) in resourceActors.withIndex()) {
@@ -101,14 +129,28 @@ internal class WorldScreenTopBarResources(topbar: WorldScreenTopBar) : ScalingTa
 
             resourcesWrapper.add(icon).padLeft(if (index == 0) 0f else extraPadBetweenResources)
 
-            if (!resource.isStockpiled)
-                label.setText(amount.tr())
-            else {
-                val perTurn = civResourceSupply.firstOrNull { it.resource == resource }?.amount ?: 0
-                if (perTurn == 0) label.setText(amount.tr())
-                else label.setText("${amount.tr()} (${perTurn.toStringSigned()})")
-            }
+            val perTurn = civResourceSupply.firstOrNull { it.resource == resource }?.amount ?: 0
+            if (perTurn == 0) label.setText(amount.tr())
+            else label.setText("${amount.tr()} (${perTurn.toStringSigned()})")
+            
             resourcesWrapper.add(label).padTop(resourceAmountDescentTweak)  // digits don't have descenders, so push them down a little
+        }
+        
+        for ((index, resourceActors) in accumulatedResourceActors.withIndex()) {
+            val (resource, label, icon) = resourceActors
+
+            if (resource.hasUnique(UniqueType.NotShownOnWorldScreen, civInfo.state)) continue
+
+            val amount = civResources[resource.name] ?: 0
+
+            if (amount == 0) // You cannot trade for resources you cannot process yourself yet
+                continue
+
+            accumulatedResourceWrapper.add(icon).padLeft(if (index == 0) 0f else extraPadBetweenResources)
+
+            label.setText(amount.tr())
+            
+            accumulatedResourceWrapper.add(label).padTop(resourceAmountDescentTweak)  // digits don't have descenders, so push them down a little
         }
 
         scaleTo(worldScreen.stage.width)

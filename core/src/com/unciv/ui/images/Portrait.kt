@@ -162,11 +162,15 @@ class PortraitResource(name: String, size: Float, amount: Int = 0) : Portrait(Ty
             addActor(amountGroup)
         }
     }
-
+    
     override fun getCircleImage() = ImageGetter.getImage("ResourceIcons/Circle")
 
-    override fun getDefaultInnerBackgroundTint(): Color =
-        ruleset.tileResources[imageName]?.resourceType?.getColor() ?: Color.WHITE
+    override fun getDefaultInnerBackgroundTint(): Color {
+        //Stockpiled strategics use a modified green color
+        if (ruleset.tileResources[imageName]?.isStockpiled == true) return Color.valueOf("0eaa0e") 
+        
+        return ruleset.tileResources[imageName]?.resourceType?.getColor() ?: Color.WHITE
+    }
 
     override fun draw(batch: Batch?, parentAlpha: Float) = super.draw(batch, parentAlpha)
 }
