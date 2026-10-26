@@ -39,7 +39,7 @@ import kotlin.math.max
  *
  * [update] will also attempt geometry optimization:
  *  * When there's enough room, the top bar has the stats row ([WorldScreenTopBarStats]) and the resources
- *      row ([WorldScreenTopBarResources]), and the selected-civ ([SelectedCivilizationTable]) and overview
+ *      row ([WorldScreenTopBarResources]) as well as the accumulated resource row ([WorldScreenTopBarAccumulatedResources]), and the selected-civ ([SelectedCivilizationTable]) and overview
  *      ([OverviewAndSupplyTable]) button elements are overlaid (floating, not in a Cell) to the left and right.
  *  * When screen space gets cramped (low resolution or portrait mode) and one of the overlaid elements would
  *      cover parts of the stats and/or resources lines, we move them down accordingly - below the stats line
@@ -57,6 +57,8 @@ import kotlin.math.max
  * +----------------------------------------+
  * | WorldScreenTopBarResources  colspan(3) |
  * +----------------------------------------+
+ * | WorldScreenTopBarAccumulatedResources  colspan(3) |
+ * +----------------------------------------+
  * | Filler |    transparent!!!    | Filler |
  * +--------╝                      ╚--------+
  * ```
@@ -69,6 +71,7 @@ class WorldScreenTopBar(internal val worldScreen: WorldScreen) : Table() {
 
     private val statsTable = WorldScreenTopBarStats(this)
     private val resourceTable = WorldScreenTopBarResources(this)
+    private val accumulatedResourceTable = WorldScreenTopBarAccumulatedResources(this)
     private val selectedCivTable = SelectedCivilizationTable(worldScreen)
     private val overviewButton = OverviewAndSupplyTable(worldScreen)
     private val leftFiller: BackgroundActor
@@ -90,6 +93,7 @@ class WorldScreenTopBar(internal val worldScreen: WorldScreen) : Table() {
         val backColor = BaseScreen.skinStrings.skinConfig.baseColor.darken(0.5f)
         statsTable.background = BaseScreen.skinStrings.getUiBackground("WorldScreen/TopBar/StatsTable", tintColor = backColor)
         resourceTable.background = BaseScreen.skinStrings.getUiBackground("WorldScreen/TopBar/ResourceTable", tintColor = backColor)
+        accumulatedResourceTable.background = BaseScreen.skinStrings.getUiBackground("WorldScreen/TopBar/ResourceTable", tintColor = backColor)
 
         val leftFillerBG = BaseScreen.skinStrings.getUiBackground("WorldScreen/TopBar/LeftAttachment", BaseScreen.skinStrings.roundedEdgeRectangleShape, backColor)
         leftFiller = BackgroundActor(leftFillerBG, Align.topLeft)
@@ -101,6 +105,7 @@ class WorldScreenTopBar(internal val worldScreen: WorldScreen) : Table() {
         setLayoutEnabled(false)
         statsTable.update(civInfo)
         resourceTable.update(civInfo)
+        accumulatedResourceTable.update(civInfo)
         selectedCivTable.update(worldScreen)
         overviewButton.update(worldScreen)
         updateLayout()
@@ -114,6 +119,7 @@ class WorldScreenTopBar(internal val worldScreen: WorldScreen) : Table() {
         val targetWidth = stage.width
         val statsWidth = statsTable.prefWidth
         val resourceWidth = resourceTable.prefWidth
+        val accumulatedResourceWidth = accumulatedResourceTable.prefWidth
         val overviewWidth = overviewButton.minWidth
         val overviewHeight = overviewButton.minHeight
         val selectedCivWidth = selectedCivTable.minWidth
@@ -129,6 +135,7 @@ class WorldScreenTopBar(internal val worldScreen: WorldScreen) : Table() {
         add(statsTable).colspan(3).growX().width(targetWidth).row()
         // Probability of a too-wide resources line is low in Vanilla, but mods may have lots more...
         add(resourceTable).colspan(3).growX().width(targetWidth).row()
+        add(accumulatedResourceTable).colspan(3).growX().width(targetWidth).row()
         layout()  // force rowHeight calculation - validate is not enough - Table quirks
         val statsRowHeight = getRowHeight(0)
         baseHeight = statsRowHeight + getRowHeight(1)
@@ -141,7 +148,7 @@ class WorldScreenTopBar(internal val worldScreen: WorldScreen) : Table() {
 
         // Check whether it gets cramped on narrow aspect ratios
         val centerButtonsToHeight = when {
-            leftRightNeeded * 2f > targetWidth - resourceWidth -> {
+            leftRightNeeded * 2f > targetWidth - max(resourceWidth, accumulatedResourceWidth) -> {
                 // Need to shift buttons down to below both stats and resources
                 addFillers(overlayHeight)
                 overlayHeight
@@ -161,8 +168,11 @@ class WorldScreenTopBar(internal val worldScreen: WorldScreen) : Table() {
         setSize(targetWidth, prefHeight)  // sizing to prefHeight is half a pack()
         setPosition(0f, stage.height - prefHeight)
 
+        selectedCivTable.setSize(selectedCivTable.prefWidth, prefHeight)
         selectedCivTable.setPosition(0f, (centerButtonsToHeight - selectedCivHeight) / 2f)
+        overviewButton.setSize(overviewButton.prefWidth, prefHeight)
         overviewButton.setPosition(targetWidth - overviewWidth, (centerButtonsToHeight - overviewHeight) / 2f)
+
         addActor(selectedCivTable) // needs to be after size
         addActor(overviewButton)
     }

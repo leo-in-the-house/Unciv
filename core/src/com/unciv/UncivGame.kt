@@ -438,7 +438,8 @@ open class UncivGame(val isConsoleMode: Boolean = false) : Game(), PlatformSpeci
     }
 
     override fun resize(width: Int, height: Int) {
-        screen.resize(width, height)
+        if (this.screen != null)
+            screen.resize(width, height)
     }
 
     override fun render() = wrappedCrashHandlingRender()
