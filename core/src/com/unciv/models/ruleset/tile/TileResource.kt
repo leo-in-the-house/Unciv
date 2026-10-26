@@ -139,7 +139,8 @@ class TileResource : RulesetStatsObject(), GameResource {
         else -> when (filter) {
             name -> true
             resourceType.name -> true
-            else -> improvementStats?.any { filter == it.key.name } == true
+            else -> improvementStats?.any { filter == it.key.name } == true 
+                || hasTagUnique(filter)
         }
     }
 
