@@ -131,10 +131,14 @@ object StrategicBonusResourcePlacementLogic {
             for (rule in resource.uniqueObjects.filter { it.type == UniqueType.ResourceFrequency }) {
                 // Figure out which list applies, if any
                 val simpleRule = anonymizeUnique(rule)
-                val list = ruleLists.filterKeys { it.text == simpleRule.text }.values.firstOrNull()
+                val list = ruleLists.filterKeys { it.text == simpleRule.text }.values.
+                    firstOrNull()?.filter { resource.generatesNaturallyOn(it) }
                 // If there is no matching list, it is because the rule was determined to be impossible and so can be safely skipped
                     ?: continue
-                // Place the resources
+                
+                //Filter the list based off of the resources' validity, so really strictly placed resources don't get spammed in their regions
+                
+                // Place the resources                
                 MapRegionResources.placeResourcesInTiles(
                     tileData,
                     (rule.params[0].toFloat() * bonusMultiplier).toInt(),
@@ -150,7 +154,7 @@ object StrategicBonusResourcePlacementLogic {
                 // Since we haven't been able to generate any rule-based lists, just generate new ones on the fly
                 // Increase impact to avoid clustering since there is no terrain type stratification.
                 val fallbackList =
-                    tileMap.values.filter { it.lastTerrain.name in resource.terrainsCanBeFoundOn }.shuffled()
+                    tileMap.values.filter { it.lastTerrain.name in resource.terrainsCanBeFoundOn && resource.generatesNaturallyOn(it) }.shuffled()
                 MapRegionResources.placeResourcesInTiles(
                     tileData,
                     (20 * bonusMultiplier).toInt(),

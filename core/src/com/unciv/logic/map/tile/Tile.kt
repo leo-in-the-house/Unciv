@@ -596,7 +596,7 @@ class Tile : IsPartOfGameInfoSerialization {
             resource -> observingCiv == null || observingCiv.canSeeResource(tileResource)
 
             else -> {
-                if (allTerrains.any { it.matchesFilter(filter, stateThisTile, false) }) return true
+                if (allTerrains.any { it.matchesFilter(filter, stateThisTile, false) || it.hasTagUnique(filter, stateThisTile)}) return true
 
                 val owner = getOwner()
                 if (owner != null && owner.matchesFilter(filter, stateThisTile, false)) return true
