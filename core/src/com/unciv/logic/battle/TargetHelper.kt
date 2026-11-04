@@ -9,6 +9,7 @@ import com.unciv.logic.map.tile.Tile
 import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.ruleset.unique.UniqueType
 import yairm210.purity.annotations.Readonly
+import kotlin.math.min
 
 object TargetHelper {
     @Readonly
@@ -19,6 +20,7 @@ object TargetHelper {
         stayOnTile: Boolean = false
     ): ArrayList<AttackableTile> = timeThis("getAttackableEnemies") {
         val rangeOfAttack = unit.getRange()
+        val minRange = unit.getMinimumRange()
         val attackableTiles = ArrayList<AttackableTile>()
 
         val unitMustBeSetUp = unit.hasUnique(UniqueType.MustSetUp)
@@ -50,6 +52,9 @@ object TargetHelper {
                     // Since military units can technically enter tiles with enemy civilians,
                     // some try to move to to the tile and then attack the unit it contains, which is silly
                     tile == reachableTile -> continue
+                    
+                    //Check minimum range
+                    minRange > 0 && tile.aerialDistanceTo(reachableTile) < minRange -> continue
 
                     unit.isNuclearWeapon() -> {
                         if (Nuke.mayUseNuke(MapUnitCombatant(unit), tile))

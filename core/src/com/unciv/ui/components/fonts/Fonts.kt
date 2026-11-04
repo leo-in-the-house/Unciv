@@ -137,6 +137,7 @@ object Fonts {
     const val defenseStrength = '†'            // U+2020 'dagger'
     const val attackStrength = '‡'      // U+2021 'double dagger'
     const val movement = '➡'            // U+27A1 'black rightwards arrow'
+    const val minimumRange = '‥'               // U+2025 '2 dot leader'
     const val range = '…'               // U+2026 'horizontal ellipsis'
     const val health = '♡'              // U+2661 'white heart suit'
     const val production = '⚙'          // U+2699 'gear'

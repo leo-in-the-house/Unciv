@@ -32,7 +32,8 @@ object Nuke {
         if (launchTile == targetTile) return false
         if (!targetTile.isExplored(attackerCiv)) return false
         // Can only nuke in unit's range, visibility (line of sight) doesn't matter
-        if (launchTile.aerialDistanceTo(targetTile) > nuke.unit.getRange()) return false
+        if (launchTile.aerialDistanceTo(targetTile) > nuke.unit.getRange() 
+            || launchTile.aerialDistanceTo(targetTile) < nuke.unit.getMinimumRange()) return false
 
         var canNuke = true
         

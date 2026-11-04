@@ -36,7 +36,7 @@ enum class UniqueType(
     // region Stat providing uniques
 
     // Used for *global* bonuses and improvement/terrain bonuses
-    Stats("[stats]", UniqueTarget.Global, UniqueTarget.Improvement, UniqueTarget.Terrain),
+    Stats("[stats]", UniqueTarget.Global, UniqueTarget.Improvement, UniqueTarget.Terrain, UniqueTarget.Unit),
     // Used for city-wide bonuses
     StatsPerCity("[stats] [cityFilter]", UniqueTarget.Global, UniqueTarget.FollowerBelief),
 

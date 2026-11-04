@@ -356,7 +356,8 @@ object UnitAutomation {
                 if (otherUnit.baseUnit.isRanged()) {
                     // Don't swap ranged units closer than they have to be
                     val range = otherUnit.baseUnit.range
-                    if (ourDistanceToClosestEnemy < range)
+                    val minimumRange = otherUnit.baseUnit.minimumRange
+                    if (ourDistanceToClosestEnemy < range && ourDistanceToClosestEnemy >= minimumRange)
                         continue
                 }
                 if (unit.movement.canUnitSwapTo(retreatTile)) {
@@ -462,7 +463,8 @@ object UnitAutomation {
             .flatMap { tile -> tile.getUnits().filter { unit.civ.isAtWarWith(it.civ) } }
 
         val tilesInRangeOfAttack = nearbyEnemyUnits
-            .flatMap { it.getTile().getTilesInDistance((it.getMaxMovement() - 1) + it.getRange()) }
+            .flatMap { attacker -> attacker.getTile().getTilesInDistance((attacker.getMaxMovement() - 1) + attacker.getRange())
+                .filter { attacker.getMinimumRange() > 0 && it.aerialDistanceTo(attacker.getTile()) >= attacker.getMinimumRange() }}
 
         val tilesWithinBombardmentRange = unit.currentTile.getTilesInDistance(3)
             .filter { it.isCityCenter() && it.getCity()!!.civ.isAtWarWith(unit.civ) }

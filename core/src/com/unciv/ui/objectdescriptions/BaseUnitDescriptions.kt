@@ -64,7 +64,14 @@ object BaseUnitDescriptions {
         if (baseUnit.defenseStrength != 0) {
             strengthLine += "${baseUnit.defenseStrength}${Fonts.defenseStrength}, "
             if (baseUnit.attackStrength != 0)
-                strengthLine += "${baseUnit.attackStrength}${Fonts.attackStrength}, ${baseUnit.range}${Fonts.range}, "
+            {
+                if (baseUnit.minimumRange != 0) {
+                    strengthLine += "${baseUnit.attackStrength}${Fonts.attackStrength}, ${baseUnit.minimumRange}${Fonts.minimumRange}, ${baseUnit.range}${Fonts.range}, "
+                }
+                else {
+                    strengthLine += "${baseUnit.attackStrength}${Fonts.attackStrength}, ${baseUnit.range}${Fonts.range}, "
+                }
+            }
         }
         lines += "$strengthLine${baseUnit.movement}${Fonts.movement}"
 
@@ -101,6 +108,9 @@ object BaseUnitDescriptions {
         if (defenseStrength != 0) stats += "$defenseStrength${Fonts.defenseStrength}"
         if (attackStrength != 0) {
             stats += "$attackStrength${Fonts.attackStrength}"
+            if (minimumRange != 0) {
+                stats += "$minimumRange${Fonts.minimumRange}"
+            }
             stats += "$range${Fonts.range}"
         }
         if (movement != 0 && ruleset.unitTypes[unitType]?.isAirUnit() != true)

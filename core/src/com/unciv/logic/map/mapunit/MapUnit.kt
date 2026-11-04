@@ -485,6 +485,13 @@ class MapUnit : IsPartOfGameInfoSerialization {
     }
 
     @Readonly
+    fun getMinimumRange(): Int {
+        if (baseUnit.isMelee()) return 1
+        var range = baseUnit.minimumRange
+        return range
+    }
+    
+    @Readonly
     fun getRange(): Int {
         if (baseUnit.isMelee()) return 1
         var range = baseUnit.range

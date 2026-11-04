@@ -46,6 +46,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     var attackStrength: Int = 0
     var defenseStrength: Int = 0
     var religiousStrength: Int = 0
+    var minimumRange: Int = 0
     var range: Int = 0
     var interceptRange = 0
     var unitType: String = ""

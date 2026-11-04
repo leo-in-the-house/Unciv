@@ -149,7 +149,8 @@ class ThreatManager(val civInfo: Civilization) {
         val nearbyRangedEnemyUnits = getEnemyUnitsOnTiles(tilesWithEnemyUnits)
 
         val tilesInRangeOfAttack = nearbyRangedEnemyUnits
-            .flatMap { it.getTile().getTilesInDistance(it.getRange()) }
+            .flatMap { attacker -> attacker.getTile().getTilesInDistance(attacker.getRange())
+                .filter { attacker.getMinimumRange() > 0 && it.aerialDistanceTo(attacker.getTile()) >= attacker.getMinimumRange() }}
 
         val tilesWithinBombardmentRange = tilesWithEnemyUnits
             .filter { it.isCityCenter() && it.getCity()!!.civ.isAtWarWith(unit.civ) }
