@@ -90,7 +90,13 @@ class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: W
                 descriptionTable.add(Fonts.defenseStrength + baseUnit.defenseStrength.tr()).padRight(10f)
 
             if (baseUnit.isRanged())
+            {
+                if (baseUnit.minimumRange > 0) {
+                    descriptionTable.add(Fonts.minimumRange + unit.getMinimumRange().tr()).padRight(10f)
+                }
+                
                 descriptionTable.add(Fonts.range + unit.getRange().tr()).padRight(10f)
+            }
 
             val interceptionRange = unit.getInterceptionRange()
             if (interceptionRange > 0) {

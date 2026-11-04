@@ -183,6 +183,7 @@ object Fonts {
         turn to "EmojiIcons/Turn",
         defenseStrength to "StatIcons/Strength",
         attackStrength to "StatIcons/RangedStrength",
+        minimumRange to "StatIcons/MinimumRange",
         range to "StatIcons/Range",
         movement to "StatIcons/Movement",
         production to "EmojiIcons/Production",
