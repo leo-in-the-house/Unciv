@@ -1117,14 +1117,14 @@ class Tile : IsPartOfGameInfoSerialization {
             unit.getTile().setImprovement(improvement, unit.civ, unit)
             unit.civ.cache.updateViewableTiles() // to update 'last seen improvement'
             unit.useMovementPoints(unit.currentMovement)
+
+            //Consumes a charge if the unit has max charges
+            if (unit.baseUnit.charges > 0) {
+                unit.consumeCharges()
+            }
         }
         else {
             queueImprovement(improvement.name, turns)
-        }
-        
-        //Consumes a charge if the unit has max charges
-        if (unit.baseUnit.charges > 0) {
-            unit.consumeCharges()
         }
     }
 
@@ -1141,6 +1141,11 @@ class Tile : IsPartOfGameInfoSerialization {
 
         if (improvementQueue.first().countDown()) return false
         val queueEntry = improvementQueue.removeAt(0)
+        
+        //Consumes a charge if the unit has max charges
+        if (worker.baseUnit.charges > 0) {
+            worker.consumeCharges()
+        }
 
         if (worker.civ.isCurrentPlayer())
             UncivGame.Current.settings.addCompletedTutorialTask("Construct an improvement")
