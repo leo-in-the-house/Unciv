@@ -104,9 +104,21 @@ object BattleDamage {
             combatant.unit.forEachMatchingUnique(UniqueType.AttackStrength, conditionalState, checkCivInfoUniques = true) { unique ->
                 modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
             }
+            combatant.unit.forEachMatchingUnique(UniqueType.AttackStrengthAmount, conditionalState, checkCivInfoUniques = true) { unique ->
+                modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
+            }
+            combatant.unit.forEachMatchingUnique(UniqueType.AttackStrengthForAdjacentEnemies, conditionalState, checkCivInfoUniques = true) { unique ->
+                modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
+            }
         }
         if (conditionalState.combatAction == CombatAction.Defend) {
             combatant.unit.forEachMatchingUnique(UniqueType.DefenseStrength, conditionalState, checkCivInfoUniques = true) { unique ->
+                modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
+            }
+            combatant.unit.forEachMatchingUnique(UniqueType.DefenseStrengthAmount, conditionalState, checkCivInfoUniques = true) { unique ->
+                modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
+            }
+            combatant.unit.forEachMatchingUnique(UniqueType.DefenseStrengthForAdjacentEnemies, conditionalState, checkCivInfoUniques = true) { unique ->
                 modifiers.add(getModifierStringFromUnique(unique), unique.params[0].toInt())
             }
         }

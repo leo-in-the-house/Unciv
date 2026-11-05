@@ -115,6 +115,8 @@ object BaseUnitDescriptions {
         }
         if (movement != 0 && ruleset.unitTypes[unitType]?.isAirUnit() != true)
             stats += "$movement${Fonts.movement}"
+        if (charges != 0)
+            stats += "$charges${Fonts.charges}"
         if (stats.isNotEmpty())
             add(stats.joinToString(", "))
 

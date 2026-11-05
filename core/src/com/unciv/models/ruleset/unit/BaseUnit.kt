@@ -43,6 +43,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     override var hurryCostModifier: Int = 0
     var supplyCost: Int = 1
     var movement: Int = 0
+    var charges: Int = 0
     var attackStrength: Int = 0
     var defenseStrength: Int = 0
     var religiousStrength: Int = 0
@@ -139,6 +140,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
         unit.civ = civInfo
         unit.owner = civInfo.civID
         unit.id = unitId ?: civInfo.gameInfo.getNextUnitId()
+        unit.curCharges = charges
 
         // must be after setting name & civInfo because it sets the baseUnit according to the name
         // and the civInfo is required for using `hasUnique` when determining its movement options

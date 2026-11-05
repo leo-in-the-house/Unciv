@@ -339,7 +339,16 @@ object Conditionals {
                         state.relevantTile!!.neighbors.any {
                         it.getUnits().any {
                             it != state.relevantUnit &&
-                                it.matchesFilter(conditional.params[0])
+                                it.matchesFilter(conditional.params[0], true, state)
+                        }
+                    }
+            UniqueType.ConditionalNotAdjacentUnit ->
+                state.relevantCiv == null ||
+                    state.relevantUnit == null ||
+                    state.relevantTile!!.neighbors.none {
+                        it.getUnits().any {
+                            it != state.relevantUnit &&
+                                it.matchesFilter(conditional.params[0], true, state)
                         }
                     }
 

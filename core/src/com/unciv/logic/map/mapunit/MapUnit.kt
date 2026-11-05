@@ -63,6 +63,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
     /** Should not be changed directly - instead use [useMovementPoints] */
     var currentMovement: Float = 0f
     var health: Int = 100
+    var curCharges: Int = 0
     var id: Int = Constants.NO_ID
 
     // work, automation, fortifying, ...
@@ -223,6 +224,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
         toReturn.originalOwner = originalOwner
         toReturn.instanceName = instanceName
         toReturn.currentMovement = currentMovement
+        toReturn.curCharges = curCharges
         toReturn.health = health
         toReturn.action = action
         toReturn.automated = automated
@@ -728,12 +730,12 @@ class MapUnit : IsPartOfGameInfoSerialization {
     /** Implements [UniqueParameterType.MapUnitFilter][com.unciv.models.ruleset.unique.UniqueParameterType.MapUnitFilter] 
      * Gets passed state explicitly when the unit applying the filter isn't this unit*/
     @Readonly
-    fun matchesFilter(filter: String, multiFilter: Boolean = true, state: GameContext = GameContext.EmptyState): Boolean =
+    fun matchesFilter(filter: String, multiFilter: Boolean = true, state: GameContext = cache.state): Boolean =
         if (multiFilter) MultiFilter.multiFilter(filter, { matchesSingleFilter(it, state) })
         else matchesSingleFilter(filter, state)
 
     @Readonly
-    private fun matchesSingleFilter(filter: String, state: GameContext = GameContext.EmptyState): Boolean {
+    private fun matchesSingleFilter(filter: String, state: GameContext = cache.state): Boolean {        
         return when (filter) {
             "other" -> state.unit != this
             Constants.wounded, "wounded units" -> health < 100
@@ -742,9 +744,9 @@ class MapUnit : IsPartOfGameInfoSerialization {
             Constants.embarked -> isEmbarked()
             "Non-City" -> true
             else -> {
-                if (baseUnit.matchesFilter(filter, cache.state, false)) return true
-                if (civ.matchesFilter(filter, cache.state, false)) return true
-                if (nonUnitUniquesMap.hasUnique(filter, cache.state)) return true
+                if (baseUnit.matchesFilter(filter, state, false)) return true
+                if (civ.matchesFilter(filter, state, false)) return true
+                if (nonUnitUniquesMap.hasUnique(filter, state)) return true
                 if (promotions.promotions.contains(filter)) return true
                 if (hasStatus(filter)) return true
                 return false
@@ -918,6 +920,18 @@ class MapUnit : IsPartOfGameInfoSerialization {
         if (amount < 0) {
             val maxMovement = getMaxMovement().toFloat()
             if (currentMovement > maxMovement) currentMovement = maxMovement
+        }
+    }
+
+    fun consumeCharges() {
+        consumeCharges(1)
+    }
+    
+    fun consumeCharges(amount: Int) {
+        if (baseUnit.charges <= 0) return
+        curCharges -= amount
+        if (curCharges <= 0) {
+            consume()
         }
     }
 

@@ -398,7 +398,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "[stats]"
 	Example: "[+1 Gold, +2 Production]"
 
-	Applicable to: Global, Unit, Terrain, Improvement
+	Applicable to: Global, Terrain, Improvement
 
 ??? example  "[stats] [cityFilter]"
 	Example: "[+1 Gold, +2 Production] [in all cities]"
@@ -2112,11 +2112,6 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
     Uniques that can be added to units, unit types, or promotions
 
-??? example  "[stats]"
-	Example: "[+1 Gold, +2 Production]"
-
-	Applicable to: Global, Unit, Terrain, Improvement
-
 ??? example  "[relativeAmount]% Yield from pillaging tiles"
 	Example: "[+20]% Yield from pillaging tiles"
 
@@ -2861,7 +2856,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "[stats]"
 	Example: "[+1 Gold, +2 Production]"
 
-	Applicable to: Global, Unit, Terrain, Improvement
+	Applicable to: Global, Terrain, Improvement
 
 ??? example  "[amount] Sight"
 	Example: "[3] Sight"
@@ -3134,7 +3129,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "[stats]"
 	Example: "[+1 Gold, +2 Production]"
 
-	Applicable to: Global, Unit, Terrain, Improvement
+	Applicable to: Global, Terrain, Improvement
 
 ??? example  "Consumes [amount] [resource]"
 	Example: "Consumes [3] [Iron]"
@@ -4135,6 +4130,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Conditional
 
+??? example  "&lt;when not adjacent to a [mapUnitFilter] unit&gt;"
+	Example: "&lt;when not adjacent to a [Wounded] unit&gt;"
+
+	Applicable to: Conditional
+
 ??? example  "&lt;when above [positiveAmount] HP&gt;"
 	Example: "&lt;when above [3] HP&gt;"
 
@@ -4481,6 +4481,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
     Modifiers that can be added to UnitAction uniques as conditionals
 
 ??? example  "&lt;by consuming this unit&gt;"
+	Applicable to: UnitActionModifier
+
+??? example  "&lt;for [amount] charges&gt;"
+	Example: "&lt;for [3] charges&gt;"
+
 	Applicable to: UnitActionModifier
 
 ??? example  "&lt;for [amount] movement&gt;"

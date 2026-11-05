@@ -36,7 +36,7 @@ enum class UniqueType(
     // region Stat providing uniques
 
     // Used for *global* bonuses and improvement/terrain bonuses
-    Stats("[stats]", UniqueTarget.Global, UniqueTarget.Improvement, UniqueTarget.Terrain, UniqueTarget.Unit),
+    Stats("[stats]", UniqueTarget.Global, UniqueTarget.Improvement, UniqueTarget.Terrain),
     // Used for city-wide bonuses
     StatsPerCity("[stats] [cityFilter]", UniqueTarget.Global, UniqueTarget.FollowerBelief),
 
@@ -620,6 +620,7 @@ enum class UniqueType(
     ///////////////////////////////////////// region 05 UNIT ACTION MODIFIERS /////////////////////////////////////////
 
     UnitActionConsumeUnit("by consuming this unit", UniqueTarget.UnitActionModifier),
+    UnitActionConsumeCharge("for [amount] charges", UniqueTarget.UnitActionModifier),
     UnitActionMovementCost("for [amount] movement", UniqueTarget.UnitActionModifier,
         docDescription = "Will consume up to [amount] of Movement to execute"),
     UnitActionMovementCostAll("for all movement", UniqueTarget.UnitActionModifier,
@@ -884,6 +885,7 @@ enum class UniqueType(
     ConditionalFightingInTiles("when fighting in [tileFilter] tiles", UniqueTarget.Conditional),
     ConditionalForeignContinent("on foreign continents", UniqueTarget.Conditional),
     ConditionalAdjacentUnit("when adjacent to a [mapUnitFilter] unit", UniqueTarget.Conditional),
+    ConditionalNotAdjacentUnit("when not adjacent to a [mapUnitFilter] unit", UniqueTarget.Conditional),
     ConditionalAboveHP("when above [positiveAmount] HP", UniqueTarget.Conditional),
     ConditionalBelowHP("when below [positiveAmount] HP", UniqueTarget.Conditional),
     ConditionalBelowMovement("when below [positiveAmount] movement", UniqueTarget.Conditional),

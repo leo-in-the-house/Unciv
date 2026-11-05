@@ -63,6 +63,7 @@ class TileSetStrings(
         .filterNot { it == RoadStatus.None }
         .associateWith { tileSetLocation + it.name }
     val naturalWonder = tileSetLocation + "Tiles/NaturalWonder"
+    val underConstruction by lazy { orFallback { tileSetLocation + "Tiles/UnderConstruction" } }
 
     val tilesLocation = tileSetLocation + "Tiles/"
     val bottomRightRiver by lazy { orFallback { tilesLocation + "River-BottomRight"} }

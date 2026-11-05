@@ -47,7 +47,7 @@ class TileImprovement : RulesetStatsObject() {
         return buildSpeedUniques.fold(buildTime) { calculatedTurnsToBuild, unique ->
                 calculatedTurnsToBuild * unique.params[0].toPercent()
             }.roundToInt()
-            .coerceAtLeast(1)
+            .coerceAtLeast(0)
         // In some weird cases it was possible for something to take 0 turns, leading to it instead never finishing
     }
 

@@ -10,6 +10,7 @@ import com.unciv.ui.components.tilegroups.TileGroup
 import com.unciv.ui.images.ImageGetter
 import com.unciv.ui.screens.basescreen.BaseScreen
 import yairm210.purity.annotations.Readonly
+import kotlin.collections.listOf
 import kotlin.random.Random
 
 class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup, size) {
@@ -34,7 +35,7 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
         return if (ImageGetter.imageExists(altogether)) listOf(altogether)
         else resourceAndImprovementSequence.map { strings.orFallback { getTile(it) } }.toList()
     }
-
+    
     private fun usePillagedImprovementImage(tileView: TileView): Boolean {
         if (!tileView.improvementIsPillaged || !UncivGame.Current.settings.showPixelImprovements) return false
         val shownImprovement = tileView.getShownImprovement() ?: return false
@@ -94,10 +95,16 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
             strings.tileSetConfig.ruleVariants[allTogether] != null -> baseHexagon.apply {
                 addAll(strings.tileSetConfig.ruleVariants[allTogether]!!.map { strings.getTile(it) })
                 addAll(edgeImages)
+                if (tileView.improvementInProgress != null) {
+                    add(strings.underConstruction)
+                }
             }
             ImageGetter.imageExists(allTogetherLocation) -> baseHexagon.apply {
                 add(allTogetherLocation)
                 addAll(edgeImages)
+                if (tileView.improvementInProgress != null) {
+                    add(strings.underConstruction)
+                }
             }
             tileView.naturalWonder != null -> getNaturalWonderBackupImage(baseHexagon) + edgeImages
             else -> baseHexagon.apply {
@@ -105,6 +112,9 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
                 addAll(edgeImages)
                 if (resourceAndImprovementSequence.any())
                     addAll(getImprovementAndResourceImages(resourceAndImprovementSequence))
+                if (tileView.improvementInProgress != null) {
+                    add(strings.underConstruction)
+                }
             }
         }
     }

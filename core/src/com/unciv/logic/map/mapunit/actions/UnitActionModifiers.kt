@@ -187,6 +187,10 @@ object UnitActionModifiers {
                         unit.promotions.removePromotion(promotionName)
                     }
                 }
+                UniqueType.UnitActionConsumeCharge -> {
+                    val amount = conditional.params[0].toInt()
+                    unit.consumeCharges(amount)
+                }
                 else -> continue
             }
         }

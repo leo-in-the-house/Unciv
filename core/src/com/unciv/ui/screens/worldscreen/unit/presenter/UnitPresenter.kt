@@ -97,6 +97,10 @@ class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: W
                 
                 descriptionTable.add(Fonts.range + unit.getRange().tr()).padRight(10f)
             }
+            
+            if (unit.getCurrentCharges() != 0) {
+                descriptionTable.add(Fonts.charges + unit.getCurrentCharges().tr()).padRight(10f)
+            }
 
             val interceptionRange = unit.getInterceptionRange()
             if (interceptionRange > 0) {

@@ -14,6 +14,7 @@ import com.unciv.logic.map.mapgenerator.MapGenerator
 import com.unciv.logic.map.mapgenerator.MapResourceSetting
 import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.logic.map.mapunit.UnitTurnManager
+import com.unciv.logic.map.mapunit.actions.UnitActionModifiers
 import com.unciv.logic.map.mapunit.movement.UnitMovement
 import com.unciv.models.ruleset.Ruleset
 import com.unciv.models.ruleset.tile.ResourceType
@@ -1108,9 +1109,23 @@ class Tile : IsPartOfGameInfoSerialization {
 
     /** Adds an entry to the [improvementQueue], by looking up the time it takes using [civInfo] and [unit] */
     fun queueImprovement(improvement: TileImprovement, civInfo: Civilization, unit: MapUnit) {
-        val turns = if (civInfo.gameInfo.gameParameters.godMode) 1
+        val turns = if (civInfo.gameInfo.gameParameters.godMode) 0
             else improvement.getTurnsToBuild(civInfo, unit)
-        queueImprovement(improvement.name, turns)
+        
+        //Build instantly and use remaining movement points if cost is 0
+        if (turns <= 0) {
+            unit.getTile().setImprovement(improvement, unit.civ, unit)
+            unit.civ.cache.updateViewableTiles() // to update 'last seen improvement'
+            unit.useMovementPoints(unit.currentMovement)
+        }
+        else {
+            queueImprovement(improvement.name, turns)
+        }
+        
+        //Consumes a charge if the unit has max charges
+        if (unit.baseUnit.charges > 0) {
+            unit.consumeCharges()
+        }
     }
 
     /** Adds an entry to the [improvementQueue] with explicit [turnsToImprovement] */

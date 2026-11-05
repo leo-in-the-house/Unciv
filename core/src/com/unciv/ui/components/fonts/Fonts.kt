@@ -139,6 +139,7 @@ object Fonts {
     const val movement = '➡'            // U+27A1 'black rightwards arrow'
     const val minimumRange = '‥'               // U+2025 '2 dot leader'
     const val range = '…'               // U+2026 'horizontal ellipsis'
+    const val charges = '★'               // U+2605 'black star'
     const val health = '♡'              // U+2661 'white heart suit'
     const val production = '⚙'          // U+2699 'gear'
     const val gold = '¤'                // U+00A4 'currency sign'
@@ -185,6 +186,7 @@ object Fonts {
         attackStrength to "StatIcons/RangedStrength",
         minimumRange to "StatIcons/MinimumRange",
         range to "StatIcons/Range",
+        charges to "StatIcons/Charges",
         movement to "StatIcons/Movement",
         production to "EmojiIcons/Production",
         gold to "EmojiIcons/Gold",
