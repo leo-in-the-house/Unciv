@@ -261,7 +261,10 @@ open class RulesetValidator protected constructor(
                     RulesetErrorSeverity.Warning, improvement
                 )
             }
-
+            if (!ruleset.tileResources.containsKey(improvement.resourceType))
+                lines.add("${improvement.name} requires resource ${improvement.resourceType} which does not exist!")
+            if (improvement.resourceType == null && improvement.resourceAmount != -1)
+                lines.add("${improvement.name} has a resource amount, but no valid resource!")
             for (unique in improvement.uniqueObjects
                 .filter { it.type == UniqueType.PillageYieldRandom || it.type == UniqueType.PillageYieldFixed }) {
                 if (!Stats.isStats(unique.params[0])) continue

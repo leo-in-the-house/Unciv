@@ -576,9 +576,18 @@ class WorkerAutomation(
             stats.div(3f)
 
         var value = Automation.rankStatsValue(stats, GameView(unit.civ.gameInfo, unit.civ).civView)
+        val currentImprovement = tile.tileImprovement
+        // Calculate the bonus from any resources the improvement provides
+        val improvementResource = currentImprovement?.resourceType
+        if (improvementResource != null) {
+            val improvementResourceAmount = currentImprovement.resourceAmount
+            
+            if (improvementResourceAmount > 0) {
+                value += improvementResourceAmount
+            }
+        }
         // Calculate the bonus from gaining the resources, this isn't included in the stats above
         val resource = tile.tileResource
-        val currentImprovement = tile.tileImprovement
         if (resource != null) {
             // A better resource ranking system might be required, we don't want the improvement
             // ranking for resources to be too high

@@ -47,6 +47,7 @@ open class TileGroup(
     @Suppress("LeakingThis") val layerMisc = TileLayerMisc(this, groupSize)
     @Suppress("LeakingThis") val layerResource = TileLayerResource(this, groupSize)
     @Suppress("LeakingThis") val layerImprovement = TileLayerImprovement(this, groupSize)
+    @Suppress("LeakingThis") val layerImprovementResource = TileLayerImprovementResource(this, groupSize)
     @Suppress("LeakingThis") val layerYield = TileLayerYield(this, groupSize)
     @Suppress("LeakingThis") val layerOverlay = TileLayerOverlay(this, groupSize)
     @Suppress("LeakingThis") val layerUnitArt = TileLayerUnitSprite(this, groupSize)
@@ -59,6 +60,7 @@ open class TileGroup(
         layerBorders,
         layerResource,
         layerImprovement,
+        layerImprovementResource,
         layerMisc, // yields, citizens, arrows, starting locations (editor)
         layerYield,
         layerOverlay, // highlight, fog, crosshair

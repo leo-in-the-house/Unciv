@@ -290,8 +290,8 @@ object ImageGetter {
     fun getPromotionPortrait(promotionName: String, size: Float = 30f): Group = PortraitPromotion(promotionName, size)
 
     @Readonly
-    fun getResourcePortrait(resourceName: String, size: Float, amount: Int= 0): Group =
-        PortraitResource(resourceName, size, amount)
+    fun getResourcePortrait(resourceName: String, size: Float, amount: Int= 0, alignAmountLeft: Boolean = false): Group =
+        PortraitResource(resourceName, size, amount, alignAmountLeft)
 
     fun getTechIconPortrait(techName: String, circleSize: Float): Group = PortraitTech(techName, circleSize)
 

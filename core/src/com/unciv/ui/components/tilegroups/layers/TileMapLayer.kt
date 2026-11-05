@@ -70,6 +70,12 @@ class ImprovementMapLayer(initialCapacity: Int, actable: Boolean = false, toucha
     override fun draw(batch: Batch, parentAlpha: Float) = super.draw(batch, parentAlpha)
 }
 
+class ImprovementResourceMapLayer(initialCapacity: Int, actable: Boolean = false, touchable: Boolean = false):
+    TileMapLayer<TileLayerImprovementResource>(initialCapacity, actable, touchable) {
+    override fun act(delta: Float) = super.act(delta)
+    override fun draw(batch: Batch, parentAlpha: Float) = super.draw(batch, parentAlpha)
+}
+
 class MiscMapLayer(initialCapacity: Int, actable: Boolean = false, touchable: Boolean = false):
     TileMapLayer<TileLayerMisc>(initialCapacity, actable, touchable) {
     override fun act(delta: Float) = super.act(delta)

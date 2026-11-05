@@ -115,6 +115,7 @@ class TileGroupMap<T: TileGroup>(
         val borderMapLayer      = BordersMapLayer(numberOfTilegroups)
         val resourceMapLayer    = ResourceMapLayer(numberOfTilegroups, actable = true)
         val improvementMapLayer = ImprovementMapLayer(numberOfTilegroups, actable = true)
+        val improvementResourceMapLayer  = ImprovementResourceMapLayer(numberOfTilegroups, actable = true)
         // TileLayerMisc.workedIcon may receive touches, so the container must forward them
         val miscMapLayer        = MiscMapLayer(numberOfTilegroups, touchable = true)
         val yieldMapLayer       = YieldMapLayer(numberOfTilegroups)
@@ -150,6 +151,7 @@ class TileGroupMap<T: TileGroup>(
             borderMapLayer.add(group.layerBorders, group.x, group.y)
             resourceMapLayer.add(group.layerResource, group.x, group.y)
             improvementMapLayer.add(group.layerImprovement, group.x, group.y)
+            improvementResourceMapLayer.add(group.layerImprovementResource, group.x, group.y)
             miscMapLayer.add(group.layerMisc, group.x, group.y)
             yieldMapLayer.add(group.layerYield, group.x, group.y)
             unitSpriteMapLayer.add(group.layerUnitArt, group.x, group.y)
@@ -168,6 +170,7 @@ class TileGroupMap<T: TileGroup>(
             borderMapLayer,
             resourceMapLayer,
             improvementMapLayer,
+            improvementResourceMapLayer,
             tileGroupLayer,       // TileGroups for click detection; kept below miscMapLayer so
                                   // miscMapLayer is hit-tested first (city-screen workedIcon clicks)
             miscMapLayer,

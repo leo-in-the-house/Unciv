@@ -29,6 +29,8 @@ class TileImprovement : RulesetStatsObject() {
     val shortcutKey: Char? = null
     // This is the base cost. A cost of 0 means created instead of buildable.
     var turnsToBuild: Int = -1
+    var resourceType: String? = null
+    var resourceAmount: Int = -1
 
     override fun legacyRequiredTechs() = if (techRequired == null) emptySequence() else sequenceOf(techRequired!!)
 

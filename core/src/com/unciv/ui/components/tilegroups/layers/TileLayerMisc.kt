@@ -252,6 +252,66 @@ class TileLayerImprovement(tileGroup: TileGroup, size: Float) : TileLayer(tileGr
     }
 }
 
+
+class TileLayerImprovementResource(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup, size){
+
+    private var resourceName: String? = null
+    private var resourceAmount: Int = -1
+    private var resourceIcon: Actor? = null
+    private var resourceProvidedIcon: Actor? = null
+
+    private fun updateResourceIcon(viewingCiv: CivView?, showResourceIcon: Boolean) {
+        val tileImprovement = tileGroup.tileView.tileImprovement ?: return
+        val effectiveVisible = showResourceIcon
+
+        // If resource has changed (e.g. tech researched) - force new icon next time it's needed
+        if (resourceName != tileImprovement.resourceType || resourceAmount != tileImprovement.resourceAmount) {
+            resourceName = tileImprovement.resourceType
+            resourceAmount = tileImprovement.resourceAmount
+            resourceIcon?.let { removeOwnedActor(it) }
+            resourceIcon = null
+        }
+
+        // Get a fresh Icon if and only if necessary
+        if (resourceName != null && effectiveVisible && resourceIcon == null) {
+            val icon = ImageGetter.getResourcePortrait(resourceName!!, 20f, resourceAmount, true)
+            // Centre on tile, offset left and up
+            icon.x = tileX + (tileGroup.width - icon.width) / 2 
+            icon.y = tileY + (tileGroup.height - icon.height) / 2 + 22f
+            addOwnedActor(icon)
+            resourceIcon = icon
+        }
+
+        resourceIcon?.isVisible = effectiveVisible
+
+
+        if (resourceIcon != null){
+            val isViewable = isViewable(viewingCiv)
+            dimResource(!isViewable)
+            
+            resourceProvidedIcon?.toFront()
+            resourceProvidedIcon?.isVisible = effectiveVisible
+        }
+    }
+
+    fun reset() {
+        updateResourceIcon(null, false)
+    }
+
+    fun dimResource(dim: Boolean) { resourceIcon?.color?.a = if (dim) 0.5f else 1f }
+
+    override fun doUpdate(viewingCiv: CivView?) {
+        val showResourcesAndImprovements = if (tileGroup is WorldTileGroup)
+            UncivGame.Current.settings.showResourcesAndImprovements else true
+
+        updateResourceIcon(viewingCiv, showResourcesAndImprovements)
+    }
+
+    override fun determineVisibility() {
+        isVisible = resourceIcon?.isVisible == true
+    }
+}
+
 class TileLayerMisc(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup, size) {
 
     // Lazily created — only allocated when an overlay color is applied to this tile.
