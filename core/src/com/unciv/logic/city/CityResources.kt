@@ -123,6 +123,21 @@ object CityResources {
 
         // Apply the resource modifiers.
         resourceSupplyList.applyModifiers(modifiers)
+        
+        // Calculate resources from resourceType/resourceAmount improvements
+        for (tileInfo in applicableTiles) {
+            val tileImprovement = tileInfo.getUnpillagedTileImprovement()
+            
+            if (tileImprovement!!.resourceType != null && tileImprovement!!.resourceAmount > 0) {
+                val resource = city.getRuleset().tileResources[tileImprovement.resourceType]
+                if (resource != null) {
+                    resourceSupplyList.add(
+                        resource, "Improvements",
+                        tileImprovement.resourceAmount
+                    )
+                }
+            }
+        }
 
         // After resources have been modified, consume them.
         for (tileInfo in applicableTiles) {
@@ -191,6 +206,28 @@ object CityResources {
 
             if (amount > 0.0) {
                 amount *= unique.params[0].toDouble() / 100.0
+                buildingResources.add(resource, unique.getSourceNameForUser(), amount.toInt())
+            }
+        }
+
+        // ResourceFromObject - Example: "[2] [Iron] from every [Farm]"
+        city.forEachMatchingUnique(UniqueType.ResourceFromObject, city.state, includeCivUniques) { unique ->
+            val resource = city.getRuleset().tileResources[unique.params[1]] ?: return@forEachMatchingUnique
+            val filter = unique.params[2]
+            var amount = 0.0
+
+            // Building Filter
+            if (UniqueParameterType.BuildingFilter.isKnownValue(filter, city.getRuleset())) {
+                amount += city.cityConstructions.getBuiltBuildings().count()
+            }
+
+            // Improvement Filter
+            if (UniqueParameterType.ImprovementFilter.isKnownValue(filter, city.getRuleset())) {
+                amount += city.getWorkedTiles()
+                    .mapNotNull { it.getUnpillagedTileImprovement() }.count()
+            }
+
+            if (amount > 0.0) {
                 buildingResources.add(resource, unique.getSourceNameForUser(), amount.toInt())
             }
         }

@@ -301,6 +301,7 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
             building.hasUnique(UniqueType.CreatesOneImprovement) -> 5f // District-type buildings, should be weighed by the stats (incl. adjacencies) of the improvement
             building.hasUnique(UniqueType.ProvidesResources) -> 3f // Should be weighed by how much we need the resources
             building.hasUnique(UniqueType.StatPercentFromObjectToResource) -> 1.5f // Should be weighed by the amount of active improvementFilter/buildingFilter in the city
+            building.hasUnique(UniqueType.ResourceFromObject) -> 1.5f
             building.requiredResource != null && building.requiredResource in civInfo.gameInfo.spaceResources -> -4f // This may need to be reverted when resource management is bugfixed elsewhere
             else -> 0f
         }

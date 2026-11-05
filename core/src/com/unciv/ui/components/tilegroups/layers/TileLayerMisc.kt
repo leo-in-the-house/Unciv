@@ -276,7 +276,7 @@ class TileLayerImprovementResource(tileGroup: TileGroup, size: Float) : TileLaye
         if (resourceName != null && effectiveVisible && resourceIcon == null) {
             val icon = ImageGetter.getResourcePortrait(resourceName!!, 20f, resourceAmount, true)
             // Centre on tile, offset left and up
-            icon.x = tileX + (tileGroup.width - icon.width) / 2 
+            icon.x = tileX + (tileGroup.width - icon.width) / 2 - 5f
             icon.y = tileY + (tileGroup.height - icon.height) / 2 + 22f
             addOwnedActor(icon)
             resourceIcon = icon
