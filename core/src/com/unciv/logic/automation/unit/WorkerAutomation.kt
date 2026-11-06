@@ -453,9 +453,14 @@ class WorkerAutomation(
         @Readonly fun isRemovable(terrain: Terrain): Boolean =
             potentialTileImprovements.containsKey(Constants.remove + terrain.name)
 
+        
         val resource = tile.tileResource
         val improvementForResource: TileImprovement? = when {
             !civInfo.canSeeResource(resource) -> null
+
+            potentialTileImprovements.containsKey(Constants.remove + resource.name) &&
+                !isResourceImprovementAllowedOnFeature(tile, potentialTileImprovements)
+                -> potentialTileImprovements[Constants.remove + resource.name]
             
             tile.terrainFeatures.isNotEmpty() &&
                 lastTerrain.unbuildable &&

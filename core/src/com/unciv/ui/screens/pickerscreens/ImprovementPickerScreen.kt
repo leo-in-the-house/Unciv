@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Align
 import com.unciv.Constants
 import com.unciv.logic.map.tile.ImprovementBuildingProblem
 import com.unciv.models.ruleset.tile.TileImprovement
+import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.stats.Stats
 import com.unciv.models.translations.tr
@@ -148,6 +149,12 @@ class ImprovementPickerScreen(
 
         if (turnsToBuild > 0) labelText += " - $turnsToBuild${Fonts.turn}"
         val tileResource = tile.getViewableResource(currentPlayerCiv)
+
+        //Get resource costs
+        improvement.getMatchingUniques(UniqueType.CostsResources).forEach { 
+            labelText += "\n" + "Consumes [${it.params[0].toInt()}] [${it.params[1]}]".tr()
+        }
+        
         val provideResource = tileResource != null && tileResource.isImprovedBy(improvement.name)
         if (provideResource) labelText += "\n" + "Provides [${tileResource!!.name}]".tr()
         val removeImprovement = (!improvement.isRoad()

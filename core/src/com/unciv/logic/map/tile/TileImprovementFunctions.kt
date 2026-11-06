@@ -76,6 +76,14 @@ class TileImprovementFunctions(val tile: Tile) {
             if (knownFeatureRemovals.isNullOrEmpty()) return false
             val featureRemovals = tile.terrainFeatures.mapNotNull { feature ->
                 tile.ruleset.tileRemovals.firstOrNull { it.name == Constants.remove + feature } }
+            
+            //If the tile has a resource, the resource must be removed before the feature
+            if (tile.tileResource != null) {
+                val resourceRemovals = tile.ruleset.tileRemovals.firstOrNull { it.name == Constants.remove + tile.tileResource!!.name}
+                if (resourceRemovals == null) return false
+                if (resourceRemovals !in knownFeatureRemovals) return false
+            }
+           
             if (featureRemovals.isEmpty()) return false
             if (featureRemovals.any { it !in knownFeatureRemovals }) return false
             @LocalState val clonedTile = tile.clone(addUnits = false)
@@ -97,9 +105,10 @@ class TileImprovementFunctions(val tile: Tile) {
             improvement.name == Constants.cancelImprovementOrder -> (tile.improvementInProgress != null)
             // Can only remove roads if that road is actually there
             RoadStatus.entries.any { it.removeAction == improvement.name } -> tile.roadStatus.removeAction == improvement.name
-            // Can only remove features or improvement if that feature/improvement is actually there
+            // Can only remove features or improvement or resources if that feature/improvement is actually there
             improvement.name.startsWith(Constants.remove) -> tile.terrainFeatures.any { Constants.remove + it == improvement.name }
-                || Constants.remove + tile.improvement == improvement.name
+                || Constants.remove + tile.improvement == improvement.name 
+                || (tile.tileResource != null && Constants.remove + tile.tileResource!!.name == improvement.name)
             // Can only build roads if on land and they are better than the current road
             RoadStatus.entries.any { it.name == improvement.name } -> !tile.isWater
                     && RoadStatus.valueOf(improvement.name) > tile.roadStatus
@@ -317,6 +326,11 @@ class TileImprovementFunctions(val tile: Tile) {
             tile.removeRoad()
         }
         else if (tile.improvement == removedFeatureName) tile.removeImprovement()
+        else if (tile.tileResource != null && tile.tileResource!!.name == removedFeatureName) {
+            tile.tileResource = null
+            tile.setTerrainTransients()
+            tile.getCity()?.reassignPopulation()
+        }
         else {
             val removedFeatureObject = tile.ruleset.terrains[removedFeatureName]
             if (removedFeatureObject != null &&
