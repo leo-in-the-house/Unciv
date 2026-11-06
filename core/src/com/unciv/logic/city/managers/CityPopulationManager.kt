@@ -178,7 +178,7 @@ class CityPopulationManager : IsPartOfGameInfoSerialization {
             //evaluate tiles
             val bestTileAndRank = tilesToEvaluate
                 .filterNot { it.providesYield() } // Changes with every tile assigned
-                .associateWith { Automation.rankStatsForCityWork(tileStats[it]!!, city, false) }
+                .associateWith { Automation.rankStatsForCityWork(tileStats[it]!!, city, false) + Automation.rankTileImprovementResourceForCityWork(it, city) }
                 // We need to make sure that we work the same tiles as last turn on a tile
                 // so that our workers know to prioritize this tile and don't move to the other tile
                 // This was just the easiest way I could think of.

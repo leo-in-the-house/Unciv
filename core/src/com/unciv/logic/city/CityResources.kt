@@ -124,8 +124,10 @@ object CityResources {
         // Apply the resource modifiers.
         resourceSupplyList.applyModifiers(modifiers)
         
-        // Calculate resources from resourceType/resourceAmount improvements
+        // Calculate resources from worked resourceType/resourceAmount improvements
         for (tileInfo in applicableTiles) {
+            if (!tileInfo.isWorked()) continue
+            
             val tileImprovement = tileInfo.getUnpillagedTileImprovement()
             
             if (tileImprovement!!.resourceType != null && tileImprovement!!.resourceAmount > 0) {

@@ -288,6 +288,37 @@ class TileLayerImprovementResource(tileGroup: TileGroup, size: Float) : TileLaye
         if (resourceIcon != null){
             val isViewable = isViewable(viewingCiv)
             dimResource(!isViewable)
+
+            val shouldResourceProvidedBeDisplayed =
+                viewingCiv != null && tileGroup.tileView.getOwner()?.civName == viewingCiv.civName
+                    && !tileGroup.tileView.isPillaged() && tileGroup.tileView.isWorked()
+            if (shouldResourceProvidedBeDisplayed && resourceProvidedIcon == null){
+                val group = NonTransformGroup()
+                group.setSize(12f,12f)
+
+                val blackStar = ImageGetter.getImage("OtherIcons/Star")
+                blackStar.setSize(12f)
+                blackStar.color = Color.BLACK
+                blackStar.center(group)
+                group.addActor(blackStar)
+
+                val goldStar = ImageGetter.getImage("OtherIcons/Star")
+                goldStar.setSize(10f)
+                goldStar.color = Color.GOLD
+                goldStar.center(group)
+                group.addActor(goldStar)
+
+                // Slightly extruding out from the resource icon
+                group.setPosition(resourceIcon!!.right + 3f, resourceIcon!!.top + 3f, Align.topRight)
+                addOwnedActor(group)
+
+                resourceProvidedIcon = group
+            }
+
+            if (!shouldResourceProvidedBeDisplayed && resourceProvidedIcon != null){
+                removeOwnedActor(resourceProvidedIcon!!)
+                resourceProvidedIcon = null
+            }
             
             resourceProvidedIcon?.toFront()
             resourceProvidedIcon?.isVisible = effectiveVisible

@@ -1853,6 +1853,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Building
 
+??? example  "[positiveAmount] [resource] from every [improvementFilter/buildingFilter]"
+	Example: "[3] [Iron] from every [All Road]"
+
+	Applicable to: Building
+
 ??? example  "[relativeAmount] Supply Limit"
 	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
 

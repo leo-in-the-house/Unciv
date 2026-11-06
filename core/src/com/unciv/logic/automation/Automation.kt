@@ -32,8 +32,8 @@ object Automation {
 
     @Readonly
     fun rankTileForCityWork(tile: Tile, city: City): Float {
-        val stats = tile.stats.getTileStats(city, city.civ)
-        return rankStatsForCityWork(stats, city, false)
+        val stats = tile.stats.getTileStats(city, city.civ)        
+        return rankStatsForCityWork(stats, city, false) + rankTileImprovementResourceForCityWork(tile, city)
     }
 
     @Readonly
@@ -183,6 +183,23 @@ object Automation {
         }
 
         return yieldStats.sum()
+    }
+
+    @Readonly
+    fun rankTileImprovementResourceForCityWork(tile: Tile, city: City): Float {
+        if (tile.tileImprovement == null) return 0f
+        val resourceType = tile.tileImprovement!!.resourceType ?: return 0f
+
+        var resourceScore = tile.tileImprovement!!.resourceAmount.toFloat()
+        
+        //If you don't have much of the resource, priority goes up
+        if (city.civ.getResourceAmount(resourceType) < 40)
+            resourceScore *= 2f
+        
+        if (city.civ.getResourceAmount(resourceType) < 10)
+            resourceScore *= 2f
+        
+        return resourceScore
     }
 
     fun tryTrainMilitaryUnit(city: City) {

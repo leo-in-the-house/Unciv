@@ -139,7 +139,7 @@ class CityTileGroup(val cityView: CityView, tileView: TileView, tileSetStrings: 
         if (icon != null) {
             icon.setSize(26f, 26f)
             // Position absolutely: tile origin (x,y) + tile-local offset
-            icon.setPosition(x + width/2 - icon.width/2, y + height*0.85f - icon.height/2)
+            icon.setPosition(x + width/2, y + height*0.5f - icon.height/2)
             layerMisc.addWorkedIcon(icon)
         }
 
