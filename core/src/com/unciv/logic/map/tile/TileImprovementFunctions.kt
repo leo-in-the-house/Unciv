@@ -327,6 +327,11 @@ class TileImprovementFunctions(val tile: Tile) {
         }
         else if (tile.improvement == removedFeatureName) tile.removeImprovement()
         else if (tile.tileResource != null && tile.tileResource!!.name == removedFeatureName) {
+            if (civToActivateBroaderEffects != null &&
+                tile.tileResource!!.hasUnique(UniqueType.StatBonusWhenRemoved)
+            )
+                tryProvideStatToClosestCity(removedFeatureName, civToActivateBroaderEffects)
+            
             tile.tileResource = null
             tile.setTerrainTransients()
             tile.getCity()?.reassignPopulation()
@@ -335,27 +340,37 @@ class TileImprovementFunctions(val tile: Tile) {
             val removedFeatureObject = tile.ruleset.terrains[removedFeatureName]
             if (removedFeatureObject != null &&
                 civToActivateBroaderEffects != null &&
-                removedFeatureObject.hasUnique(UniqueType.ProductionBonusWhenRemoved)
+                removedFeatureObject.hasUnique(UniqueType.StatBonusWhenRemoved)
             )
-                tryProvideProductionToClosestCity(removedFeatureName, civToActivateBroaderEffects)
+                tryProvideStatToClosestCity(removedFeatureName, civToActivateBroaderEffects)
 
             tile.removeTerrainFeature(removedFeatureName)
         }
     }
 
-    private fun tryProvideProductionToClosestCity(removedTerrainFeature: String, civ: Civilization) {
+    private fun tryProvideStatToClosestCity(removedTerrainFeature: String, civ: Civilization) {
         val closestCity = civ.cities.minByOrNull { it.getCenterTile().aerialDistanceTo(tile) }
             ?: return
         val distance = closestCity.getCenterTile().aerialDistanceTo(tile)
         if (distance > 5) return
         var stats = Stats()
-        for (unique in tile.getTerrainMatchingUniques(UniqueType.ProductionBonusWhenRemoved)) {
+        for (unique in tile.getTerrainMatchingUniques(UniqueType.StatBonusWhenRemoved)) {
             var statsToAdd = unique.stats
             if (unique.isModifiedByGameSpeed())
                 statsToAdd *= civ.gameInfo.speed.modifier
             if (unique.isModifiedByGameProgress())
                 statsToAdd *= unique.getGameProgressModifier(civ)
             stats.add(statsToAdd)
+        }
+        if (tile.tileResource != null && tile.tileResource!!.hasUnique(UniqueType.StatBonusWhenRemoved)) {
+            for (unique in tile.tileResource!!.getMatchingUniques(UniqueType.StatBonusWhenRemoved)) {
+                var statsToAdd = unique.stats
+                if (unique.isModifiedByGameSpeed())
+                    statsToAdd *= civ.gameInfo.speed.modifier
+                if (unique.isModifiedByGameProgress())
+                    statsToAdd *= unique.getGameProgressModifier(civ)
+                stats.add(statsToAdd)
+            }
         }
         if (stats.isEmpty()) return
         if (distance != 1) stats *= (6 - distance) / 4f

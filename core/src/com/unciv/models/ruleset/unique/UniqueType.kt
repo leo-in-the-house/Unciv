@@ -664,7 +664,7 @@ enum class UniqueType(
     DamagesContainingUnits("Units ending their turn on this terrain take [amount] damage", UniqueTarget.Terrain, flags = UniqueFlag.setOfNoConditionals),
     TerrainGrantsPromotion("Grants [promotion] ([comment]) to adjacent [mapUnitFilter] units for the rest of the game", UniqueTarget.Terrain),
     GrantsCityStrength("[amount] Strength for cities built on this terrain", UniqueTarget.Terrain),
-    ProductionBonusWhenRemoved("Provides a one-time bonus of [stats] to the closest city when cut down", UniqueTarget.Terrain, flags = setOf(UniqueFlag.AcceptsSpeedModifier, UniqueFlag.AcceptsGameProgressModifier)),
+    StatBonusWhenRemoved("Provides a one-time bonus of [stats] to the closest city when removed", UniqueTarget.Terrain, UniqueTarget.Resource, flags = setOf(UniqueFlag.AcceptsSpeedModifier, UniqueFlag.AcceptsGameProgressModifier)),
     Vegetation("Vegetation", UniqueTarget.Terrain, UniqueTarget.Improvement),  // Improvement included because use as tileFilter works
 
 

@@ -326,7 +326,7 @@ class WorkerAutomation(
             if (tile.providesYield()) priority += 2
             if (tile.hasFalloutEquivalent()) priority += 1
             if (tile.terrainFeatures.isNotEmpty()) {
-                if (tile.lastTerrain.hasUnique(UniqueType.ProductionBonusWhenRemoved)) priority += 0.5f 
+                if (tile.lastTerrain.hasUnique(UniqueType.StatBonusWhenRemoved)) priority += 0.5f 
                 else if (tile.lastTerrain.hasUnique(UniqueType.Vegetation)) priority -= 0.3f
             } // Removing our forests is good for tempo, jungles not as much
             if (tile.terrainHasUnique(UniqueType.FreshWater)) priority += 1
@@ -569,8 +569,13 @@ class WorkerAutomation(
                     stats.add(statDiff)
                     // Take into account that the resource might be improved by the *final* improvement
                     isResourceImprovedByNewImprovement = newTile.tileResource?.isImprovedBy(wantedFinalImprovement.name) == true
-                    if (tile.terrainFeatures.isNotEmpty() && tile.lastTerrain.hasUnique(UniqueType.ProductionBonusWhenRemoved))
-                        stats.add(Stat.Production, 0.5f) //We're gaining tempo by chopping the forest, adding an imaginary yield per turn is a way to correct for this
+                    if (tile.terrainFeatures.isNotEmpty() && tile.lastTerrain.hasUnique(UniqueType.StatBonusWhenRemoved)) {
+                        tile.lastTerrain.getMatchingUniques(UniqueType.StatBonusWhenRemoved).first().stats.forEach {
+                            val stat = Stat.entries[it.key.ordinal]
+                            stats.add(stat, 0.5f) //We're gaining tempo by chopping the resource, adding an imaginary yield per turn is a way to correct for this
+                        }
+                    }
+                        
                 }
 
             }

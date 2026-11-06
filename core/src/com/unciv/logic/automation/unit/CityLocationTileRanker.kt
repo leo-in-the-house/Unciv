@@ -133,7 +133,7 @@ object CityLocationTileRanker {
             // Build on jungle luxuries for tempo
             if (resource.resourceType == ResourceType.Luxury &&
                 newCityTile.lastTerrain.hasUnique(UniqueType.Vegetation) &&
-                !newCityTile.lastTerrain.hasUnique(UniqueType.ProductionBonusWhenRemoved)
+                !newCityTile.lastTerrain.hasUnique(UniqueType.StatBonusWhenRemoved)
                 ) tileValue += 10
         }
 
@@ -214,8 +214,9 @@ object CityLocationTileRanker {
         }
         if (rankTile.terrainHasUnique(UniqueType.FreshWater)) rankTileValue += 0.5f 
         //Taking into account freshwater farm food, maybe less important in baseruleset mods
-        if (rankTile.terrainFeatures.isNotEmpty() && rankTile.lastTerrain.hasUnique(UniqueType.ProductionBonusWhenRemoved)) rankTileValue += 0.7f
-        //Taking into account yields from forest chopping
+        if (rankTile.terrainFeatures.isNotEmpty() && rankTile.lastTerrain.hasUnique(UniqueType.StatBonusWhenRemoved)) rankTileValue += 0.7f
+        if (rankTile.tileResource != null && rankTile.tileResource!!.hasUnique(UniqueType.StatBonusWhenRemoved)) rankTileValue += 0.7f
+        //Taking into account yields from resource chopping
 
         if (rankTile.isNaturalWonder()) rankTileValue += 4
 

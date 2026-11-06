@@ -247,7 +247,7 @@ object ReligionAutomation {
                 UniqueType.StatsFromObject -> {
                     val resource = tile.tileResource
                     if (tile.matchesFilter(unique.params[1])) {
-                        if (!tile.lastTerrain.hasUnique(UniqueType.ProductionBonusWhenRemoved) ||
+                        if (!tile.lastTerrain.hasUnique(UniqueType.StatBonusWhenRemoved) ||
                             !tile.lastTerrain.matchesFilter(unique.params[1]) //forest pantheons are bad, as we want to remove the forests
                         ) bonusYield += unique.stats.sum()
                         else if (resource != null && (resource.matchesFilter(unique.params[1]) ||

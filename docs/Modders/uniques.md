@@ -2945,14 +2945,14 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Terrain
 
-??? example  "Provides a one-time bonus of [stats] to the closest city when cut down"
-	Example: "Provides a one-time bonus of [+1 Gold, +2 Production] to the closest city when cut down"
+??? example  "Provides a one-time bonus of [stats] to the closest city when removed"
+	Example: "Provides a one-time bonus of [+1 Gold, +2 Production] to the closest city when removed"
 
 	This unique's effect can be modified with &lt;(modified by game speed)&gt;
 
 	This unique's effect can be modified with &lt;(modified by game progress up to [relativeAmount]%)&gt;
 
-	Applicable to: Terrain
+	Applicable to: Terrain, Resource
 
 ??? example  "Vegetation"
 	Applicable to: Terrain, Improvement
@@ -3350,6 +3350,15 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Example: "Must be on [3] largest landmasses"
 
 	This unique is automatically hidden from users.
+
+	Applicable to: Terrain, Resource
+
+??? example  "Provides a one-time bonus of [stats] to the closest city when removed"
+	Example: "Provides a one-time bonus of [+1 Gold, +2 Production] to the closest city when removed"
+
+	This unique's effect can be modified with &lt;(modified by game speed)&gt;
+
+	This unique's effect can be modified with &lt;(modified by game progress up to [relativeAmount]%)&gt;
 
 	Applicable to: Terrain, Resource
 
