@@ -300,6 +300,18 @@ class ImprovementPickerScreen(
             if (suggestRemoval) {
                 val removalName = Constants.remove + lastTerrainName
                 removalImprovement = ruleset.tileImprovements[removalName]
+                val tileResource = tile.getViewableResource(currentPlayerCiv)
+                if (removalImprovement == null && tileResource != null) {
+                    //Check to see if there is a removal for the resource
+                    if (tileResource.resourceCategory != null) {
+                        val removalNameByResourceCategory = Constants.remove + tileResource.resourceCategory
+                        removalImprovement = ruleset.tileImprovements[removalNameByResourceCategory]
+                    }
+                    if (removalImprovement == null) {
+                        val removalNameByResource = Constants.remove + tileResource.name
+                        removalImprovement = ruleset.tileImprovements[removalNameByResource]
+                    }
+                }
                 if (removalImprovement != null) {
                     // Check for removals that need a tech that's not yet researched
                     val cannotRemoveReport = getProblemReport(removalImprovement!!, mayRemoveLastTerrain = false)

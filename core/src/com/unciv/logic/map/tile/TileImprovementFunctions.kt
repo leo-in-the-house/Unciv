@@ -79,7 +79,8 @@ class TileImprovementFunctions(val tile: Tile) {
             
             //If the tile has a resource, the resource must be removed before the feature
             if (tile.tileResource != null) {
-                val resourceRemovals = tile.ruleset.tileRemovals.firstOrNull { it.name == Constants.remove + tile.tileResource!!.name}
+                val resourceRemovals = tile.ruleset.tileRemovals.firstOrNull { (it.name == Constants.remove + tile.tileResource!!.name) ||
+                    (tile.tileResource!!.resourceCategory != null && it.name == Constants.remove + tile.tileResource!!.resourceCategory)}
                 if (resourceRemovals == null) return false
                 if (resourceRemovals !in knownFeatureRemovals) return false
             }
@@ -109,6 +110,7 @@ class TileImprovementFunctions(val tile: Tile) {
             improvement.name.startsWith(Constants.remove) -> tile.terrainFeatures.any { Constants.remove + it == improvement.name }
                 || Constants.remove + tile.improvement == improvement.name 
                 || (tile.tileResource != null && Constants.remove + tile.tileResource!!.name == improvement.name)
+                || (tile.tileResource != null && tile.tileResource!!.resourceCategory != null && Constants.remove + tile.tileResource!!.resourceCategory == improvement.name)
             // Can only build roads if on land and they are better than the current road
             RoadStatus.entries.any { it.name == improvement.name } -> !tile.isWater
                     && RoadStatus.valueOf(improvement.name) > tile.roadStatus
@@ -326,7 +328,8 @@ class TileImprovementFunctions(val tile: Tile) {
             tile.removeRoad()
         }
         else if (tile.improvement == removedFeatureName) tile.removeImprovement()
-        else if (tile.tileResource != null && tile.tileResource!!.name == removedFeatureName) {
+        else if (tile.tileResource != null && (tile.tileResource!!.name == removedFeatureName ||
+                (tile.tileResource!!.resourceCategory != null && tile.tileResource!!.resourceCategory!! == removedFeatureName))) {
             if (civToActivateBroaderEffects != null &&
                 tile.tileResource!!.hasUnique(UniqueType.StatBonusWhenRemoved)
             )

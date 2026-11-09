@@ -461,6 +461,10 @@ class WorkerAutomation(
             potentialTileImprovements.containsKey(Constants.remove + resource.name) &&
                 !isResourceImprovementAllowedOnFeature(tile, potentialTileImprovements)
                 -> potentialTileImprovements[Constants.remove + resource.name]
+
+            potentialTileImprovements.containsKey(Constants.remove + resource.resourceCategory) &&
+                !isResourceImprovementAllowedOnFeature(tile, potentialTileImprovements)
+                -> potentialTileImprovements[Constants.remove + resource.resourceCategory]
             
             tile.terrainFeatures.isNotEmpty() &&
                 lastTerrain.unbuildable &&

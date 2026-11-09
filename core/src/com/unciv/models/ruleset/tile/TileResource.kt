@@ -18,6 +18,8 @@ import yairm210.purity.annotations.Readonly
 class TileResource : RulesetStatsObject(), GameResource {
 
     var resourceType: ResourceType = ResourceType.Bonus
+    
+    var resourceCategory: String? = null   //Used for removals and resource filters
     var terrainsCanBeFoundOn: List<String> = listOf()
 
     /** Stats that this resource adds to a tile when a correct improvement has been constructed

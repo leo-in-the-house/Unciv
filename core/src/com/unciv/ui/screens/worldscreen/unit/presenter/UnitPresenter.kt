@@ -18,6 +18,7 @@ import com.unciv.ui.screens.worldscreen.WorldScreen
 import com.unciv.ui.screens.worldscreen.unit.UnitTable
 import com.unciv.view.MapUnitView
 import yairm210.purity.annotations.Readonly
+import kotlin.random.Random
 
 class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: WorldScreen) : UnitTable.Presenter {
 
@@ -39,8 +40,8 @@ class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: W
     fun selectUnit(unitView: MapUnitView? = null, append: Boolean = false) {
         if (!append) selectedUnits.clear()
         if (unitView != null) {
-            
-            if (unitView.getSelectSound() != null) {
+            //50% chance that selecting a unit will trigger a select sound, not too often or it could exhaust players
+            if (unitView.getSelectSound() != null && Random.nextInt(until = 2) == 0) {
                 SoundPlayer.play(UncivSound(unitView.getSelectSound()!!))
             }
             

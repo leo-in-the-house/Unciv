@@ -179,7 +179,7 @@ class Terrain : RulesetStatsObject() {
         return if (multiFilter) MultiFilter.multiFilter(filter, {
             cachedMatchesFilterResult.getOrPut(it) { matchesSingleFilter(it) } ||
                 state != null && hasTagUnique(it, state) ||
-                state == null && hasTagUnique(it)
+                state == null && hasTagUnique(it) 
         })
         else cachedMatchesFilterResult.getOrPut(filter) { matchesSingleFilter(filter) } ||
             state != null && hasTagUnique(filter, state) ||

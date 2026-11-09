@@ -494,6 +494,8 @@ enum class UniqueParameterType(
             parameterText in staticKnownValues -> true
             parameterText in ruleset.tileResources -> true
             ResourceType.entries.any { it.name == parameterText } -> true
+            ruleset.tileResources.values.any { it.resourceCategory == parameterText } -> true
+            ruleset.tileResources.values.any { it.hasTagUnique(parameterText) } -> true
             Stat.isStat(parameterText) -> true
             else -> false
         }
