@@ -139,6 +139,8 @@ class MapUnitView internal constructor(
         return path.filterIndexed { index, _ -> index > currTileIndex }
             .mapNotNull { gameView.tileMapView.getTile(it) }
     }
+    
+    @Readonly fun getSelectSound(): String? = unit.baseUnit.selectSound
 
     // Actions
     fun trySwapMoveToTile(tileView: TileView, keepEscorting: Boolean = false): Boolean {

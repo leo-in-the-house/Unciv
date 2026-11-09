@@ -14,6 +14,7 @@ import com.unciv.ui.components.input.KeyCharAndCode
 import com.unciv.ui.components.input.keyShortcuts
 import com.unciv.ui.components.input.onActivation
 import com.unciv.ui.components.widgets.WrappableLabel
+import com.unciv.ui.images.ImageGetter
 import com.unciv.ui.screens.civilopediascreen.FormattedLine
 import com.unciv.ui.screens.civilopediascreen.MarkupRenderer
 
@@ -59,6 +60,26 @@ class RenderEvent(
                 add(event.renderCivilopediaText(labelWidth, ::openCivilopedia)).row()
             }
 
+            if (ImageGetter.eventImageExists(event.name)) {
+                addSeparator().padBottom(10f)
+                
+                val stageWidth = worldScreen.stage.width
+                val stageHeight = worldScreen.stage.height
+                
+                if(stageHeight * 3 > stageWidth * 4) {    // Portrait
+                    add(ImageGetter.getEventImage(event.name))
+                        .width(stageWidth / 1.5f)
+                        .height(stageWidth / 3)
+                        .row()
+                }
+                else {  // Landscape (or squareish)
+                    add(ImageGetter.getEventImage(event.name))
+                        .width(stageWidth / 2.5f)
+                        .height(stageWidth / 5)
+                        .row()
+                }
+            }
+            
             for (choice in choices!!) addChoice(choice)
         }
     }

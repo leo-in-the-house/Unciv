@@ -9,11 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.Align
 import com.unciv.Constants
 import com.unciv.logic.map.tile.ImprovementBuildingProblem
+import com.unciv.models.UncivSound
 import com.unciv.models.ruleset.tile.TileImprovement
 import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.stats.Stats
 import com.unciv.models.translations.tr
+import com.unciv.ui.audio.SoundPlayer
 import com.unciv.ui.components.SmallButtonStyle
 import com.unciv.ui.components.UncivTooltip.Companion.addTooltip
 import com.unciv.ui.components.extensions.disable
@@ -63,6 +65,9 @@ class ImprovementPickerScreen(
             // no onAccept() - Worker can stay selected
         } else {
             if (improvement.name != tile.improvementInProgress) {
+                if (improvement.buildSound != null) {
+                    SoundPlayer.play(UncivSound(improvement.buildSound!!))
+                }
                 unit.tryStartWorkingOnImprovement(improvement, secondImprovement)
             }
             unit.tryResetAction() // this is to "wake up" the worker if it's sleeping

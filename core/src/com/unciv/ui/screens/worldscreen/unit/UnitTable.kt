@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.unciv.logic.map.HexCoord
+import com.unciv.models.UncivSound
+import com.unciv.ui.audio.SoundPlayer
 import com.unciv.ui.components.extensions.addRoundCloseButton
 import com.unciv.ui.components.extensions.addSeparator
 import com.unciv.ui.components.extensions.center

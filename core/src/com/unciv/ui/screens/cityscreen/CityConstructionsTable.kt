@@ -678,8 +678,27 @@ class CityConstructionsTable(private val cityScreen: CityScreen) {
 
     private fun getConstructionSound(construction: IConstruction): UncivSound {
         return when(construction) {
-            is Building -> UncivSound.Construction
-            is BaseUnit -> UncivSound.Promote
+            is Building -> {
+                if (construction.buildSound != null) {
+                    UncivSound(construction.buildSound!!)
+                }
+                else {
+                    //SoundPlayer.play(UncivSound(event.eventSound!!))
+                    UncivSound.Construction
+                }
+            }
+            is BaseUnit -> {
+                if (construction.selectSound != null) {
+                    UncivSound(construction.selectSound!!)
+                }
+                else if (construction.attackSound != null) {
+                    UncivSound(construction.attackSound!!)
+                }
+                else {
+                    //SoundPlayer.play(UncivSound(event.eventSound!!))
+                    UncivSound.Promote
+                }
+            }
             PerpetualConstruction.Gold -> UncivSound.Coin
             PerpetualConstruction.Science -> UncivSound.Paper
             PerpetualConstruction.Culture -> UncivSound.Policy

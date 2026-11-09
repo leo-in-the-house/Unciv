@@ -58,6 +58,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     val secondaryType by lazy { ruleset.unitTypes[secondaryUnitType] } //Can be null
     override var requiredTech: String? = null
     var requiredResource: String? = null
+    var requiredResourceAmount: Int = 1
 
     override fun getUniqueTarget() = UniqueTarget.Unit
 
@@ -71,6 +72,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     var upgradesTo: String? = null
     var replaces: String? = null
     var uniqueTo: String? = null
+    var selectSound: String? = null
     var attackSound: String? = null
 
 
@@ -606,7 +608,7 @@ class BaseUnit : RulesetObject(), INonPerpetualConstruction {
     /** Returns resource requirements from both uniques and requiredResource field */
     override fun getResourceRequirementsPerTurn(state: GameContext?): Counter<String> {
         val resourceRequirements = Counter<String>()
-        if (requiredResource != null) resourceRequirements[requiredResource!!] = 1
+        if (requiredResource != null) resourceRequirements[requiredResource!!] = requiredResourceAmount
         for (unique in getMatchingUniques(UniqueType.ConsumesResources, state ?: GameContext.EmptyState))
             resourceRequirements.add(unique.params[1], unique.params[0].toInt())
         return resourceRequirements

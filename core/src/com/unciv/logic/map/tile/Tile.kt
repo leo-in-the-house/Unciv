@@ -16,6 +16,7 @@ import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.logic.map.mapunit.UnitTurnManager
 import com.unciv.logic.map.mapunit.actions.UnitActionModifiers
 import com.unciv.logic.map.mapunit.movement.UnitMovement
+import com.unciv.models.UncivSound
 import com.unciv.models.ruleset.Ruleset
 import com.unciv.models.ruleset.tile.ResourceType
 import com.unciv.models.ruleset.tile.Terrain
@@ -26,6 +27,7 @@ import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.ruleset.unique.Unique
 import com.unciv.models.ruleset.unique.UniqueMap
 import com.unciv.models.ruleset.unique.UniqueType
+import com.unciv.ui.audio.SoundPlayer
 import com.unciv.ui.components.fonts.Fonts
 import com.unciv.utils.DebugUtils
 import com.unciv.utils.Log
@@ -1098,6 +1100,7 @@ class Tile : IsPartOfGameInfoSerialization {
         }
 
         improvementQueue.clear()
+        
         queueImprovement(improvement, civInfo, unit)
     }
 

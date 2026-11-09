@@ -7,8 +7,11 @@ import com.badlogic.gdx.files.FileHandle
 import com.unciv.UncivGame
 import com.unciv.models.UncivSound
 import com.unciv.models.metadata.BaseRuleset
+import com.unciv.models.ruleset.Building
+import com.unciv.models.ruleset.Event
 import com.unciv.models.ruleset.Ruleset
 import com.unciv.models.ruleset.RulesetCache
+import com.unciv.models.ruleset.tile.TileImprovement
 import com.unciv.models.ruleset.unit.BaseUnit
 import com.unciv.ui.audio.SoundPlayer
 import com.unciv.ui.audio.MusicController
@@ -168,6 +171,30 @@ interface IMediaFinder {
                     .distinctBy { it.attackSound }
                     .map { it to it.attackSound!! }
             }
+
+            fun eventSounds(): Sequence<Pair<Event, String>> {
+                val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName] ?: return emptySequence()
+                return ruleset.events.values.asSequence()
+                    .filter { it.eventSound != null }
+                    .distinctBy { it.eventSound }
+                    .map { it to it.eventSound!! }
+            }
+
+            fun buildingSounds(): Sequence<Pair<Building, String>> {
+                val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName] ?: return emptySequence()
+                return ruleset.buildings.values.asSequence()
+                    .filter { it.buildSound != null }
+                    .distinctBy { it.buildSound }
+                    .map { it to it.buildSound!! }
+            }
+
+            fun improvementSounds(): Sequence<Pair<TileImprovement, String>> {
+                val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName] ?: return emptySequence()
+                return ruleset.tileImprovements.values.asSequence()
+                    .filter { it.buildSound != null }
+                    .distinctBy { it.buildSound }
+                    .map { it to it.buildSound!! }
+            }
         }
     }
 
@@ -248,6 +275,21 @@ interface IMediaFinder {
                         val sound = unit.attackSound ?: continue
                         if (sound in cache) continue
                         cache[sound] = "${mod.take(32)}: {[${unit.name}] Attack Sound}"
+                    }
+                    for (event in ruleset.events.values) {
+                        val sound = event.eventSound ?: continue
+                        if (sound in cache) continue
+                        cache[sound] = "${mod.take(32)}: {[${event.name}] Event Sound}"
+                    }
+                    for (building in ruleset.buildings.values) {
+                        val sound = building.buildSound ?: continue
+                        if (sound in cache) continue
+                        cache[sound] = "${mod.take(32)}: {[${building.name}] Event Sound}"
+                    }
+                    for (improvement in ruleset.tileImprovements.values) {
+                        val sound = improvement.buildSound ?: continue
+                        if (sound in cache) continue
+                        cache[sound] = "${mod.take(32)}: {[${improvement.name}] Event Sound}"
                     }
                 }
                 for (file in folder.list()) {

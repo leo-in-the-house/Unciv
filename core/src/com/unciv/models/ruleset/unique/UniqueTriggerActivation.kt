@@ -120,6 +120,11 @@ object UniqueTriggerActivation {
                 val choices = event.getMatchingChoices(gameContext)
                     ?: return null
                 if (choices.isEmpty()) return null
+                
+                if (event.eventSound != null) {
+                    SoundPlayer.play(UncivSound(event.eventSound!!))
+                }
+                
                 if (civInfo.isAI() || event.presentation == Event.Presentation.None) return {
                     val choice = choices.toList().randomWeighted(rng) { it.getWeightForAiDecision(gameContext) }
                     choice.triggerChoice(civInfo, unit)

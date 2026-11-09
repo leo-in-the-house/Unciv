@@ -261,6 +261,8 @@ object ImageGetter {
     fun wonderImageExists(wonderName: String) = imageExists("WonderImages/$wonderName")
     fun getWonderImage(wonderName: String) = getImage("WonderImages/$wonderName")
 
+    fun eventImageExists(eventName: String) = imageExists("EventImages/$eventName")
+    fun getEventImage(eventName: String) = getImage("EventImages/$eventName")
     fun getNationIcon(nation: String) = getImage("NationIcons/$nation")
     fun getNationPortrait(nation: Nation, size: Float): Portrait = PortraitNation(nation.name, size)
 

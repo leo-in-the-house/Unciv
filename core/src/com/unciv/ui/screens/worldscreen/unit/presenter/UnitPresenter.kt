@@ -2,8 +2,10 @@ package com.unciv.ui.screens.worldscreen.unit.presenter
 
 import com.badlogic.gdx.utils.Align
 import com.unciv.logic.map.HexCoord
+import com.unciv.models.UncivSound
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.translations.tr
+import com.unciv.ui.audio.SoundPlayer
 import com.unciv.ui.components.extensions.surroundWithCircle
 import com.unciv.ui.components.extensions.toLabel
 import com.unciv.ui.components.fonts.Fonts
@@ -37,6 +39,11 @@ class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: W
     fun selectUnit(unitView: MapUnitView? = null, append: Boolean = false) {
         if (!append) selectedUnits.clear()
         if (unitView != null) {
+            
+            if (unitView.getSelectSound() != null) {
+                SoundPlayer.play(UncivSound(unitView.getSelectSound()!!))
+            }
+            
             selectedUnits.add(unitView)
             if (unitView.isPreparingParadrop() || unitView.isPreparingAirSweep())
                 unitView.tryResetAction()

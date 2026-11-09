@@ -204,7 +204,7 @@ object BuildingDescriptions {
             space()
             val resource = ruleset.tileResources[requiredResource]
             add(
-                requiredResource!!.getConsumesAmountString(1, resource!!.isStockpiled),
+                requiredResource!!.getConsumesAmountString(requiredResourceAmount, resource!!.isStockpiled),
                 link="Resources/$requiredResource", color="#F42" )
         }
 

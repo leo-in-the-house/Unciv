@@ -39,9 +39,11 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
     var isNationalWonder = false
     @Readonly fun isAnyWonder() = isWonder || isNationalWonder
     var requiredBuilding: String? = null
+    var buildSound: String? = null
 
     /** A strategic resource that will be consumed by this building */
     var requiredResource: String? = null
+    var requiredResourceAmount: Int = 1
 
     /** This Building can only be built if one of these resources is nearby - it must be improved! */
     var requiredNearbyImprovedResources: List<String>? = null
@@ -584,7 +586,7 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
         if (uniques.none() && requiredResource == null) return Counter.ZERO
         
         val resourceRequirements = Counter<String>()
-        if (requiredResource != null) resourceRequirements[requiredResource!!] = 1
+        if (requiredResource != null) resourceRequirements[requiredResource!!] = requiredResourceAmount
         for (unique in uniques)
             resourceRequirements.add(unique.params[1], unique.params[0].toInt())
         return resourceRequirements

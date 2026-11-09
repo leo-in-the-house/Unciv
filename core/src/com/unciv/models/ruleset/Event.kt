@@ -4,6 +4,8 @@ import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.models.ruleset.unique.*
 import com.unciv.ui.components.input.KeyCharAndCode
+import com.unciv.ui.images.ImageGetter.getImage
+import com.unciv.ui.images.ImageGetter.imageExists
 import com.unciv.ui.screens.civilopediascreen.ICivilopediaText
 
 
@@ -21,6 +23,7 @@ class Event : RulesetObject() {
     }
     val presentation = Presentation.Alert
     var text = ""
+    var eventSound: String? = null 
 
     override fun getUniqueTarget() = UniqueTarget.Event
     override fun makeLink() = "Event/$name"

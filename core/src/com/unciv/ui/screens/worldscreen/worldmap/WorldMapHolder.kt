@@ -214,6 +214,12 @@ class WorldMapHolder(
                 unitTable.citySelected(previousSelectedCity)
             }
         }
+
+        if (newSelectedUnit == null && tileView.isVisible()) {
+            if (tileView.tileImprovement != null && tileView.tileImprovement!!.buildSound != null) {
+                SoundPlayer.play(UncivSound(tileView.tileImprovement!!.buildSound!!))
+            }
+        }
         worldScreen.shouldUpdate = true
     }
 

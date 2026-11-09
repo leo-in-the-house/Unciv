@@ -173,8 +173,9 @@ object CivilianUnitAutomation {
             goldenAgeAction.action?.invoke()
             return
         }
-
-        return // The AI doesn't know how to handle unknown civilian units
+        
+        
+        return 
     }
 
     @Readonly

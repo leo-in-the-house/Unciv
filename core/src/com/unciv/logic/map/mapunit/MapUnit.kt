@@ -396,7 +396,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
     @Readonly
     fun getResourceRequirementsPerTurn(): Counter<String> {
         val resourceRequirements = Counter<String>()
-        if (baseUnit.requiredResource != null) resourceRequirements[baseUnit.requiredResource!!] = 1
+        if (baseUnit.requiredResource != null) resourceRequirements[baseUnit.requiredResource!!] = baseUnit.requiredResourceAmount
         forEachMatchingUnique(UniqueType.ConsumesResources, cache.state) { unique ->
             resourceRequirements.add(unique.params[1], unique.params[0].toInt())
         }
