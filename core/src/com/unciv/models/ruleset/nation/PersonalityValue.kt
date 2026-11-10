@@ -18,7 +18,7 @@ enum class PersonalityValue(
     val antidescription: String,
     internal val getProperty: Personality.() -> KMutableProperty0<Float>
 ) {
-    // Stat focused personalities
+    // Stat focused personalities, affects the types of buildings and tile improvements the faction builds
     Production("Diligent", "Lazy", { ::production }),
     Food("Glutton", "Faster", { ::food }),
     Gold("Greedy", "Frugal",{ ::gold }),

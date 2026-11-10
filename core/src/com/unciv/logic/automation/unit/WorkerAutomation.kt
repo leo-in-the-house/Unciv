@@ -29,6 +29,7 @@ import yairm210.purity.annotations.Readonly
 import com.unciv.logic.automation.Timers.Companion.timeThis
 import com.unciv.logic.civilization.PlayerType
 import com.unciv.models.Counter
+import com.unciv.models.ruleset.unit.BaseUnit
 
 /**
  * Contains the logic for worker automation.
@@ -117,13 +118,19 @@ class WorkerAutomation(
         // Idle CS units should wander so they don't obstruct players so much
         if (unit.civ.isCityState)
             wander(unitView, stayInTerritory = true, tilesToAvoid = dangerousTiles)
-        else if (unit.civ.playerType == PlayerType.AI && 
+        else if (unit.civ.playerType == PlayerType.AI &&
+                !workerIsGeneralist(unit) &&
                 (unit.civ.stats.getUnitSupply() - unit.civ.stats.getUnitSupplyConsumption() <= 2
                     || unit.civ.gold < 5)) {
             //Disband unused worker units if we are low on either supply or gold
             unit.disband()
             return
         }
+    }
+    
+    @Readonly
+    private fun workerIsGeneralist(worker: MapUnit): Boolean {
+        return worker.getMatchingUniques(UniqueType.BuildImprovements).map { unique -> unique.params[0] }.any { it == "Land" || it == "Water" || it == "All"}
     }
     
     @Readonly private fun MapUnit.closestCity()
@@ -528,6 +535,7 @@ class WorkerAutomation(
         ignoreImprovements: Sequence<TileImprovement> = NO_IGNORED_IMPROVEMENTS
     ): Float {
         val unit = unitView.getUnit()
+        val personality = civInfo.getPersonality()
 
         // Add the value of roads if we want to build it here
         if (improvement.isRoad() && roadBetweenCitiesAutomation.bestRoadAvailable.improvement(ruleSet) == improvement
@@ -632,7 +640,18 @@ class WorkerAutomation(
                     value += 0.3f
                 }
             }
+            
+            //Take into account personality bonuses, personality increases resource priority by 0.2f
+            if (personality.resourcepriorities.contains(resource.name)) {
+                value += value * (personality.resourcepriorities[resource.name]!!.toFloat() * 0.2f)
+            }
         }
+        
+        //Improvements that cost resources are generally more worth it
+        improvement.forEachMatchingUnique(UniqueType.CostsResources, GameContext(civInfo, tile = tile, unit = unit)){
+            value += it.params[0].toFloat() * 0.05f
+        }
+        
         if (currentImprovement != null && isImprovementProbablyAFort(currentImprovement)) {
             // Replace/build improvements on other tiles before this one
             // the old fort building logic was found to be detrimental (PR #14309), but let's keep the forts we got around for a bit

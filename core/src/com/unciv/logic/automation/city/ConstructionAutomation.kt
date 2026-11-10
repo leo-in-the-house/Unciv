@@ -30,7 +30,6 @@ import yairm210.purity.annotations.Readonly
 import kotlin.math.max
 import kotlin.math.sqrt
 import com.unciv.logic.automation.Timers.Companion.timeThis
-import com.unciv.logic.automation.unit.UnitAutomation
 
 class ConstructionAutomation(val cityConstructions: CityConstructions) {
 
@@ -296,6 +295,7 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
     private fun getValueOfBuilding(building: Building, cityBaseline: Stats): Float {
         var value = 0f
         value += applyBuildingStats(building, cityBaseline)
+        value += applyBuildingResources(building)
         value += getMilitaryBuildingValue(building)
         value += getVictoryBuildingValue(building)
         value += getOnetimeUniqueBonuses(building)
@@ -326,7 +326,6 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
             }
         } else value += when {
             building.hasUnique(UniqueType.CreatesOneImprovement) -> 5f // District-type buildings, should be weighed by the stats (incl. adjacencies) of the improvement
-            building.hasUnique(UniqueType.ProvidesResources) -> 3f // Should be weighed by how much we need the resources
             building.hasUnique(UniqueType.StatPercentFromObjectToResource) -> 1.5f // Should be weighed by the amount of active improvementFilter/buildingFilter in the city
             building.hasUnique(UniqueType.ResourceFromObject) -> 1.5f
             building.requiredResource != null && building.requiredResource in civInfo.gameInfo.spaceResources -> -4f // This may need to be reverted when resource management is bugfixed elsewhere
@@ -339,7 +338,7 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
     private fun isDangerousTerrainTile(unit: BaseUnit, tile: Tile): Boolean {
         if (tile.allTerrains.sumOf { it.damagePerTurn } > 0) return true
         
-        return false
+        return unit.getMatchingUniques(UniqueType.OneTimeUnitDamage, GameContext(civInfo, city, tile = tile)).any()
     }
     
     @Readonly
@@ -398,6 +397,22 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
         }
 
         return Automation.rankStatsValue(buildingStats.clone(), GameView(civInfo.gameInfo, civInfo).civView)
+    }
+
+    private fun applyBuildingResources(building: Building): Float {
+        var value = 0f
+        if (!building.hasUnique(UniqueType.ProvidesResources)) return value
+        val tileResources = city.getRuleset().tileResources
+        
+        building.getMatchingUniques(UniqueType.ProvidesResources, GameContext(civInfo, city)).forEach {  
+            val amount = it.params[0].toInt()
+            val resourceToCheck = tileResources[it.params[1]]
+            if (resourceToCheck != null && amount > 0) {
+                value += Automation.rankResourceValue(resourceToCheck, amount, GameView(civInfo.gameInfo, civInfo).civView)
+            }
+        }
+        
+        return value
     }
 
     // NOT readonly safe, since it alters the tile ownership of real tiles

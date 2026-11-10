@@ -16,6 +16,7 @@ import com.unciv.models.ruleset.INonPerpetualConstruction
 import com.unciv.models.ruleset.PerpetualConstruction
 import com.unciv.models.ruleset.tile.ResourceType
 import com.unciv.models.ruleset.tile.TileImprovement
+import com.unciv.models.ruleset.tile.TileResource
 import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.ruleset.unique.Unique
 import com.unciv.models.ruleset.unique.UniqueType
@@ -464,25 +465,57 @@ object Automation {
         return rank
     }
 
+    //Value ranks are affected by personality metrics.
+    //Each personality amount increases the value of the stat by 0.2
     @Readonly
     fun rankStatsValue(stats: Stats, civView: CivView): Float {
         val civInfo = civView.getCiv()
+        val personality = civInfo.getPersonality()
         var rank = 0.0f
-        rank += stats.food * 1.2f //food get more value to keep city growing
+        rank += stats.food * (personality.food * 0.2f)
 
         rank += if (civInfo.gold < 0 && civInfo.stats.statsForNextTurn.gold <= 0)
-                    stats.gold //build more gold infrastructure if in serious gold problems
+                    stats.gold * 3 //build more gold infrastructure if in serious gold problems
         // This could lead to oscilliatory behaviour however: gold problem -> build trade post -> no gold problem -> replace trade posts -> gold problem
                 else
-                    stats.gold / 3 // Gold is valued less than is the case for citizen assignment,
-        //otherwise the AI would replace tiles with trade posts upon entering a golden age,
-        //and replace the trade post again when the golden age ends.
-        // We need a way to take golden age gold into account before the GA actually takes place
-        rank += stats.happiness
-        rank += stats.production
-        rank += stats.science
-        rank += stats.culture
-        rank += stats.faith
+                    stats.gold * (personality.gold * 0.2f)
+        rank += stats.happiness * (personality.happiness * 0.2f)
+        rank += stats.production * (personality.production * 0.2f)
+        rank += stats.science * (personality.science * 0.2f)
+        rank += stats.culture * (personality.culture * 0.2f)
+        rank += stats.faith * (personality.faith * 0.2f)
+        return rank
+    }
+    
+    //Ranks a stockpiled resource
+    //Value ranks are affected by personality metrics.
+    //Each personality amount increases the value of the stat by 0.2
+    @Readonly
+    fun rankResourceValue(resource: TileResource, amount: Int, civView: CivView): Float {
+        val civInfo = civView.getCiv()
+        val personality = civInfo.getPersonality()
+        val curStockpiles = civView.getResourceAmount(resource.name)
+        var rank = amount.toFloat()
+
+        val resourcesWithPriority = personality.resourcepriorities.filter { it.key == resource.name }    
+        if (!resourcesWithPriority.isEmpty()) {
+            resourcesWithPriority.values.forEach { priorityAmount -> rank += amount * priorityAmount * 0.2f }
+        }
+
+        //If you don't have much of a stockpiled resource, priority goes up
+        if (resource.isStockpiled) {
+            if (curStockpiles < 40)
+                rank *= 1.5f
+
+            if (curStockpiles < 10)
+                rank *= 2f
+        }
+        else {
+            //Non-stockpiled resources won't require too many copies
+            if (curStockpiles < 2)
+                rank *= 2f
+        }        
+        
         return rank
     }
 }
