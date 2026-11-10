@@ -182,7 +182,7 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
         }
 
         for ((resource, amount) in resourceCounter) {
-            if (resource.isCityWide) {
+           // if (resource.isCityWide) {
                 val resourceIcon = Table()
                 resourceIcon.addTooltip(resource.name, targetAlign = Align.bottom)
                 resourceIcon.onClick { cityScreen.openCivilopedia(resource.makeLink()) }
@@ -192,7 +192,7 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
                     // Only add right padding if it's not the last one in the list
                     if (resourceCounter.keys.last() != resource) padRight(10f)
                 }
-            }
+           // }
         }
 
         if (resourceTable.cells.notEmpty())
@@ -444,6 +444,9 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
                 if (cityScreen.isCrampedPortrait() && (expanderIsOpen == null || !expanderIsOpen) && stat == Stat.Gold) {
                     row()
                 }
+                
+                //If the city produces any resources, add them here
+                
             }
         }
     }

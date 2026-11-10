@@ -34,7 +34,9 @@ object CityResources {
         // This way we get them once, but it is ugly, I welcome other ideas :/
         cityResources.add(getCityResourcesGeneratedFromUniques(city, modifiers, true))
 
-        cityResources.removeAll { !it.resource.isCityWide }
+        //Worked tiles get filtered out as their resources can be shown even if they are not citywide
+        cityResources
+            .removeAll { !it.resource.isCityWide && it.origin != "Worked Tiles"}
 
         return cityResources
     }
@@ -59,6 +61,7 @@ object CityResources {
         val cityResources = ResourceSupplyList()
 
         cityResources.add(getResourcesFromTiles(city, modifiers))
+        cityResources.add(getWorkedResourcesFromTiles(city, modifiers))
         cityResources.add(getResourceFromUniqueImprovedTiles(city, modifiers))
         cityResources.add(getNegativeCityResourcesRequiredByBuildings(city))
 
@@ -96,6 +99,27 @@ object CityResources {
             val resource = tileInfo.tileResource ?: continue
             val amount = getTileResourceAmount(city, tileInfo)
             if (amount > 0) resourceSupplyList.add(resource, "Tiles", amount)
+        }
+        // Apply the modifiers after adding the totals.
+        resourceSupplyList.applyModifiers(modifiers)
+        return resourceSupplyList
+    }
+    
+    @Readonly
+    private fun getWorkedResourcesFromTiles(city: City, modifiers: Map<String, Float>): ResourceSupplyList {
+        val ruleset = city.civ.gameInfo.ruleset
+        @LocalState val resourceSupplyList = ResourceSupplyList()
+
+        for (tileInfo in city.getTiles()) {
+            if (tileInfo.tileImprovement != null && tileInfo.tileImprovement!!.resourceType != null) {
+                if (tileInfo.isPillaged()) continue
+                if (!tileInfo.isWorked() && !tileInfo.tileImprovement!!.hasUnique(UniqueType.TileProvidesYieldWithoutPopulation)
+                    && !tileInfo.terrainHasUnique(UniqueType.TileProvidesYieldWithoutPopulation)) continue
+                val resource = ruleset.tileResources[tileInfo.tileImprovement!!.resourceType!!]
+                if (resource == null) continue
+                val amount = getTileResourceAmount(city, tileInfo)
+                if (amount > 0) resourceSupplyList.add(resource, "Worked Tiles", amount)
+            }
         }
         // Apply the modifiers after adding the totals.
         resourceSupplyList.applyModifiers(modifiers)
@@ -242,7 +266,8 @@ object CityResources {
 
     @Readonly
     private fun getTileResourceAmount(city: City, tile: Tile): Int {
-        val resource = tile.tileResource ?: return 0
+        if (tile.tileImprovement != null && tile.tileImprovement!!.resourceType != null) return tile.tileImprovement!!.resourceAmount
+        val resource = tile.tileResource ?: return 0  
         if (!tile.providesResources(city.civ)) return 0
 
         var amountToAdd = if (resource.resourceType == ResourceType.Strategic) tile.resourceAmount
