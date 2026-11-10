@@ -12,6 +12,7 @@ import com.unciv.models.ruleset.tile.Terrain
 import com.unciv.models.ruleset.tile.TileImprovement
 import com.unciv.models.ruleset.tile.TileResource
 import com.unciv.models.ruleset.unique.GameContext
+import com.unciv.models.ruleset.unique.Unique
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.stats.Stat
 import com.unciv.models.stats.Stats
@@ -131,6 +132,8 @@ class TileView internal constructor(private val tile: Tile, val tileMapView: Til
     @Readonly fun aerialDistanceTo(other: TileView): Int = tile.aerialDistanceTo(other.unwrap())
     @Readonly fun getShownImprovement(): String? = tile.getShownImprovement(viewer)
 
+    @Readonly fun getTerrainMatchingUniques(uniqueType: UniqueType, gameContext: GameContext = GameContext.EmptyState): Sequence<Unique> = tile.getTerrainMatchingUniques(uniqueType, gameContext)
+
     val baseTerrain: String get() = tile.baseTerrain
     val terrainFeatures: List<String> get() = tile.terrainFeatures
     @Readonly fun getViewableResource(viewingCiv: CivView?): TileResource? {
@@ -209,6 +212,7 @@ class TileView internal constructor(private val tile: Tile, val tileMapView: Til
         return maintenance
     }
     @Readonly fun providesResources(viewingCiv: CivView): Boolean = tile.providesResources(viewingCiv.unwrap())
+    @Readonly fun hasWorkableResource(): Boolean = tile.tileImprovement != null && tile.tileImprovement!!.resourceType != null && tile.tileImprovement!!.resourceAmount > 0
 
     @Readonly fun getTileMap(): TileMapView = tileMapView
 

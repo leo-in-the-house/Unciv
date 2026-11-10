@@ -52,6 +52,13 @@ object ImprovementDescriptions {
 
         val statsDesc = improvement.cloneStats().toString()
         if (statsDesc.isNotEmpty()) textList += FormattedLine(statsDesc)
+        
+        if (improvement.resourceType != null) {
+            val improvementResource = ruleset.tileResources[improvement.resourceType]
+            if (improvementResource != null) {
+                textList += FormattedLine("Provides [${improvement.resourceAmount}] [${improvement.resourceType}]", link = improvementResource.makeLink())
+            }
+        }
 
         if (improvement.uniqueTo != null) {
             textList += FormattedLine()

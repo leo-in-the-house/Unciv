@@ -241,7 +241,12 @@ class PortraitImprovement(name: String, size: Float, dim: Boolean = false, isPil
     override fun getDefaultInnerBackgroundTint(): Color {
         val improvement = ImageGetter.ruleset.tileImprovements[imageName]
         if (improvement != null)
+        {
+            if (improvement.resourceType != null) {
+                return Color.SCARLET //Red improvements will provide resources
+            }
             return getColorFromStats(improvement)
+        }
         return Color.WHITE
     }
 

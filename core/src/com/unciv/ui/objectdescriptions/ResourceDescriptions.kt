@@ -20,6 +20,12 @@ object ResourceDescriptions {
         if (!(resource as Stats).isEmpty())
             textList += FormattedLine(resource.cloneStats().toString())
 
+        if (!resource.resourceCategory.isNullOrEmpty()) {
+            textList += FormattedLine()
+            textList += FormattedLine("Category:")
+            textList += FormattedLine(resource.resourceCategory!!, indent = 1)
+        }
+
         if (!resource.revealedBy.isNullOrEmpty()) {
             textList += FormattedLine()
             textList += FormattedLine("Revealed by:")

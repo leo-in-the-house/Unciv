@@ -587,6 +587,7 @@ class Tile : IsPartOfGameInfoSerialization {
             "Friendly Land", "Friendly" -> return observingCiv != null && isFriendlyTerritory(observingCiv)
             "Enemy Land", "Enemy" -> return observingCiv != null && isEnemyTerritory(observingCiv)
             "resource" -> return observingCiv != null && observingCiv.canSeeResource(tileResource)
+            "resourceless" -> return observingCiv != null && !observingCiv.canSeeResource(tileResource)
             "Water resource" -> return isWater && observingCiv != null && observingCiv.canSeeResource(tileResource)
             "Featureless" -> return terrainFeatures.isEmpty()
             "Open terrain" -> return allTerrains.all { !it.isRough } // special case - if *one* terrain is open, we don't care, we need *all*

@@ -1,5 +1,6 @@
 package com.unciv.logic.civilization.managers
 
+import com.unciv.Constants
 import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.map.tile.ImprovementBuildingProblem
 import com.unciv.logic.map.tile.Tile
@@ -61,7 +62,11 @@ object ImprovementFunctions {
                     .filter { rulesetImprovement ->
                         rulesetImprovement.techRequired == null || civInfo.tech.isResearched(rulesetImprovement.techRequired!!)
                     }
-        
+
+                if (improvement.name.startsWith(Constants.remove) && tile.terrainFeatures.any { improvement.name.removePrefix(Constants.remove) == it }
+                    && tile.resource != null)
+                    yield(ImprovementBuildingProblem.MustRemoveResourceBeforeFeature)
+                
                 if (!tile.improvementFunctions.canImprovementBeBuiltHere(improvement, civInfo.canSeeResource(tile.tileResource), knownFeatureRemovals, gameContext))
                 // There are way too many conditions in that functions, besides, they are not interesting
                 // at least for the current usecases. Improve if really needed.

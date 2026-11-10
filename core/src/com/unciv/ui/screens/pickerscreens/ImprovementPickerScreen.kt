@@ -170,10 +170,29 @@ class ImprovementPickerScreen(
         val statIcons = getStatIconsTable(provideResource, removeImprovement)
 
         // get benefits of the new improvement
-        val stats = tile.getStatDiffForImprovement(improvement, currentPlayerCiv)
+        var stats = tile.getStatDiffForImprovement(improvement, currentPlayerCiv)
 
-        // Add per-turn maintenance costs as negative stats.
-        stats.add(tile.getImprovementMaintenance(improvement, currentPlayerCiv))
+        if (improvement.name.startsWith(Constants.remove)) {
+            stats = Stats()
+            
+            if (tileResource != null && (improvement.name.removePrefix(Constants.remove) == tileResource.name
+                    || improvement.name.removePrefix(Constants.remove) == tileResource.resourceCategory)) {
+                tileResource.getMatchingUniques(UniqueType.StatBonusWhenRemoved).forEach {
+                    //Get the stat bonus when the tile or resource is removed
+                    stats.add(it.stats)
+                }
+            }
+            else {
+                tile.getTerrainMatchingUniques(UniqueType.StatBonusWhenRemoved).forEach {
+                    //Get the stat bonus when the improvement is removed
+                    stats.add(it.stats)
+                }
+            }
+        }
+        else {
+            // Add per-turn maintenance costs as negative stats.
+            stats.add(tile.getImprovementMaintenance(improvement, currentPlayerCiv))
+        }
 
         //Warn when the current improvement will increase a stat for the tile,
         // but the tile is outside of the range (> 3 tiles from any city center) that can be

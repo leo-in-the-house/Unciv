@@ -4,6 +4,7 @@ import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.civilization.PlayerType
 import com.unciv.models.ruleset.Policy
 import com.unciv.models.ruleset.tech.Technology
+import com.unciv.models.ruleset.tile.TileResource
 import com.unciv.models.ruleset.unique.Countables
 import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.stats.Stat
@@ -20,6 +21,16 @@ internal class ConsoleCivCommands : ConsoleCommandNode {
             val civ = console.getCivByNameOrSelected(params.getOrNull(2))
 
             civ.addStat(stat, amount)
+            DevConsoleResponse.OK
+        },
+        
+        "addresource" to ConsoleAction("civ addresource <stockpiledResource> <amount> [civ]") { console, params ->
+            val resource = console.findCliInput<TileResource>(params[0])  ?: throw ConsoleErrorException("Unrecognized resource")
+            if (!resource.isStockpiled) throw ConsoleErrorException("Resource "+params[0]+"is not stockpiled!")
+            val amount = params[1].toInt()
+            val civ = console.getCivByNameOrSelected(params.getOrNull(2))
+
+            civ.gainStockpiledResource(resource, amount)
             DevConsoleResponse.OK
         },
 
