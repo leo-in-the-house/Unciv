@@ -30,6 +30,7 @@ import yairm210.purity.annotations.Readonly
 import kotlin.math.max
 import kotlin.math.sqrt
 import com.unciv.logic.automation.Timers.Companion.timeThis
+import com.unciv.logic.automation.unit.UnitAutomation
 
 class ConstructionAutomation(val cityConstructions: CityConstructions) {
 
@@ -235,11 +236,13 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
             .filter {
                 it.hasUnique(UniqueType.BuildImprovements)
                         && Automation.allowAutomatedConstruction(GameView(civInfo.gameInfo, civInfo).civView, city, it)
+                    && workerCanWorkTileInCity(it)
             }.filterBuildable()
+        
         if (workerEquivalents.none()) return // for mods with no worker units
 
-        // Dedicate 1 worker for the first city (CS), then 1.5 workers for the first 5 cities, from then on build one more worker for every city.
-        val numberOfWorkersWeWant = if (cities <= 1) 1f else if  (cities <= 5) (cities * 1.8f) else 9f + 1.3f * (cities - 5)
+        // Dedicate 3 workers for the first city (CS), then 1.5 workers for the next cities, from then on build one more worker for every city.
+        val numberOfWorkersWeWant = 3f + (1.5f * (cities - 1))
 
         if (workers < numberOfWorkersWeWant) {
             val modifier = numberOfWorkersWeWant / (workers + 0.17f) // The worse our worker to city ratio is, the more desperate we are
@@ -264,6 +267,30 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
             if (building.isWonder && (!cityIsOverAverageProduction || civInfo.cities.sumOf { it.population.population } < 12)) continue
             addChoice(relativeCostEffectiveness, building, getValueOfBuilding(building, cityBaseline))
         }
+    }
+    
+    private fun workerCanWorkTileInCity(worker: BaseUnit): Boolean {        
+        //General purpose workers can work any tile
+        val ruleSet = city.getRuleset()
+        val workerFilters = worker.getMatchingUniques(UniqueType.BuildImprovements).map { it.params[0]}.toList()
+        
+        if (workerFilters.any { it == "Land" || it == "All"}) return true
+        val workerImprovements = ruleSet.tileImprovements.filter { improvement -> workerFilters.any { improvement.value.matchesFilter(it) } }
+        val gameContext = GameContext(civInfo, city)
+        
+        for (tile in city.getTiles()) {
+            if (isDangerousTerrainTile(worker, tile)) continue
+            //Workers should finish in progress improvements that are not being worked on actively
+            if (tile.improvementInProgress != null && tile.improvementQueue.isEmpty() &&
+                workerImprovements.contains(tile.improvementInProgress)) return true
+            if (tile.tileImprovement == null && workerImprovements.any 
+                { (it.value.uniqueTo == null || civInfo.matchesFilter(it.value.uniqueTo!!, gameContext)) 
+                    && tile.improvementFunctions.canBuildImprovement(it.value, gameContext)}) {
+                return true
+            }
+        }
+        
+        return false
     }
 
     private fun getValueOfBuilding(building: Building, cityBaseline: Stats): Float {
@@ -306,6 +333,13 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
             else -> 0f
         }
         return value
+    }
+
+    @Readonly
+    private fun isDangerousTerrainTile(unit: BaseUnit, tile: Tile): Boolean {
+        if (tile.allTerrains.sumOf { it.damagePerTurn } > 0) return true
+        
+        return false
     }
     
     @Readonly

@@ -27,6 +27,7 @@ import yairm210.purity.annotations.Cache
 import yairm210.purity.annotations.LocalState
 import yairm210.purity.annotations.Readonly
 import com.unciv.logic.automation.Timers.Companion.timeThis
+import com.unciv.logic.civilization.PlayerType
 import com.unciv.models.Counter
 
 /**
@@ -112,10 +113,17 @@ class WorkerAutomation(
 
         debug("WorkerAutomation: %s -> nothing to do", unit.toString())
         unit.civ.addNotification("${unit.shortDisplayName()} has no work to do.", MapUnitAction(unit), NotificationCategory.Units, unit.name, "OtherIcons/Sleep")
-
+        
         // Idle CS units should wander so they don't obstruct players so much
         if (unit.civ.isCityState)
             wander(unitView, stayInTerritory = true, tilesToAvoid = dangerousTiles)
+        else if (unit.civ.playerType == PlayerType.AI && 
+                (unit.civ.stats.getUnitSupply() - unit.civ.stats.getUnitSupplyConsumption() <= 2
+                    || unit.civ.gold < 5)) {
+            //Disband unused worker units if we are low on either supply or gold
+            unit.disband()
+            return
+        }
     }
     
     @Readonly private fun MapUnit.closestCity()
