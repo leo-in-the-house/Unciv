@@ -171,8 +171,10 @@ object NationDescriptions {
         if (preferredVictoryType.isNotEmpty() && preferredVictoryType != Constants.neutralVictoryType)
             yield(preferredVictoryType)
         val maxFocus = PersonalityValue.entries.maxOfOrNull { get(it) }
+        val minFocus = PersonalityValue.entries.minOfOrNull { get(it) }
         for (focus in PersonalityValue.entries)
             if (get(focus) == maxFocus) yield(focus.description)
+            else if (get(focus) == minFocus) yield(focus.antidescription)
     }.distinct().joinToString { "[$it]" }
 
     fun Personality.getCivilopediaTextHeaderImpl() =
@@ -201,7 +203,8 @@ object NationDescriptions {
             .mapNotNull { focus ->
                 val value = get(focus)
                 if (value == 5f) null
-                else FormattedLine("{${focus.description}}: ${value.toPercent()}%", indent = 1)
+                else if (value > 5f) FormattedLine("{${focus.description}}: ${value.toPercent()}%", indent = 1)
+                else FormattedLine("{${focus.antidescription}}: ${value.toPercent()}%", indent = 1)
             }
         if (biases.isNotEmpty()) {
             add("Biases:")
@@ -209,9 +212,9 @@ object NationDescriptions {
             space()
         }
 
-        if (priorities.isEmpty()) return@buildCivilopediaText
+        if (policypriorities.isEmpty()) return@buildCivilopediaText
         add("Policy priorities:")
-        for ((name, value) in priorities) {
+        for ((name, value) in policypriorities) {
             add("[$name]: [$value]", indent = 1)
         }
     }

@@ -19,7 +19,7 @@ import yairm210.purity.annotations.Readonly
  *  * Contains biases for stats ([production]..[faith]) and others ([military]..[denounceWillingness])
  *  * These biases can be indexed with a [PersonalityValue] as key, [get]/[set]
  *  * Defines [preferredVictoryType]
- *  * Defines Policy preferences in [priorities]
+ *  * Defines Policy preferences in [policypriorities]
  *  * Can have [civilopediaText], but not [uniques] (effect not implemented, guarded by `RulesetValidator`)
  *  * API: [scaledFocus], [inverseScaledFocus], [inverseModifierFocus], [scaleStats]
  */
@@ -40,8 +40,13 @@ class Personality : RulesetObject() {
     var loyal: Float = 5f
     var expansion: Float = 5f
     var denounceWillingness: Float = 5f
-
-    var priorities = LinkedHashMap<String, Int>()
+    
+    //Priorities related to which social policies to pick.
+    var policypriorities = LinkedHashMap<String, Int>()
+    //Priorities related to which terrains to focus expanding on, influencing settling, buying tiles, and terraforming abilities
+    var terrainpriorities = LinkedHashMap<String, Int>()
+    //Priorities related to which resources to focus on, influencing settling, buying tiles, constructing buildings/improvements, and propagation abilities
+    var resourcepriorities = LinkedHashMap<String, Int>()
     var preferredVictoryType: String = Constants.neutralVictoryType
     var isNeutralPersonality: Boolean = false
 

@@ -253,7 +253,7 @@ object TranslationFileWriter {
 
         add("\n\n#################### Lines from personality biases #######################\n")
         for (focus in PersonalityValue.entries)
-            add("${focus.description} = ")
+            add("${focus.description} (or ${focus.antidescription}) = ")
 
         add("\n\n#################### Lines from key bindings #######################\n")
         for (bindingLabel in KeyboardBinding.getTranslationEntries())
