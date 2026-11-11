@@ -1134,6 +1134,11 @@ enum class UniqueType(
         UniqueTarget.UnitActionModifier,
         UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable
         docDescription = "This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit."),
+    UnitActionAreaOfEffectMinRange("in all [tileFilter] tiles in [positiveAmount] to [positiveAmount] radius",
+        UniqueTarget.UnitActionModifier,
+        UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable
+        docDescription = "This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit, with a minimum and maximum range." +
+            "Minimum range is inclusive, as well as maximum"),
     UnitActionAIAlwaysUse("AI will always use",
         UniqueTarget.UnitActionModifier,
         UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable

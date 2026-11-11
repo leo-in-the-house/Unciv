@@ -69,6 +69,32 @@ object UniqueTriggerActivation {
         triggerNotificationText: String? = null
     ): Boolean {
         val function = getTriggerFunction(unique, civInfo, city, unit, tile, notification, triggerNotificationText) ?: return false
+        
+        //Triggers uniques in an area of effect
+        if (tile != null) {
+            var aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffectMinRange).firstOrNull()
+            if (aoemodifier == null) aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffect).firstOrNull()
+            if (aoemodifier != null) {
+                val tileFilter = aoemodifier.params[0]
+                var minRadius = 1
+                var maxRadius = aoemodifier.params[1].toInt()
+                if (aoemodifier.type == UniqueType.UnitActionAreaOfEffectMinRange) {
+                    minRadius = aoemodifier.params[1].toInt()
+                    maxRadius = aoemodifier.params[2].toInt()
+                }
+
+                tile.forEachTileInDistanceRange(IntRange(minRadius, maxRadius)) { targetTile ->
+                    if (targetTile.matchesFilter(tileFilter)) {
+                        val targetTileFunction = getTriggerFunction(unique, civInfo, city, unit, targetTile, notification, triggerNotificationText)
+                        
+                        if (targetTileFunction != null) {
+                            targetTileFunction.invoke()
+                        }
+                    }
+                }
+            }
+        }
+        
         return function.invoke()
     }
     

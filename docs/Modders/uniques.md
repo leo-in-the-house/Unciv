@@ -4575,6 +4575,13 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: UnitActionModifier, MetaModifier
 
+??? example  "&lt;in all [tileFilter] tiles in [positiveAmount] to [positiveAmount] radius&gt;"
+	This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit, with a minimum and maximum range.Minimum range is inclusive, as well as maximum
+
+	Example: "&lt;in all [Farm] tiles in [3] to [3] radius&gt;"
+
+	Applicable to: UnitActionModifier, MetaModifier
+
 ??? example  "&lt;AI will always use&gt;"
 	The AI will always use this action at the first opportunity when the conditions are met.
 
@@ -4658,6 +4665,13 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit.
 
 	Example: "&lt;in all [Farm] tiles in [3] radius&gt;"
+
+	Applicable to: UnitActionModifier, MetaModifier
+
+??? example  "&lt;in all [tileFilter] tiles in [positiveAmount] to [positiveAmount] radius&gt;"
+	This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit, with a minimum and maximum range.Minimum range is inclusive, as well as maximum
+
+	Example: "&lt;in all [Farm] tiles in [3] to [3] radius&gt;"
 
 	Applicable to: UnitActionModifier, MetaModifier
 

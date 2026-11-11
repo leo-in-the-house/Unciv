@@ -18,6 +18,7 @@ import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.ruleset.unique.Unique
 import com.unciv.models.ruleset.unique.UniqueTarget
 import com.unciv.models.ruleset.unique.UniqueTriggerActivation
+import com.unciv.models.ruleset.unique.UniqueTriggerActivation.getTriggerFunction
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.stats.Stat
 import com.unciv.models.translations.fillPlaceholders
@@ -248,7 +249,33 @@ object UnitActionsFromUniques {
                 if (!unit.hasMovement()) return null
                 val triggerFunction = UniqueTriggerActivation.getTriggerFunction(unique, unit.civ, unit = unit, tile = unit.currentTile)
                     ?: return null
+                
                 return { // This is the *action* that will be triggered!
+                    //Triggers uniques in an area of effect
+                    var aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffectMinRange).firstOrNull()
+                    if (aoemodifier == null) aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffect).firstOrNull()
+                    if (aoemodifier != null) {
+                        val tileFilter = aoemodifier.params[0]
+                        var minRadius = 1
+                        var maxRadius = aoemodifier.params[1].toInt()
+                        if (aoemodifier.type == UniqueType.UnitActionAreaOfEffectMinRange) {
+                            minRadius = aoemodifier.params[1].toInt()
+                            maxRadius = aoemodifier.params[2].toInt()
+                        }
+
+                        tile.forEachTileInDistanceRange(IntRange(minRadius, maxRadius)) { targetTile ->
+                            if (targetTile.matchesFilter(tileFilter)) {
+                                val targetTileFunction = getTriggerFunction(unique, unit.civ, unit = unit, tile = targetTile)
+
+                                if (targetTileFunction != null) {
+                                    repeat(unique.getUniqueMultiplier(unit.cache.state)) {
+                                        targetTileFunction.invoke()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
                     repeat(unique.getUniqueMultiplier(unit.cache.state)) {
                         triggerFunction.invoke()
                     }
