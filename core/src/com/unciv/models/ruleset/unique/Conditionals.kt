@@ -425,29 +425,29 @@ object Conditionals {
             }
 
             //AI ability only conditionals:
-            UniqueType.UnitActionAIAlwaysUseInTile ->
+            UniqueType.ConditionalUnitActionAIAlwaysUseInTile ->
                 state.relevantCiv != null && state.relevantCiv!!.isAI() && state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true
-            UniqueType.UnitActionAIAlwaysUseCountableEqualTo -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableEqualTo -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
                 compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first == second
                 }
 
-            UniqueType.UnitActionAIAlwaysUseCountableDifferentThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableDifferentThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
                 compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first != second
                 }
 
-            UniqueType.UnitActionAIAlwaysUseCountableMoreThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableMoreThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
                 compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first > second
                 }
 
-            UniqueType.UnitActionAIAlwaysUseCountableLessThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableLessThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
                 compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first < second
                 }
 
-            UniqueType.UnitActionAIAlwaysUseCountableBetween -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableBetween -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
                 compareCountables(conditional.params[0], conditional.params[1], conditional.params[2]) {
                         first, second, third ->
                     first in second..third

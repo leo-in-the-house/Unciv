@@ -4287,33 +4287,6 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Conditional
 
-??? example  "&lt;AI will always use when number of [countable] is equal to [countable]&gt;"
-	Example: "&lt;AI will always use when number of [1000] is equal to [1000]&gt;"
-
-	Applicable to: Conditional
-
-??? example  "&lt;AI will always use when number of [countable] is different than [countable]&gt;"
-	Example: "&lt;AI will always use when number of [1000] is different than [1000]&gt;"
-
-	Applicable to: Conditional
-
-??? example  "&lt;AI will always use when number of [countable] is more than [countable]&gt;"
-	Example: "&lt;AI will always use when number of [1000] is more than [1000]&gt;"
-
-	Applicable to: Conditional
-
-??? example  "&lt;AI will always use when number of [countable] is less than [countable]&gt;"
-	Example: "&lt;AI will always use when number of [1000] is less than [1000]&gt;"
-
-	Applicable to: Conditional
-
-??? example  "&lt;AI will always use when number of [countable] is between [countable] and [countable]&gt;"
-	'Between' is inclusive - so 'between 1 and 5' includes 1 and 5.
-
-	Example: "&lt;AI will always use when number of [1000] is between [1000] and [1000]&gt;"
-
-	Applicable to: Conditional
-
 ??? example  "&lt;if [modFilter] is enabled&gt;"
 	Example: "&lt;if [DeCiv Redux] is enabled&gt;"
 
@@ -4609,15 +4582,6 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: UnitActionModifier, MetaModifier
 
-??? example  "&lt;AI will always use in [tileFilter] tiles&gt;"
-	The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile.
-
-	Example: "&lt;AI will always use in [Farm] tiles&gt;"
-
-	This unique is automatically hidden from users.
-
-	Applicable to: UnitActionModifier, MetaModifier
-
 ??? example  "&lt;with [amount] priority&gt;"
 	How often this action is used, a higher value means more often and that it should be on an earlier page. 100 is very frequent, 50 is somewhat frequent, less than 25 is press one time for multi-turn movement. A Rare case is &gt; 100 if a button is something like add in capital, promote or something, we need to inform the player that taking the action is an option.
 
@@ -4626,6 +4590,57 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	This unique is automatically hidden from users.
 
 	Applicable to: UnitActionModifier, MetaModifier
+
+## UnitActionConditionalModifier uniques
+!!! note ""
+
+    Modifiers that can be added to UnitAction uniques as conditionals that can be checked
+
+??? example  "&lt;AI will always use in [tileFilter] tiles&gt;"
+	The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile.
+
+	Example: "&lt;AI will always use in [Farm] tiles&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionConditionalModifier
+
+??? example  "&lt;AI will always use when number of [countable] is equal to [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is equal to [1000]&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionConditionalModifier
+
+??? example  "&lt;AI will always use when number of [countable] is different than [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is different than [1000]&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionConditionalModifier
+
+??? example  "&lt;AI will always use when number of [countable] is more than [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is more than [1000]&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionConditionalModifier
+
+??? example  "&lt;AI will always use when number of [countable] is less than [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is less than [1000]&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionConditionalModifier
+
+??? example  "&lt;AI will always use when number of [countable] is between [countable] and [countable]&gt;"
+	'Between' is inclusive - so 'between 1 and 5' includes 1 and 5.
+
+	Example: "&lt;AI will always use when number of [1000] is between [1000] and [1000]&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionConditionalModifier
 
 ## MetaModifier uniques
 !!! note ""
@@ -4648,15 +4663,6 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 ??? example  "&lt;AI will always use&gt;"
 	The AI will always use this action at the first opportunity when the conditions are met.
-
-	This unique is automatically hidden from users.
-
-	Applicable to: UnitActionModifier, MetaModifier
-
-??? example  "&lt;AI will always use in [tileFilter] tiles&gt;"
-	The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile.
-
-	Example: "&lt;AI will always use in [Farm] tiles&gt;"
 
 	This unique is automatically hidden from users.
 

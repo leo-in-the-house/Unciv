@@ -98,6 +98,14 @@ enum class UniqueTarget(
             return targetTypes.any { UnitAction.canAcceptUniqueTarget(it) }
         }
     },
+    UnitActionConditionalModifier("Modifiers that can be added to UnitAction uniques as conditionals that can be checked",
+        modifierType = ModifierType.Conditional){
+        override fun isAcceptableModifierFor(unique: Unique): Boolean {
+            val targetTypes = unique.type?.targetTypes ?: return false
+            // Also needs to accept triggerables
+            return targetTypes.any { UnitAction.canAcceptUniqueTarget(it) }
+        }
+    },
     MetaModifier("Modifiers that can be added to other uniques changing user experience, not their behavior", 
         modifierType = ModifierType.Other),
     ;

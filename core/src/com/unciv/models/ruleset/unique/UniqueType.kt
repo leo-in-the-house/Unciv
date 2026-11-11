@@ -937,6 +937,27 @@ enum class UniqueType(
     /////// carrying conditionals
     ConditionalWhenCarriedBy("when carried by [mapUnitFilter] units", UniqueTarget.Conditional),
 
+    /////// unit action conditionals that mark a unit action can be used by the AI
+    ConditionalUnitActionAIAlwaysUseInTile("AI will always use in [tileFilter] tiles",
+        UniqueTarget.UnitActionConditionalModifier,
+        flags = UniqueFlag.setOfHiddenToUsers,
+        docDescription = "The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile."),
+    ConditionalUnitActionAIAlwaysUseCountableEqualTo("AI will always use when number of [countable] is equal to [countable]", 
+        UniqueTarget.UnitActionConditionalModifier,
+        flags = UniqueFlag.setOfHiddenToUsers),
+    ConditionalUnitActionAIAlwaysUseCountableDifferentThan("AI will always use when number of [countable] is different than [countable]", 
+        UniqueTarget.UnitActionConditionalModifier,
+        flags = UniqueFlag.setOfHiddenToUsers),
+    ConditionalUnitActionAIAlwaysUseCountableMoreThan("AI will always use when number of [countable] is more than [countable]", 
+        UniqueTarget.UnitActionConditionalModifier,
+        flags = UniqueFlag.setOfHiddenToUsers),
+    ConditionalUnitActionAIAlwaysUseCountableLessThan("AI will always use when number of [countable] is less than [countable]", 
+        UniqueTarget.UnitActionConditionalModifier,
+        flags = UniqueFlag.setOfHiddenToUsers),
+    ConditionalUnitActionAIAlwaysUseCountableBetween("AI will always use when number of [countable] is between [countable] and [countable]", 
+        UniqueTarget.UnitActionConditionalModifier,
+        flags = UniqueFlag.setOfHiddenToUsers,
+        docDescription = "'Between' is inclusive - so 'between 1 and 5' includes 1 and 5."),
     //endregion
 
     ///////////////////////////////////////// region 09 TRIGGERED ONE-TIME /////////////////////////////////////////
@@ -1118,17 +1139,6 @@ enum class UniqueType(
         UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable
         flags = UniqueFlag.setOfHiddenToUsers,
         docDescription = "The AI will always use this action at the first opportunity when the conditions are met."),
-    UnitActionAIAlwaysUseInTile("AI will always use in [tileFilter] tiles",
-        UniqueTarget.UnitActionModifier,
-        UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable
-        flags = UniqueFlag.setOfHiddenToUsers,
-        docDescription = "The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile."),
-    UnitActionAIAlwaysUseCountableEqualTo("AI will always use when number of [countable] is equal to [countable]", UniqueTarget.Conditional),
-    UnitActionAIAlwaysUseCountableDifferentThan("AI will always use when number of [countable] is different than [countable]", UniqueTarget.Conditional),
-    UnitActionAIAlwaysUseCountableMoreThan("AI will always use when number of [countable] is more than [countable]", UniqueTarget.Conditional),
-    UnitActionAIAlwaysUseCountableLessThan("AI will always use when number of [countable] is less than [countable]", UniqueTarget.Conditional),
-    UnitActionAIAlwaysUseCountableBetween("AI will always use when number of [countable] is between [countable] and [countable]", UniqueTarget.Conditional,
-        docDescription = "'Between' is inclusive - so 'between 1 and 5' includes 1 and 5."),
     UnitActionPriority("with [amount] priority",
         UniqueTarget.UnitActionModifier,
         UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable

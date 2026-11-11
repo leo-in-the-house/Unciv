@@ -63,8 +63,14 @@ object CivilianUnitAutomation {
             return
         }
         
-        if (unit.hasUniqueToTerraform())
-            return mapUnit.civ.getWorkerAutomation().automateTerraformerAction(unit, dangerousTilesWithoutTerrainRisk)
+        val workerAutomation = mapUnit.civ.getWorkerAutomation()
+        
+        if (unit.hasUniqueToTerraform() && workerAutomation.findTileToTerraform(unit, dangerousTilesWithoutTerrainRisk) != null)
+        {
+            val tileToMaybeTerraform = workerAutomation.findTileToTerraform(unit, dangerousTilesWithoutTerrainRisk)
+            if (tileToMaybeTerraform != null && workerAutomation.getBestTerraformerActionForTile(tileToMaybeTerraform, unit) != null)
+                return mapUnit.civ.getWorkerAutomation().automateTerraformerAction(unit, dangerousTilesWithoutTerrainRisk)
+        }
 
         if (unit.hasUnique(UniqueType.MayFoundReligion)
             && mapUnit.civ.religionManager.religionState < ReligionState.Religion

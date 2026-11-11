@@ -29,6 +29,7 @@ import yairm210.purity.annotations.Readonly
 import com.unciv.logic.automation.Timers.Companion.timeThis
 import com.unciv.logic.civilization.PlayerType
 import com.unciv.models.Counter
+import com.unciv.models.UnitAction
 
 /**
  * Contains the logic for worker and terraformer automation.
@@ -131,12 +132,11 @@ class WorkerAutomation(
      * Automate one unit with a Terraforming ability - decide what to do and where, move, start or continue work.
      * This will cover abilities that change the terrain with UniqueType.OneTimeChangeTerrain 
      * 
-     * Terraformers will try to terraform friendly or low-priority tiles to desirable terrains.
+     * Terraformers will try to terraform friendly low-priority or dangerous tiles to desirable terrains.
      */
     fun automateTerraformerAction(unitView: MapUnitView, dangerousTiles: HashSet<Tile>): Unit = timeThis("automateWorkerAction") {        
         val unit = unitView.getUnit()
         val currentTile = unit.getTile()
-        val civ = unit.civ
         
         if (!unit.hasUnique(UniqueType.OneTimeChangeTerrain)) return
 
@@ -328,22 +328,22 @@ class WorkerAutomation(
      * @return Null if no tile to work was found
      */
     @Readonly
-    private fun findTileToTerraform(unitView: MapUnitView, tilesToAvoid: Set<Tile>): Tile? = timeThis("findTileToWork") {
+    public fun findTileToTerraform(unitView: MapUnitView, dangerousTiles: Set<Tile>): Tile? = timeThis("findTileToWork") {
         val unit = unitView.getUnit()
         val currentTile = unit.getTile()
         
-        if (isAutomationTerraformableTile(currentTile, tilesToAvoid)
-            && getBaseTerraformingPriority(currentTile, unitView) >= 97
+        if (isAutomationTerraformableTile(currentTile)
+            && getBaseTerraformingPriority(currentTile, unitView, dangerousTiles) >= 97
             && (currentTile.isPillaged() || currentTile.hasFalloutEquivalent()))
             return currentTile
         
         val terraformableTiles = currentTile.getTilesInDistance(3).filter {
-            it.getOwner() == null || it.getOwner() == unit.civ || it.getOwner()!!.isCityState &&
+            (it.getOwner() == null || it.getOwner() == unit.civ || it.getOwner()!!.isCityState ) &&
             getTerraformableTerrainsForTile(it, unitView).isNotEmpty() && it.tileImprovement == null
         }
 
         val terraformableTilesPrioritized = terraformableTiles.groupBy { 
-            getFullTerraformingPriority(it, unitView) 
+            getFullTerraformingPriority(it, unitView, dangerousTiles) 
         }
             .asSequence().sortedByDescending { it.key }
 
@@ -361,7 +361,8 @@ class WorkerAutomation(
                 }
             }
             if (bestTile != null) {
-                return bestTile
+                //Check to make sure we can actually terraform that tile!
+                    return bestTile
             }
         }
         return null
@@ -414,9 +415,7 @@ class WorkerAutomation(
     @Readonly
     private fun isAutomationTerraformableTile(
         tile: Tile,
-        tilesToAvoid: Set<Tile>
     ): Boolean {
-        if (tile in tilesToAvoid) return false
         if (tile.owningCity != null && tile.getOwner() != null && tile.getOwner() != civInfo) {
             if (!tile.getOwner()!!.isAtWarWith(civInfo))
                 return false
@@ -471,7 +470,7 @@ class WorkerAutomation(
      * In general, tiles that are low priority tend to be better terraforming targets than not- high priority tiles are better off being improved
      */
     @Readonly
-    fun getBaseTerraformingPriority(tile: Tile, unitView: MapUnitView): Float {
+    fun getBaseTerraformingPriority(tile: Tile, unitView: MapUnitView, dangerousTiles: Set<Tile>): Float {
         val unit = unitView.getUnit()
         val unitSpecificPriority = 2 - (tile.aerialDistanceTo(unit.getTile()) / 2.0f).coerceIn(0f, 2f) * 3
         if (tileRankings.containsKey(tile))
@@ -494,6 +493,11 @@ class WorkerAutomation(
             priority += 1
             if (tile.tileResource?.resourceType == ResourceType.Luxury) priority += 5
             //luxuries are more important than other types of resources
+        }
+        
+        if (dangerousTiles.contains(tile)) {
+            //Dangerous tiles are significantly more likely to be terraformed
+            priority -= 10
         }
 
         tileRankings[tile] = TileImprovementRank(priority)
@@ -555,7 +559,7 @@ class WorkerAutomation(
      * Calculates the full terraforming priority of the tile, taking into account its possible terraforming targets, as well as the personality of the civ
      */
     @Readonly
-    private fun getFullTerraformingPriority(tile: Tile, unitView: MapUnitView): Float {
+    private fun getFullTerraformingPriority(tile: Tile, unitView: MapUnitView, dangerousTiles: Set<Tile>): Float {
         val unit = unitView.getUnit()
         val personality = civInfo.getPersonality()
         val terraformableTerrains = getTerraformableTerrainsForTile(tile, unitView)
@@ -582,7 +586,7 @@ class WorkerAutomation(
 
         additionalFertility += maxFertility
         
-        return getBasePriority(tile, unitView) + additionalFertility
+        return getBaseTerraformingPriority(tile, unitView, dangerousTiles) + additionalFertility
     }
     
     @Readonly
@@ -590,7 +594,8 @@ class WorkerAutomation(
         val unit = unitView.getUnit()
         
         return unit.getMatchingUniques(UniqueType.OneTimeChangeTerrain)
-            .filter { unique -> unique.modifiers.none { !it.conditionalsApply(GameContext(unit = unit, tile = tile)) } }
+            .filter { unique -> unit.movement.canPassThrough(tile) && tile.baseTerrain != unique.params[0] && !tile.terrainFeatures.contains(unique.params[0]) 
+                && unique.modifiers.none { !it.conditionalsApply(GameContext(unit = unit, tile = tile)) } }
             .map {
              it.params[0]
         }.toList()
@@ -618,7 +623,7 @@ class WorkerAutomation(
             if (personality.terrainpriorities[targetTerrainName] != null)
                 totalFertility += personality.terrainpriorities[targetTerrainName]!!
 
-            if (totalFertility < bestFertility) {
+            if (totalFertility >= bestFertility) {
                 bestFertility = totalFertility
                 bestTerrain = targetTerrain
             }
@@ -910,20 +915,29 @@ class WorkerAutomation(
     @Readonly fun isImprovementProbablyAFort(improvement: TileImprovement): Boolean = improvement.hasUnique(UniqueType.DefensiveBonus)
 
     private fun terraformTileToBestTerrain(tile: Tile, unitView: MapUnitView) {
+        val terraformAction = getBestTerraformerActionForTile(tile, unitView)
+        
+        if (terraformAction != null) {
+            terraformAction.action?.invoke()
+        }
+        
+        return
+    }
+    
+    public fun getBestTerraformerActionForTile(tile: Tile, unitView: MapUnitView): UnitAction? {
         val unit = unitView.getUnit()
         //The AI will never terraform improved tiles that the player owns
-        if (tile.getOwner() == unit.civ && (tile.tileImprovement != null || tile.improvementInProgress != null)) return
+        if (tile.getOwner() == unit.civ && (tile.tileImprovement != null || tile.improvementInProgress != null)) return null
 
-        val targetTerrain = getBestTerraformableTerrain(tile, unitView) ?: return
-        
+        val targetTerrain = getBestTerraformableTerrain(tile, unitView) ?: return null
+
         val terraformAction = UnitActions.getUnitActions(unit, UnitActionType.TriggerUnique)
-            .filter { it.action != null && it.associatedUnique?.type == UniqueType.OneTimeChangeTerrain 
+            .filter { it.action != null && it.associatedUnique?.type == UniqueType.OneTimeChangeTerrain
                 && it.associatedUnique.params[0] == targetTerrain.name
-                && it.associatedUnique.modifiers.any { !it.conditionalsApply(GameContext(unit = unit, tile = tile)) } }
-            .firstOrNull() ?: return
+                && it.associatedUnique.modifiers.none { !it.conditionalsApply(GameContext(unit = unit, tile = tile)) } }
+            .firstOrNull()
         
-        terraformAction.action?.invoke()
-        return
+        return terraformAction
     }
 
 

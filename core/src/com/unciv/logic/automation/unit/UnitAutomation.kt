@@ -15,7 +15,6 @@ import com.unciv.logic.civilization.MapUnitAction
 import com.unciv.logic.civilization.NotificationCategory
 import com.unciv.logic.civilization.diplomacy.DiplomacyFlags
 import com.unciv.logic.civilization.diplomacy.DiplomaticStatus
-import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.logic.map.mapunit.UpgradeAvailability
 import com.unciv.logic.map.tile.Tile
 import com.unciv.models.UpgradeUnitAction
@@ -42,6 +41,7 @@ object UnitAutomation {
 
     fun automateUnitMoves(unitView: MapUnitView):Unit = timeThis("automateUnitMoves") {
         val unit = unitView.getUnit()
+        val dangerousTilesWithoutTerrainRisk = getDangerousTiles(unitView, false)
         check(!unit.civ.isBarbarian) { "Barbarians is not allowed here." }
 
         // Might die next turn - move!
@@ -68,11 +68,19 @@ object UnitAutomation {
 
         //This allows for military units with certain civilian abilities to behave as civilians in peace and soldiers in war
         if ((unitView.hasUnique(UniqueType.BuildImprovements) || unitView.hasUnique(UniqueType.FoundCity) || 
-                    unitView.hasUnique(UniqueType.FoundPuppetCity) ||
+                    unitView.hasUnique(UniqueType.FoundPuppetCity) || 
                     unitView.hasUnique(UniqueType.ReligiousUnit) || unitView.hasUnique(UniqueType.CreateWaterImprovements))
             && !unit.civ.isAtWar()){
-            CivilianUnitAutomation.automateCivilianUnit(unitView, getDangerousTiles(unitView), getDangerousTiles(unitView, false))
+            CivilianUnitAutomation.automateCivilianUnit(unitView, getDangerousTiles(unitView), dangerousTilesWithoutTerrainRisk)
             return
+        }
+        
+        val workerAutomation = unit.civ.getWorkerAutomation()
+        
+        if (unitView.hasUniqueToTerraform()) {
+            val tileToMaybeTerraform = workerAutomation.findTileToTerraform(unitView, dangerousTilesWithoutTerrainRisk)
+            if (tileToMaybeTerraform != null && workerAutomation.getBestTerraformerActionForTile(tileToMaybeTerraform, unitView) != null)
+                return workerAutomation.automateTerraformerAction(unitView, dangerousTilesWithoutTerrainRisk)
         }
 
         // Note that not all nukes have to be air units
@@ -145,10 +153,10 @@ object UnitAutomation {
         for (action in UnitActions.getUnitActions(unit, UnitActionType.TriggerUnique)) {
             if (action.action == null || action.associatedUnique?.modifiersMap == null) continue
             
-            if (action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUse) || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseInTile)
-                    || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableBetween) || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableEqualTo)
-                || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableLessThan) || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableMoreThan)
-                    || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableDifferentThan)) {
+            if (action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUse) || action.associatedUnique.modifiersMap.contains(UniqueType.ConditionalUnitActionAIAlwaysUseInTile)
+                    || action.associatedUnique.modifiersMap.contains(UniqueType.ConditionalUnitActionAIAlwaysUseCountableBetween) || action.associatedUnique.modifiersMap.contains(UniqueType.ConditionalUnitActionAIAlwaysUseCountableEqualTo)
+                || action.associatedUnique.modifiersMap.contains(UniqueType.ConditionalUnitActionAIAlwaysUseCountableLessThan) || action.associatedUnique.modifiersMap.contains(UniqueType.ConditionalUnitActionAIAlwaysUseCountableMoreThan)
+                    || action.associatedUnique.modifiersMap.contains(UniqueType.ConditionalUnitActionAIAlwaysUseCountableDifferentThan)) {
                 if (action.associatedUnique.conditionalsApply(GameContext(unit.civ, unit = unit, tile = unit.getTile())))
                     return action
             }
