@@ -4287,6 +4287,33 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Conditional
 
+??? example  "&lt;AI will always use when number of [countable] is equal to [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is equal to [1000]&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;AI will always use when number of [countable] is different than [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is different than [1000]&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;AI will always use when number of [countable] is more than [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is more than [1000]&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;AI will always use when number of [countable] is less than [countable]&gt;"
+	Example: "&lt;AI will always use when number of [1000] is less than [1000]&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;AI will always use when number of [countable] is between [countable] and [countable]&gt;"
+	'Between' is inclusive - so 'between 1 and 5' includes 1 and 5.
+
+	Example: "&lt;AI will always use when number of [1000] is between [1000] and [1000]&gt;"
+
+	Applicable to: Conditional
+
 ??? example  "&lt;if [modFilter] is enabled&gt;"
 	Example: "&lt;if [DeCiv Redux] is enabled&gt;"
 
@@ -4568,6 +4595,29 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "&lt;after which this unit is consumed&gt;"
 	Applicable to: UnitActionModifier
 
+??? example  "&lt;in all [tileFilter] tiles in [positiveAmount] radius&gt;"
+	This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit.
+
+	Example: "&lt;in all [Farm] tiles in [3] radius&gt;"
+
+	Applicable to: UnitActionModifier, MetaModifier
+
+??? example  "&lt;AI will always use&gt;"
+	The AI will always use this action at the first opportunity when the conditions are met.
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionModifier, MetaModifier
+
+??? example  "&lt;AI will always use in [tileFilter] tiles&gt;"
+	The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile.
+
+	Example: "&lt;AI will always use in [Farm] tiles&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionModifier, MetaModifier
+
 ??? example  "&lt;with [amount] priority&gt;"
 	How often this action is used, a higher value means more often and that it should be on an earlier page. 100 is very frequent, 50 is somewhat frequent, less than 25 is press one time for multi-turn movement. A Rare case is &gt; 100 if a button is something like add in capital, promote or something, we need to inform the player that taking the action is an option.
 
@@ -4588,6 +4638,29 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Example: "&lt;for [3] turns&gt;"
 
 	Applicable to: MetaModifier
+
+??? example  "&lt;in all [tileFilter] tiles in [positiveAmount] radius&gt;"
+	This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit.
+
+	Example: "&lt;in all [Farm] tiles in [3] radius&gt;"
+
+	Applicable to: UnitActionModifier, MetaModifier
+
+??? example  "&lt;AI will always use&gt;"
+	The AI will always use this action at the first opportunity when the conditions are met.
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionModifier, MetaModifier
+
+??? example  "&lt;AI will always use in [tileFilter] tiles&gt;"
+	The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile.
+
+	Example: "&lt;AI will always use in [Farm] tiles&gt;"
+
+	This unique is automatically hidden from users.
+
+	Applicable to: UnitActionModifier, MetaModifier
 
 ??? example  "&lt;with [amount] priority&gt;"
 	How often this action is used, a higher value means more often and that it should be on an earlier page. 100 is very frequent, 50 is somewhat frequent, less than 25 is press one time for multi-turn movement. A Rare case is &gt; 100 if a button is something like add in capital, promote or something, we need to inform the player that taking the action is an option.

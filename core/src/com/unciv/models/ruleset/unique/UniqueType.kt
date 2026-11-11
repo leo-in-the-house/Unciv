@@ -1109,6 +1109,26 @@ enum class UniqueType(
         UniqueTarget.Tech,
         flags = UniqueFlag.setOfHiddenToUsers),
 
+    UnitActionAreaOfEffect("in all [tileFilter] tiles in [positiveAmount] radius",
+        UniqueTarget.UnitActionModifier,
+        UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable
+        docDescription = "This action triggers an additional time in each tile that matches the tilefilter in the given radius from the unit."),
+    UnitActionAIAlwaysUse("AI will always use",
+        UniqueTarget.UnitActionModifier,
+        UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable
+        flags = UniqueFlag.setOfHiddenToUsers,
+        docDescription = "The AI will always use this action at the first opportunity when the conditions are met."),
+    UnitActionAIAlwaysUseInTile("AI will always use in [tileFilter] tiles",
+        UniqueTarget.UnitActionModifier,
+        UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable
+        flags = UniqueFlag.setOfHiddenToUsers,
+        docDescription = "The AI will always use this action at the first opportunity when the conditions are met and the unit is in the given tile."),
+    UnitActionAIAlwaysUseCountableEqualTo("AI will always use when number of [countable] is equal to [countable]", UniqueTarget.Conditional),
+    UnitActionAIAlwaysUseCountableDifferentThan("AI will always use when number of [countable] is different than [countable]", UniqueTarget.Conditional),
+    UnitActionAIAlwaysUseCountableMoreThan("AI will always use when number of [countable] is more than [countable]", UniqueTarget.Conditional),
+    UnitActionAIAlwaysUseCountableLessThan("AI will always use when number of [countable] is less than [countable]", UniqueTarget.Conditional),
+    UnitActionAIAlwaysUseCountableBetween("AI will always use when number of [countable] is between [countable] and [countable]", UniqueTarget.Conditional,
+        docDescription = "'Between' is inclusive - so 'between 1 and 5' includes 1 and 5."),
     UnitActionPriority("with [amount] priority",
         UniqueTarget.UnitActionModifier,
         UniqueTarget.MetaModifier, // Can also be applied to UniqueTarget.Triggerable

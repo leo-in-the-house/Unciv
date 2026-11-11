@@ -644,6 +644,20 @@ class Tile : IsPartOfGameInfoSerialization {
     @Readonly fun forEachTileAtDistance(distance: Int, op: (Tile)->Unit) = tileMap.forEachTileAtDistance(position, distance, op)
     @Readonly fun forEachTileAtDistance(distance: Int, filter: (Tile)->Boolean, op: (Tile)->Unit) = tileMap.forEachTileAtDistance(position, distance, filter, op)
 
+    /**
+     * Get the total fertility for the base terrain and terrain features of the tile
+     * This is used as a rough judge to get the quality of the tile
+     */
+    @Readonly fun getTileFertility(state: GameContext = GameContext.EmptyState) : Int {
+        var fertility = getBaseTerrain().getTerrainFertility(state)
+        
+        for (terrain in terrainFeatureObjects) {
+            fertility += terrain.getTerrainFertility()
+        }
+        
+        return fertility
+    }
+    
     @Readonly
     fun getDefensiveBonus(includeImprovementBonus: Boolean = true, unit: MapUnit? = null): Float {
         var bonus = baseTerrainObject.defenceBonus

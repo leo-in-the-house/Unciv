@@ -205,6 +205,25 @@ class Terrain : RulesetStatsObject() {
         }
     }
 
+    /** 
+     * Returns the terrain fertility from Unique.OverrideFertility and Unique.AddFertility, purely from the terrain
+     * This is used as a rough judge to get the quality of the tile
+     */
+    @Readonly
+    public fun getTerrainFertility(state: GameContext = GameContext.EmptyState) : Int {
+        var fertility = 0
+        
+        getMatchingUniques(UniqueType.OverrideFertility, state).forEach {
+            fertility += it.params[0].toInt()
+        }
+
+        getMatchingUniques(UniqueType.AddFertility, state).forEach {
+            fertility += it.params[0].toInt()
+        }
+        
+        return fertility
+    }
+
     fun setTransients() {
         damagePerTurn = getMatchingUniques(UniqueType.DamagesContainingUnits).sumOf { it.params[0].toInt() }
     }

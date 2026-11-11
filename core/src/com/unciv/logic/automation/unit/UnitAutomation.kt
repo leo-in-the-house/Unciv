@@ -30,6 +30,10 @@ import com.unciv.view.MapUnitView
 import yairm210.purity.annotations.Readonly
 import com.unciv.logic.automation.Timers.Companion.timeThis
 import com.unciv.logic.automation.civilization.NextTurnAutomation
+import com.unciv.logic.map.mapunit.actions.UnitActions
+import com.unciv.models.UnitAction
+import com.unciv.models.UnitActionType
+import kotlin.collections.contains
 
 object UnitAutomation {
 
@@ -43,9 +47,15 @@ object UnitAutomation {
         // Might die next turn - move!
         if (unit.getDamageFromTerrain() > 0 && tryHealUnit(unitView)) return
 
+        //Trigger any abilities that the AI will use at the first opportunity will appear here
+        val actionToTriggerImmediately = getAlwaysTriggerActionForAI(unitView)
+        if (actionToTriggerImmediately?.action != null) {
+            actionToTriggerImmediately.action.invoke()
+            return
+        }
 
         if (unitView.isCivilian()) {
-            CivilianUnitAutomation.automateCivilianUnit(unitView, getDangerousTiles(unitView))
+            CivilianUnitAutomation.automateCivilianUnit(unitView, getDangerousTiles(unitView), getDangerousTiles(unitView, false))
             return
         }
 
@@ -61,7 +71,7 @@ object UnitAutomation {
                     unitView.hasUnique(UniqueType.FoundPuppetCity) ||
                     unitView.hasUnique(UniqueType.ReligiousUnit) || unitView.hasUnique(UniqueType.CreateWaterImprovements))
             && !unit.civ.isAtWar()){
-            CivilianUnitAutomation.automateCivilianUnit(unitView, getDangerousTiles(unitView))
+            CivilianUnitAutomation.automateCivilianUnit(unitView, getDangerousTiles(unitView), getDangerousTiles(unitView, false))
             return
         }
 
@@ -124,6 +134,27 @@ object UnitAutomation {
         // Idle CS units should wander so they don't obstruct players so much
         if (unitView.civ().isCityState)
             wander(unitView, stayInTerritory = true)
+    }
+
+    /**
+     * If there are multiple filters, they get analyzed all at once.
+     */
+    private fun getAlwaysTriggerActionForAI(unitView: MapUnitView): UnitAction? {
+        val unit = unitView.getUnit()
+        
+        for (action in UnitActions.getUnitActions(unit, UnitActionType.TriggerUnique)) {
+            if (action.action == null || action.associatedUnique?.modifiersMap == null) continue
+            
+            if (action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUse) || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseInTile)
+                    || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableBetween) || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableEqualTo)
+                || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableLessThan) || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableMoreThan)
+                    || action.associatedUnique.modifiersMap.contains(UniqueType.UnitActionAIAlwaysUseCountableDifferentThan)) {
+                if (action.associatedUnique.conditionalsApply(GameContext(unit.civ, unit = unit, tile = unit.getTile())))
+                    return action
+            }
+        }
+        
+        return null
     }
 
     @Readonly
@@ -457,7 +488,7 @@ object UnitAutomation {
     }
 
     @Readonly
-    private fun getDangerousTiles(unitView: MapUnitView): HashSet<Tile> {
+    private fun getDangerousTiles(unitView: MapUnitView, terrainDamage: Boolean = true): HashSet<Tile> {
         val unit = unitView.getUnit()
         val nearbyEnemyUnits = unit.currentTile.getTilesInDistance(3)
             .flatMap { tile -> tile.getUnits().filter { unit.civ.isAtWarWith(it.civ) } }
@@ -470,12 +501,15 @@ object UnitAutomation {
             .filter { it.isCityCenter() && it.getCity()!!.civ.isAtWarWith(unit.civ) }
             .flatMap { it.getTilesInDistance(it.getCity()!!.getBombardRange()) }
 
-        val tilesWithTerrainDamage = unit.currentTile.getTilesInDistance(3)
-            .filter { unit.getDamageFromTerrain(it) > 0 }
+        if (terrainDamage) {
+            val tilesWithTerrainDamage = unit.currentTile.getTilesInDistance(3)
+                .filter { unit.getDamageFromTerrain(it) > 0 }
+            return (tilesInRangeOfAttack + tilesWithinBombardmentRange + tilesWithTerrainDamage).toHashSet()
+        }
 
-        return (tilesInRangeOfAttack + tilesWithinBombardmentRange + tilesWithTerrainDamage).toHashSet()
+        return (tilesInRangeOfAttack + tilesWithinBombardmentRange).toHashSet()
     }
-
+    
     /**
      * @return true if the unit was able to pillage a tile, false otherwise
      */

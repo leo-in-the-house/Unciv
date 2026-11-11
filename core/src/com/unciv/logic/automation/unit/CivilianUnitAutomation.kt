@@ -23,7 +23,7 @@ object CivilianUnitAutomation {
         && !unit.hasUnique(UniqueType.AddInCapital)
         && unit.civ().getUnits().any { it.hasUnique(UniqueType.AddInCapital) }
 
-    fun automateCivilianUnit(unit: MapUnitView, dangerousTiles: HashSet<Tile>): Unit = timeThis("automateCivilianUnit") {
+    fun automateCivilianUnit(unit: MapUnitView, dangerousTiles: HashSet<Tile>, dangerousTilesWithoutTerrainRisk: HashSet<Tile>): Unit = timeThis("automateCivilianUnit") {
         // Temporary - logic-layer automation below still works on MapUnit
         val mapUnit = unit.getUnit()
 
@@ -62,6 +62,9 @@ object CivilianUnitAutomation {
                 UnitAutomation.tryExplore(unit)
             return
         }
+        
+        if (unit.hasUniqueToTerraform())
+            return mapUnit.civ.getWorkerAutomation().automateTerraformerAction(unit, dangerousTilesWithoutTerrainRisk)
 
         if (unit.hasUnique(UniqueType.MayFoundReligion)
             && mapUnit.civ.religionManager.religionState < ReligionState.Religion
@@ -174,7 +177,6 @@ object CivilianUnitAutomation {
             return
         }
         
-        
         return 
     }
 
@@ -184,7 +186,7 @@ object CivilianUnitAutomation {
         val researchCompletePercent = technologies.count { civ.isResearched(it) } * 1.0f / technologies.size
         return researchCompletePercent >= 0.55f
     }
-
+    
     /** Returns whether the civilian spends its turn hiding and not moving */
     fun tryRunAwayIfNeccessary(unit: MapUnitView): Boolean {
         val mapUnit = unit.getUnit()

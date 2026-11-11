@@ -169,7 +169,7 @@ class CivInfoStatsForNextTurn(val civInfo: Civilization) {
     }
     @Readonly
     fun getUnitSupplyFromCities(): Int {
-        return civInfo.cities.size *
+        return civInfo.cities.size * 
             (civInfo.getDifficulty().unitSupplyPerCity
                     + civInfo.getMatchingUniques(UniqueType.UnitSupplyPerCity).sumOf { it.params[0].toInt() })
     }

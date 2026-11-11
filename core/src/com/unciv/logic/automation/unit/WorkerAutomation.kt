@@ -29,10 +29,9 @@ import yairm210.purity.annotations.Readonly
 import com.unciv.logic.automation.Timers.Companion.timeThis
 import com.unciv.logic.civilization.PlayerType
 import com.unciv.models.Counter
-import com.unciv.models.ruleset.unit.BaseUnit
 
 /**
- * Contains the logic for worker automation.
+ * Contains the logic for worker and terraformer automation.
  *
  * This is instantiated from [Civilization.getWorkerAutomation] and cached there.
  *
@@ -94,7 +93,7 @@ class WorkerAutomation(
         val tileToWork = findTileToWork(unitView, dangerousTiles)
 
         if (tileToWork != currentTile && tileToWork != null) {
-            headTowardsTileToWork(unitView, tileToWork)
+            headTowardsTileToWorkOrTerraform(unitView, tileToWork)
             return
         }
 
@@ -126,6 +125,41 @@ class WorkerAutomation(
             unit.disband()
             return
         }
+    }
+
+    /**
+     * Automate one unit with a Terraforming ability - decide what to do and where, move, start or continue work.
+     * This will cover abilities that change the terrain with UniqueType.OneTimeChangeTerrain 
+     * 
+     * Terraformers will try to terraform friendly or low-priority tiles to desirable terrains.
+     */
+    fun automateTerraformerAction(unitView: MapUnitView, dangerousTiles: HashSet<Tile>): Unit = timeThis("automateWorkerAction") {        
+        val unit = unitView.getUnit()
+        val currentTile = unit.getTile()
+        val civ = unit.civ
+        
+        if (!unit.hasUnique(UniqueType.OneTimeChangeTerrain)) return
+
+        val tileToTerraform = findTileToTerraform(unitView, dangerousTiles)
+
+        //Moving to the tile to terraform
+        if (tileToTerraform != currentTile && tileToTerraform != null) {
+            headTowardsTileToWorkOrTerraform(unitView, tileToTerraform, true)
+            return
+        }
+
+        if (currentTile.improvementInProgress != null) return // we're working!
+
+        if (tileToTerraform == currentTile) {
+            return terraformTileToBestTerrain(tileToTerraform, unitView)
+        }
+
+        debug("TerraformerAutomation: %s -> nothing to do", unit.toString())
+        unit.civ.addNotification("${unit.shortDisplayName()} has no work to do.", MapUnitAction(unit), NotificationCategory.Units, unit.name, "OtherIcons/Sleep")
+
+        // Idle CS units should wander so they don't obstruct players so much
+        if (unit.civ.isCityState)
+            wander(unitView, stayInTerritory = true, tilesToAvoid = dangerousTiles)
     }
     
     @Readonly
@@ -195,9 +229,13 @@ class WorkerAutomation(
         }
     }
 
-    private fun headTowardsTileToWork(
+    /**
+     * Terraformers will attempt to terraform friendly tiles into desirable terrains and features.
+     */
+    private fun headTowardsTileToWorkOrTerraform(
         unitView: MapUnitView,
         tileToWork: Tile,
+        terraformingJob: Boolean = false
     ) {
         val unit = unitView.getUnit()
         debug("WorkerAutomation: %s -> head towards %s", unit.toString(), tileToWork)
@@ -218,7 +256,7 @@ class WorkerAutomation(
 
         // If we have reached a fort tile that is in progress and shouldn't be there, cancel it.
         // TODO: Replace this code entirely and change [chooseImprovement] to not continue building the improvement by default
-        if (reachedTile == tileToWork && reachedTile.improvementInProgress == Constants.fort) {
+        if (reachedTile == tileToWork && !terraformingJob && reachedTile.improvementInProgress == Constants.fort) {
             debug("Replacing fort in progress with new improvement")
             reachedTile.stopWorkingOnImprovement()
         }
@@ -230,8 +268,12 @@ class WorkerAutomation(
 
         // tileRankings is updated in getBasePriority, which is only called if isAutomationWorkableTile is true
         // Meaning, there are tiles we can't/shouldn't work, and they won't even be in tileRankings
-        if (tileHasWorkToDo(unit.currentTile, unitView))
+        if (!terraformingJob && tileHasWorkToDo(unit.currentTile, unitView))
             startWorkOnCurrentTile(unitView)
+        else if (terraformingJob)
+        {
+            terraformTileToBestTerrain(reachedTile, unitView)
+        }
     }
 
 
@@ -270,6 +312,51 @@ class WorkerAutomation(
                 if (unit.getTile() == tileInGroup) return unit.getTile()
                 if (!unit.movement.canReach(tileInGroup)) continue
                 if (bestTile == null || getFullPriority(tileInGroup, unitView) > getFullPriority(bestTile, unitView)) {
+                    bestTile = tileInGroup
+                }
+            }
+            if (bestTile != null) {
+                return bestTile
+            }
+        }
+        return null
+    }
+
+
+    /**
+     * Looks for a worthwhile tile to terraform
+     * @return Null if no tile to work was found
+     */
+    @Readonly
+    private fun findTileToTerraform(unitView: MapUnitView, tilesToAvoid: Set<Tile>): Tile? = timeThis("findTileToWork") {
+        val unit = unitView.getUnit()
+        val currentTile = unit.getTile()
+        
+        if (isAutomationTerraformableTile(currentTile, tilesToAvoid)
+            && getBaseTerraformingPriority(currentTile, unitView) >= 97
+            && (currentTile.isPillaged() || currentTile.hasFalloutEquivalent()))
+            return currentTile
+        
+        val terraformableTiles = currentTile.getTilesInDistance(3).filter {
+            it.getOwner() == null || it.getOwner() == unit.civ || it.getOwner()!!.isCityState &&
+            getTerraformableTerrainsForTile(it, unitView).isNotEmpty() && it.tileImprovement == null
+        }
+
+        val terraformableTilesPrioritized = terraformableTiles.groupBy { 
+            getFullTerraformingPriority(it, unitView) 
+        }
+            .asSequence().sortedByDescending { it.key }
+
+        // Search through each group by priority
+        // If we can find an eligible best tile in the group lets return that
+        // under the assumption that best tile is better than tiles in all lower groups
+        for (tilePriorityGroup in terraformableTilesPrioritized) {
+            var bestTile: Tile? = null
+            for (tileInGroup in tilePriorityGroup.value.sortedBy { unit.getTile().aerialDistanceTo(it) }) {
+                // These are the expensive calculations (tileCanBeImproved, canReach), so we only apply these filters after everything else it done.
+                if (unit.getTile() == tileInGroup) return unit.getTile()
+                if (!unit.movement.canReach(tileInGroup)) continue
+                if (bestTile == null) {
                     bestTile = tileInGroup
                 }
             }
@@ -324,6 +411,25 @@ class WorkerAutomation(
         return true
     }
 
+    @Readonly
+    private fun isAutomationTerraformableTile(
+        tile: Tile,
+        tilesToAvoid: Set<Tile>
+    ): Boolean {
+        if (tile in tilesToAvoid) return false
+        if (tile.owningCity != null && tile.getOwner() != null && tile.getOwner() != civInfo) {
+            if (!tile.getOwner()!!.isAtWarWith(civInfo))
+                return false
+         }
+        if (tile.isCityCenter()) return false
+        // Don't try to terraform tiles we can still benefit from
+        if (civInfo.canSeeResource(tile.tileResource) && tile.getTilesInDistance(civInfo.gameInfo.ruleset.modOptions.constants.cityWorkRange)
+                .none { it.isCityCenter() && it.getCity()?.civ == civInfo }
+        ) return false
+        if (tile.getOwner() == civInfo && tile.tileImprovement != null && !tile.isPillaged()) return false
+        return true
+    }
+        
     /**
      * Calculate a priority for the tile without accounting for the improvement it'self
      * This is a cheap guess on how helpful it might be to do work on this tile
@@ -357,6 +463,43 @@ class WorkerAutomation(
         tileRankings[tile] = TileImprovementRank(priority)
         return priority + unitSpecificPriority
     }
+
+
+    /**
+     * Calculate a priority for the tile without accounting for the terrain it will be terraformed to
+     * This is a cheap guess on how helpful it might be to terraform the tile
+     * In general, tiles that are low priority tend to be better terraforming targets than not- high priority tiles are better off being improved
+     */
+    @Readonly
+    fun getBaseTerraformingPriority(tile: Tile, unitView: MapUnitView): Float {
+        val unit = unitView.getUnit()
+        val unitSpecificPriority = 2 - (tile.aerialDistanceTo(unit.getTile()) / 2.0f).coerceIn(0f, 2f) * 3
+        if (tileRankings.containsKey(tile))
+            return 100 - tileRankings[tile]!!.tilePriority + unitSpecificPriority
+        
+        var priority = 0f
+        if (tile.getOwner() == civInfo) {
+            priority += 1f // the fact it's inside our borders means we can do something
+            if (tile.providesYield()) priority += 2
+            if (tile.hasFalloutEquivalent()) priority -= 2 //Fallout wants to be terraformed away
+            if (tile.terrainFeatures.isNotEmpty()) {
+                if (tile.lastTerrain.hasUnique(UniqueType.StatBonusWhenRemoved)) priority += 0.5f
+                else if (tile.lastTerrain.hasUnique(UniqueType.Vegetation)) priority -= 0.3f
+            } // Removing our forests is good for tempo, jungles not as much
+            if (tile.terrainHasUnique(UniqueType.FreshWater)) priority += 1
+            // we want our farms up when unlocking Civil Service
+        }
+
+        if (civInfo.canSeeResource(tile.tileResource)) {
+            priority += 1
+            if (tile.tileResource?.resourceType == ResourceType.Luxury) priority += 5
+            //luxuries are more important than other types of resources
+        }
+
+        tileRankings[tile] = TileImprovementRank(priority)
+        return 100 - (priority + unitSpecificPriority)
+    }
+    
     /**
      * Calculates the priority building the improvement on the tile
      */
@@ -408,7 +551,81 @@ class WorkerAutomation(
         val unit = unitView.getUnit()
         return getBasePriority(tile, unitView) + getImprovementPriority(tile, unitView)
     }
+    /**
+     * Calculates the full terraforming priority of the tile, taking into account its possible terraforming targets, as well as the personality of the civ
+     */
+    @Readonly
+    private fun getFullTerraformingPriority(tile: Tile, unitView: MapUnitView): Float {
+        val unit = unitView.getUnit()
+        val personality = civInfo.getPersonality()
+        val terraformableTerrains = getTerraformableTerrainsForTile(tile, unitView)
 
+        //Take into account difference between the quality of the new from the old tile.
+        //We are comparing an existing tile with a terrain, fertility is the best metric for tile desirability RN, and we give extra focus to Freshwater tiles
+        val state = GameContext(unit = unit, tile = tile)
+        var additionalFertility = 0f
+        
+        var maxFertility = tile.getTileFertility(state)
+        
+        for (targetTerrainName in terraformableTerrains) {
+            val targetTerrain = tile.ruleset.terrains[targetTerrainName] ?: continue
+            val targetTerrainFertility = targetTerrain.getTerrainFertility(state)
+            
+            if (maxFertility < targetTerrainFertility) {
+                maxFertility = targetTerrainFertility
+            }
+
+            //Take into account any personality considerations for the tile
+            if (personality.terrainpriorities[targetTerrainName] != null)
+                additionalFertility += personality.terrainpriorities[targetTerrainName]!!
+        }
+
+        additionalFertility += maxFertility
+        
+        return getBasePriority(tile, unitView) + additionalFertility
+    }
+    
+    @Readonly
+    private fun getTerraformableTerrainsForTile(tile: Tile, unitView: MapUnitView): List<String> {
+        val unit = unitView.getUnit()
+        
+        return unit.getMatchingUniques(UniqueType.OneTimeChangeTerrain)
+            .filter { unique -> unique.modifiers.none { !it.conditionalsApply(GameContext(unit = unit, tile = tile)) } }
+            .map {
+             it.params[0]
+        }.toList()
+    }
+
+    /**
+     * Calculates the best terraformable terrain, among what the unit can terraform
+     */
+    @Readonly
+    private fun getBestTerraformableTerrain(tile: Tile, unitView: MapUnitView): Terrain? {
+        val terraformableTerrains = getTerraformableTerrainsForTile(tile, unitView)
+
+        val unit = unitView.getUnit()
+        val personality = civInfo.getPersonality()
+        val state = GameContext(unit = unit, tile = tile)
+
+        var bestFertility = tile.getTileFertility(state)
+        var bestTerrain: Terrain? = null
+
+        for (targetTerrainName in terraformableTerrains) {
+            val targetTerrain = tile.ruleset.terrains[targetTerrainName] ?: continue
+            var totalFertility = targetTerrain.getTerrainFertility(state)
+
+            //Take into account any personality considerations for the tile
+            if (personality.terrainpriorities[targetTerrainName] != null)
+                totalFertility += personality.terrainpriorities[targetTerrainName]!!
+
+            if (totalFertility < bestFertility) {
+                bestFertility = totalFertility
+                bestTerrain = targetTerrain
+            }
+        }
+
+        return bestTerrain
+    }
     /**
      * Returns the best improvement
      */
@@ -420,7 +637,7 @@ class WorkerAutomation(
             throw IllegalStateException("There was an improvementPriority > 0 and nothing to do")
         return true
     }
-
+    
     /**
      * Determine the improvement appropriate to a given tile and worker
      * Returns null if none is worth it
@@ -691,6 +908,23 @@ class WorkerAutomation(
     }
 
     @Readonly fun isImprovementProbablyAFort(improvement: TileImprovement): Boolean = improvement.hasUnique(UniqueType.DefensiveBonus)
+
+    private fun terraformTileToBestTerrain(tile: Tile, unitView: MapUnitView) {
+        val unit = unitView.getUnit()
+        //The AI will never terraform improved tiles that the player owns
+        if (tile.getOwner() == unit.civ && (tile.tileImprovement != null || tile.improvementInProgress != null)) return
+
+        val targetTerrain = getBestTerraformableTerrain(tile, unitView) ?: return
+        
+        val terraformAction = UnitActions.getUnitActions(unit, UnitActionType.TriggerUnique)
+            .filter { it.action != null && it.associatedUnique?.type == UniqueType.OneTimeChangeTerrain 
+                && it.associatedUnique.params[0] == targetTerrain.name
+                && it.associatedUnique.modifiers.any { !it.conditionalsApply(GameContext(unit = unit, tile = tile)) } }
+            .firstOrNull() ?: return
+        
+        terraformAction.action?.invoke()
+        return
+    }
 
 
     /** Try improving a Water Resource

@@ -424,6 +424,35 @@ object Conditionals {
                 (gameParameters.mods.asSequence() + gameParameters.baseRuleset).none { ModCompatibility.modNameFilter(it, filter) }
             }
 
+            //AI ability only conditionals:
+            UniqueType.UnitActionAIAlwaysUseInTile ->
+                state.relevantCiv != null && state.relevantCiv!!.isAI() && state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true
+            UniqueType.UnitActionAIAlwaysUseCountableEqualTo -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+                compareCountables(conditional.params[0], conditional.params[1]) {
+                        first, second -> first == second
+                }
+
+            UniqueType.UnitActionAIAlwaysUseCountableDifferentThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+                compareCountables(conditional.params[0], conditional.params[1]) {
+                        first, second -> first != second
+                }
+
+            UniqueType.UnitActionAIAlwaysUseCountableMoreThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+                compareCountables(conditional.params[0], conditional.params[1]) {
+                        first, second -> first > second
+                }
+
+            UniqueType.UnitActionAIAlwaysUseCountableLessThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+                compareCountables(conditional.params[0], conditional.params[1]) {
+                        first, second -> first < second
+                }
+
+            UniqueType.UnitActionAIAlwaysUseCountableBetween -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
+                compareCountables(conditional.params[0], conditional.params[1], conditional.params[2]) {
+                        first, second, third ->
+                    first in second..third
+                }
+            
             else -> false
         }
     }

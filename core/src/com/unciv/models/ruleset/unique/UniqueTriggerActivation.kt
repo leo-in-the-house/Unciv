@@ -71,6 +71,14 @@ object UniqueTriggerActivation {
         val function = getTriggerFunction(unique, civInfo, city, unit, tile, notification, triggerNotificationText) ?: return false
         return function.invoke()
     }
+    
+    fun hasTriggerUnique(unit: MapUnit): Boolean {
+        return unit.getUniques().any { isTriggerUnique(it, unit) }
+    }
+
+    fun isTriggerUnique(unique: Unique, unit: MapUnit): Boolean {
+        return (getTriggerFunction(unique, unit.civ, unit = unit, tile = unit.currentTile) != null)
+    }
 
     /** @return The action to be performed if possible, else null
      * This is so the unit actions can be displayed as "disabled" if they won't actually do anything
