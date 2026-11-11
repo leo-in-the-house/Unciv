@@ -212,10 +212,27 @@ object NationDescriptions {
             space()
         }
 
-        if (policypriorities.isEmpty()) return@buildCivilopediaText
-        add("Policy priorities:")
-        for ((name, value) in policypriorities) {
-            add("[$name]: [$value]", indent = 1)
+        if (policypriorities.isNotEmpty()) {
+            add("Policy priorities:")
+            for ((name, value) in policypriorities) {
+                add("[$name]: [$value]", indent = 1)
+            }
         }
+
+        if (terrainpriorities.isNotEmpty()) {
+            add("Terrain priorities:")
+            for ((name, value) in terrainpriorities) {
+                add("[$name]: [$value]", indent = 1)
+            }
+        }
+
+        if (resourcepriorities.isNotEmpty()) {
+            add("Resource priorities:")
+            for ((name, value) in resourcepriorities) {
+                add("[$name]: [$value]", indent = 1)
+            }
+        }
+
+        return@buildCivilopediaText
     }
 }
