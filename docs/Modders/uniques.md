@@ -1958,7 +1958,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Can only be built"
 	Meant to be used together with conditionals, like "Can only be built &lt;after adopting [policy]&gt; &lt;while the empire is happy&gt;". Only allows Building when ALL conditionals are met. Will also NOT block Upgrade and Transform actions. See also OnlyAvailable.
 
-	Applicable to: Building, Unit
+	Applicable to: Building, Unit, Improvement
 
 ??? example  "Must have an owned [tileFilter] within [amount] tiles"
 	Example: "Must have an owned [Farm] within [3] tiles"
@@ -2226,7 +2226,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Can only be built"
 	Meant to be used together with conditionals, like "Can only be built &lt;after adopting [policy]&gt; &lt;while the empire is happy&gt;". Only allows Building when ALL conditionals are met. Will also NOT block Upgrade and Transform actions. See also OnlyAvailable.
 
-	Applicable to: Building, Unit
+	Applicable to: Building, Unit, Improvement
 
 ??? example  "May create improvements on water resources"
 	Applicable to: Unit
@@ -3169,6 +3169,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Meant to be used together with conditionals, like "Unavailable &lt;after generating a Great Prophet&gt;".
 
 	Applicable to: Tech, Policy, FounderBelief, FollowerBelief, Building, Unit, Promotion, Improvement, Ruins, Event, EventChoice, Victory
+
+??? example  "Can only be built"
+	Meant to be used together with conditionals, like "Can only be built &lt;after adopting [policy]&gt; &lt;while the empire is happy&gt;". Only allows Building when ALL conditionals are met. Will also NOT block Upgrade and Transform actions. See also OnlyAvailable.
+
+	Applicable to: Building, Unit, Improvement
 
 ??? example  "Must be next to [tileFilter]"
 	Example: "Must be next to [Farm]"

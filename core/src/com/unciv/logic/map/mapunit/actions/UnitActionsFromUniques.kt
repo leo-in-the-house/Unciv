@@ -494,8 +494,20 @@ object UnitActionsFromUniques {
             title = "${UnitActionType.Repair} [${unit.currentTile.getImprovementToRepair()!!.name}] - [${turnsToBuild}${Fonts.turn}]",
             associatedUnique = uniques.first(),
             action = {
-                tile.queueImprovement(Constants.repair, turnsToBuild)
-                unit.action = null
+                if (turnsToBuild <= 0) {
+                    unit.getTile().setImprovement(Constants.repair, unit.civ, unit)
+                    unit.civ.cache.updateViewableTiles() // to update 'last seen improvement'
+                    unit.useMovementPoints(unit.currentMovement)
+
+                    //Consumes a charge if the unit has max charges
+                    if (unit.baseUnit.charges > 0) {
+                        unit.consumeCharges()
+                    }
+                }
+                else {
+                    tile.queueImprovement(Constants.repair, turnsToBuild)
+                    unit.action = null
+                }
             }.takeIf { couldConstruct }
         )
     }

@@ -294,9 +294,29 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
 
         val icon = ImageGetter.getConstructionPortrait(building.name, 50f)
         val isFree = cityScreen.hasFreeBuilding(building)
-        val displayName = if (isFree) "{${building.name}} ({Free})" else building.name
+        var displayName = if (isFree) "{${building.name}} ({Free})" else building.name
+        
+        if (building.pillaged) displayName = "({Pillaged}) $displayName" 
+        
+        val fontColor = if (building.pillaged) Color.RED else Color.WHITE
 
-        info.add(displayName.toLabel(fontSize = Constants.defaultFontSize, hideIcons = true)).padBottom(5f).right().row()
+        info.add(displayName.toLabel(fontSize = Constants.defaultFontSize, hideIcons = true).setFontColor(fontColor)).padBottom(5f).right().row()
+
+        //If the building is pillaged, it should have no further abilities
+        if (building.pillaged) {
+            val stats = ""
+            statsAndSpecialists.add(stats.toLabel(fontSize = Constants.defaultFontSize)).right()
+            button.add(info).right().top().padRight(10f).padTop(5f)
+            button.add(icon).right()
+
+            button.onClick {
+                cityScreen.selectConstruction(building)
+                cityScreen.updateAsync()
+            }
+
+            destinationTable.add(button).pad(1f).padBottom(2f).padTop(2f).expandX().right().row()
+            return
+        }
 
         val stats = cityView.getBuildingStats(building).joinToString(separator = " ") {
             "" + it.value.toInt() + it.key.character

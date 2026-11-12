@@ -6,6 +6,7 @@ import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.logic.map.tile.RoadStatus
 import com.unciv.models.Counter
+import com.unciv.models.ruleset.Building
 import com.unciv.models.ruleset.Ruleset
 import com.unciv.models.ruleset.RulesetStatsObject
 import com.unciv.models.ruleset.unique.GameContext
@@ -32,6 +33,7 @@ class TileImprovement : RulesetStatsObject() {
     var resourceType: String? = null
     var resourceAmount: Int = -1
     var buildSound: String? = null
+    var linkedBuilding: String? = null
 
     override fun legacyRequiredTechs() = if (techRequired == null) emptySequence() else sequenceOf(techRequired!!)
 

@@ -7,6 +7,7 @@ import com.unciv.logic.civilization.NotificationCategory
 import com.unciv.logic.civilization.NotificationIcon
 import com.unciv.logic.civilization.managers.ImprovementFunctions
 import com.unciv.logic.map.mapunit.MapUnit
+import com.unciv.models.ruleset.Building
 import com.unciv.models.ruleset.tile.TerrainType
 import com.unciv.models.ruleset.tile.TileImprovement
 import com.unciv.models.ruleset.unique.GameContext
@@ -198,10 +199,11 @@ class TileImprovementFunctions(val tile: Tile) {
         improvementName: String,
         /** For road assignment and taking over tiles - DO NOT pass when simulating improvement effects! */
         civToActivateBroaderEffects: Civilization? = null,
-        unit: MapUnit? = null
+        unit: MapUnit? = null,
+        building: String? = null
     ) {
         val improvementObject = tile.ruleset.tileImprovements[improvementName]
-        setImprovement(improvementObject, civToActivateBroaderEffects, unit)
+        setImprovement(improvementObject, civToActivateBroaderEffects, unit, building)
     }
 
 
@@ -209,7 +211,8 @@ class TileImprovementFunctions(val tile: Tile) {
         improvement: TileImprovement?,
         /** For road assignment and taking over tiles - DO NOT pass when simulating improvement effects! */
         civToActivateBroaderEffects: Civilization? = null,
-        unit: MapUnit? = null
+        unit: MapUnit? = null,
+        building: String? = null
     ) {
         fun updateVisibility() {
             if (!tile.tileMap.hasGameInfo()) return
@@ -281,6 +284,19 @@ class TileImprovementFunctions(val tile: Tile) {
             }
 
             tile.setTerrainFeatures(tile.terrainFeatures.filterNot { feature -> removableTerrainFeatures.any { it.name == feature } })
+        }
+        
+        if (building != null) {
+            improvement.linkedBuilding = building
+        }
+        else if (tile.owningCity != null) {
+            //Try to parse the name of the building that matches the name of the improvement
+            for (building in tile.owningCity!!.cityConstructions.getBuiltBuildings()) {
+                if (building.name == improvement.name) {
+                    improvement.linkedBuilding = building.name
+                    break
+                }
+            }
         }
 
         if (civToActivateBroaderEffects != null)
@@ -390,9 +406,9 @@ class TileImprovementFunctions(val tile: Tile) {
     }
 
     /** Marks tile as target tile for a building with a [UniqueType.CreatesOneImprovement] unique */
-    fun markForCreatesOneImprovement(improvement: String) {
+    fun markForCreatesOneImprovement(improvement: String, building: String? = null) {
         tile.improvementQueue.clear()
-        tile.queueImprovement(improvement, -1)
+        tile.queueImprovement(improvement, -1, building)
     }
 
     /** Un-Marks a tile as target tile for a building with a [UniqueType.CreatesOneImprovement] unique.

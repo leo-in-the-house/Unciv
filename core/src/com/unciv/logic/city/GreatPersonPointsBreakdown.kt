@@ -106,7 +106,7 @@ class GreatPersonPointsBreakdown private constructor(private val ruleset: Rulese
 
         // Collect points from buildings - duplicates listed individually (should not happen in vanilla Unciv)
         for (building in city.cityConstructions.getBuiltBuildings()) {
-            if (building.greatPersonPoints.isEmpty()) continue
+            if (building.greatPersonPoints.isEmpty() || building.pillaged) continue
             basePoints.add(Entry(building.name, building.makeLink(), counter = building.greatPersonPoints))
             allNames += building.greatPersonPoints.keys
         }

@@ -359,9 +359,9 @@ class City : IsPartOfGameInfoSerialization, INamed {
         else -> getStatReserve(stat) >= price
     }
 
-    @Readonly internal fun getMaxHealth() = 200 + cityConstructions.getBuiltBuildings().sumOf { it.cityHealth }
+    @Readonly internal fun getMaxHealth() = 200 + cityConstructions.getBuiltBuildings().filter { !it.pillaged}.sumOf { it.cityHealth }
 
-    @Readonly fun getStrength() = cityConstructions.getBuiltBuildings().sumOf { it.cityStrength }.toFloat()
+    @Readonly fun getStrength() = cityConstructions.getBuiltBuildings().filter { !it.pillaged}.sumOf { it.cityStrength }.toFloat()
 
     /** Gets max air units that can remain in the city untransported */
     @Readonly fun getMaxAirUnits(): Int = civ.gameInfo.ruleset.modOptions.constants.cityAirUnitCapacity +
@@ -480,6 +480,14 @@ class City : IsPartOfGameInfoSerialization, INamed {
     fun reassignPopulationDeferred() {
         if (civ.isCurrentPlayer() && civ.isHuman()) reassignPopulation() 
         else shouldReassignPopulation = true
+    }
+
+    /**
+     * When an improvement is pillaged, update the building status of any buildings that are tied to that improvement
+     */
+    fun updateBuildingPillaged(buildingName: String, pillaged: Boolean) {
+        cityConstructions.getBuiltBuildings().filter { it.name == buildingName }
+            .forEach { it.pillaged = pillaged }
     }
 
     fun destroyCity(overrideSafeties: Boolean = false) {

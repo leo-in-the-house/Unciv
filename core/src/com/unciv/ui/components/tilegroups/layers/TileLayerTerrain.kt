@@ -95,14 +95,14 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
             strings.tileSetConfig.ruleVariants[allTogether] != null -> baseHexagon.apply {
                 addAll(strings.tileSetConfig.ruleVariants[allTogether]!!.map { strings.getTile(it) })
                 addAll(edgeImages)
-                if (tileView.improvementInProgress != null) {
+                if (tileView.improvementInProgress != null || (tileView.isMarkedForCreatesOneImprovement() && tileView.tileImprovement == null)) {
                     add(strings.underConstruction)
                 }
             }
             ImageGetter.imageExists(allTogetherLocation) -> baseHexagon.apply {
                 add(allTogetherLocation)
                 addAll(edgeImages)
-                if (tileView.improvementInProgress != null) {
+                if (tileView.improvementInProgress != null || (tileView.isMarkedForCreatesOneImprovement() && tileView.tileImprovement == null)) {
                     add(strings.underConstruction)
                 }
             }
@@ -112,7 +112,7 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
                 addAll(edgeImages)
                 if (resourceAndImprovementSequence.any())
                     addAll(getImprovementAndResourceImages(resourceAndImprovementSequence))
-                if (tileView.improvementInProgress != null) {
+                if (tileView.improvementInProgress != null || (tileView.isMarkedForCreatesOneImprovement() && tileView.tileImprovement == null)) {
                     add(strings.underConstruction)
                 }
             }

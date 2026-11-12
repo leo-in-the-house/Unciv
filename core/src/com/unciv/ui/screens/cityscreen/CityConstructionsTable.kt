@@ -662,6 +662,7 @@ class CityConstructionsTable(private val cityScreen: CityScreen) {
         // UniqueType.CreatesOneImprovement support - don't add yet, postpone until target tile for the improvement is selected
         if (construction is Building && construction.hasCreateOneImprovementUnique()) {
             cityScreen.startPickTileForCreatesOneImprovement(construction, Stat.Gold, false)
+            SoundPlayer.play(getConstructionSound(construction))
             return
         }
         cityScreen.stopPickTileForCreatesOneImprovement()

@@ -432,7 +432,7 @@ internal class WorkerAutomationTest {
         val workerTile = city.getCenterTile()
         val markedTile = testGame.tileMap[1,1]
         markedTile.baseTerrain = Constants.grassland
-        markedTile.improvementFunctions.markForCreatesOneImprovement("Farm")
+        markedTile.improvementFunctions.markForCreatesOneImprovement("Farm", null)
 
         val worker = testGame.addUnit("Worker", civInfo, workerTile)
         worker.currentMovement = 2f

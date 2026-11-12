@@ -29,7 +29,12 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
     var maintenance = 0
     private var percentStatBonus: Stats? = null
     var specialistSlots: Counter<String> = Counter()
-    @Readonly fun newSpecialists(): Counter<String>  = specialistSlots
+    //Buildings with improvements tied to them with a pillaged improvement are pillaged, disabling their effects
+    var pillaged = false
+    @Readonly fun newSpecialists(): Counter<String>  {
+        if (pillaged) return Counter()
+        return specialistSlots
+    }
 
     var greatPersonPoints = Counter<String>()
 
@@ -84,6 +89,9 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
     @Readonly
     fun getStats(city: City): Stats = timeThis("Building.getStats") {
         // Calls the clone function of the NamedStats this class is derived from, not a clone function of this class
+        
+        if (pillaged) return Stats()
+        
         @LocalState val stats = cloneStats()
         
         val conditionalState = city.state
@@ -107,6 +115,7 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
 
     @Readonly
     fun getStatPercentageBonuses(city: City?): Stats {
+        if (pillaged) return Stats()
         @LocalState val stats = percentStatBonus?.clone() ?: Stats()
         if (city == null) return stats  // initial stats
 
@@ -362,7 +371,7 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
                     val improvement = ruleset.tileImprovements[unique.params[0]]
                     if (improvement == null) {
                         yield(RejectionReasonType.NoSuchImprovement.toInstance("Unknown improvement: ${unique.params[0]}"))
-                    } else if (city.getTiles().none { !it.improvementFunctions.canBuildImprovement(improvement, city.state) }) {
+                    } else if (city.getTiles().none { it.improvementFunctions.canBuildImprovement(improvement, GameContext(city.civ, city, tile = it)) }) {
                         yield(RejectionReasonType.NoTileCanContainImprovement.toInstance())
                     }
                 }
@@ -581,6 +590,7 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
 
     @Readonly
     override fun getResourceRequirementsPerTurn(state: GameContext?): Counter<String> {
+        if (pillaged) return Counter.ZERO
         val uniques = getMatchingUniques(UniqueType.ConsumesResources,
             state ?: GameContext.EmptyState)
         if (uniques.none() && requiredResource == null) return Counter.ZERO

@@ -65,7 +65,7 @@ class Tile : IsPartOfGameInfoSerialization {
     var improvementIsPillaged = false
 
     internal class ImprovementQueueEntry(
-        val improvement: String, turnsToImprovement: Int
+        val improvement: String, turnsToImprovement: Int, building: String? = null
     ) : IsPartOfGameInfoSerialization {
         @Suppress("unused") // Gdx Json will find this constructor and use it
         private constructor() : this("", 0)
@@ -73,12 +73,13 @@ class Tile : IsPartOfGameInfoSerialization {
             private set
         override fun toString() = "$improvement: $turnsToImprovement${Fonts.turn}"
         /** @return `true` if it's still counting and not finished */
+        var building: String? = null
         fun countDown(): Boolean {
             turnsToImprovement = (turnsToImprovement - 1).coerceAtLeast(0)
             return turnsToImprovement > 0
         }
         @Readonly
-        fun clone() = ImprovementQueueEntry(improvement, turnsToImprovement)
+        fun clone() = ImprovementQueueEntry(improvement, turnsToImprovement, building)
     }
     internal val improvementQueue = ArrayList<ImprovementQueueEntry>(1)
 
@@ -1067,11 +1068,11 @@ class Tile : IsPartOfGameInfoSerialization {
     fun removeImprovement() =
         improvementFunctions.setImprovement(null)
 
-    fun setImprovement(improvementName: String, civToHandleCompletion: Civilization? = null, unit: MapUnit? = null) =
-        improvementFunctions.setImprovement(improvementName, civToHandleCompletion, unit)
+    fun setImprovement(improvementName: String, civToHandleCompletion: Civilization? = null, unit: MapUnit? = null, building: String? = null) =
+        improvementFunctions.setImprovement(improvementName, civToHandleCompletion, unit, building)
 
-    fun setImprovement(improvement: TileImprovement?, civToHandleCompletion: Civilization? = null, unit: MapUnit? = null) =
-        improvementFunctions.setImprovement(improvement, civToHandleCompletion, unit)
+    fun setImprovement(improvement: TileImprovement?, civToHandleCompletion: Civilization? = null, unit: MapUnit? = null, building: String? = null) =
+        improvementFunctions.setImprovement(improvement, civToHandleCompletion, unit, building)
 
     // function handling when removing a road from the tile
     fun removeRoad() = setRoadStatus(RoadStatus.None, null)
@@ -1147,8 +1148,8 @@ class Tile : IsPartOfGameInfoSerialization {
     }
 
     /** Adds an entry to the [improvementQueue] with explicit [turnsToImprovement] */
-    fun queueImprovement(improvementName: String, turnsToImprovement: Int) {
-        improvementQueue.add(ImprovementQueueEntry(improvementName, turnsToImprovement))
+    fun queueImprovement(improvementName: String, turnsToImprovement: Int, building: String? = null) {
+        improvementQueue.add(ImprovementQueueEntry(improvementName, turnsToImprovement, building))
     }
 
     /** Called from [UnitTurnManager.endTurn] when a Worker "spends time" here
@@ -1168,7 +1169,7 @@ class Tile : IsPartOfGameInfoSerialization {
         if (worker.civ.isCurrentPlayer())
             UncivGame.Current.settings.addCompletedTutorialTask("Construct an improvement")
 
-        setImprovement(queueEntry.improvement, worker.civ, worker)
+        setImprovement(queueEntry.improvement, worker.civ, worker, queueEntry.building)
         return true
     }
 
@@ -1177,13 +1178,6 @@ class Tile : IsPartOfGameInfoSerialization {
     fun setPillaged() {
         if (!canPillageTile())
             return
-        // http://well-of-souls.com/civ/civ5_improvements.html says that naval improvements are destroyed upon pillage
-        //    and I can't find any other sources so I'll go with that
-        if (!isLand) {
-            removeImprovement()
-            owningCity?.reassignPopulationDeferred()
-            return
-        }
 
         // Setting turnsToImprovement might interfere with UniqueType.CreatesOneImprovement
         improvementFunctions.removeCreatesOneImprovementMarker()
@@ -1204,9 +1198,11 @@ class Tile : IsPartOfGameInfoSerialization {
             }
         }
 
-        owningCity?.reassignPopulationDeferred()
-        if (owningCity != null)
+        if (owningCity != null) {
+            if (tileImprovement?.linkedBuilding != null) owningCity!!.updateBuildingPillaged(tileImprovement!!.linkedBuilding!!, true)
             owningCity!!.civ.cache.updateCivResources()
+            owningCity?.reassignPopulationDeferred()
+        }
     }
 
     fun setRepaired() {
@@ -1216,6 +1212,8 @@ class Tile : IsPartOfGameInfoSerialization {
         else
             roadIsPillaged = false
 
+
+        if (tileImprovement?.linkedBuilding != null) owningCity?.updateBuildingPillaged(tileImprovement!!.linkedBuilding!!, false)
         owningCity?.reassignPopulationDeferred()
     }
 
