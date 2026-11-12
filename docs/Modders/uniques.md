@@ -3214,6 +3214,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Improvement
 
+??? example  "[stats] in each adjacent [tileFilter]"
+	Example: "[+1 Gold, +2 Production] in each adjacent [Farm]"
+
+	Applicable to: Improvement
+
 ??? example  "Ensures a minimum tile yield of [stats]"
 	Example: "Ensures a minimum tile yield of [+1 Gold, +2 Production]"
 

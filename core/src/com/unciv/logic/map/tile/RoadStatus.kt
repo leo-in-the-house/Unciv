@@ -18,8 +18,8 @@ enum class RoadStatus(
 ) : IsPartOfGameInfoSerialization {
 
     None,
-    Road (1, 0.5f, 1/3f, "Remove Road"),
-    Railroad (2, 0.1f, 0.1f, "Remove Railroad");
+    Road (1, 3/4f, 1/2f, "Remove Road"),
+    Railroad (2, 1/3f, 1/3f, "Remove Railroad");
 
     /** returns null for [None] */
     @Readonly fun improvement(ruleset: Ruleset) = ruleset.tileImprovements[this.name]

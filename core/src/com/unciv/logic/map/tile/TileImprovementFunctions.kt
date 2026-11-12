@@ -287,13 +287,13 @@ class TileImprovementFunctions(val tile: Tile) {
         }
         
         if (building != null) {
-            improvement.linkedBuilding = building
+            tile.linkedBuilding = building
         }
         else if (tile.owningCity != null) {
             //Try to parse the name of the building that matches the name of the improvement
             for (building in tile.owningCity!!.cityConstructions.getBuiltBuildings()) {
                 if (building.name == improvement.name) {
-                    improvement.linkedBuilding = building.name
+                    tile.linkedBuilding = building.name
                     break
                 }
             }

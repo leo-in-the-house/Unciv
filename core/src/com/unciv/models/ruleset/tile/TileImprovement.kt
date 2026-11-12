@@ -33,7 +33,6 @@ class TileImprovement : RulesetStatsObject() {
     var resourceType: String? = null
     var resourceAmount: Int = -1
     var buildSound: String? = null
-    var linkedBuilding: String? = null
 
     override fun legacyRequiredTechs() = if (techRequired == null) emptySequence() else sequenceOf(techRequired!!)
 

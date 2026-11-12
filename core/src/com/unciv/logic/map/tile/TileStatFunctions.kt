@@ -325,6 +325,16 @@ class TileStatFunctions(val tile: Tile) {
             )
                 stats.add(unique.stats)
         }
+        
+        //Get stats from adjacent tiles
+        for (adjacentTile in tile.neighbors) {
+            adjacentTile.tileImprovement?.forEachMatchingUnique(UniqueType.ImprovementStatsInAdjacentTiles, conditionalState) { unique ->
+                val adjacent = unique.params[1]
+                if (tile.matchesFilter(adjacent, observingCiv)) {
+                    stats.add(unique.stats)
+                }
+            }
+        }
 
         return stats
     }

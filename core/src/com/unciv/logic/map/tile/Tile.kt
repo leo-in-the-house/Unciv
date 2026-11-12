@@ -63,6 +63,8 @@ class Tile : IsPartOfGameInfoSerialization {
 
     var improvement: String? = null
     var improvementIsPillaged = false
+    var linkedBuilding: String? = null
+    
 
     internal class ImprovementQueueEntry(
         val improvement: String, turnsToImprovement: Int, building: String? = null
@@ -256,6 +258,7 @@ class Tile : IsPartOfGameInfoSerialization {
         @LocalState val cloneImprovementQueue = toReturn.improvementQueue
         cloneImprovementQueue.addAll(improvementQueue.map { it.clone() })
         toReturn.improvementIsPillaged = improvementIsPillaged
+        toReturn.linkedBuilding = linkedBuilding
         toReturn.roadStatus = roadStatus
         toReturn.roadIsPillaged = roadIsPillaged
         toReturn.roadOwner = roadOwner
@@ -1199,7 +1202,7 @@ class Tile : IsPartOfGameInfoSerialization {
         }
 
         if (owningCity != null) {
-            if (tileImprovement?.linkedBuilding != null) owningCity!!.updateBuildingPillaged(tileImprovement!!.linkedBuilding!!, true)
+            if (linkedBuilding != null) owningCity!!.updateBuildingPillaged(linkedBuilding!!, true)
             owningCity!!.civ.cache.updateCivResources()
             owningCity?.reassignPopulationDeferred()
         }
@@ -1213,7 +1216,7 @@ class Tile : IsPartOfGameInfoSerialization {
             roadIsPillaged = false
 
 
-        if (tileImprovement?.linkedBuilding != null) owningCity?.updateBuildingPillaged(tileImprovement!!.linkedBuilding!!, false)
+        if (linkedBuilding != null) owningCity?.updateBuildingPillaged(linkedBuilding!!, false)
         owningCity?.reassignPopulationDeferred()
     }
 

@@ -739,6 +739,7 @@ enum class UniqueType(
     ImprovementBuildableByFreshWater("Can also be built on tiles adjacent to fresh water", UniqueTarget.Improvement),
     ImprovementStatsOnTile("[stats] from [tileFilter] tiles", UniqueTarget.Improvement),
     ImprovementStatsForAdjacencies("[stats] for each adjacent [tileFilter]", UniqueTarget.Improvement),
+    ImprovementStatsInAdjacentTiles("[stats] in each adjacent [tileFilter]", UniqueTarget.Improvement),
     EnsureMinimumStats("Ensures a minimum tile yield of [stats]", UniqueTarget.Improvement), // City center
 
     CanBuildOutsideBorders("Can be built outside your borders", UniqueTarget.Improvement),
