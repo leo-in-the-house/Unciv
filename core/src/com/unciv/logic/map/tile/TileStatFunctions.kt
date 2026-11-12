@@ -328,6 +328,7 @@ class TileStatFunctions(val tile: Tile) {
         
         //Get stats from adjacent tiles
         for (adjacentTile in tile.neighbors) {
+            if (adjacentTile.getOwner() != tile.getOwner() || adjacentTile.isPillaged()) continue
             adjacentTile.tileImprovement?.forEachMatchingUnique(UniqueType.ImprovementStatsInAdjacentTiles, conditionalState) { unique ->
                 val adjacent = unique.params[1]
                 if (tile.matchesFilter(adjacent, observingCiv)) {
