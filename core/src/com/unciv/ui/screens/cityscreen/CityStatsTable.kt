@@ -9,11 +9,16 @@ import com.badlogic.gdx.utils.Align
 import com.unciv.Constants
 import com.unciv.logic.city.*
 import com.unciv.models.Counter
+import com.unciv.models.UncivSound
 import com.unciv.models.ruleset.Building
+import com.unciv.models.ruleset.IConstruction
+import com.unciv.models.ruleset.PerpetualConstruction
 import com.unciv.models.ruleset.tile.TileResource
 import com.unciv.models.ruleset.unique.UniqueType
+import com.unciv.models.ruleset.unit.BaseUnit
 import com.unciv.models.stats.Stat
 import com.unciv.models.translations.tr
+import com.unciv.ui.audio.SoundPlayer
 import com.unciv.ui.components.extensions.*
 import com.unciv.ui.components.fonts.Fonts
 import com.unciv.ui.components.input.KeyboardBinding
@@ -311,6 +316,7 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
 
             button.onClick {
                 cityScreen.selectConstruction(building)
+                SoundPlayer.play(getConstructionSound(building))
                 cityScreen.updateAsync()
             }
 
@@ -349,6 +355,7 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
 
         button.onClick {
             cityScreen.selectConstruction(building)
+            SoundPlayer.play(getConstructionSound(building))
             cityScreen.updateAsync()
         }
 
@@ -468,6 +475,37 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
                 //If the city produces any resources, add them here
                 
             }
+        }
+    }
+    
+    private fun getConstructionSound(construction: IConstruction): UncivSound {
+        return when(construction) {
+            is Building -> {
+                if (construction.buildSound != null) {
+                    UncivSound(construction.buildSound!!)
+                }
+                else {
+                    //SoundPlayer.play(UncivSound(event.eventSound!!))
+                    UncivSound.Construction
+                }
+            }
+            is BaseUnit -> {
+                if (construction.selectSound != null) {
+                    UncivSound(construction.selectSound!!)
+                }
+                else if (construction.attackSound != null) {
+                    UncivSound(construction.attackSound!!)
+                }
+                else {
+                    //SoundPlayer.play(UncivSound(event.eventSound!!))
+                    UncivSound.Promote
+                }
+            }
+            PerpetualConstruction.Gold -> UncivSound.Coin
+            PerpetualConstruction.Science -> UncivSound.Paper
+            PerpetualConstruction.Culture -> UncivSound.Policy
+            PerpetualConstruction.Faith -> UncivSound.Choir
+            else -> UncivSound.Click
         }
     }
 }

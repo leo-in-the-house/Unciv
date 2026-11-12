@@ -264,6 +264,7 @@ class CityConstructionsTable(private val cityScreen: CityScreen) {
                     }
                     override fun touchUp(event: InputEvent, x: Float, y: Float, pointer: Int, button: Int) {
                         cityScreen.selectConstruction(constructionName)
+                        SoundPlayer.play(getConstructionSound(cityView.constructions.getConstruction(constructionName)))
                         selectedQueueEntry = i
                         cityScreen.updateAsync()
                         event.stop()
