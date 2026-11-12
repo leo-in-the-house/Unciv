@@ -6,6 +6,7 @@ import com.unciv.UncivGame
 import com.unciv.view.CivView
 import com.unciv.view.TileView
 import com.unciv.logic.map.NeighborDirection
+import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.ui.components.tilegroups.TileGroup
 import com.unciv.ui.images.ImageGetter
 import com.unciv.ui.screens.basescreen.BaseScreen
@@ -68,6 +69,14 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
             }
         }
 
+        //Add buildings to display over the City Center, such as walls
+        val buildingImages = when {
+            tileView.isCityCenter() && tileView.getCity() != null && tileView.getCity()!!.tryGetCityView() != null 
+                -> tileView.getCity()!!.tryGetCityView()!!.getBuiltBuildings().filter { it.hasUnique(UniqueType.ShownOnTileLayerTerrain) }
+                .map { it.name }.asSequence()
+            else -> null
+        }
+
         val terrainImages = when {
             tileView.naturalWonder != null -> sequenceOf(tileView.baseTerrain, tileView.naturalWonder!!)
             // very common case, most oceans have nothing else going on
@@ -112,6 +121,9 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
                 addAll(edgeImages)
                 if (resourceAndImprovementSequence.any())
                     addAll(getImprovementAndResourceImages(resourceAndImprovementSequence))
+                if (buildingImages != null && buildingImages.count() > 0) {
+                    addAll(getImprovementAndResourceImages(buildingImages))
+                }
                 if (tileView.improvementInProgress != null || (tileView.isMarkedForCreatesOneImprovement() && tileView.tileImprovement == null)) {
                     add(strings.underConstruction)
                 }

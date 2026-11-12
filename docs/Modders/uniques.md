@@ -1938,6 +1938,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Triggers a global alert upon completion"
 	Applicable to: Building, Unit
 
+??? example  "Is shown"
+	This unique is automatically hidden from users.
+
+	Applicable to: Building
+
 ??? example  "Cost increases by [amount] per owned city"
 	Example: "Cost increases by [3] per owned city"
 

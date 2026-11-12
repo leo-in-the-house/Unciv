@@ -372,8 +372,9 @@ enum class UniqueType(
     //endregion
 
     ///////////////////////////////////////// region 03 BUILDING UNIQUES /////////////////////////////////////////
-
-
+    
+    
+    ShownOnTileLayerTerrain("Is shown", UniqueTarget.Building, flags = UniqueFlag.setOfHiddenToUsers),
     CostIncreasesPerCity("Cost increases by [amount] per owned city", UniqueTarget.Building, UniqueTarget.Unit),
     CostIncreasesWhenBuilt("Cost increases by [amount] when built", UniqueTarget.Building, UniqueTarget.Unit),
     CostPercentageChange("[amount]% production cost", UniqueTarget.Building, UniqueTarget.Unit,
