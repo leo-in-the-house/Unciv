@@ -335,8 +335,8 @@ class BattleTable(val worldScreen: WorldScreen) : Table() {
 
         if (!canStillAttack) return
 
-        if (!SoundPlayer.play(UncivSound(attacker.getCombatantName())))
-            SoundPlayer.play(attacker.getAttackSound())
+        if (!SoundPlayer.play(attacker.getAttackSound()))
+            SoundPlayer.play(UncivSound(attacker.getCombatantName()))
 
         val (damageToDefender, damageToAttacker) = when (attacker) {
             is MapUnitCombatantView -> attacker.getUnitView().tryGetMapUnitView()!!.attackOrNuke(attackableTileView)
