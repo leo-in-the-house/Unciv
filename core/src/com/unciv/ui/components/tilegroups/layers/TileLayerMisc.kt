@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Align
 import com.unciv.UncivGame
+import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.view.CivView
 import com.unciv.view.TileView
 import com.unciv.models.translations.tr
@@ -120,8 +121,9 @@ class TileLayerResource(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup
 
     private fun updateResourceIcon(viewingCiv: CivView?, showResourceIcon: Boolean) {
         val tileView = tileGroup.tileView
+        val tileImprovementProvidesResource = tileView.tileImprovement?.hasUnique(UniqueType.ProvidesResources) == true
         // This could change on any turn, since resources need certain techs to reveal them
-        val effectiveVisible = showResourceIcon && (tileView.isForceVisible() || tileView.getViewableResource(viewingCiv) != null)
+        val effectiveVisible = showResourceIcon && (tileView.isForceVisible() || tileView.getViewableResource(viewingCiv) != null || tileImprovementProvidesResource)
 
         // If resource has changed (e.g. tech researched) - force new icon next time it's needed
         if (resourceName != tileView.resource || resourceAmount != tileView.resourceAmount) {
@@ -129,6 +131,15 @@ class TileLayerResource(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup
             resourceAmount = tileView.resourceAmount
             resourceIcon?.let { removeOwnedActor(it) }
             resourceIcon = null
+        }
+        
+        //If there is no resource on the tile, but the improvement provides a resource, the resource icon is the first resource the improvement provides.
+        //Used for urban buildings.
+
+        if (resourceName == null && tileImprovementProvidesResource) {
+            val resourceUnique = tileView.tileImprovement?.getMatchingUniques(UniqueType.ProvidesResources)!!.first()
+            resourceName = resourceUnique.params[1]
+            resourceAmount = resourceUnique.params[0].toInt()
         }
 
         // Get a fresh Icon if and only if necessary
@@ -150,7 +161,7 @@ class TileLayerResource(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup
 
             val shouldResourceProvidedBeDisplayed =
                 viewingCiv != null && tileView.getOwner()?.civName == viewingCiv.civName
-                        && tileView.providesResources(viewingCiv)
+                        && (tileView.providesResources(viewingCiv) || tileImprovementProvidesResource)
             if (shouldResourceProvidedBeDisplayed && resourceProvidedIcon == null){
                 val group = NonTransformGroup()
                 group.setSize(12f,12f)
