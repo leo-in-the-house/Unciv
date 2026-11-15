@@ -413,19 +413,21 @@
 	},
 	{
 		"name": "Archive",
-		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"terrainsCanBeBuiltOn": ["Land"],
+		"science": 2,
+		"culture": 1,
 		"turnsToBuild": 0,
 		"buildSound": "archive",
 		"uniques": [
 			"Knowledge",
-			"Costs [10] [Stone]",
-			"Can only be built to improve a resource",
-			"Pillaging this improvement yields approximately [+10 Gold]"
+			"Great Improvement",
+			"Tile provides yield without assigned population",
+			"Pillaging this improvement yields approximately [+50 Science]"
 		],
 		"shortcutKey": "F",
 		 "civilopediaText": [
             {
-                "text": "Can be built over Geologic resources, mainly by Prospectors.  Improves the resource, usually leading to a large amount of production."
+                "text": "Build by Philosophers, these repositories of knowledge can provide science and culture without needing to be worked.  Philosophers can attempt to perform Eurekas over them."
             }
         ]
 	},

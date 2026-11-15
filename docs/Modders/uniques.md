@@ -3887,7 +3887,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "&lt;when not in a Golden Age&gt;"
 	Applicable to: Conditional
 
-??? example  "&lt;during We Love The King Day&gt;"
+??? example  "&lt;during a Festival&gt;"
 	Applicable to: Conditional
 
 ??? example  "&lt;while the empire is happy&gt;"

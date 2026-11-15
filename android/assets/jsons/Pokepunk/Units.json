@@ -261,14 +261,14 @@
 		"uniques": [
             "Great Creative",
 			"Unbuildable",
-            "Triggers a [Eureka] event <for [2] charges>",
+            "Triggers a [Eureka] event <in [Archive] tiles> <for [2] charges> <AI will always use>",
 			"Can build [Knowledge] improvements on tiles",
 			"Automation is a primary action"
 		],
 		"cost": 300,
 		 "civilopediaText": [
             {
-                "text": "Knowledge worker that can attempt to generate a free technology or Magic Card through a Eureka (not guaranteed), or build Knowledge improvements."
+                "text": "Knowledge worker that can attempt to generate a free technology or Magic Card through a Eureka (not guaranteed) over an Archive, or build Knowledge improvements."
             }
         ]
 	},

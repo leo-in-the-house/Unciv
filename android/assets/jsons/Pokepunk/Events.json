@@ -554,6 +554,7 @@
 				"text": "Free Technology",
 				"uniques": [
 					"Triggers a [Eureka - Free Technology] event",
+					"Free Technology",
 					"[-50]% weight to this choice for AI decisions"
 				]
 			},
@@ -562,6 +563,7 @@
 				"text": "Free Technology2",
 				"uniques": [
 					"Triggers a [Eureka - Free Technology2] event",
+					"Free Technology",
 					"[-50]% weight to this choice for AI decisions"
 				]
 			},
@@ -581,7 +583,6 @@
 			{
 				"text": "OK",
 				"uniques": [
-					"Free Technology"
 				]
 			}
 		]
@@ -594,7 +595,6 @@
 			{
 				"text": "OK",
 				"uniques": [
-					"Free Technology"
 				]
 			}
 		]
