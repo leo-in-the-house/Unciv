@@ -335,18 +335,22 @@ class TileImprovementFunctions(val tile: Tile) {
     ) {
         val removedFeatureName = improvementName.removePrefix(Constants.remove)
         val currentTileImprovement = tile.tileImprovement
-        // We removed a terrain (e.g. Forest) and the improvement (e.g. Lumber mill) requires it!
-        if (currentTileImprovement != null && tile.terrainFeatures.any {
-                currentTileImprovement.terrainsCanBeBuiltOn.contains(it) && it == removedFeatureName
-            } && !currentTileImprovement.terrainsCanBeBuiltOn.contains(tile.baseTerrain)
+        val removeResource = tile.tileResource != null && (tile.tileResource!!.name == removedFeatureName ||
+            (tile.tileResource!!.resourceCategory != null && tile.tileResource!!.resourceCategory!! == removedFeatureName))
+        // We removed a terrain (e.g. Forest) or resource and the improvement (e.g. Lumber mill) requires it!
+        if (currentTileImprovement != null && ((tile.terrainFeatures.any {
+                (currentTileImprovement.terrainsCanBeBuiltOn.contains(it) && it == removedFeatureName)
+            } && !currentTileImprovement.terrainsCanBeBuiltOn.contains(tile.baseTerrain)) ||
+            (tile.tileResource != null && removeResource
+                && currentTileImprovement.hasUnique(UniqueType.CanOnlyImproveResource) 
+                && tile.tileResource!!.isImprovedBy(currentTileImprovement)))
         ) tile.removeImprovement()
-
+        
         if (RoadStatus.entries.any { improvementName == it.removeAction }) {
             tile.removeRoad()
         }
         else if (tile.improvement == removedFeatureName) tile.removeImprovement()
-        else if (tile.tileResource != null && (tile.tileResource!!.name == removedFeatureName ||
-                (tile.tileResource!!.resourceCategory != null && tile.tileResource!!.resourceCategory!! == removedFeatureName))) {
+        else if (removeResource) {
             if (civToActivateBroaderEffects != null &&
                 tile.tileResource!!.hasUnique(UniqueType.StatBonusWhenRemoved)
             )

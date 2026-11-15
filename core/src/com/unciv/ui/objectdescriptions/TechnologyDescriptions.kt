@@ -28,11 +28,11 @@ object TechnologyDescriptions {
      * Textual description used in TechPickerScreen and AlertPopup(AlertType.TechResearched) -
      * Civilization always known and description tailored to
      */
-    fun getDescription(technology: Technology, viewingCiv: Civilization): String = technology.run {
+    fun getDescription(technology: Technology, viewingCiv: Civilization, showQuote: Boolean = true): String = technology.run {
         val ruleset = viewingCiv.gameInfo.ruleset
         val lineList = ArrayList<String>() // more readable than StringBuilder, with same performance for our use-case
 
-        if (technology.quote.isNotEmpty()) lineList += technology.quote
+        if (showQuote && technology.quote.isNotEmpty()) lineList += technology.quote
 
         for (pediaText in technology.civilopediaText) {
             // This is explicitly to get the "Who knows what the future holds" of Future Tech back into

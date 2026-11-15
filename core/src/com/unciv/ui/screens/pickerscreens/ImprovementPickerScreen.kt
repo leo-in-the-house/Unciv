@@ -321,7 +321,7 @@ class ImprovementPickerScreen(
                 removalImprovement = ruleset.tileImprovements[removalName]
                 val tileResource = tile.getViewableResource(currentPlayerCiv)
                 if (removalImprovement == null && tileResource != null) {
-                    //Check to see if there is a removal for the resource
+                    //Check to see if there is a removal for the resource, if so, remove the resource before the terrain
                     if (tileResource.resourceCategory != null) {
                         val removalNameByResourceCategory = Constants.remove + tileResource.resourceCategory
                         removalImprovement = ruleset.tileImprovements[removalNameByResourceCategory]

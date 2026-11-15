@@ -121,7 +121,6 @@ object UnitActionModifiers {
 
         for (conditional in actionUnique.modifiers) {
             when (conditional.type) {
-                UniqueType.UnitActionConsumeUnit -> unit.consume()
                 UniqueType.UnitActionLimitedTimes, UniqueType.UnitActionOnce -> {
                     if (usagesLeft(unit, actionUnique) == 1
                         && actionUnique.hasModifier(UniqueType.UnitActionAfterWhichConsumed)) {
@@ -191,6 +190,7 @@ object UnitActionModifiers {
                     val amount = conditional.params[0].toInt()
                     unit.consumeCharges(amount)
                 }
+                UniqueType.UnitActionConsumeUnit -> unit.consume()
                 else -> continue
             }
         }

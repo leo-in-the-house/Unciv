@@ -31,8 +31,8 @@ class Technology: RulesetObject() {
 
 
     /** Get Civilization-specific description for TechPicker or AlertType.TechResearched */
-    fun getDescription(viewingCiv: Civilization) =
-            TechnologyDescriptions.getDescription(this, viewingCiv)
+    fun getDescription(viewingCiv: Civilization, showQuote: Boolean = true) =
+            TechnologyDescriptions.getDescription(this, viewingCiv, showQuote)
 
     override fun makeLink() = "Technology/$name"
 

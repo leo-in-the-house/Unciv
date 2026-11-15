@@ -486,7 +486,7 @@ class AlertPopup(
         val centerTable = Table()
         centerTable.add(tech.quote.toLabel().apply { wrap = true }).width(stageWidth / 3)
         centerTable.add(ImageGetter.getTechIconPortrait(tech.name, 100f)).pad(20f)
-        val descriptionScroll = ScrollPane(tech.getDescription(viewingCiv).toLabel().apply { wrap = true })
+        val descriptionScroll = ScrollPane(tech.getDescription(viewingCiv, false).toLabel().apply { wrap = true })
         centerTable.add(descriptionScroll).width(stageWidth / 3).maxHeight(stageHeight / 2)
         add(centerTable).row()
         addCloseButton()

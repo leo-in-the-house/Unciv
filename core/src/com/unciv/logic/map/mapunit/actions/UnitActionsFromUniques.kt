@@ -1,5 +1,6 @@
 package com.unciv.logic.map.mapunit.actions
 
+import com.badlogic.gdx.Gdx
 import com.unciv.Constants
 import com.unciv.UncivGame
 import com.unciv.logic.MultiFilter
@@ -25,6 +26,7 @@ import com.unciv.models.translations.fillPlaceholders
 import com.unciv.models.translations.removeConditionals
 import com.unciv.models.translations.tr
 import com.unciv.ui.components.fonts.Fonts
+import com.unciv.utils.Concurrency.runBlocking
 import yairm210.purity.annotations.Readonly
 
 @Suppress("UNUSED_PARAMETER") // These methods are used as references in UnitActions.actionTypeToFunctions and need identical signature
@@ -275,11 +277,14 @@ object UnitActionsFromUniques {
                             }
                         }
                     }
-                    
+
                     repeat(unique.getUniqueMultiplier(unit.cache.state)) {
-                        triggerFunction.invoke()
+                            triggerFunction.invoke()
                     }
-                    UnitActionModifiers.activateSideEffects(unit, unique)
+
+                    Gdx.app.postRunnable {
+                        UnitActionModifiers.activateSideEffects(unit, unique)
+                    }
                 }
             }()
 
