@@ -232,7 +232,7 @@ abstract class BaseScreen : Screen {
         if (game.worldScreen != null) return game.worldScreen!!.gameInfo.ruleset
         val mainMenuScreen = game.getScreensOfType(MainMenuScreen::class).firstOrNull()
         if (mainMenuScreen != null) return mainMenuScreen.getCivilopediaRuleset()
-        return RulesetCache[BaseRuleset.Civ_V_GnK.fullName]!!
+        return RulesetCache[BaseRuleset.Pokepunk.fullName]!!
     }
 
     /** Opens Civilopedia

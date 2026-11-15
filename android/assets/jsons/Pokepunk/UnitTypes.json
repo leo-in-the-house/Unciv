@@ -1,0 +1,95 @@
+[
+    {
+        "name": "Civilian",
+        "movementType": "Land"
+    },
+    {
+        "name": "Recon",
+        "movementType": "Land"
+    },
+    {
+        "name": "Infantry",
+        "movementType": "Land"
+    },
+    {
+        "name": "Missile Infantry",
+        "movementType": "Land"
+    },
+    {
+        "name": "Cavalry",
+        "movementType": "Land"
+    },
+    {
+        "name": "Human",
+        "movementType": "Other"
+    },
+    {
+        "name": "Fantasy",
+        "movementType": "Other"
+    },
+    {
+        "name": "Pokémon",
+        "movementType": "Other"
+    },
+    {
+        "name": "Caterpie-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Weedle-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Pichu-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Rattata-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Sentret-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Slugma-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Snorunt-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Shinx-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Roggenrola-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Gothita-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Silicobra-Line",
+        "movementType": "Land"
+    },
+    {
+        "name": "Civilian Water",
+        "movementType": "Water"
+    },
+    {
+        "name": "Gastly-Line",
+        "movementType": "Amphibious"
+    },
+    {
+        "name": "Hoothoot-Line",
+        "movementType": "Airborne"
+    },
+    {
+        "name": "Tentacool-Line",
+        "movementType": "Water"
+    }
+    
+]

@@ -1,0 +1,1442 @@
+[
+	////////////////////
+	// Types
+	////////////////////
+	
+	{
+		"name": "Normal-Type",
+		"uniques": [
+			"[-50]% Strength <vs [Rock-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>",
+			"Cannot attack [Ghost-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Fighting-Type",
+		"uniques": [
+			"[100]% Strength <vs [Normal-Type] units>",
+			"[100]% Strength <vs [Ice-Type] units>",
+			"[100]% Strength <vs [Rock-Type] units>",
+			"[100]% Strength <vs [Dark-Type] units>",
+			"[100]% Strength <vs [Steel-Type] units>",
+			"[-50]% Strength <vs [Poison-Type] units>",
+			"[-50]% Strength <vs [Flying-Type] units>",
+			"[-50]% Strength <vs [Psychic-Type] units>",
+			"[-50]% Strength <vs [Bug-Type] units>",
+			"[-50]% Strength <vs [Fairy-Type] units>",
+			"Cannot attack [Ghost-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Flying-Type",
+		"uniques": [
+			"[100]% Strength <vs [Grass-Type] units>",
+			"[100]% Strength <vs [Fighting-Type] units>",
+			"[100]% Strength <vs [Bug-Type] units>",
+			"[-50]% Strength <vs [Electric-Type] units>",
+			"[-50]% Strength <vs [Rock-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>",
+            "[This Unit] gains the [Flying] promotion"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Poison-Type",
+		"uniques": [
+			"[100]% Strength <vs [Grass-Type] units>",
+			"[100]% Strength <vs [Fairy-Type] units>",
+			"[-50]% Strength <vs [Poison-Type] units>",
+			"[-50]% Strength <vs [Ground-Type] units>",
+			"[-50]% Strength <vs [Rock-Type] units>",
+			"[-50]% Strength <vs [Ghost-Type] units>",
+			"Cannot attack [Steel-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Ground-Type",
+		"uniques": [
+			"[100]% Strength <vs [Fire-Type] units>",
+			"[100]% Strength <vs [Electric-Type] units>",
+			"[100]% Strength <vs [Poison-Type] units>",
+			"[100]% Strength <vs [Rock-Type] units>",
+			"[100]% Strength <vs [Steel-Type] units>",
+			"[-50]% Strength <vs [Grass-Type] units>",
+			"[-50]% Strength <vs [Bug-Type] units>",
+			"Cannot attack [Flying-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Rock-Type",
+		"uniques": [
+			"[100]% Strength <vs [Fire-Type] units>",
+			"[100]% Strength <vs [Ice-Type] units>",
+			"[100]% Strength <vs [Flying-Type] units>",
+			"[100]% Strength <vs [Bug-Type] units>",
+			"[-50]% Strength <vs [Fighting-Type] units>",
+			"[-50]% Strength <vs [Ground-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>",
+			"Can enter [Mountain] tiles"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Bug-Type",
+		"uniques": [
+			"[100]% Strength <vs [Grass-Type] units>",
+			"[100]% Strength <vs [Psychic-Type] units>",
+			"[100]% Strength <vs [Dark-Type] units>",
+			"[-50]% Strength <vs [Fire-Type] units>",
+			"[-50]% Strength <vs [Fighting-Type] units>",
+			"[-50]% Strength <vs [Poison-Type] units>",
+			"[-50]% Strength <vs [Flying-Type] units>",
+			"[-50]% Strength <vs [Ghost-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>",
+			"[-50]% Strength <vs [Fairy-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Ghost-Type",
+		"uniques": [
+			"[100]% Strength <vs [Psychic-Type] units>",
+			"[100]% Strength <vs [Ghost-Type] units>",
+			"[-50]% Strength <vs [Dark-Type] units>",
+			"Cannot attack [Normal-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Steel-Type",
+		"uniques": [
+			"[100]% Strength <vs [Ice-Type] units>",
+			"[100]% Strength <vs [Rock-Type] units>",
+			"[100]% Strength <vs [Fairy-Type] units>",
+			"[-50]% Strength <vs [Fire-Type] units>",
+			"[-50]% Strength <vs [Water-Type] units>",
+			"[-50]% Strength <vs [Electric-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Fire-Type",
+		"uniques": [
+			"[100]% Strength <vs [Grass-Type] units>",
+			"[100]% Strength <vs [Ice-Type] units>",
+			"[100]% Strength <vs [Bug-Type] units>",
+			"[100]% Strength <vs [Steel-Type] units>",
+			"[-50]% Strength <vs [Fire-Type] units>",
+			"[-50]% Strength <vs [Water-Type] units>",
+			"[-50]% Strength <vs [Rock-Type] units>",
+			"[-50]% Strength <vs [Dragon-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Water-Type",
+		"uniques": [
+			"[100]% Strength <vs [Fire-Type] units>",
+			"[100]% Strength <vs [Ground-Type] units>",
+			"[100]% Strength <vs [Rock-Type] units>",
+			"[-50]% Strength <vs [Water-Type] units>",
+			"[-50]% Strength <vs [Grass-Type] units>",
+			"[-50]% Strength <vs [Dragon-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Grass-Type",
+		"uniques": [
+			"[100]% Strength <vs [Water-Type] units>",
+			"[100]% Strength <vs [Ground-Type] units>",
+			"[100]% Strength <vs [Rock-Type] units>",
+			"[-50]% Strength <vs [Fire-Type] units>",
+			"[-50]% Strength <vs [Grass-Type] units>",
+			"[-50]% Strength <vs [Poison-Type] units>",
+			"[-50]% Strength <vs [Flying-Type] units>",
+			"[-50]% Strength <vs [Bug-Type] units>",
+			"[-50]% Strength <vs [Dragon-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Electric-Type",
+		"uniques": [
+			"[100]% Strength <vs [Water-Type] units>",
+			"[100]% Strength <vs [Flying-Type] units>",
+			"[-50]% Strength <vs [Electric-Type] units>",
+			"[-50]% Strength <vs [Grass-Type] units>",
+			"[-50]% Strength <vs [Dragon-Type] units>",
+			"Cannot attack [Ground-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Psychic-Type",
+		"uniques": [
+			"[100]% Strength <vs [Fighting-Type] units>",
+			"[100]% Strength <vs [Poison-Type] units>",
+			"[-50]% Strength <vs [Psychic-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>",
+			"Cannot attack [Dark-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Ice-Type",
+		"uniques": [
+			"[100]% Strength <vs [Grass-Type] units>",
+			"[100]% Strength <vs [Ground-Type] units>",
+			"[100]% Strength <vs [Flying-Type] units>",
+			"[100]% Strength <vs [Dragon-Type] units>",
+			"[-50]% Strength <vs [Fire-Type] units>",
+			"[-50]% Strength <vs [Water-Type] units>",
+			"[-50]% Strength <vs [Ice-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Dragon-Type",
+		"uniques": [
+			"[100]% Strength <vs [Dragon-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>",
+			"Cannot attack [Fairy-Type] units"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Dark-Type",
+		"uniques": [
+			"[100]% Strength <vs [Psychic-Type] units>",
+			"[100]% Strength <vs [Ghost-Type] units>",
+			"[-50]% Strength <vs [Fighting-Type] units>",
+			"[-50]% Strength <vs [Dark-Type] units>",
+			"[-50]% Strength <vs [Fairy-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	{
+		"name": "Fairy-Type",
+		"uniques": [
+			"[100]% Strength <vs [Fighting-Type] units>",
+			"[100]% Strength <vs [Dragon-Type] units>",
+			"[100]% Strength <vs [Dark-Type] units>",
+			"[-50]% Strength <vs [Fire-Type] units>",
+			"[-50]% Strength <vs [Poison-Type] units>",
+			"[-50]% Strength <vs [Steel-Type] units>"
+        ],
+		"innerColor": [255, 255, 255],
+		"outerColor": [255, 255, 255]
+	},
+	////////////////////
+	// Instant effects
+	////////////////////
+
+	{
+		"name": "Potion",
+		"uniques": [
+			"[This Unit] heals [50] HP",
+			"Doing so will consume this opportunity to choose a Promotion",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 0,
+        "column": 0
+	},
+
+	{
+		"name": "Full Restore",
+		"prerequisites": ["Potion"],
+		"uniques": [
+			"Comment [This unit heals 100 HP and heals from all ailments.]",
+			"[This Unit] heals [100] HP <hidden from users>",
+            "[This Unit] loses the [Poisoned] status <hidden from users>",
+            "[This Unit] loses the [Badly Poisoned] status <hidden from users>",
+            "[This Unit] loses the [Burning] status <hidden from users>",
+            "[This Unit] loses the [Confused] status <hidden from users>",
+            "[This Unit] loses the [Immobilized] status <hidden from users>",
+            "[This Unit] loses the [Paralyzed] status <hidden from users>",
+            "[This Unit] loses the [Weakened] status <hidden from users>",
+            "[This Unit] loses the [Vulnerable] status <hidden from users>",
+            "[This Unit] loses the [Slowed] status <hidden from users>",
+            "[This Unit] loses the [Blinded] status <hidden from users>",
+            "[This Unit] loses the [Stunned] status <hidden from users>",
+            "[This Unit] loses the [Sleeping] status <hidden from users>",
+            "[This Unit] loses the [Heal Block] status <hidden from users>",
+            "[This Unit] loses the [Frozen] status <hidden from users>",
+			"Doing so will consume this opportunity to choose a Promotion",
+            "Unavailable <for [Barbarians] Civilizations>"
+        ],
+		"unitTypes": ["Pokémon"],
+		"row": 1,
+        "column": 0
+	},
+	////////////////////
+	// Pokémon Promotions
+	////////////////////
+	{
+		"name": "Level 1",
+		"uniques": [
+			"[25]% Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 0,
+        "column": 1
+	},
+	{
+		"name": "Level 2",
+		"prerequisites": ["Level 1"],
+		"uniques": [
+			"[25]% Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 1,
+        "column": 1
+	},
+	{
+		"name": "Level 3",
+		"prerequisites": ["Level 2"],
+		"uniques": [
+			"[25]% Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 2,
+        "column": 1
+	},
+	{
+		"name": "Level 4",
+		"prerequisites": ["Level 3"],
+		"uniques": [
+			"[25]% Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 3,
+        "column": 1
+	},
+	{
+		"name": "Level 5",
+		"prerequisites": ["Level 4"],
+		"uniques": [
+			"[25]% Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 4,
+        "column": 1
+	},
+	{
+		"name": "Level 6",
+		"prerequisites": ["Level 5"],
+		"uniques": [
+			"[25]% Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 5,
+        "column": 1
+	},
+	{
+		"name": "Attack I",
+		"uniques": [
+			"[50]% Attack Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 0,
+        "column": 2
+	},
+	{
+		"name": "Attack II",
+		"prerequisites": ["Attack I"],
+		"uniques": [
+			"[50]% Attack Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 1,
+        "column": 2
+	},
+	{
+		"name": "Attack III",
+		"prerequisites": ["Attack II"],
+		"uniques": [
+			"[50]% Attack Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 2,
+        "column": 2
+	},
+	{
+		"name": "Defense I",
+		"uniques": [
+			"[50]% Defense Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 0,
+        "column": 3
+	},
+	{
+		"name": "Defense II",
+		"prerequisites": ["Defense I"],
+		"uniques": [
+			"[50]% Defense Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 1,
+        "column": 3
+	},
+	{
+		"name": "Defense III",
+		"prerequisites": ["Defense II"],
+		"uniques": [
+			"[50]% Defense Strength"
+		],
+		"unitTypes": ["Pokémon"],
+		"row": 2,
+        "column": 3
+	},
+	////////////////////
+	// Sentret
+	////////////////////
+	{
+		"name": "Keen Eye",
+		"uniques": ["[+2] Sight"],
+		"unitTypes": ["Sentret-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Agility I",
+		"uniques": ["[+1] Movement"],
+		"unitTypes": ["Sentret-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Agility II",
+		"prerequisites": ["Agility I"],
+		"uniques": ["[+2] Movement"],
+		"unitTypes": ["Sentret-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Run Away I",
+		"uniques": ["Withdraws before melee combat <with [40]% chance>"],
+		"unitTypes": ["Sentret-Line"],
+		"row": 0,
+        "column": 6
+	},
+	{
+		"name": "Run Away II",
+		"prerequisites": ["Run Away I"],
+		"uniques": ["Withdraws before melee combat <with [100]% chance>"],
+		"unitTypes": ["Sentret-Line"],
+		"row": 1,
+        "column": 6
+	},
+	////////////////////
+	// Rattata
+	////////////////////
+	{
+		"name": "Super Fang I",
+		"uniques": [
+            "Comment [Deals 20 damage to the target when attacking.]",
+			"[Target Unit] takes [20] damage <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Rattata-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Super Fang II",
+		"prerequisites": ["Super Fang I"],
+		"uniques": [
+            "Comment [Deals 40 damage to the target when attacking.]",
+			"[Target Unit] takes [40] damage <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Rattata-Line"],
+		"row": 1,
+        "column": 4
+	},
+	{
+		"name": "Hyper Fang I",
+		"uniques": [
+            "Comment [Inflict [Stunned] to the target for 1 turn when it attacks with 25% chance.]",
+			"[Target Unit] gains the [Stunned] status for [1] turn(s) <with [25]% chance> <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Rattata-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Hyper Fang II",
+		"prerequisites": ["Hyper Fang I"],
+		"uniques": [
+            "Comment [Inflict [Stunned] to the target for 1 turn when it attacks with 70% chance.]",
+			"[Target Unit] gains the [Stunned] status for [1] turn(s) <with [75]% chance> <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Rattata-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Treegnawer",
+		"uniques": [
+			"Can instantly construct a [Remove Forest] improvement <once> <removing the [Treegnawer] promotion/status>",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Rattata-Line"],
+		"row": 0,
+        "column": 6
+	},
+	////////////////////
+	// Caterpie
+	////////////////////
+	{
+		"name": "Wood Worm",
+		"uniques": [
+			"[10] Defense Strength <in [{Grassland} {Forest}] tiles>"
+		],
+		"unitTypes": ["Caterpie-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Gust I",
+		"uniques": [
+			"[10] Attack Strength <when not adjacent to a [{Friendly} {Military}] unit>",
+            "Unavailable <for [non-[Butterfree]] units>"
+		],
+		"unitTypes": ["Caterpie-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Gust II",
+		"prerequisites": ["Gust I"],
+		"uniques": [
+			"[20] Attack Strength <when not adjacent to a [{Friendly} {Military}] unit>",
+            "Unavailable <for [non-[Butterfree]] units>"
+		],
+		"unitTypes": ["Caterpie-Line"],
+		"row": 1,
+        "column": 5
+	},
+
+	////////////////////
+	// Weedle
+	////////////////////
+	{
+		"name": "Poison Sting I",
+		"uniques": [
+            "Comment [Inflict [Poisoned] to the target for 1 turn when it attacks with 40% chance.]",
+			"[Target Unit] gains the [Poisoned] status for [1] turn(s) <with [40]% chance> <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Weedle-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Poison Sting II",
+		"prerequisites": ["Poison Sting I"],
+		"uniques": [
+            "Comment [Inflict [Poisoned] to the target for 3 turns when it attacks with 40% chance.]",
+			"[Target Unit] gains the [Poisoned] status for [3] turn(s) <with [40]% chance> <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Weedle-Line"],
+		"row": 1,
+        "column": 4
+	},
+	{
+		"name": "Pin Missile I",
+		"uniques": [
+			"[1] additional attacks per turn <in [Forest|Marsh] tiles>",
+            "Unavailable <for [non-[Beedrill]] units>"
+		],
+		"unitTypes": ["Weedle-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Pin Missile II",
+		"prerequisites": ["Pin Missile I"],
+		"uniques": [
+            "[2] additional attacks per turn <in [Forest|Marsh] tiles>",
+            "Unavailable <for [non-[Beedrill]] units>"
+		],
+		"unitTypes": ["Weedle-Line"],
+		"row": 1,
+        "column": 5
+	},
+	////////////////////
+	// Pichu
+	////////////////////
+	{
+		"name": "Thunderbolt I",
+		"uniques": [
+			"[20]% Attack Strength",
+            "Comment [Inflict [Paralyzed] on target for 3 turns when entering combat with a 50% chance.]",
+			"[Target Unit] gains the [Paralyzed] status for [3] turn(s) <with [50]% chance> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Pichu-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Thunderbolt II",
+		"prerequisites": ["Thunderbolt I"],
+		"uniques": [
+			"[20]% Attack Strength",
+            "Comment [Inflict [Paralyzed] on target for 3 turns when entering combat with a 100% chance.]",
+			"[Target Unit] gains the [Paralyzed] status for [3] turn(s) <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Pichu-Line"],
+		"row": 1,
+        "column": 4
+	},
+	{
+		"name": "Volt Tackle I",
+		"uniques": [
+			"[50]% Strength",
+            "Comment [This unit takes 10 damage when attacking.]",
+			"[This Unit] takes [10] damage <when attacking> <upon entering combat> <hidden from users>",
+            "Unavailable <for [non-[Pikachu]] units> <for [non-[Raichu]] units>"
+		],
+		"unitTypes": ["Pichu-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Volt Tackle II",
+		"prerequisites": ["Volt Tackle I"],
+		"uniques": [
+			"[50]% Strength",
+            "Comment [This unit takes an additional 5 damage when attacking.]",
+			"[This Unit] takes [5] damage <when attacking> <upon entering combat> <hidden from users>",
+            "Unavailable <for [non-[Pikachu]] units> <for [non-[Raichu]] units>"
+		],
+		"unitTypes": ["Pichu-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Light Ball",
+		"uniques": [
+			"[1] additional attacks per turn",
+            //TODO: Can only choose with Lights
+            "Unavailable <for [non-[Pikachu]] units> <for [non-[Raichu]] units>",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Pichu-Line"],
+		"row": 0,
+        "column": 6
+	},
+	{
+		"name": "Tesla Power",
+		"uniques": [
+            //TODO: +2 Power per turn
+            "Unavailable <for [non-[Raichu]] units>",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Pichu-Line"],
+		"row": 0,
+        "column": 7
+	},
+	////////////////////
+	// Slugma
+	////////////////////
+	{
+		"name": "Lava Eater",
+		"uniques": [
+			"[This Unit] heals [100] HP <removing the [Lava] feature on this tile>",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Slugma-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Lavascape",
+		"uniques": [
+			"Turn this tile into a [Lava] tile <in [Volcanic] tiles> <in [Land] tiles> <[3] times> <for [1] movement>",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Slugma-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Magma Armor I",
+		"uniques": [
+			"[100]% Defense Strength <in [Volcanic] tiles>",
+            "Unavailable <for [non-[Magcargo]] units>"
+		],
+		"unitTypes": ["Slugma-Line"],
+		"row": 0,
+        "column": 6
+	},
+	{
+		"name": "Magma Armor II",
+		"prerequisites": ["Magma Armor I"],
+		"uniques": [
+			"[400]% Defense Strength <in [Volcanic] tiles>",
+            "Unavailable <for [non-[Magcargo]] units>"
+		],
+		"unitTypes": ["Slugma-Line"],
+		"row": 1,
+        "column": 6
+	},
+	////////////////////
+	// Snorunt
+	////////////////////
+	{
+		"name": "Frost Breath I",
+		"uniques": [
+			"Comment [Inflict [Frozen] to the target for 3 turns in Snow with 30% chance.]",
+			"[Target Unit] gains the [Frozen] status for [3] turn(s) <with [30]% chance> <in [Permafrost] tiles> <upon damaging a [All] unit> <hidden from users>"
+        ],
+		"unitTypes": ["Snorunt-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Frost Breath II",
+		"prerequisites": ["Frost Breath I"],
+		"uniques": [
+			"Comment [Inflict [Frozen] to the target for 3 turns in Snow with 70% chance.]",
+			"[Target Unit] gains the [Frozen] status for [3] turn(s) <with [70]% chance> <in [Permafrost] tiles> <upon damaging a [All] unit> <hidden from users>"
+        ],
+		"unitTypes": ["Snorunt-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Freeze-Dry I",
+		"uniques": [
+			"[200]% Strength <vs [Water-Type] units>",
+			"Unavailable <for [non-[Glalie]] units>"
+		],
+		"unitTypes": ["Snorunt-Line"],
+		"row": 0,
+        "column": 6
+	},
+	{
+		"name": "Freeze-Dry II",
+		"prerequisites": ["Freeze-Dry I"],
+		"uniques": [
+			"[400]% Strength <vs [Water-Type] units>",
+			"Unavailable <for [non-[Glalie]] units>"
+        ],
+		"unitTypes": ["Snorunt-Line"],
+		"row": 1,
+        "column": 6
+	},
+	{
+		"name": "Snow Cloak",
+		"uniques": [
+			"Invisible to others <in [Permafrost] tiles>",
+			"Unavailable <for [non-[Froslass]] units>"
+        ],
+		"unitTypes": ["Snorunt-Line"],
+		"row": 0,
+        "column": 7
+	},
+	{
+		"name": "Snowscape",
+		"uniques": [
+			"Turn this tile into a [Permafrost] tile <in [unimproved|pillaged] tiles> <in [Land] tiles> <in tiles adjacent to [Mountain] tiles> <for [1] movement>",
+            "Unavailable <for [Barbarians] Civilizations>",
+			"Unavailable <for [non-[Froslass]] units>"
+        ],
+		"unitTypes": ["Snorunt-Line"],
+		"row": 0,
+        "column": 8
+	},
+	////////////////////
+	// Roggenrola
+	////////////////////
+	{
+		"name": "Stealth Rock I",
+		"uniques": [
+			"Turn this tile into a [Hill] tile <in [unimproved|pillaged] tiles> <in [{non-[Hill]} {Land}] tiles> <[3] times> <for [1] movement>",
+            "Unavailable <for [Barbarians] Civilizations>"
+        ],
+		"unitTypes": ["Roggenrola-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Stealth Rock II",
+		"prerequisites": ["Stealth Rock I"],
+		"uniques": [
+			"Turn this tile into a [Hill] tile <in [unimproved|pillaged] tiles> <in [{non-[Hill]} {Land}] tiles> <[6] times> <for [1] movement>",
+            "Unavailable <for [Barbarians] Civilizations>"
+        ],
+		"unitTypes": ["Roggenrola-Line"],
+		"row": 1,
+        "column": 4
+	},
+	{
+		"name": "Crystallize I",
+		"uniques": [
+			"Turn this tile into a [Crystallic] tile <in [unimproved|pillaged] tiles> <in [{Hill} {Land}] tiles> <in tiles adjacent to [Crystallic] tiles> <[3] times> <for [1] movement>",
+            "Unavailable <for [Barbarians] Civilizations>",
+			"Unavailable <for [non-[Boldore]] units> <for [non-[Gigalith]] units>"
+        ],
+		"unitTypes": ["Roggenrola-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Crystallize II",
+		"prerequisites": ["Crystallize I"],
+		"uniques": [
+			"Turn this tile into a [Crystallic] tile <in [unimproved|pillaged] tiles> <in [{Hill} {Land}] tiles> <in tiles adjacent to [Crystallic] tiles> <[6] times> <for [1] movement>",
+            "Unavailable <for [Barbarians] Civilizations>",
+			"Unavailable <for [non-[Boldore]] units> <for [non-[Gigalith]] units>"
+        ],
+		"unitTypes": ["Roggenrola-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Raise Mountain",
+		"uniques": [
+			"Turn this tile into a [Mountain] tile <in [unimproved|pillaged] tiles> <in [{Hill} {Land}] tiles> <in tiles adjacent to [Mountain] tiles> <for [1] movement>",
+            "Unavailable <for [Barbarians] Civilizations>",
+			"Unavailable <for [non-[Gigalith]] units>"
+        ],
+		"unitTypes": ["Roggenrola-Line"],
+		"row": 0,
+        "column": 6
+	},
+	////////////////////
+	// Shinx
+	////////////////////
+	{
+		"name": "Spark I",
+		"uniques": [
+            "Comment [Inflict [Paralyzed] on target for 2 turns when attacking.]",
+			"[Target Unit] gains the [Paralyzed] status for [2] turn(s) <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Shinx-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Spark II",
+		"prerequisites": ["Spark I"],
+		"uniques": [
+            "Comment [Inflict [Paralyzed] on target for 3 turns when attacking.]",
+			"[Target Unit] gains the [Paralyzed] status for [3] turn(s) <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Shinx-Line"],
+		"row": 1,
+        "column": 4
+	},
+	{
+		"name": "Spark III",
+		"prerequisites": ["Spark II"],
+		"uniques": [
+            "Comment [Inflict [Paralyzed] on target for 6 turns when attacking.]",
+			"[Target Unit] gains the [Paralyzed] status for [6] turn(s) <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Shinx-Line"],
+		"row": 2,
+        "column": 4
+	},
+	{
+		"name": "Rivalry",
+		"uniques": [
+			"[200]% Attack Strength <vs [Barbarian] units>",
+			"Unavailable <for [non-[Luxio]] units> <for [non-[Luxray]] units>"
+		],
+		"unitTypes": ["Shinx-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Plainswalker I",
+		"uniques": [
+			"[1] Movement <in [Plains] tiles>",
+			"Unavailable <for [non-[Luxray]] units>"
+		],
+		"unitTypes": ["Shinx-Line"],
+		"row": 0,
+        "column": 6
+	},
+	{
+		"name": "Plainswalker II",
+		"prerequisites": ["Plainswalker I"],
+		"uniques": [
+			"[2] Movement <in [Plains] tiles>",
+			"Unavailable <for [non-[Luxray]] units>"
+		],
+		"unitTypes": ["Shinx-Line"],
+		"row": 1,
+        "column": 6
+	},
+	////////////////////
+	// Gothita
+	////////////////////
+	{
+		"name": "Frisk",
+		"uniques": [
+			"Reveal up to [all] [Barbarian encampment] within a [20] tile radius",
+			"Doing so will consume this opportunity to choose a Promotion",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Gothita-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Astral Body",
+		"uniques": [
+			"Gain [10] [Faith] <upon turn end> <when above [0] movement>",
+			"Unavailable <for [non-[Gothitelle]] units>",
+            "Unavailable <for [Barbarians] Civilizations>"
+		],
+		"unitTypes": ["Gothita-Line"],
+		"row": 0,
+        "column": 6
+	},
+	////////////////////
+	// Silicobra
+	////////////////////
+	{
+		"name": "Sand Spit",
+		"uniques": [
+			"Comment [Turns tiles adjacent to Desert into [Desert] tiles upon being attacked.]",
+			"Turn this tile into a [Desert] tile <when defending> <in [unimproved|pillaged] tiles> <in [Land] tiles> <in tiles adjacent to [Desert] tiles> <upon entering combat> <hidden from users>"
+        ],
+		"unitTypes": ["Silicobra-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Sand Tomb I",
+		"uniques": [
+			"Comment [Inflict [Trapped] to the target for 2 turns when it attacks in Desert tiles.]",
+			"[Target Unit] gains the [Trapped] status for [2] turn(s) <when attacking> <in [Desert] tiles> <upon damaging a [All] unit> <hidden from users>",
+		 	"Unavailable <for [non-[Sandaconda]] units>"
+		],
+		"unitTypes": ["Silicobra-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Sand Tomb II",
+		"prerequisites": ["Sand Tomb I"],
+		"uniques": [
+			"Comment [Inflict [Trapped] to the target for 5 turns when it attacks in Desert tiles.]",
+			"[Target Unit] gains the [Trapped] status for [5] turn(s) <when attacking> <in [Desert] tiles> <upon damaging a [All] unit> <hidden from users>",
+		 	"Unavailable <for [non-[Sandaconda]] units>"
+		],
+		"unitTypes": ["Silicobra-Line"],
+		"row": 1,
+        "column": 5
+	},
+	////////////////////
+	// Gastly
+	////////////////////
+	{
+		"name": "Dream Eater I",
+		"uniques": [
+			"[100]% Strength <vs [Sleeping] units>"
+        ],
+		"unitTypes": ["Gastly-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Dream Eater II",
+		"prerequisites": ["Dream Eater I"],
+		"uniques": [
+			"[200]% Strength <vs [Sleeping] units>"
+        ],
+		"unitTypes": ["Gastly-Line"],
+		"row": 1,
+        "column": 4
+	},
+	{
+		"name": "Dream Eater III",
+		"prerequisites": ["Dream Eater II"],
+		"uniques": [
+			"[400]% Strength <vs [Sleeping] units>"
+        ],
+		"unitTypes": ["Gastly-Line"],
+		"row": 2,
+        "column": 4
+	},
+	{
+		"name": "Hypnosis I",
+		"uniques": [
+			"Comment [Inflict [Sleeping] to the target for 3 turns when it attacks with 50% chance.]",
+			"[Target Unit] gains the [Sleeping] status for [3] turn(s) <with [50]% chance> <when attacking> <upon damaging a [All] unit> <hidden from users>",
+		 	"Unavailable <for [non-[Haunter]] units> <for [non-[Gengar]] units> <for [non-[Gothorita]] units> <for [non-[Gothitelle]] units>"
+		],
+		"unitTypes": ["Gastly-Line","Gothita-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Hypnosis II",
+		"prerequisites": ["Hypnosis I"],
+		"uniques": [
+			"Comment [Inflict [Sleeping] to the target for 7 turns when it attacks with 50% chance.]",
+			"[Target Unit] gains the [Sleeping] status for [7] turn(s) <with [50]% chance> <when attacking> <upon damaging a [All] unit> <hidden from users>",
+		 	"Unavailable <for [non-[Haunter]] units> <for [non-[Gengar]] units>"
+		],
+		"unitTypes": ["Gastly-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Shadow Haunt",
+		"uniques": [
+			"Invisible to others <in [Haunted|Red Fog] tiles> <hidden from users>",
+		 	"Unavailable <for [non-[Gengar]] units>"
+		],
+		"unitTypes": ["Gastly-Line"],
+		"row": 0,
+        "column": 6
+	},
+	////////////////////
+	// Hoothoot
+	////////////////////
+	{
+		"name": "Owl-Eyed",
+		"uniques": [
+			"[3] Sight <in [Forest|Haunted] tiles>"
+		],
+		"unitTypes": ["Hoothoot-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Reflect I",
+		"uniques": [
+			"[50]% Defense Strength <vs [Melee] units>",
+            "Unavailable <for [non-[Noctowl]] units>"
+		],
+		"unitTypes": ["Hoothoot-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Reflect II",
+		"prerequisites": ["Reflect I"],
+		"uniques": [
+			"[100]% Defense Strength <vs [Melee] units>",
+            "Unavailable <for [non-[Noctowl]] units>"
+		],
+		"unitTypes": ["Hoothoot-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Foresight",
+		"uniques": [
+			"Reveal up to [all] [Barbarian encampment|Abyssal Pokémon Den] within a [50] tile radius <once> <removing the [Foresight] promotion/status>",
+            "Unavailable <for [non-[Noctowl]] units>"
+		],
+		"unitTypes": ["Hoothoot-Line"],
+		"row": 0,
+        "column": 6
+	},
+	////////////////////
+	// Tentacool
+	////////////////////
+	{
+		"name": "Ocean Swimmer",
+		"uniques": [
+			"[2] Movement <in [Ocean] tiles>"
+		],
+		"unitTypes": ["Tentacool-Line"],
+		"row": 0,
+        "column": 4
+	},
+	{
+		"name": "Acid I",
+		"uniques": [
+			 "Comment [Inflict [Vulnerable] to the target for 3 turns when it attacks with 50% chance.]",
+			"[Target Unit] gains the [Vulnerable] status for [3] turn(s) <with [50]% chance> <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Tentacool-Line"],
+		"row": 0,
+        "column": 5
+	},
+	{
+		"name": "Acid II",
+		"prerequisites": ["Acid I"],
+		"uniques": [
+			 "Comment [Inflict [Vulnerable] to the target for 3 turns when it attacks.]",
+			"[Target Unit] gains the [Vulnerable] status for [3] turn(s) <when attacking> <upon damaging a [All] unit> <hidden from users>"
+		],
+		"unitTypes": ["Tentacool-Line"],
+		"row": 1,
+        "column": 5
+	},
+	{
+		"name": "Liquid Ooze",
+		"uniques": [
+			 "Comment [Inflict [Heal Block] for 3 turns against attackers.]",
+			"[Target Unit] gains the [Heal Block] status for [3] turn(s) <when defending> <upon entering combat>",
+            "Unavailable <for [non-[Tentacruel]] units>"
+		],
+		"unitTypes": ["Tentacool-Line"],
+		"row": 0,
+        "column": 6
+	},
+
+	////////////////////
+	// General Abilities
+	////////////////////
+	{
+		"name": "All-Terrain",
+		"uniques": [
+			"Comment [This unit can traverse most terrains, including on land or sea, like an amphibian.]",
+			"Eliminates combat penalty for attacking across a coast",
+			"Eliminates combat penalty for attacking over a river",
+			"May travel on Water tiles without embarking"
+		]
+	},
+	{
+		"name": "Flying",
+		"uniques": [
+			"Comment [This unit can fly over obstacles, and is immune to zone of control.]",
+			"Eliminates combat penalty for attacking across a coast",
+			"Eliminates combat penalty for attacking over a river",
+			"Ranged attacks may be performed over obstacles",
+			"Ignores terrain cost",
+			"Ignores Zone of Control",
+			"Can pass through impassable tiles",
+			"May travel on Water tiles without embarking"
+		]
+	},
+	{
+		"name": "Talisman",
+		"uniques": [
+			"Comment [This unit does not take damage in Haunted or Red Fog tiles.]"
+		]
+	},
+	{
+		"name": "Mountaineer",
+		"uniques": [
+			"Can enter [Mountain] tiles"
+        ],
+		"unitTypes": ["Snorunt-Line"],
+		"row": 0,
+        "column": 10
+	},
+	{
+		"name": "Harden I",
+		"uniques": [
+			"[10] Defense Strength",
+            "Unavailable <for [non-[Kakuna]] units>"
+		],
+		"unitTypes": ["Caterpie-Line","Weedle-Line"],
+		"row": 0,
+        "column": 8
+	},
+	{
+		"name": "Harden II",
+		"prerequisites": ["Harden I"],
+		"uniques": [
+			"[20] Defense Strength",
+            "Unavailable <for [non-[Kakuna]] units>"
+		],
+		"unitTypes": ["Caterpie-Line","Weedle-Line"],
+		"row": 1,
+        "column": 8
+	},
+	{
+		"name": "Harden III",
+		"prerequisites": ["Harden II"],
+		"uniques": [
+			"[30] Defense Strength",
+            "Unavailable <for [non-[Kakuna]] units>"
+		],
+		"unitTypes": ["Caterpie-Line","Weedle-Line"],
+		"row": 2,
+        "column": 8
+	},
+	////////////////////
+	// Buffs
+	////////////////////
+	{
+		"name": "Strengthened",
+		"isStatus": true,
+		"uniques": [
+			"Buff",
+			"Comment [This unit gains +100% Strength when attacking.]",
+            "[100]% Attack Strength <hidden from users>",
+            "[1]% Strength <hidden from users>"
+		],
+		"innerColor": [0, 200, 0]
+	},
+	{
+		"name": "Shielded",
+		"isStatus": true,
+		"uniques": [
+			"Buff",
+			"Comment [This unit gains +100% Strength when defending.]",
+            "[100]% Defense Strength <hidden from users>",
+            "[1]% Strength <hidden from users>"
+		],
+		"innerColor": [0, 200, 0]
+	},
+	{
+		"name": "Cloaked",
+		"isStatus": true,
+		"uniques": [
+			"Buff",
+			"Comment [This unit is invisible except to adjacent units.]",
+            "Invisible to non-adjacent units <hidden from users>",
+            "[1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [0, 200, 0]
+	},
+	{
+		"name": "Detector",
+		"isStatus": true,
+		"uniques": [
+			"Buff",
+			"Comment [This unit can detect nearby adjacent units.]",
+            "Can see invisible [Cloaked] units <hidden from users>",
+            "[1]% Strength <hidden from users>"
+		],
+		"innerColor": [0, 200, 0]
+	},
+	{
+		"name": "Vigilant",
+		"isStatus": true,
+		"uniques": [
+			"Buff",
+			"Comment [This unit gains +2 Sight.]",
+            "[2] Sight <hidden from users>",
+            "[1]% Strength <hidden from users>"
+		],
+		"innerColor": [0, 200, 0]
+	},
+	{
+		"name": "Hasted",
+		"isStatus": true,
+		"uniques": [
+			"Buff",
+			"Comment [This unit gains +1 Movement.]",
+            "[1] Movement <hidden from users>",
+            "[1]% Strength <hidden from users>"
+		],
+		"innerColor": [0, 200, 0]
+	},
+
+
+	////////////////////
+	// Ailments
+	////////////////////
+	{
+		"name": "Poisoned",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit gets -5 HP when healing, and takes 10 damage when moving.]",
+			"[-5] HP when healing <hidden from users>",
+			"[This Unit] takes [10] damage <upon entering a [All] tile> <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	},
+    {
+		"name": "Badly Poisoned",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit gets -20 HP when healing, and takes 50 damage when moving.]",
+			"[-20] HP when healing <hidden from users>",
+			"[This Unit] takes [50] damage <upon entering a [All] tile> <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Burning",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit has -10% Strength, and takes 10 damage at the start of the turn.]",
+			"[-10]% Strength <hidden from users>",
+			"[This Unit] takes [10] damage <upon turn start> <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Confused",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit takes 10 damage whenever it moves or attacks.]",
+			"[This Unit] takes [10] damage <upon entering a [All] tile> <hidden from users>",
+			"[This Unit] takes [10] damage <when attacking> <upon entering combat> <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Immobilized",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit cannot move.]",
+			"Cannot move <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Paralyzed",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit cannot attack.]",
+			"Cannot attack <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Weakened",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit loses 50% Strength when attacking.]",
+            "[-50]% Attack Strength <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Vulnerable",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit loses 50% Strength when defending.]",
+            "[-50]% Defense Strength <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Slowed",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit loses 1 movement.]",
+            "[-1] Movement <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Blinded",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit loses all sight.]",
+            "No Sight <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Stunned",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit cannot move nor attack.]",
+            "Cannot move <hidden from users>",
+			"Cannot attack <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Sleeping",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit cannot move nor attack and loses its defensive terrain bonus.  This status goes away when the unit is attacked.]",
+			"Cannot move <hidden from users>",
+			"Cannot attack <hidden from users>",
+			"No defensive terrain bonus <hidden from users>",
+			"[This Unit] loses the [Sleeping] status <upon entering combat> <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Trapped",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit cannot move, and takes 10 damage at the start of the turn.]",
+			"Cannot move <hidden from users>",
+			"[This Unit] takes [10] damage <upon turn start> <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+			
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Heal Block",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Cannot heal",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	},
+	{
+		"name": "Frozen",
+		"isStatus": true,
+		"isAilment": true,
+		"uniques": [
+			"Comment [This unit cannot move nor attack and loses its defensive terrain bonus, however it gains +100% Strength.]",
+			"Cannot move <hidden from users>",
+			"Cannot attack <hidden from users>",
+			"No defensive terrain bonus <hidden from users>",
+            "[100]% Defense Strength <hidden from users>",
+            "[-1]% Strength <hidden from users>"
+		],
+		"innerColor": [200, 0, 0]
+	}
+]

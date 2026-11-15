@@ -1,0 +1,89 @@
+
+Events.png
+size: 2048, 2048
+format: RGBA8888
+filter: MipMapLinearLinear, MipMapLinearLinear
+repeat: none
+EventImages/Breed Bouffalants
+  rotate: false
+  xy: 4, 824
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Cufants
+  rotate: false
+  xy: 1118, 1528
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Girafarigs
+  rotate: false
+  xy: 4, 316
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Miltanks
+  rotate: false
+  xy: 1118, 1020
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Mudbrays
+  rotate: false
+  xy: 814, 512
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Numels
+  rotate: false
+  xy: 814, 4
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Wooloos
+  rotate: false
+  xy: 4, 1332
+  size: 1106, 696
+  orig: 1106, 696
+  offset: 0, 0
+  index: -1
+
+Events2.png
+size: 2048, 1024
+format: RGBA8888
+filter: MipMapLinearLinear, MipMapLinearLinear
+repeat: none
+EventImages/Breed Ponytas
+  rotate: false
+  xy: 4, 512
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Skiddos
+  rotate: false
+  xy: 4, 4
+  size: 802, 500
+  orig: 802, 500
+  offset: 0, 0
+  index: -1
+EventImages/Breed Tauroses
+  rotate: false
+  xy: 814, 512
+  size: 638, 500
+  orig: 638, 500
+  offset: 0, 0
+  index: -1
+EventImages/Searching the Land
+  rotate: false
+  xy: 814, 194
+  size: 400, 310
+  orig: 400, 310
+  offset: 0, 0
+  index: -1

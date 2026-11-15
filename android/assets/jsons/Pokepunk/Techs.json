@@ -1,0 +1,334 @@
+[
+	{
+		"columnNumber": 0,
+		"era": "Antiquity Age", //"Stone Age", <10000 BC level tech
+		"techCost": 5,
+		"buildingCost": 30,
+		"wonderCost": 100,
+		"techs": [
+			{
+				"name": "Prehistory",
+				"row": 4,
+				"quote": "Your origins are not understood, yet your people have come far in this mysterious world of Pokémon.   Now begins your journey, from this early cradle of civilizations, onto the stars.",
+				"uniques": ["Starting tech"]
+			}
+		]
+	},
+	{
+		"columnNumber": 1,
+		"era": "Antiquity Age",  //"Tool Age", 10000-3000 BC level tech
+		"techCost": 10,
+		"buildingCost": 50,
+		"wonderCost": 140,
+		"techs": [
+			{
+				"name": "Agriculture",
+				"row": 1,
+				"quote": "Many civilizations began with the plow.  The agricultural revolution allowed for the sustainability of large populations, allowing hunter-gatherer tribes to maintain a source of food without needing to explore.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Irrigation",
+				"row": 2,
+				"quote": "Humans can survive months without food, but only days without water.  Allows extracting Water from Wells, a key resource for terraforming, as well as building orchards for luxury fruits.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Stonecutting",
+				"row": 3,
+				"quote": "Working with rocks are necessary in order to perform most construction and crafting.  They can also be fastened into a primitive ranged weapon.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Pokémon Trapping",
+				"row": 4,
+				"quote": "In order to survive, we will need to deal with Pokémon- mysterious creatures that inhabit this world.  The most basic form of interaction, of course, is culling their ranks for meat.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Pokémon Domestication",
+				"row": 5,
+				"quote": "Some say Pokémon can be made into our friends.  Our people have doubts, nonetheless raising these mysterious creatures can come with many material benefits.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Toolmaking",
+				"row": 6,
+				"quote": "Tools made of wood, stone, and metal allow for the clearing of land and gathering of wood for construction.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Mining",
+				"row": 7,
+				"quote": "Some minerals from the earth are more valuable than others, and it is time to seek them out!  Already, prospectors are going out to hunt for precious minerals.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Code of Laws",
+				"row": 8,
+				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict or to rally our people against threats.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Code of Laws2",
+				"row": 9,
+				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict or to rally our people against threats.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Code of Laws3",
+				"row": 10,
+				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict or to rally our people against threats.",
+				"prerequisites": ["Prehistory"]
+			}
+		]
+	},
+	{
+		"columnNumber": 2,
+		"era": "Antiquity Age", //"Bronze Age", 3000-1200 BC level tech
+		"techCost": 30,
+		"buildingCost": 50,
+		"wonderCost": 180,
+		"techs": [
+			{
+				"name": "Slavery",
+				"row": 1,
+				"quote": "After the beast has been chained, and before robotics and artificial intelligence, wealthy humans that wanted effortless solutions to complex tasks had to shackle the human body and intellect instead.",
+				"prerequisites": ["Agriculture","Stonecutting"]
+			},
+			{
+				"name": "Herbalism",
+				"row": 2,
+				"quote": "The wilderness can provide many remedies, if one knows where to search for it.  Our expertise in plants have allowed us to recognize rare herbs and aromatics for medicinal purposes.",
+				"prerequisites": ["Agriculture","Irrigation"]
+			},
+			{
+				"name": "Pottery",
+				"row": 3,
+				"quote": "Once the quest for food has been fulfilled, the quest for finer goods began.  Humans started to carve masterful monuments and pottery to show their prowess.",
+				"prerequisites": ["Agriculture","Stonecutting"]
+			},
+			{
+				"name": "Pokémon Taming",
+				"row": 4,
+				"quote": "We noticed that certain species of Pokémon were particularly kin of humans and could be easily bred as partners.  They can help in both labor and scouting, and of course make cute pets!",
+				"prerequisites": ["Pokémon Trapping", "Pokémon Domestication"]
+			},
+			{
+				"name": "Pokémon Pisciculture",
+				"row": 5,
+				"quote": "Ever since man first gazed upon the seas, they wondered what lies in the blue yonder.  Some early civilizations met the mysterious Mermaids, who taught them how to fish, and how to tame and ride the Pokémon Goldeen.",
+				"prerequisites": ["Pokémon Domestication"]
+			},
+			{
+				"name": "Bronze Working",
+				"row": 6,
+				"quote": "We found that harder metals can, under sufficient heat, bend into any shape we want it to be.  We can use this knowledge to make better weapons and train our troops.",
+				"prerequisites": ["Toolmaking","Mining"]
+			},
+			{
+				"name": "Calendar",
+				"row": 7,
+				"quote": "Human recognition of patterns of the sun, moon, and stars allow for a sense of timekeeping, useful for growing specialty crops or trade.",
+				"prerequisites": ["Mining","Code of Laws"]
+			},
+			{
+				"name": "Writing",
+				"row": 8,
+				"uniques": ["Enables establishment of embassies"],
+				"quote": "The storage of information isn't the only use for the written word.  Eventually, diplomats began to realize the pen is mightier than the sword.",
+				"prerequisites": ["Code of Laws"]
+			}
+		]
+	},
+	{
+		"columnNumber": 3,
+		"era": "Antiquity Age", //"Iron Age", 1200-0 BC level tech
+		"techCost": 60,
+		"buildingCost": 50,
+		"wonderCost": 220,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 4,
+		"era": "Medieval Age", //"Religious Age", 0-500 AD level tech
+		"techCost": 140,
+		"buildingCost": 100,
+		"wonderCost": 250,
+		"techs": [
+			{
+				"name": "Engineering",
+				"row": 6,
+				"prerequisites": ["Agriculture"],
+                "uniques": ["[+100]% weight to this choice for AI decisions"],
+				"quote": "'Shall the clay say to him that fashioneth it, what makest thou?' - Bible Isaiah 45:9"
+			}
+
+		]
+	},
+	{
+		"columnNumber": 5,
+		"era": "Medieval Age", //"Feudal Age", 500-1000 AD level tech
+		"techCost": 190,
+		"buildingCost": 100,
+		"wonderCost": 280,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 6,
+		"era": "Medieval Age", //"Castle Age", 1000-1300 AD level tech
+		"techCost": 230,
+		"buildingCost": 100,
+		"wonderCost": 310,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 7,
+		"era": "Exploration Age", //"Gunpowder Age", 1300-1450 AD level tech
+		"techCost": 350,
+		"buildingCost": 150,
+		"wonderCost": 360,
+		"techs": [
+			{
+				"name": "Printing",
+				"row": 6,
+				"prerequisites": ["Engineering"],
+                "uniques": ["[+100]% weight to this choice for AI decisions"],
+				"quote": "'He who commands the sea has command of everything.' - Themistocles"
+			}
+		]
+	},
+	{
+		"columnNumber": 8,
+		"era": "Exploration Age", //"Renaissance Age", 1450-1600 AD level tech
+		"techCost": 430,
+		"buildingCost": 150,
+		"wonderCost": 400,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 9,
+		"era": "Exploration Age", //"Enlightenment Age", 1600-1700 AD level tech
+		"techCost": 480,
+		"buildingCost": 150,
+		"wonderCost": 430,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 10,
+		"era": "Industrial Age", //"Steam Age", 1700-1800 AD level tech
+		"techCost": 650,
+		"buildingCost": 200,
+		"wonderCost": 500,
+		"techs": [
+			{
+				"name": "Steam Engine",
+				"cost": 85,
+				"row": 6,
+				"prerequisites": ["Printing"],
+				"uniques": ["Enables embarkation for land units <for [non-[Barbarians]] Civilizations>"],
+				"quote": "'He made an instrument to know if the moon shine at full or no.' - Samuel Butler"
+			}
+		]
+	},
+	{
+		"columnNumber": 11,
+		"era": "Industrial Age", //"Revolution Age", 1800-1900 AD level tech
+		"techCost": 720,
+		"buildingCost": 250,
+		"wonderCost": 570,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 12,
+		"era": "Industrial Age", //"Great War Age", 1900-1950 AD level tech
+		"techCost": 800,
+		"buildingCost": 300,
+		"wonderCost": 640,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 13,
+		"era": "Digital Age", //"Atomic Age", 1950-2000 AD level tech
+		"techCost": 1000,
+		"buildingCost": 350,
+		"wonderCost": 750,
+		"techs": [
+			{
+				"name": "Electricity",
+				"row": 6,
+				"prerequisites": ["Steam Engine"],
+				"quote": "'There is only one good, knowledge, and one evil, ignorance.' - Socrates"
+			}
+		]
+	},
+	{
+		"columnNumber": 14,
+		"era": "Digital Age", //"Information Age", 2000-2030 AD level tech
+		"techCost": 1100,
+		"buildingCost": 400,
+		"wonderCost": 840,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 15,
+		"era": "Digital Age", //"Automation Age", 2030-2100 AD level tech
+		"techCost": 1200,
+		"buildingCost": 450,
+		"wonderCost": 930,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 16,
+		"era": "Future Age", //Space Opera level tech
+		"techCost": 1500,
+		"buildingCost": 500,
+		"wonderCost": 1100,
+		"techs": [
+			{
+				"name": "Artificial Intelligence",
+				"row": 6,
+				"prerequisites": ["Electricity"],
+				"quote": "'Three things are necessary for the salvation of man: to know what he ought to believe; to know what he ought to desire; and to know what he ought to do' - St. Thomas Aquinas"
+			}
+		]
+	},
+	{
+		"columnNumber": 17,
+		"era": "Future Age", //Science Fantasy level ultra tech
+		"techCost": 2000,
+		"buildingCost": 500,
+		"wonderCost": 1200,
+		"techs": [
+			
+		]
+	},
+	{
+		"columnNumber": 18,
+		"era": "Future Age", //Future Tech
+		"techCost": 2000,
+		"buildingCost": 500,
+		"wonderCost": 1200,
+		"techs": [
+			
+		]
+	}
+]

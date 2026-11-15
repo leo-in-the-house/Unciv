@@ -1,0 +1,91 @@
+{
+    "name": "Global Uniques",
+    "uniques": [
+        // Wild Pokémon Uniques
+        
+        // General Uniques
+        "Requires establishing embassies to conduct advanced diplomacy",
+        "[-75]% growth [in all cities] <when between [-10] and [-1] [Happiness]>",
+        "Nullifies Growth [in all cities] <when below [-10] [Happiness]>",
+        "[-50]% [Production] [in all cities] <when below [-10] [Happiness]>",
+        "[-33]% Strength <for [All] units> <when below [-10] [Happiness]>",
+        "Cannot build [Settler] units <when below [-10] [Happiness]>",
+        "Rebel units may spawn <when below [-20] [Happiness]>",
+        "[-1] Sight <for [Embarked] units>"
+        
+        //TEST
+       // "[50] Supply Limit",
+       // "[100]% Supply Limit",
+        //"[Gengar] costs [2] Supply"
+        //"Enables [Settler] units to enter [Mountain] tiles",
+        //"Prevents [Rifleman] units from entering [Forest] tiles"
+        //"[+1 Production] from [All] tiles [in all cities] <in [All] tiles>",
+        //"[+1 Gold] from [All] tiles [in all cities] <in [All] tiles over [Settler] units>",
+        //"[+1 Faith] from [All] tiles [in all cities] <in [All] tiles adjacent to [Rifleman] units>",
+        //"[+1 Food] from [All] tiles [in all cities] <in [All] tiles within [2] distance to [Rifleman] units>"
+
+
+		
+
+        // TODO: Implement the uniques below
+        // "[+20]% [Culture] [in all cities] <during a golden age>",
+        // "[+20]% [Production] [in all cities] <during a golden age>",
+
+        // "[+10]% growth [in all cities] <during We Love The King Day>",
+
+        // "Nullifies All Yield <while is in resistance>",
+
+        // "[-25]% [Science] [in pupetted cities]" -- Imo cityFilters should ideally become conditionals anyway
+        // "[-25]% [Culture] [in pupetted cities]"
+
+        // "[+20]% [Production] [in cities connected via railroad]"
+        // something something unit supply
+        //"Triggers a [Rainfall] event <every [3] turns> <upon turn start>"
+    ],
+	"unitUniques": [
+        "A [{Unevolved} {Ghost-Type}] rebels on the current tile <with [50]% chance> <for [non-[Ghost-Type]] units> <for [non-[Talisman]] units> <upon being defeated> <in [Haunted] tiles>",
+        "A [{Unevolved} {Ghost-Type}] rebels on the current tile <with [50]% chance> <for [non-[Talisman]] units> <upon being defeated> <in [Red Fog] tiles>",
+		//Healing terrains
+        //Enchanted
+		"[This Unit] heals [10] HP <for [non-[Ghost-Type]] units> <for [non-[Dark-Type]] units> <in [Enchanted] tiles> <upon turn end>",
+        //Faebloom
+		"[This Unit] heals [10] HP <for [non-[Ghost-Type]] units> <for [non-[Dark-Type]] units> <in tiles adjacent to [Faebloom] tiles> <upon turn end>",
+
+		//Damaging terrains
+        //Ocean
+		"[This Unit] takes [10] damage <for [non-[Barbarian]] units> <for [non-[Airborne]] units> <in [Ocean] tiles> <in tiles without [Seastack]> <in tiles without [Atoll]> <upon turn end>",
+        //Whirlpool
+		"[This Unit] takes [50] damage <for [non-[Barbarian]] units> <for [non-[Airborne]] units> <in [Water] tiles> <in tiles adjacent to [Whirlpool] tiles> <upon turn end>",
+		"[This Unit] takes [50] damage <for [non-[Barbarian]] units> <for [non-[Airborne]] units> <in [Whirlpool] tiles> <upon turn end>",
+        //Enchanted vs. Dark/Ghost
+        "[This Unit] takes [50] damage <for [Dark-Type|Ghost-Type] units> <in [Enchanted] tiles> <upon turn end>",
+        //Haunted
+		"[This Unit] takes [10] damage <for [non-[Ghost-Type]] units> <for [non-[Talisman]] units> <in [Haunted] tiles> <upon turn end>",
+        //Marsh
+		"[This Unit] takes [10] damage <in [Marsh] tiles> <for [non-[Poison-Type]] units> <for [non-[Bug-Type]] units> <for [non-[Water-Type]] units> <upon turn end>",
+		//Desert - high damage that goes down later on
+		"[This Unit] takes [10] damage <in [{Desert} {non-[Rich Soil]} {non-[Oasis]}] tiles> <for [non-[Ground-Type]] units> <for [non-[Rock-Type]] units> <for [non-[Steel-Type]] units> <for [non-[Mountaineer]] units> <for [non-[Airborne]] units> <upon turn end>",
+		//Permafrost
+		"[This Unit] takes [50] damage <in [Permafrost] tiles> <for [non-[Ice-Type]] units> <upon turn end>",
+        //Iceberg
+		"[This Unit] takes [100] damage <for [non-[Barbarian]] units> <for [non-[Airborne]] units> <for [non-[Ice-Type]] units> <in [Iceberg] tiles> <upon turn end>",
+		"[This Unit] takes [10] damage <for [non-[Barbarian]] units> <for [non-[Airborne]] units> <for [non-[Ice-Type]] units> <in [Water] tiles> <in tiles adjacent to [Iceberg] tiles> <upon turn end>",
+        //Iceweed
+		"[This Unit] takes [30] damage <for [non-[Barbarian]] units> <in [Iceweed] tiles> <upon turn end> <for [non-[Airborne]] units>",
+		//Volcanic
+		"[This Unit] takes [30] damage <in [Volcanic] tiles> <for [non-[Fire-Type]] units> <for [non-[Dragon-Type]] units> <for [non-[Airborne]] units> <upon turn end>",
+		//Lava
+		"[This Unit] takes [50] damage <in [Lava] tiles> <for [non-[Fire-Type]] units> <for [non-[Dragon-Type]] units> <for [non-[Airborne]] units> <upon turn end>",
+		//Volcano
+		"[This Unit] takes [100] damage <in [Volcano] tiles> <for [non-[Fire-Type]] units> <for [non-[Dragon-Type]] units> <upon turn end>",
+        //Toxin
+		"[This Unit] takes [30] damage <in [Toxin] tiles> <for [non-[Poison-Type]] units> <for [non-[Steel-Type]] units> <upon turn end>",
+        //Fallout
+		"[This Unit] takes [30] damage <in [Fallout] tiles> <for [non-[Poison-Type]] units> <for [non-[Dragon-Type]] units> <upon turn end>",
+        //Red Fog
+		"[This Unit] takes [10] damage <for [non-[Ghost-Type]] units> <for [non-[Talisman]] units> <in [Red Fog] tiles> <upon turn end>"
+	],
+    "civilopediaText": [
+        {"text": "Global uniques are ruleset-wide modifiers that apply to all civilizations."}
+    ]
+}

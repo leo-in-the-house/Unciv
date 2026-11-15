@@ -84,7 +84,7 @@ class ModCheckboxTable(
     fun setBaseRuleset(newBaseRulesetName: String) {
         val newBaseRuleset = RulesetCache[newBaseRulesetName]
             // We're calling this from init, baseRuleset is lateinit, and the mod may have been deleted: Must make sure baseRuleset is initialized
-            ?: return setBaseRuleset(BaseRuleset.Civ_V_GnK.fullName)
+            ?: return setBaseRuleset(BaseRuleset.Pokepunk.fullName)
         baseRulesetName = newBaseRulesetName
         baseRuleset = newBaseRuleset
         savedModcheckResult = null

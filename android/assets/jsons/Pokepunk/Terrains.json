@@ -1,0 +1,1404 @@
+[
+	//NOTE: humidity simply assigns a random value to each tile, although low and high humidity tiles tend to hang together
+	//Humidity values seem to typically hover from 0.15 to 0.85
+	//Land Primary Biomes
+	{
+		"name": "Barren",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [140, 140, 140],
+        "uniques": [
+			"Base Terrain on this tile is not counted for Region determination",
+			"Doesn't generate naturally",
+			"Flat"
+		],
+        "civilopediaText": [
+            {
+                "text": "These barren lands are devoid of most life, as if preserved in its sterile state by some extraterrestrial force."
+            }
+        ]
+    },
+	{
+		"name": "Permafrost",
+		"type": "Land",
+		"movementCost": 4,
+        "RGB": [255, 255, 255],
+        "uniques": [
+			"Occurs at temperature between [-1.0] and [-0.85] and humidity between [0.4] and [1.0]",
+			"[-3] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"A Region is formed with at least [40]% [Permafrost] tiles, with priority [5]",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Permafrost] tiles>",
+			"Becomes [Mountain] when adjacent to [Mountain] <with [50]% chance> <with [0] to [2] neighboring [Mountain] tiles>",
+			"Becomes [Tundra] when adjacent to [{non-[Cold]} {non-[Water]}]",
+			"Cold",
+			"Hazardous",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Extremely cold climate, locked under permanent ice where no plants can grow.  Hardy Ice-type Pokémon can spawn in these lands."
+            },
+            {
+                "text": "Most units will take severe damage from the harsh winters when unprepared.  Ice-type Pokémon are resistant to the extreme cold."
+            }
+        ]
+		//Represent polar climates, that appear at the very top of the world
+		//Hardy Ice-type Pokemon spawn in these lands, and they damage units that try to pass through.
+    },
+	{
+		"name": "Tundra",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [255, 230, 255],
+        "uniques": [
+			"Occurs at temperature between [-0.85] and [-0.75] and humidity between [0.4] and [1.0]",
+			"[-1] to Fertility for Map Generation",
+			"Becomes [Rich Soil] when adjacent to [River] <with [30]% chance>",
+			"A Region is formed with at least [30]% [Tundra] tiles and [Permafrost] tiles, with priority [7]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Considered [Food] when determining start locations",
+			"Becomes [Coast] when adjacent to [Land] <with [0] to [0] neighboring [Tundra] tiles> <with [1] to [5] neighboring [Coast] tiles>",
+			"Becomes [Lakes] when adjacent to [Land] <with [0] to [0] neighboring [Tundra] tiles> <with [0] to [0] neighboring [Coast] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <in tiles adjacent to [Coast] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <with [50]% chance> <within [4] tiles of a [Coast]> <in tiles adjacent to [Marsh] tiles>",
+			"Becomes [Forest] when adjacent to [Tundra] <with [70]% chance>",
+			"Cold",
+			"Fertile",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Subarctic climate populated with evergreen boreal trees that can survive harsh winters.  Home to Deerling, Berries, Herbs, and Resin, as well as Grass-, Bug-, and Ice-type wild Pokémon."
+            }
+        ]
+		//Represent colder climates with boreal forests, between the temperate zones and and Permafrost
+		//Grass-, Bug-, and Ice-type Pokemon spawn in these lands.
+    },
+	{
+		"name": "Plains",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [230, 230, 50],
+        "uniques": [
+			"Occurs at temperature between [-0.75] and [0.4] and humidity between [0.4] and [0.65]",
+			"Occurs at temperature between [-0.2] and [0.2] and humidity between [0.3] and [0.4]",
+			"[+1] to Fertility for Map Generation",
+			"Becomes [Rich Soil] when adjacent to [River] <with [50]% chance>",
+			"A Region is formed with at least [30]% [Plains] tiles, with priority [7]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Becomes [Coast] when adjacent to [Land] <with [0] to [0] neighboring [Plains] tiles> <with [1] to [5] neighboring [Coast] tiles>",
+			"Becomes [Lakes] when adjacent to [Land] <with [0] to [0] neighboring [Plains] tiles> <with [0] to [0] neighboring [Coast] tiles>",
+			"Becomes [Grassland] when adjacent to [All] <within [1] tiles of a [Coast]>",
+			"Becomes [Grassland] when adjacent to [Grassland] <within [3] tiles of a [Coast]> <with [50]% chance>",
+			"Becomes [Marsh] when adjacent to [River] <in tiles adjacent to [Coast] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <with [50]% chance> <within [4] tiles of a [Coast]> <in tiles adjacent to [Marsh] tiles>",
+			"Considered [Desirable] when determining start locations",
+			"Considered [Food] when determining start locations",
+			"Considered [Production] when determining start locations",
+			"Temperate",
+			"Arid",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Cold, semi-arid flatlands with no trees to block the wind, only a few hills, lying inland on continents.  Many species of tameable Pokémon, including fierce rideable Ponyta roam these lands.  Normal- and Electric-type wild Pokémon will spawn here."
+            }
+        ]
+		//Represent semi-arid climates at the higher mid-latitudes, far from the coasts and with no forests, yet are still fertile and can be hilly
+		//Normal-type and Electric-type open range Pokemon spawn in these lands.
+    },
+	{
+		"name": "Grassland",
+		"type": "Land",
+		"food": 1,
+		"movementCost": 1,
+        "RGB": [180, 255, 170],
+        "uniques": [
+			"Occurs at temperature between [-0.75] and [0.4] and humidity between [0.65] and [1.0]",
+			"Occurs at temperature between [0.4] and [0.65] and humidity between [0.3] and [1.0]",
+			"[+2] to Fertility for Map Generation",
+			"Becomes [Rich Soil] when adjacent to [River] <with [20]% chance>",
+			"A Region is formed with at least [30]% [Grassland] tiles, with priority [7]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Grassland] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <in tiles adjacent to [Coast] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <with [50]% chance> <within [4] tiles of a [Coast]> <in tiles adjacent to [Marsh] tiles>",
+			"Considered [Desirable] when determining start locations",
+			"Considered [Food] when determining start locations",
+			"Considered [Production] when determining start locations",
+			"Temperate",
+			"Fertile",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Humid, temperate climates with lush forests, open plains, rolling hills, and fertile river valleys.  Suitable for human civilization, with weaker Grass-type wild Pokémon as the only wild threats."
+            }
+        ]
+		//Represent humid temperate climates, as the default climate spawning in the mid-latitudes
+		//Grass-type Pokemon spawn in these lands, and they are the most fertile for settlement.
+    },
+	{
+		"name": "Desert",
+		"type": "Land",
+		"movementCost": 2,
+        "RGB": [255, 255, 110],
+        "uniques": [
+			"Occurs at temperature between [0.65] and [0.85] and humidity between [0.4] and [1.0]",
+			"[-2] to Fertility for Map Generation",
+			"Becomes [Rich Soil] when adjacent to [River] <with [50]% chance>",
+			"Becomes [Rich Soil] when adjacent to [Oasis]",
+			"A Region is formed with at least [30]% [Desert] tiles, with priority [7]",
+			"Considered [Undesirable] when determining start locations",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Desert] tiles>",
+			"Becomes [Grassland] when adjacent to [Lakes] <with [1] to [6] neighboring [Grassland] tiles>",
+			"Becomes [Savannah] when adjacent to [Lakes] <with [0] to [0] neighboring [Grassland] tiles>",
+			"Becomes [Grassland] when adjacent to [Grassland] <within [3] tiles of a [Coast]> <within [3] tiles of a [Grassland]> <within [3] tiles of a [Tropical]>",
+			"Becomes [Savannah] when adjacent to [Tropical] <with [0] to [1] neighboring [Ashlands] tiles>",
+			"Hazardous",
+			"Hot",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Hot, parched lands that separate the temperate lands from the tropics.  Few sources of water and hostile climate makes this a preferred climate for only Ground-type Pokémon."
+            },
+            {
+                "text": "Not being near the few patches of Rich Soil or the rare Oasis will expose your units to sandstorms, causing them to take damage.  Ground-, Rock-, and Steel-type Pokémon are naturally resilient."
+            }
+        ]
+		//Represent hot deserts that separate the grasslands from the tropics
+		//Ground-type Pokemon that like dry heat and sandstorms spawn in these lands
+    },
+	{
+		"name": "Tropical",
+		"type": "Land",
+		//"food": 1,
+		"movementCost": 1,
+        "RGB": [0, 180, 0],
+        "uniques": [
+			"Occurs at temperature between [0.85] and [1.0] and humidity between [0.4] and [1.0]",
+			//0 fertility
+			"Becomes [Rich Soil] when adjacent to [River] <with [10]% chance>",
+			"A Region is formed with at least [30]% [Tropical] tiles, with priority [7]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Considered [Food] when determining start locations",
+			"Becomes [Grassland] when adjacent to [All] <within [2] tiles of a [Plains]> <with [0] to [2] neighboring [Tropical] tiles>",
+		    "Becomes [Tundra] when adjacent to [All] <within [2] tiles of a [Tundra]> <with [0] to [2] neighboring [Tropical] tiles>",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Tropical] tiles>",
+			"Becomes [Savannah] when adjacent to [Savannah] <within [3] tiles of a [Desert]> <with [60]% chance>",
+			"Becomes [Marsh] when adjacent to [River] <in tiles adjacent to [Coast] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <with [50]% chance> <within [4] tiles of a [Coast]> <in tiles adjacent to [Marsh] tiles>",
+			"Becomes [Forest] when adjacent to [Tropical] <with [80]% chance>",
+			"Hot",
+			"Fertile",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Hot, wet climates filled with tropical rainforests hugging the equator.  Within its jungles lurk both an abundance of natural resources and hostile Grass- and Poison-type Pokémon."
+            }
+        ]
+		//Represent hot, jungle climates, spawning in hot, low-magic parts of the world.
+		//Infested with dangerous Grass-type and Poison-type Pokemon that spawn in these lands, and especially with fossil Pokemon.
+    },
+	{
+		"name": "Alpine",
+		"type": "Land",
+		"defenceBonus": 0.5,
+		"movementCost": 2,
+        "RGB": [100, 255, 220],
+        "uniques": [
+			"Blocks line-of-sight from tiles at same elevation",
+			"[-1] to Fertility for Map Generation",
+			"Doesn't generate naturally",
+			"A Region is formed with at least [30]% [Alpine] tiles and [Mountain] tiles, with priority [5]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Becomes [Hill] when adjacent to [All] <with [50]% chance>",
+			"Becomes [Forest] when adjacent to [All] <with [50]% chance>",
+			"Temperate",
+			"Fertile"
+        ],
+        "civilopediaText": [
+            {
+                "text": "High altitude micro-climate surrounded by mountains with mysterious cloud forests that provide ample protection for defenders.  Flying-type Pokémon like to spawn in these highlands."
+            }
+        ]
+		//Higher-up climate that spawns in the mid-humidities in most latitudes.  Most mountains spawn here.
+		//Represent a high-altitude climate, home to cloud forests.  Boosts defense significantly.
+		//Flying-type Pokemon spawn in these lands.
+    },
+	//Magical Land Primary Biomes
+	//These are all undesirable starting locations for most.
+	{
+		"name": "Crystallic",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [255, 200, 255],
+        "uniques": [
+			"Occurs at temperature between [-1.0] and [-0.75] and humidity between [0.0] and [0.4]",
+			"[-2] to Fertility for Map Generation",
+			"A Region is formed with at least [30]% [Crystallic] tiles, with priority [5]",
+			"Every [5] tiles with this terrain will receive a major deposit of a strategic resource.",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Crystallic] tiles>",
+			"Becomes [Crystals] when adjacent to [Crystallic] <with [70]% chance>",
+			"Considered [Undesirable] when determining start locations",
+			"Cold"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Cold, sterile climate brimming with rare crystals.  Metallic resources and especially Gems are abundant in these lands, as well as Rock- and Psychic-type Pokémon."
+            }
+        ]
+		//Spawns in far northernly parts of the magic world
+		//Represent a cold, sterile climate with crystals and a slight Christmas theme
+		//Rock-, Psychic- and Ice-type Pokemon, really anyone associated with Gemstones spawn in these lands.
+    },
+	{
+		"name": "Wasteland",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [115, 115, 115],
+        "uniques": [
+			"Occurs at temperature between [-0.75] and [-0.65] and humidity between [0.0] and [0.4]",
+			"Occurs at temperature between [-0.45] and [-0.2] and humidity between [0.0] and [0.4]",
+			"Occurs at temperature between [-0.2] and [0.0] and humidity between [0.0] and [0.3]",
+			"[-1] to Fertility for Map Generation",
+			"Every [8] tiles with this terrain will receive a major deposit of a strategic resource.",
+			"A Region is formed with at least [30]% [Wasteland] tiles, with priority [4]",
+			"Becomes [Ruins] when adjacent to [Wasteland] <with [50]% chance>",
+			"Considered [Undesirable] when determining start locations",
+			"Cold",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "The broken husk of a civilization long gone, leaving only garbage, poison, and rotting concrete.  Copper cables, uranium, and Poochyenas lurk the urban skeletons, while Poison-, Dark-, and Steel-type Pokémon wander the badlands."
+            },
+            {
+                "text": "Wasteland tiles near the water will pollute the seas, leaving them dangerous for maritime transit.  Poison-type Pokémon are naturally immune to such toxins."
+            }
+        ]
+		//Spawns near Haunted tiles in the upper mid latitudes, that can form passes through mountains
+		//Represent a ruined metropolis with toxic waste, ancient ruins and vaults
+		//Poison-, Dark-, and Steel-type Pokemon, really anyone associated spawn in these lands.
+    },
+	{
+		"name": "Haunted",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [120, 0, 120],
+        "uniques": [
+			"Occurs at temperature between [-0.65] and [-0.45] and humidity between [0.0] and [0.4]",
+			"Becomes [Rich Soil] when adjacent to [River] <with [30]% chance>",
+			"[-2] to Fertility for Map Generation",
+			"A Region is formed with at least [20]% [Haunted] tiles, with priority [5]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Considered [Undesirable] when determining start locations",
+			"Becomes [Grassland] when adjacent to [Grassland] <with [0] to [0] neighboring [Haunted] tiles>",
+			"Becomes [Grassland] when adjacent to [Plains] <with [0] to [0] neighboring [Haunted] tiles> <with [0] to [0] neighboring [Plains] tiles>",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Grassland] tiles> <with [0] to [0] neighboring [Plains] tiles> <with [0] to [0] neighboring [Haunted] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <in tiles adjacent to [Coast] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <with [50]% chance> <within [4] tiles of a [Coast]> <in tiles adjacent to [Marsh] tiles>",
+			"Becomes [Forest] when adjacent to [Haunted] <with [90]% chance>",
+			"Temperate",
+			"Fertile",
+			"Hazardous",
+			"Spooky"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Whether by magical curse or lost technology, the forces of death have thoroughly twisted and corrupted these dark lands filled with Ghost-type Pokémon."
+            },
+            {
+                "text": "The curse corrupting these lands will damage all non-Ghost-type Pokémon.  Souls that die to the curse are forever bound by it and may turn into Ghost-type Pokémon themselves.  Water tiles near Haunted terrain may become cursed with Red Fog, with similar effects."
+            }
+        ]
+		//Spawns in temperate regions, in the upper mid latitudes
+		//Represent corrupted climates cursed by ancient magics
+		//Ghost-types appear here.  Non-Ghost-type units that die here turn into Ghost-type Pokemon when they die, and they take damage per turn.
+    },
+	{
+		"name": "Enchanted",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [120, 255, 120],
+        "uniques": [
+			"Occurs at temperature between [0.0] and [0.2] and humidity between [0.0] and [0.3]",
+			"Occurs at temperature between [0.2] and [0.4] and humidity between [0.0] and [0.4]",
+			"Occurs at temperature between [0.4] and [0.65] and humidity between [0.0] and [0.3]",
+			"[+2] to Fertility for Map Generation",
+			"Becomes [Rich Soil] when adjacent to [River] <with [20]% chance>",
+			 "Considered [Undesirable] when determining start locations", //Players will rarely spawn in Enchanted
+			"A Region is formed with at least [20]% [Enchanted] tiles, with priority [5]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Becomes [Wasteland] when adjacent to [Haunted] <with [0] to [0] neighboring [Enchanted] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <in tiles adjacent to [Coast] tiles>",
+			"Becomes [Marsh] when adjacent to [River] <with [50]% chance> <within [4] tiles of a [Coast]> <in tiles adjacent to [Marsh] tiles>",
+			"Becomes [Forest] when adjacent to [Enchanted] <with [90]% chance>",
+			"Temperate",
+			"Fertile"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Hallowed lands of magic and miracles, beautiful flowers, and the elusive Galarian Ponyta.  Fairy-type Pokémon prance within its colorful forests."
+            },
+            {
+                "text": "These lands are blessed by some mystic or technological force, quickly healing all units that are not Dark- or Ghost-type Pokémon, while inflicting grievous damage to these unholy types of Pokémon."
+            }
+        ]
+		//Spawns in temperate regions, in the central parts
+		//Represent magical climates, appearing in the highest magic areas in the mid-latitudes
+		//A wide range of Pokemon, especially Fairy-types appear here.  Non-Dark, non-Ghost types heal in these lands.
+    },
+	{
+		"name": "Ashlands",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [75, 75, 75],
+        "uniques": [
+			"Occurs at temperature between [0.65] and [0.85] and humidity between [0.0] and [0.4]",
+			//0 fertility
+			"A Region is formed with at least [30]% [Ashlands] tiles, with priority [6]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Becomes [Grassland] when adjacent to [All] <within [2] tiles of a [Plains]> <with [0] to [2] neighboring [Ashlands] tiles>",
+		     "Becomes [Tundra] when adjacent to [All] <within [2] tiles of a [Tundra]> <with [0] to [2] neighboring [Ashlands] tiles>",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Ashlands] tiles>",
+			"Considered [Food] when determining start locations",
+            "Always Fertility [-1] for Map Generation",
+			"Hot",
+			"Fertile"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Scorched lands with rich volcanic soil, often found near Volcanic climates.  Fire-type Pokémon are abundant here, and dangerous lava pools can often impede explorers."
+            }
+        ]
+		//Represent hot, magically scorched climates, with lava pools.  Will appear in cooler climates than Volcanic tiles, but only spawn if a Volcanic tile is near
+		//Fire-type Pokemon are common here.
+    },
+	{
+		"name": "Volcanic",
+		"type": "Land",
+		"movementCost": 3,
+        "RGB": [225, 0, 0],
+        "uniques": [
+			"Occurs at temperature between [0.85] and [1.00] and humidity between [0.0] and [0.4]",
+			"[-3] to Fertility for Map Generation",
+			"A Region is formed with at least [30]% [Volcanic] tiles and [Ashlands] tiles, with priority [5]",
+            "Becomes [Grassland] when adjacent to [All] <within [2] tiles of a [Plains]> <with [0] to [2] neighboring [Volcanic] tiles>",
+		     "Becomes [Tundra] when adjacent to [All] <within [2] tiles of a [Tundra]> <with [0] to [2] neighboring [Volcanic] tiles>",
+		   "Considered [Undesirable] when determining start locations",
+			"Becomes [Mountain] when adjacent to [{non-[Mountain]} {Land}] <with [0] to [0] neighboring [Volcanic] tiles>",
+			"Becomes [Ashlands] when adjacent to [Coast]",
+            "Always Fertility [-2] for Map Generation",
+			"Hot",
+			"Hazardous"
+		],
+        "civilopediaText": [
+            {
+                "text": "Fiery climates filled with extremely dangerous lava and volcanoes.  Few besides Fire- and Dragon-type Pokémon can survive these hellscapes."
+            },
+            {
+                "text": "Volcanic climates are extremely treacherous and will quickly kill the unprepared with their heat and lava.  Fire and Dragon-type Pokémon, however, will be able to traverse without taking damage."
+            }
+        ]
+		//Represent a fantasy volcanic climate, and they tend to spawn in hot dry areas
+		//Fire-type Pokemon spawn in these lands, and they damage units as they move through
+    },
+	{
+		"name": "Urban",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [185, 185, 185],
+        "uniques": [
+			"Doesn't generate naturally",
+            "Always Fertility [-2] for Map Generation"
+		],
+        "civilopediaText": [
+            {
+                "text": "As cities expand, they replace the terrain beneath them into Urban tiles.  These sterile tiles are designed for human settlement, eliminating the beauty and hazards of whatever terrain they clear."
+            }
+        ]
+		//Replaces the terrain beneath it after building buildings.  Doesn't generate naturally.
+    },
+	//Land Secondary Biomes
+	{
+		"name": "Marsh",
+		"type": "Land",
+		"defenceBonus": -0.3,
+		"food": 2,
+		"movementCost": 2,
+        "RGB": [0, 100, 85],
+        "uniques": [
+			"Doesn't generate naturally",
+			"[-1] to Fertility for Map Generation",
+			"A Region is formed with at least [20]% [Marsh] tiles, with priority [5]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Considered [Food] when determining start locations",
+			"Blocks line-of-sight from tiles at same elevation",
+			"Temperate",
+			"Fertile",
+			"Hazardous"
+        ],
+        "civilopediaText": [
+            {
+                "text": "These murky, waterlogged wetlands form around river deltas.  They can provide much food, but are also a significant hazard for humans."
+            },
+            {
+                "text": "Anyone who is not a Water-, Bug- nor Poison-type Pokémon that traverse these infested pits of fetid muck will take damage.  Not even airborne units are spared."
+            }
+        ]
+		//Wet climate that forms in Fertile climates along rivers near coast
+		//Difficult to fight on, as it weakens the defense of units on there and damages units on there
+		//Difficult to build on as well, but can contain magical items for witchcraft.
+		//Bug-type and Poison-type Pokemon thrive in these lands, and even some Water-types and Dark-types.
+    },
+	{
+		"name": "Savannah",
+		"type": "Land",
+		"movementCost": 1,
+        "RGB": [235, 255, 150],
+        "uniques": [
+			"Doesn't generate naturally",
+			"[+1] to Fertility for Map Generation",
+			"Becomes [Rich Soil] when adjacent to [River] <with [30]% chance>",
+			"A Region is formed with at least [30]% [Savannah] tiles and [Desert] tiles, with priority [6]",
+			"Starts in regions of this type receive an extra [Wheat]",
+			"Considered [Food] when determining start locations",
+			"Hot",
+			"Arid",
+			"Flat"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Semi-arid hot flatlands that form between the borders of desert and tropics, with no hills nor forests.  Wild Pokémon of all shapes and sizes roam these endlessly flat lands."
+            }
+        ]
+		//Represent hot, flat Plains too dry for forests, but still fertile enough to grow food
+		//Will spawn on the border between Desert and Jungle, as well as in places too far inland
+		//A huge set of open range Pokemon will spawn here, as these areas tend to be quite biodiverse.
+    },
+	//Mountains and Caves
+	{
+		"name": "Mountain",
+		"type": "Land",
+		"movementCost": 4,
+		"impassable": true,
+		"defenceBonus": 0.75,
+		"RGB": [125, 125, 125],
+		"uniques": ["Rough terrain",
+            "Has an elevation of [2] for visibility calculations",
+			"Becomes [Alpine] when adjacent to [non-[Mountain]] <with [70]% chance> <in tiles not adjacent to [Coast] tiles> <in tiles not adjacent to [Cold] tiles> <with [1] to [5] neighboring [Mountain] tiles>",
+			"Occurs in chains at high elevations",
+            "Always Fertility [-3] for Map Generation",
+            "Considered [Undesirable] when determining start locations"
+		],
+        "civilopediaText": [
+            {
+                "text": "High elevation lands that are impassable to most units, and incur a hefty movement cost for anyone who dare to traverse them.  They offer excellent protection, however, while Rock- and Flying-type Pokémon roam their peaks."
+            }
+        ]
+		//Represents high elevations that spawn from Alpine terrain.
+		//Very expensive to move through by default
+	},
+	//Features
+	{
+		"name": "Hill",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"gold": 1,
+		"overrideStats": true,
+		"defenceBonus": 0.25,
+		"RGB": [105,125,72],
+		"occursOn": ["Tundra","Tropical","Grassland","Plains","Desert","Permafrost", "Ashlands", "Enchanted", "Haunted", "Volcanic", "Crystallic"],
+		"uniques": ["Rough terrain",
+					"Has an elevation of [1] for visibility calculations",
+					"[+1] to Fertility for Map Generation",
+					"Occurs in groups around high elevations",
+					"A Region is formed with at least [40]% [Hill] tiles, with priority [6]",
+					"Base Terrain on this tile is not counted for Region determination",
+					"Considered [Desirable] when determining start locations",
+					"Considered [Production] when determining start locations",
+					"Every [22] tiles with this terrain will receive a major deposit of a strategic resource."],
+        "civilopediaText": [
+            {
+                "text": "High elevation terrain that is difficult to travel through, but provide defensive and vision advantages, most mineral and geological resources, and a chance of spotting Rock-, Flying-, and Fighting-type Pokémon."
+            }
+        ]
+		//Generic high ground for all terrains
+		//Rock-, Flying-, and Fighting-type hardy Pokemon will be a little more common in these tiles.
+	},
+	{
+		"name": "Forest",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"food": 1,
+		"overrideStats": true,
+		"unbuildable": true,
+		"defenceBonus": 0.25,
+		"RGB": [0,140,0],
+		"occursOn": ["Tundra","Tropical","Grassland","Hill", "Ashlands", "Enchanted", "Haunted"],
+		"uniques": ["Rough terrain", "Vegetation",
+					"Provides a one-time bonus of [+30 Production] to the closest city when removed <(modified by game speed)>",
+					"A Region is formed with at least [40]% [Forest] tiles, with priority [6]",
+					"[+1] to Fertility for Map Generation",
+					"Starts in regions of this type receive an extra [Wheat]",
+					"Blocks line-of-sight from tiles at same elevation",
+					"[25]% Chance to be destroyed by nukes",
+					"Considered [Desirable] when determining start locations",
+					"Considered [Production] when determining start locations",
+					"Considered [Food] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "Forested, vegetated terrain, found in most fertile biomes.  Hard to navigate, they provide cover, food, and a host of Grass- and Bug-type Pokémon."
+            }
+        ]
+		//Generic high ground for all fertile terrains
+		//Grass- and Bug-type Pokemon will be a more common in these tiles.
+	},
+	{
+		"name": "Rich Soil",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"food": 1,
+		"overrideStats": true,
+		"unbuildable": true,
+		"defenceBonus": 0.25,
+		"RGB": [0,140,0],
+		"occursOn": ["Tundra","Tropical","Grassland", "Desert", "Plains", "Savannah", "Enchanted", "Haunted"],
+		"uniques": ["Open terrain",
+					"[+3] to Fertility for Map Generation",
+					"Provides a one-time bonus of [+30 Food] to the closest city when removed <(modified by game speed)>",
+					"Considered [Desirable] when determining start locations",
+					"Considered [Food] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "Particularly fertile soils that form along riverbeds or in other very humid parts of the world, these spots are good for agriculture and rich in crops.  Desert Rich Soils not only will support farming, but also will prevent damage from the Desert itself."
+            }
+        ]
+		//Rich, fertile soil good for early agriculture
+	},
+	{
+		"name": "Crystals",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"gold": 1,
+		"science": 1,
+		"defenceBonus": 0.25,
+		"RGB": [105,175,200],
+		"occursOn": ["Crystallic"],
+		"uniques": ["Rough terrain",
+					"Vegetation",
+					"[+3] to Fertility for Map Generation",
+					"Provides a one-time bonus of [+100 Gold] to the closest city when removed <(modified by game speed)>",
+					"Blocks line-of-sight from tiles at same elevation",
+					"Considered [Production] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "These mysterious crystals found in Crystallic climates are brimming with both rare resources and psychic energy.  They provide scientific benefits, rare resources, and even rarer Psychic-type Pokémon."
+            }
+        ]
+		//These mysterious crystals are brimming with both rare resources and psychic energy
+		//Psychic-type Pokemon are very common in these tiles.
+	},
+	{
+		"name": "Ruins",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"science": 1,
+		"gold": 1,
+		"overrideStats": true,
+		"unbuildable": true,
+		"defenceBonus": 0.20,
+		"RGB": [0,140,0],
+		"occursOn": ["Wasteland"],
+		"uniques": ["Rough terrain", "Vegetation",
+					"[+2] to Fertility for Map Generation",
+					"Provides a one-time bonus of [+50 Production] to the closest city when removed <(modified by game speed)>",
+					"Blocks line-of-sight from tiles at same elevation",
+					"[25]% Chance to be destroyed by nukes",
+					"Considered [Production] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "The rubble of an ancient city, with decaying building and feral Poochyenas roaming its empty, crumbling streets.  There may still be secrets still lying within the destruction."
+            }
+        ]
+		//Generic high ground for all fertile terrains
+		//Grass- and Bug-type Pokemon will be a more common in these tiles.
+	},
+	//Water Features
+	{
+		"name": "Kelp",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"food": 1,
+		"defenceBonus": 0.10,
+		"occursOn": ["Coast"],
+		"uniques": ["Vegetation",
+					"[+1] to Fertility for Map Generation",
+					"Occurs at temperature between [-0.6] and [1.0] and humidity between [0] and [1]",
+					"Provides a one-time bonus of [+70 Food] to the closest city when removed <(modified by game speed)>",
+					"Blocks line-of-sight from tiles at same elevation",
+					"[25]% Chance to be destroyed by nukes",
+					"Considered [Food] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "Aquatic forests that block movement and vision, but provide some cover for naval units.  Grass-type aquatic Pokémon may spawn near here."
+            }
+        ]
+		//Aquatic forests that block movement and vision, but provide some cover for naval units
+		//Grass-type aquatic Pokemon like to spawn here
+	},
+	{
+		"name": "Reef",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"gold": 1,
+		"defenceBonus": -0.10,
+		"occursOn": ["Coast"],
+		"uniques": ["Rough terrain",
+					"Vegetation",
+					"[+1] to Fertility for Map Generation",
+					"Occurs at temperature between [0.5] and [1.0] and humidity between [0] and [1]",
+					"Provides a one-time bonus of [+70 Gold] to the closest city when removed <(modified by game speed)>",
+					"[25]% Chance to be destroyed by nukes",
+					"Considered [Production] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "Aquatic coral that slows down and weakens naval units, while providing little cover.  Mineral aquatic Pokémon may spawn near here."
+            }
+        ]
+		//Aquatic coral that slows down and weakens naval units, while providing little cover.
+		//Rock-type and coral aquatic Pokemon like to spawn here
+	},
+	{
+		"name": "Iceweed",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"food": 1,
+		"defenceBonus": 0.20,
+		"occursOn": ["Coast"],
+		"uniques": ["Vegetation",
+					"[-1] to Fertility for Map Generation",
+					"Occurs at temperature between [-0.9] and [-0.6] and humidity between [0] and [1]",
+					"Provides a one-time bonus of [+70 Food] to the closest city when removed <(modified by game speed)>",
+					"Blocks line-of-sight from tiles at same elevation",
+					"[25]% Chance to be destroyed by nukes",
+					"Considered [Undesirable] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "Aquatic plant that replaces Kelp and Reef in arctic waters, damaging non-Ice-type, non-airborne naval units that try to pass through.  Ice-type aquatic Pokémon may spawn near here."
+            }
+        ]
+		//A colder plant that replaces Kelp and Reefs in arctic waters.  Damages non-Ice types.
+		//Ice-type aquatic Pokemon like to spawn here
+	},
+	{
+		"name": "Faebloom",
+		"type": "TerrainFeature",
+		"movementCost": 1,
+		"faith": 1,
+		"occursOn": ["Lakes"],
+		"uniques": ["Rough terrain",
+					"Vegetation",
+					"[+1] to Fertility for Map Generation",
+					"Occurs at temperature between [-0.6] and [0.5] and humidity between [0] and [1]",
+					"Provides a one-time bonus of [+100 Faith] to the closest city when removed <(modified by game speed)>",
+					"Must be adjacent to [0] to [0] [Haunted] tiles",
+					"Must be adjacent to [0] to [0] [Wasteland] tiles",
+					"Must be adjacent to [0] to [0] [Ashlands] tiles",
+					"Must be adjacent to [0] to [0] [Volcanic] tiles",
+					"[25]% Chance to be destroyed by nukes",
+					"Considered [Food] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "Mysterious flowers that bloom in freshwater lakes, healing nearby units.  Psychic- and Fairy-type Pokémon may spawn near here."
+            }
+        ]
+		//Mysterious flowers that bloom in freshwater lakes in the mid-latitudes, that heal nearby units.
+		//Psychic- and Fairy-type aquatic Pokemon like to spawn here
+	},
+	//Rare Features
+	{
+		"name": "Volcano",
+		"type": "TerrainFeature",
+		"movementCost": 4,
+		"impassable": true,
+        "RGB": [115, 0, 0],
+		"defenceBonus": -0.30,
+		"occursOn": ["Volcanic"],
+        "uniques": [ 
+			"Rare feature",
+			"[-2] to Fertility for Map Generation"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Deadly mountains of fire that erupt in Volcanic terrain.  Units ending their turn over a Volcano will instantly die if they are not a Fire- or Dragon-type Pokémon."
+            }
+        ]
+		//Occurs in Volcanic terrain
+		//Units ending their turn on this tile will instantly die if they are not Fire-type.
+    },
+	{
+		"name": "Lava",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+        "RGB": [115, 0, 0],
+		"defenceBonus": -0.30,
+		"occursOn": ["Volcanic", "Ashlands"],
+        "uniques": [ 
+			"Rare feature",
+			"[-2] to Fertility for Map Generation"
+        ],
+        "civilopediaText": [
+            {
+                "text": "Dangerous pool of molten lava that appear in Volcanic and Ashland terrain.  Units ending their turn over Lava will take significant damage if they are not a Fire- or Dragon-type Pokémon."
+            }
+        ]
+		//Occurs in Volcanic and Ashlands terrain
+		//Units ending their turn on this tile will take enormous damage if they are not Fire-type.
+    },
+	{
+		"name": "Oasis",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"food": 2,
+		"faith": 2,
+		"overrideStats": true,
+		"occursOn": ["Desert"],
+		"uniques": [
+			"Rare feature",
+			"Fresh water",
+			"Rough terrain",
+			"Vegetation",
+			"Must be adjacent to [6] to [6] [Desert] tiles",
+			"Must be adjacent to [1] to [6] [River] tiles",
+			"Always Fertility [4] for Map Generation",
+			"Blocks line-of-sight from tiles at same elevation",
+			"[25]% Chance to be destroyed by nukes",
+			"Considered [Food] when determining start locations"
+		],
+        "civilopediaText": [
+            {
+                "text": "A rare spot of fresh water in an otherwise inhospitable desert, that provides shelter from the elements.  Will turn nearby tiles into rich soil, and generate a large amount of food and faith."
+            }
+        ]
+		//Oasis tiles are rarely found in Deserts along river
+		//Oasis tiles provide Fresh Water for Desert civilizations
+		//Many rare Pokemon, including even some Dragon-types are found in Oasis tiles
+	},
+	{
+		"name": "Toxin",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"defenceBonus": -0.10,
+		"turnsInto": "Tropical",
+		"occursOn": ["Coast", "Ocean"],
+		"uniques": ["Doesn't generate naturally",
+					"Rare feature",
+					"[-2] to Fertility for Map Generation",
+					"Considered [Undesirable] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "Pollution has spilled out from an old industrial wasteland, contaminating the air and water here.  Units moving through here that are not Poison- nor Steel-type Pokémon will take damage."
+            }
+        ]
+		//Pollution, spilt out into the ocean from a Wasteland.  Units moving through it take damage.
+		//Poison-type Pokemon enjoy such an environment.
+	},
+	{
+		"name": "Red Fog",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"defenceBonus": 0.10,
+		"turnsInto": "Tropical",
+		"occursOn": ["Coast", "Ocean"],
+		"uniques": ["Doesn't generate naturally",
+					"Rare feature",
+					"[-2] to Fertility for Map Generation",
+					"Blocks line-of-sight from tiles at same elevation",
+					"Considered [Undesirable] when determining start locations",
+					"Spooky"],
+        "civilopediaText": [
+            {
+                "text": "Some curse lurks over this area, spilt out from a haunted region.  Units moving through here that are not Ghost-type Pokémon will take damage."
+            },
+            {
+                "text": "Like in Haunted terrain, souls that die here are consumed by the curse and may become Ghost-type Pokémon in death."
+            }
+        ]
+		//Cursed red fog emitted from a Haunted biome.  Units moving through it take damage, and dead units turn into Ghost-type Pokemon.
+		//Ghost-type Pokemon enjoy such an environment.
+	},
+	{
+		"name": "Atoll",
+		"type": "TerrainFeature",
+		"movementCost": 1,
+		"food": 1,
+		"gold": 1,
+		"defenceBonus": 0.10,
+		"turnsInto": "Tropical",
+		"occursOn": ["Coast", "Ocean"],
+		"uniques": ["Occurs at temperature between [0.7] and [1.0] and humidity between [0] and [1]",
+					"[+1] to Fertility for Map Generation",
+					"Must be adjacent to [6] to [6] [Water] tiles",
+					"[25]% Chance to be destroyed by nukes",
+					"Rare feature",
+					"Considered [Desirable] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "A tropical island in the middle of the sea, perfect for perching bird Pokémon.  Units will not lose HP in the Ocean when on Atolls."
+            }
+        ]
+		//A tropical island of mostly water, perfect for perching birds.  Units do not lose HP due to Ocean on Atolls.
+		//All manner of tropical aquatic Pokemon like to spawn here
+	},
+	{
+		"name": "Bamboo",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"food": 1,
+		"defenceBonus": 0.10,
+		"occursOn": ["Grassland"],
+		"uniques": ["Occurs at temperature between [0.2] and [0.6] and humidity between [0.5] and [1]",
+					"[+1] to Fertility for Map Generation",
+					"[25]% Chance to be destroyed by nukes",
+					"Provides a one-time bonus of [+50 Production] to the closest city when removed <(modified by game speed)>",
+					"Rare feature",
+					"Considered [Production] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "A mysterious, oriental reed, that can nurture exotic plants and Pokémon.  Appears rarely in the middle of Grassland."
+            }
+        ]
+		//Appears in Grasslands in the largest landmass
+		//Asian-themed Pokemon can spawn here
+	},
+	{
+		"name": "Fallout",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"unbuildable": true,
+		"uniques": [
+			"Nullifies all other stats this tile provides",
+			"Doesn't generate naturally"
+		],
+		// For map editor only - the generator won't place it without code or enabling uniques
+		// If the map generator is ever updated to always take these into account, it should also take the "Doesn't generate naturally" unique into account
+		"occursOn": [
+			"Crystallic",
+			"Enchanted",
+			"Haunted",
+			"Wasteland",
+			"Ashlands",
+			"Volcanic",
+			"Marsh",
+			"Savannah",
+			"Barren",
+			"Alpine",
+			"Tropical",
+			"Desert",
+			"Mountain",
+			"Grassland",
+			"Plains",
+			"Tundra",
+			"Permafrost",
+			"Forest",
+			"Hill",
+			"Bamboo",
+			"Rich Soil",
+			"Volcano",
+			"Lava",
+			"Ruins",
+			"Crystals"
+		],
+		"defenceBonus": -0.50,
+        "civilopediaText": [
+            {
+                "text": "Some nuclear weapon or unfortunate accident has scarred this land with radioactive fallout.  Without protection, units that are not Poison- or Dragon-type Pokémon will take heavy damage here."
+            }
+        ]
+	},
+	{
+		"name": "Iceberg",
+		"type": "TerrainFeature",
+		"movementCost": 4,
+		"weight": 10,
+		"defenceBonus": 0.25,
+		"occursOn": ["Coast", "Ocean"],
+		"uniques": ["Rare feature",
+					"Occurs at temperature between [-1] and [-0.7] and humidity between [0] and [1]",
+					"[-1] to Fertility for Map Generation",
+					"[25]% Chance to be destroyed by nukes",
+					"Considered [Undesirable] when determining start locations"],
+        "civilopediaText": [
+            {
+                "text": "A frozen patch of sea ice that makes navigation treacherous.  Units at sea that are not flying nor Ice-Type Pokémon will take heavy damage in adjacent tiles, and die instantly if they end their turn over the iceberg itself."
+            }
+        ]
+		//A frozen patch of sea ice that makes arctic oceans treacherous
+		//Naval units will take damage if they stop in a tile adjacent to an Iceberg.
+		//Beware- stepping on an iceberg is lethal for naval units!
+		//Ice-type aquatic Pokemon like to spawn here
+	},
+	{
+		"name": "Abyss",
+		"type": "TerrainFeature",
+		"science": 2,
+		"movementCost": 1,
+		"defenceBonus": -0.25,
+		"occursOn": ["Ocean"],
+		"uniques": ["Rare feature"],
+        "civilopediaText": [
+            {
+                "text": "A deep, oceanic abyss that may contain treasure or danger.  At the very least, it offers scientific inquiries from its biodiversity and unique conditions."
+            }
+        ]
+		//A deep abyss that may contrain treasure or danger
+	},
+	{
+		"name": "Seastack",
+		"type": "TerrainFeature",
+		"movementCost": 2,
+		"defenceBonus": 0.25,
+		"occursOn": ["Ocean"],
+		"uniques": ["Rare feature"],
+        "civilopediaText": [
+            {
+                "text": "A stack of rocks out in the ocean, that can provide some shelter from the waves.  Units over a seastack will not lose HP in Ocean tiles."
+            }
+        ]
+		//A stack of rocks out in the ocean, that can provide some shelter from the waves.
+	},
+	{
+		"name": "Whirlpool",
+		"type": "TerrainFeature",
+		"movementCost": 1,
+		"defenceBonus": -0.25,
+		"occursOn": ["Ocean"],
+		"uniques": ["Rare feature"],
+        "civilopediaText": [
+            {
+                "text": "A swirling gullet of water that unleashes damage on unprepared naval units in and adjacent to it.  With the right technology, it can be a potent mechanism for fast travel."
+            }
+        ]
+		//A mysterious whirlpool, that with the right technology will allow units to travel to any other whirlpool.
+		//Inflicts extra damage to the unprepared
+	},
+	//Weather
+	/*{
+		"name": "Rain",
+		"type": "TerrainFeature",
+		"movementCost": 1,
+		"defenceBonus": -0.25,
+		"uniques": [
+			"Doesn't generate naturally"
+		]
+		//A common weather in fertile climates, rain provides a boost for Water Pokemon.
+	},*/
+	//Ice
+	{
+		"name": "Ice",
+		"type": "TerrainFeature",
+		"impassable": true,
+		"overrideStats": true,
+		"occursOn": ["Ocean", "Coast"],
+		"uniques": [
+			"Occurs at temperature between [-1] and [-0.85] and humidity between [0] and [1]",
+			"[-2] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations"
+		],
+        "civilopediaText": [
+            {
+                "text": "Impassable sea ice, that fill the poles of the map."
+            }
+        ]
+	},
+	//Rivers
+	{
+        "name": "River",
+        "type": "TerrainFeature",
+        "movementCost": 0,  // So Civilopedia won't display a cost of 1
+        "uniques": ["Doesn't generate naturally", "Excluded from map editor"],
+        "civilopediaText": [
+            {"text": "A stream of water, flowing from highlands into the sea, that provide fresh water (and sometimes Rich Soil to adjacent tiles."},
+            {"text": "Rivers exist on tile edges, not as a terrain feature per se.  Tiles on both sides gain its benefits, and these benefits do not stack from multiple rivers.  These tiles has access to fresh water, allowing farming where it would otherwise not be possible (similar to Oases and Lakes)."},
+            {"text": "Movement across rivers takes all remaining movement points of a unit unless there is a bridge.  When attacking across a river, the attacker gets a -50% strength malus."}
+        ]
+    },
+	//Island Wonders (Mysteries)
+	{
+		"name": "Blizzard Island",
+		"type": "NaturalWonder",
+		"movementCost": 1,
+        "RGB": [20, 20, 20],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Permafrost",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Permafrost] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//Occurs in an island chain in deep ocean.
+		//Will spawn Ice-type Pokemon
+    },
+	{
+		"name": "Coral Sea",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [255, 255, 190],
+		"occursOn": ["Ocean"],
+        "uniques": [
+			"Occurs in groups of [10] to [30] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Mystery"
+        ]
+		//Occurs in island chains in deep ocean.
+		//Will spawn lots of exotic underwater Pokemon
+    },
+	{
+		"name": "Fire Island Volcano",
+		"type": "NaturalWonder",
+		"movementCost": 1,
+        "RGB": [20, 20, 20],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Volcanic",
+        "uniques": [
+			"Occurs in groups of [1] to [1] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Volcanic] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//Occurs in islands in deep ocean.
+		//Will spawn Fire-type Pokemon
+    },
+	{
+		"name": "Steam Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+		"defenceBonus": 0.10,
+		"RGB": [15,210,244],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Alpine",
+		"uniques": [
+			"Occurs in groups of [3] to [10] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Alpine] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"]
+		//Occurs in islands in deep ocean.
+		//Will spawn Fire-type and Water-type Pokemon
+	},
+	{
+		"name": "Meteor Island",
+		"type": "NaturalWonder",
+		"movementCost": 1,
+        "RGB": [20, 20, 20],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Barren",
+        "uniques": [
+			"Occurs in groups of [3] to [6] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Barren] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//Occurs in deep ocean.
+		//Will spawn Cosmic Pokemon, and may be useful for Science Victory
+    },
+	{
+		"name": "Relic Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [200, 15, 200],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Tropical",
+        "uniques": [
+			"Occurs in groups of [1] to [1] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Tropical] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//Occurs in deep ocean.
+		//Will spawn exotic ruins Pokemon
+    },
+	{
+		"name": "Firespring Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [200, 0, 0],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Ashlands",
+        "uniques": [
+			"Occurs in groups of [4] to [6] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Ashlands] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//Occurs in island chains in deep ocean.
+		//Will spawn Fire and Water type Pokemon
+    },
+	{
+		"name": "Amethyst Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [255, 255, 190],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Crystallic",
+        "uniques": [
+			"Occurs in groups of [4] to [6] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Crystallic] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//Occurs in island chains in deep ocean.
+		//Will spawn exotic Psychic type Pokemon and crystals
+    },
+	{
+		"name": "Scorched Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [255, 255, 190],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Desert",
+        "uniques": [
+			"Occurs in groups of [10] to [15] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Desert] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//Occurs in island chains in deep ocean.
+		//Will spawn exotic Ground type Pokemon
+    },
+	{
+		"name": "Mushroom Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [0, 150, 25],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Marsh",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Marsh] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//An island where lots of mushrooms grow in a swamp
+		//Will spawn lots of mushroom Pokemon like Paras, Foongus, or Morelull
+    },
+	{
+		"name": "Fullmoon Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [0, 55, 25],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Enchanted",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Enchanted] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//An enchanted island, and the natural home of Cresselia
+		//Will spawn Psychic- and Fairy-type Pokemon
+    },
+	{
+		"name": "Newmoon Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [55, 0, 25],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Haunted",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Haunted] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//A haunted island, and the natural home of Darkrai
+		//Will spawn Ghost and Dark-type Pokemon
+    },
+	{
+		"name": "Shattered Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [60, 60, 60],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Wasteland",
+        "uniques": [
+			"Occurs in groups of [7] to [15] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Wasteland] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//An island comprising of a barren wasteland
+		//Will spawn lots of wasteland Pokemon
+    },
+	{
+		"name": "Shield Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [255, 150, 255],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Tundra",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Tundra] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//An island comprising of a cold tundra made up of heavy metals and minerals
+		//Will spawn lots of defensive Pokemon
+    },
+	{
+		"name": "Sakura Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [255, 150, 255],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Grassland",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Grassland] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//An island where cherry blossoms bloom in eternal spring
+		//Will spawn Eastern-themed Pokemon
+    },
+	{
+		"name": "Sky Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [230, 230, 255],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Barren",
+        "uniques": [
+			"Occurs in groups of [6] to [10] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Impassable",
+			"Mystery"
+        ]
+		//Occurs in island chains in deep ocean.
+		//Will spawn Flying and hovering Pokemon
+    },
+	{
+		"name": "Sunrise Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [255, 200, 160],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Plains",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Plains] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//An island where the landscape spawns majestic sunrises
+		//Will spawn exotic Rock-type Pokemon
+    },
+	{
+		"name": "Wildbluff Island",
+		"type": "NaturalWonder",
+		"movementCost": 2,
+        "RGB": [255, 255, 190],
+		"occursOn": ["Ocean"],
+		"turnsInto": "Savannah",
+        "uniques": [
+			"Occurs in groups of [10] to [25] tiles",
+			"Must be adjacent to [6] to [6] [Ocean] tiles",
+			"Neighboring tiles will convert to [Savannah] <in [Ocean] tiles> <in tiles not adjacent to [Coast] tiles>",
+			"[-4] to Fertility for Map Generation",
+			"Considered [Undesirable] when determining start locations",
+			"Mystery"
+        ]
+		//An island where Pokemon swarms gather in droves
+		//Will spawn exotic wild Pokemon
+    },
+	//Inland Water
+	{
+		"name": "Lakes",
+		"type": "Water",
+		"RGB": [0, 198, 210],
+		"uniques": ["Fresh water",
+					"Becomes [Toxin] when adjacent to [All] <with [80]% chance> <within [1] tiles of a [Wasteland]>",
+					"Becomes [Toxin] when adjacent to [Toxin] <with [90]% chance> <within [4] tiles of a [Wasteland]>",
+					"Becomes [Red Fog] when adjacent to [All] <with [80]% chance> <within [1] tiles of a [Haunted]>",
+					"Becomes [Red Fog] when adjacent to [Red Fog] <with [80]% chance> <within [4] tiles of a [Haunted]>",
+            		"Becomes [Mountain] when adjacent to [Coast]",
+					"Becomes [Faebloom] when adjacent to [Faebloom] <with [90]% chance>",
+					"Considered [Food] when determining start locations",
+					"Considered [Desirable] when determining start locations"],
+        "civilopediaText": [
+            {"text": "An inland body of water.  Lakes provide fresh water to adjacent tiles, and can occasionally spawn fish Pokémon and colorful faebloom."}
+        ]
+		//Lakes now require a river to feed into it, but can now be much larger.
+		//Freshwater fish Pokemon can spawn in lakes.
+	},
+	//Ocean
+	{
+		"name": "Ocean",
+		"type": "Water",
+		"movementCost": 2,
+		"RGB": [0, 0, 180],
+		"uniques": ["Becomes [Toxin] when adjacent to [Toxin] <with [95]% chance> <within [4] tiles of a [Wasteland]>",
+			"Becomes [Red Fog] when adjacent to [Red Fog] <with [80]% chance> <within [2] tiles of a [Haunted]>"],
+        "civilopediaText": [
+            {"text": "Deep ocean, treacherous for the unprepared.  Many ships can't even navigate through it, and the ones that do will take damage unless sheltered in Seastacks or Atolls.  Nevertheless, rare abyssal Pokémon den and treasure islands lurk beyond its depths."}
+        ]
+		//Represents deep water, untraversable without tech and contains mysteries such as islands and certain features
+		//Damages non-Pokemon units that pass through it, without the right tech (although Seastack can protect you)
+	},
+	//Coast
+	{
+		"name": "Coast",
+		"type": "Water",
+		"movementCost": 1,
+		"RGB": [100, 100, 255],
+		"uniques": ["[+2] to Fertility for Map Generation",
+            "Considered [Desirable] when determining start locations <on water maps>",
+			"Becomes [Marsh] when adjacent to [River]",
+			"Becomes [Mountain] when adjacent to [Lakes]",
+			"Becomes [Toxin] when adjacent to [All] <with [80]% chance> <within [1] tiles of a [Wasteland]>",
+			"Becomes [Toxin] when adjacent to [Toxin] <with [90]% chance> <within [4] tiles of a [Wasteland]>",
+			"Becomes [Red Fog] when adjacent to [All] <with [80]% chance> <within [1] tiles of a [Haunted]>",
+			"Becomes [Red Fog] when adjacent to [Red Fog] <with [80]% chance> <within [2] tiles of a [Haunted]>",
+            "Coastal Water"],
+		"civilopediaText": [
+            {"text": "Shallow, coastal water, easy to navigate and filled with aquatic marine life.  Land units may embark eventually with the right tech, though they are vulnerable to attack."}
+        ]
+		//Represents common shallow water
+	}
+]

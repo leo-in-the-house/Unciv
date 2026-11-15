@@ -1,0 +1,17 @@
+{"isBaseRuleset":true,
+"constants":{
+    "unitSupplyPerPopulation":0,
+    "cityWorkRange":5,
+    "cityExpandRange":5,
+    "cityAirUnitCapacity":1,
+    "minimalCityDistance":4,
+    "minimalCityDistanceOnDifferentContinents":4,
+    "riverCountMultiplier":0.008,
+    "maxLakeSize":20,
+    "minRiverLength":6,
+    "maxRiverLength":999,
+    "naturalWonderCountMultiplier":0.3,
+    "naturalWonderCountAddedConstant":0.5,
+    "maxXPfromBarbarians": 99999
+    }
+}

@@ -1,0 +1,1450 @@
+[
+    {
+        "name": "Settler",
+        "unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "movement": 2,
+		"selectSound":"settler",
+        "uniques": [
+			"Unbuildable",
+            "Founds a new city <by consuming this unit> <in [{Fertile} {non-[Strategic resource]} {non-[Luxury resource]}] tiles>",
+            "Founds a new city <by consuming this unit> <in [{Arid} {non-[Strategic resource]} {non-[Luxury resource]}] tiles>",
+            "Founds a new city <by consuming this unit> <in [Desert] tiles> <in tiles adjacent to [Fresh Water] tiles>",
+            "Requires at least [2] population"
+        ],
+		"cost": 200,
+		 "civilopediaText": [
+            {
+                "text": "These brave souls venture forth into the unknown in order to found new cities.  Can only found cities on Fertile land without Strategic nor Luxury resources, or in Desert adjacent to Fresh Water."
+            },
+            { "separator": true },
+            {
+                "text": "Settlers cannot be trained at the start.  You begin with one, and certain techs, Magic Cards, or Wonders can provide them for free."
+            }
+        ]
+    },
+    //Land Builders
+	{
+		"name": "Builder",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"builder",
+		"uniques": [
+			"Unbuildable",
+			"Can build [Land] improvements on tiles",
+			"Automation is a primary action"
+		],
+		"cost": 100,
+		 "civilopediaText": [
+            {
+                "text": "Can build any standard land improvements on land tiles."
+            },
+            { "separator": true },
+            {
+                "text": "Builders cannot be trained at the start.  You begin with one, and certain techs, Magic Cards, or Wonders can provide them for free."
+            }
+        ]
+	},
+	{
+		"name": "Farmer",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Agriculture",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"farmer",
+		"uniques": [
+			"Can build [Agricultural] improvements on tiles",
+			"Can build [Remove Crop] improvements on tiles",
+			"Triggers a [Crop Propagation] event <in [{unimproved} {resourceless} {Land}] tiles> <costs [20] [Water]> <for [1] charges> <AI will always use>",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		 "civilopediaText": [
+            {
+                "text": "Builder unit that can help provide Food.  Can build Farms on Fertile, Crop, and Rich Soil tiles, or remove Crop resources.  Can trigger a Crop Propagation event to clone any Crops that you have, although this costs Water."
+            }
+        ]
+	},
+	{
+		"name": "Gardener",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Herbalism",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"gardener",
+		"uniques": [
+			"Can build [Horticulture] improvements on tiles",
+			"Can build [Remove Plant] improvements on tiles",
+			"Can build [Remove Aromatic] improvements on tiles",
+			"Turn this tile into a [Rich Soil] tile <in [{Fresh Water} {Fertile}] tiles> <costs [10] [Water]> <for [1] charges>",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		 "civilopediaText": [
+            {
+                "text": "Builder unit that can improve or harvest rare flora.  Can improve Aromatics with Apothecaries and Fruits with Orchards.  Can remove Plant and Aromatic resources (use Lumberjacks to remove Fruit resources).  Can plant Rich Soil near Fresh Water, improving crop yields, though this costs water."
+            }
+        ]
+	},
+	{
+		"name": "Lumberjack",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"lumberjack",
+        "requiredTech": "Toolmaking",
+		"uniques": [
+			"Can build [Woodcutting] improvements on tiles",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		 "civilopediaText": [
+            {
+                "text": "Builder unit that can harvest tree resources and build Lumber Camps.  Removes Forest, Bamboo, and Fruit resources."
+            }
+        ]
+	},
+	{
+		"name": "Merchant",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"merchant",
+        "requiredTech": "Calendar",
+		"uniques": [
+			"Can build [Commercial] improvements on tiles",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		 "civilopediaText": [
+            {
+                "text": "Builder unit that can generate Gold and improve trade.  Can build Plantations on Plant resources (use Gardeners to remove Plant resources instead)."
+            }
+        ]
+	},
+	{
+		"name": "Digger",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Stonecutting",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"digger",
+		"uniques": [
+			"Can build [Excavation] improvements on tiles",
+			"Can build [Remove Geologic] improvements on tiles",
+			"Can build [Remove Metallic] improvements on tiles",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		 "civilopediaText": [
+            {
+                "text": "Builder unit that can excavate the earth.  Can build Stone Pits on Hills to provide Stone, and Wells on flatlands with Fresh Water to provide Water.  Can remove Geologic and Metallic resources."
+            }
+        ]
+	},
+	{
+		"name": "Prospector",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Mining",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"prospector",
+		"uniques": [
+			"Costs [5] [Wood]",
+			"Can build [Minecraft] improvements on tiles",
+			"Triggers a [Excavate for Resource] event <in [{unimproved} {resourceless}] tiles> <in [Hill] tiles> <costs [10] [Water]> <for [3] charges>",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		 "civilopediaText": [
+            {
+                "text": "Builder unit that improves rare earth resources.  Can build Mines on metallic and Quarries on geologic resources (use Diggers to remove these)."
+            },
+            {
+                "text": "Can Excavate for Resources on empty hills for a chance to expose a geologic or metallic resource."
+            }  
+        ]
+	},
+	{
+		"name": "Pokémon Breeder",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Pokémon Domestication",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"pokemon_breeder",
+		"uniques": [
+			"Can build [Pastoral] improvements on tiles",
+            "Triggers a [Breed Pokémon] event <in [{unimproved} {Featureless} {resourceless}] tiles> <in [Plains|Savannah] tiles> <costs [20] [Water]> <for [3] charges> <AI will always use>",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		"civilopediaText": [
+            {
+                "text": "Builder unit that can herd or propagate Pokémon.  Builds Pastures on Herdable Bonus Pokémon."
+            },
+            {
+                "text": "Can Breed Pokémon on empty Plains and Savannah tiles, spawning a random Pokémon resource you already own (but there is always a chance to spawn Ponytas on Plains, and Girafarigs on Savannah)."
+            }  
+        ]
+	},
+	{
+		"name": "Pokémon Trapper",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Pokémon Trapping",
+		"charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"pokemon_trapper",
+		"uniques": [
+			"Can build [Huntcraft] improvements on tiles",
+			"Can build [Remove Herdable] improvements on tiles",
+			"Can build [Remove Pet] improvements on tiles",
+			"Can build [Remove Huntable] improvements on tiles",
+			"Automation is a primary action"
+		],
+		"cost": 50,
+		"civilopediaText": [
+            {
+                "text": "Builder unit that can hunt wild Pokémon resources.  Can build Hunting Camps on Huntables, Kennels on Pets, and remove bonus Pokémon resources on land."
+            }
+        ]
+	},
+    //Naval Builders
+	{
+		"name": "Mermaid",
+		"unitType": "Civilian Water",
+		"secondaryUnitType": "Fantasy",
+		"charges": 2,
+		"movement": 2,
+		"selectSound":"mermaid",
+        "requiredTech": "Pokémon Pisciculture",
+		"uniques": [
+			"Cannot enter ocean tiles <before discovering [Steam Engine]>", //TODO: When updating tech tree
+			"Can build [Remove Aquatic] improvements on tiles",
+			"May create improvements on water resources",
+			"Automation is a primary action"
+		],
+		"cost": 70,
+		"civilopediaText": [
+            {
+                "text": "Mystical aquatic builder unit that can construct or remove resources on Water."
+            }
+        ]
+	},
+    //Other Civilians
+    //Military Units
+    {
+		"name": "Warrior",
+		"unitType": "Infantry",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Prehistory",
+        "supplyCost": 1,
+		"movement": 1,
+		"attackStrength": 10,
+		"defenseStrength": 40,
+		"cost": 50,
+		"selectSound":"warrior",
+		"attackSound": "maiden_axe",
+        "uniques": [
+            //"Turn this tile into a [Enchanted] tile <[3] times> <in all [Desert] tiles in [2] to [4] radius>",
+            "Can only attack [Military] units", 
+            "Can only attack [Civilian] units",
+            "Cannot enter [Foreign Land] tiles",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Basic melee infantry available at the start of the game.  Does not cost resources and is cheap, with good defense for its cost, but weak.  Cannot attack cities nor enter hostile tiles.  Can be upgraded as you advance through the ages."
+            }
+        ]
+	},
+    {
+		"name": "Slinger",
+		"unitType": "Missile Infantry",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Stonecutting",
+        "supplyCost": 2,
+		"movement": 1,
+		"attackStrength": 20,
+		"defenseStrength": 30,
+        "range": 1,
+		"cost": 60,
+		"selectSound":"slinger",
+		"attackSound": "maiden_rockthrow",
+        "uniques": [
+			"Costs [10] [Stone]",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Cheap low-ranged infantry that can attack without retaliation, dealing high damage.  Quite fragile for its cost.  Comes with a stone cost."
+            }
+        ]
+	},
+    {
+		"name": "Spearman",
+		"unitType": "Infantry",
+		"secondaryUnitType": "Human",
+        "supplyCost": 1,
+		"movement": 1,
+		"attackStrength": 10,
+		"defenseStrength": 30,
+		"cost": 50,
+		"selectSound": "spearman",
+		"attackSound": "maiden_spear",
+        "requiredTech": "Bronze Working",
+        "uniques": [
+            //"Turn this tile into a [Enchanted] tile <[3] times> <in all [Desert] tiles in [2] to [4] radius>",
+            "[100]% Attack Strength <vs [Cavalry] units>",
+			"Can only be built <in cities with a [Barracks]>",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Early melee infantry with a sharp spear that is effective at fighting against humans riding on Pokémon.  Cheap and costs no special resources, but requires a Barracks to build."
+            }
+        ]
+	},
+	{
+		"name": "Slaver",
+		"unitType": "Infantry",
+		"secondaryUnitType": "Human",
+        "requiredTech": "Slavery",
+        "supplyCost": 2,
+		"movement": 1,
+		"attackStrength": 20,
+		"defenseStrength": 30,
+		"cost": 120,
+		"selectSound": "slaver",
+		"attackSound": "maiden_whip",
+		"uniques": [
+            "Slave-Based",
+            "[+100]% Attack Strength <vs [Wounded] units>",
+			"Can only attack [Human] units",
+            "Instantly provides [1] [Slaves] <upon defeating a [Human] unit>",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+		],
+		"civilopediaText": [
+            {
+                "text": "These dangerous raiders can kidnap defeated Human enemies, forcing them into slavery.  Can only attack Humans, but deals very high damage to wounded targets.  Unavailable after abolishing slavery."
+            }
+        ]
+	},
+	{
+		"name": "Poochyena Scout",
+		"unitType": "Recon",
+        "requiredTech": "Pokémon Taming",
+        "supplyCost": 1,
+		"movement": 2,
+		"attackStrength": 10,
+		"defenseStrength": 20,
+		"cost": 30,
+		"selectSound": "poochyena",
+		"attackSound": "poochyena",
+		"uniques": [
+            "[+1] Sight",
+			"Can only attack [Military] units",
+			"Can only be built <with [Poochyenas]>",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+		],
+		"civilopediaText": [
+            {
+                "text": "Fast, cheap scout that is trainable in any city with upgraded Poochyenas.  Can be used to explore new lands with a long line of sight, but is frail in combat."
+            }
+        ]
+	},
+	{
+		"name": "Pokémon Hunter",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "supplyCost": 2,
+		"movement": 1,
+		"hurryCostModifier": 20,
+		"attackStrength": 30,
+		"defenseStrength": 40,
+		"selectSound":"pokemon_hunter",
+		"attackSound": "maiden_archer",
+        "range": 2,
+		"uniques": [
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units",
+			"Can build [Hunting Camp] improvements on tiles",
+            "Can only attack [{Barbarian} {Pokémon}] units",
+			"Automation is a primary action"
+		],
+		"cost": 100,
+		"civilopediaText": [
+            {
+                "text": "Ranged unit only effective against wild Pokémon, dealing heavy damage at range to them.  Can build any number of Hunting Camp improvements on Huntable Pokémon."
+            }
+        ]
+	},
+	////////////////////
+	// Pokémon
+	////////////////////
+	{
+		"name": "Caterpie",
+		"unitType": "Caterpie-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 5,
+		"defenseStrength": 25,
+		"movement": 1,
+		"cost": 5,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Bug-Type] promotion",
+            "[This Unit] gains the [Wood Worm] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Grassland] tiles> <hidden from users>",
+            "Can transform to [Metapod] <in [Forest] tiles>"
+        ],
+		"selectSound":"caterpie",
+		"attackSound":"caterpie",
+        "civilopediaText": [
+            {
+                "text": "'Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Weak bug Pokémon that appears in Grasslands.  Stronger defensively in Forest tiles."
+            }
+        ]
+	},
+	{
+		"name": "Metapod",
+		"unitType": "Caterpie-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 5,
+		"defenseStrength": 25,
+		"movement": 1,
+		"cost": 5,
+        "uniques": [
+            "[This Unit] gains the [Bug-Type] promotion",
+            "[This Unit] gains the [Harden I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Cannot move <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [{Grassland} {Forest}] tiles> <starting from the [Medieval Age]> <hidden from users>",
+            "Can transform to [Butterfree] <for units with [Level 2]>"
+        ],
+		"selectSound":"metapod",
+		"attackSound":"metapod",
+        "civilopediaText": [
+            {
+                "text": "'Even though it is encased in a sturdy shell, the body inside is tender. It can't withstand a harsh attack.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Defensive cocoon Pokémon.  Natural Metapod will not move.  Appears in Grassland Forest tiles."
+            }
+        ]
+	},
+	{
+		"name": "Butterfree",
+		"unitType": "Caterpie-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 20,
+		"defenseStrength": 70,
+        "range": 2,
+		"movement": 1,
+		"cost": 75,
+        "uniques": [
+            "[This Unit] gains the [Bug-Type] promotion",
+            "[This Unit] gains the [Flying-Type] promotion",
+            "[This Unit] gains the [Gust I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Exploration Age]> <in [{Tropical} {Forest}] tiles> <hidden from users>"
+        ],
+		"selectSound":"beedrill",
+		"attackSound":"beedrill",
+        "civilopediaText": [
+            {
+                "text": "'In battle, it flaps its wings at great speed to release highly toxic dust into the air.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Flying ranged bug Pokémon that can hit hard at long range, and harder when isolated."
+            }
+        ]
+	},
+	{
+		"name": "Weedle",
+		"unitType": "Weedle-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 5,
+		"defenseStrength": 25,
+		"movement": 1,
+		"cost": 5,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Bug-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            "[This Unit] gains the [Poison Sting I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Forest|Marsh] tiles> <hidden from users>",
+            "Unbuildable <for [Barbarians] Civilizations> <in [{Hazardous} {non-[Marsh]}] tiles>",
+			"Can transform to [Kakuna] <in [Marsh] tiles>"
+        ],
+		"selectSound":"weedle",
+		"attackSound":"weedle",
+        "civilopediaText": [
+            {
+                "text": "'Beware of the sharp stinger on its head. It hides in grass and bushes where it eats leaves.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Weak bug Pokémon with poison.  Appears in Forest tiles or Marsh tiles."
+            }
+            
+        ]
+	},
+	{
+		"name": "Kakuna",
+		"unitType": "Weedle-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 5,
+		"defenseStrength": 25,
+		"movement": 1,
+		"cost": 5,
+        "uniques": [
+            "[This Unit] gains the [Bug-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            "[This Unit] gains the [Harden I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Cannot move <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [{Tropical} {Forest}] tiles> <starting from the [Medieval Age]> <hidden from users>",
+            "Can transform to [Beedrill] <for units with [Level 2]>"
+        ],
+		"selectSound":"kakuna",
+		"attackSound":"kakuna",
+        "civilopediaText": [
+            {
+                "text": "'Able to move only slightly. When endangered, it may stick out its stinger and poison its enemy.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Defensive cocoon Pokémon.  Natural Kakuna will not move.  Appears in Tropical Forest tiles."
+            }
+        ]
+	},
+	{
+		"name": "Beedrill",
+		"unitType": "Weedle-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 20,
+		"defenseStrength": 50,
+        "range": 1,
+		"movement": 3,
+		"cost": 75,
+        "uniques": [
+            "[This Unit] gains the [Bug-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            "[This Unit] gains the [All-Terrain] promotion",
+            "[This Unit] gains the [Poison Sting I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Pin Missile I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Exploration Age]> <in [{Tropical} {Forest}] tiles> <hidden from users>"
+        ],
+		"selectSound":"beedrill",
+		"attackSound":"beedrill",
+        "civilopediaText": [
+            {
+                "text": "'It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Aggressive, amphibious ranged bug Pokémon that can strike enemies multiple times with a Pin Missile."
+            }
+        ]
+	},
+	{
+		"name": "Rattata",
+		"unitType": "Rattata-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 10,
+		"defenseStrength": 30,
+		"movement": 2,
+		"cost": 5,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Normal-Type] promotion",
+            "Remove [Forest] features from this tile <for [Barbarians] Civilizations> <in [Forest] tiles> <every [2] turns> <upon turn start> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Plains] tiles> <within [3] tiles of a [Forest]> <in [non-[Hazardous]] tiles> <hidden from users>",
+			"Can transform to [Raticate] <for units with [Level 2]>"
+        ],
+		"selectSound":"rattata",
+		"attackSound":"rattata",
+        "civilopediaText": [
+            {
+                "text": "'Will chew on anything with its fangs. If you see one, you can be certain that 40 more live in the area.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fast Pokémon that likes to gnaw on trees.  Wild Rattata can clear away trees they move over."
+            }
+            
+        ]
+	},
+	{
+		"name": "Raticate",
+		"unitType": "Rattata-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 20,
+		"defenseStrength": 60,
+		"movement": 2,
+		"cost": 50,
+        "uniques": [
+            "[This Unit] gains the [Normal-Type] promotion",
+            "Remove [Forest] features from this tile <for [Barbarians] Civilizations> <in [Forest] tiles> <every [2] turns> <upon turn start> <hidden from users>",
+            "[This Unit] gains the [Hyper Fang I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Exploration Age]> <in [Plains] tiles> <within [3] tiles of a [Forest]> <in [non-[Hazardous]] tiles> <hidden from users>"
+        ],
+		"selectSound":"raticate",
+		"attackSound":"raticate",
+        "civilopediaText": [
+            {
+                "text": "'Its hind feet are webbed. They act as flippers, so it can swim in rivers and hunt for prey.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fast Pokémon that likes to gnaw on trees and can stun enemies, especially infantry.  Wild Raticate can clear away trees they move over."
+            }
+            
+        ]
+	},
+	{
+		"name": "Sentret",
+		"unitType": "Sentret-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 5,
+		"defenseStrength": 30,
+		"movement": 3,
+		"cost": 5,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Normal-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [{Featureless} {non-[Mountain]}] tiles> <in [non-[Hazardous]] tiles> <hidden from users>",
+			"Can transform to [Furret] <for units with [Level 1]>"
+        ],
+		"selectSound":"sentret",
+		"attackSound":"sentret",
+        "civilopediaText": [
+            {
+                "text": "'A very cautious Pokémon, it raises itself up using its tail to get a better view of its surroundings.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fast scout Pokémon that can detect threats for other Pokémon to follow."
+            }
+            
+        ]
+	},
+	{
+		"name": "Furret",
+		"unitType": "Sentret-Line",
+		"secondaryUnitType": "Pokémon",
+		"attackStrength": 15,
+		"defenseStrength": 30,
+		"movement": 4,
+		"cost": 30,
+        "uniques": [
+            "[This Unit] gains the [Normal-Type] promotion",
+            "[This Unit] gains the [Run Away I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Medieval Age]> <in [Featureless] tiles> <in [non-[Hazardous]] tiles> <hidden from users>"
+        ],
+		"selectSound":"furret",
+		"attackSound":"furret",
+        "civilopediaText": [
+            {
+                "text": "'It makes a nest to suit its long and skinny body. The nest is impossible for other Pokémon to enter.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Very fast scout Pokémon that can detect threats for other Pokémon to follow, while often withdrawing from melee combat."
+            }
+            
+        ]
+	},
+	{
+		"name": "Pichu",
+		"unitType": "Pichu-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 30,
+        "range": 1,
+		"movement": 2,
+		"cost": 10,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Electric-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [{non-[Mountain]} {non-[Hazardous]}] tiles>  <hidden from users>",
+            "[This Unit] gains the [Thunderbolt I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+			"Can transform to [Pikachu] <costs [+100 Faith] stats>"
+        ],
+		"selectSound":"pichu",
+		"attackSound":"pichu",
+        "civilopediaText": [
+            {
+                "text": "'Despite its small size, it can zap even adult humans. However, if it does so, it also surprises itself.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Tiny ranged Pokémon that appears in most climates.  Its potent electricity can paralyze."
+            }
+            
+        ]
+	},
+	{
+		"name": "Pikachu",
+		"unitType": "Pichu-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 20,
+		"defenseStrength": 40,
+        "range": 2,
+		"movement": 2,
+		"cost": 60,
+        "uniques": [
+            "[This Unit] gains the [Electric-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Medieval Age]> <in [non-[Hazardous]] tiles> <hidden from users>",
+            "[This Unit] gains the [Volt Tackle I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+			"Can transform to [Raichu] <for units with [Level 3]>" //TODO: Thunderstone Thunder Stone
+        ],
+		"selectSound":"pikachu",
+		"attackSound":"pikachu",
+        "civilopediaText": [
+            {
+                "text": "'This forest-dwelling Pokémon stores electricity in its cheeks, so you'll feel a tingly shock if you touch it.' - Kanto Pokédex"
+            },
+            { "separator": true },
+            {
+                "text": "Ranged Pokémon that appears in most climates.  Its potent electricity can paralyze. It deals heavy damage, but also takes damage when it strikes."
+            }
+            
+        ]
+	},
+	{
+		"name": "Raichu",
+		"unitType": "Pichu-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 30,
+		"defenseStrength": 70,
+        "range": 2,
+		"movement": 2,
+		"cost": 250,
+        "uniques": [
+            "[This Unit] gains the [Electric-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Digital Age]> <in [non-[Hazardous]] tiles> <hidden from users>",
+            "[This Unit] gains the [Thunderbolt I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Volt Tackle I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+        ],
+		"selectSound":"raichu",
+		"attackSound":"raichu",
+        "civilopediaText": [
+            {
+                "text": "'It loves pancakes prepared with a secret Alolan recipe. Some wonder whether that recipe holds the key to this Pokémon's evolution.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Ranged Pokémon that appears in most climates.  Its potent electricity can paralyze or provide electricity. It deals heavy damage, but also takes damage when it strikes."
+            }
+            
+        ]
+	},
+    {
+		"name": "Slugma",
+		"unitType": "Slugma-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 40,
+        "range": 1,
+		"movement": 1,
+		"cost": 20,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Fire-Type] promotion",
+            "Turn this tile into a [Lava] tile <every [2] turns> <with [30]% chance> <for [Barbarians] Civilizations> <in [Volcanic] tiles> <upon turn start> <hidden from users>",
+            "Triggers a [Drink Lava] event <every [2] turns> <for [Barbarians] Civilizations> <when [Wounded]> <in [Lava] tiles> <upon turn start> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Volcanic] tiles> <hidden from users>",
+            "Can transform to [Magcargo] <for units with [Level 3]>"
+        ],
+		"selectSound":"slugma",
+		"attackSound":"slugma",
+        "civilopediaText": [
+            {
+                "text": "'It never sleeps. It has to keep moving because if it stopped, its magma body would cool and harden.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Slow lava Pokémon that appears in Volcanic regions.  Can create Lava Pools from Volcanic tiles, or consume Lava Pools to heal itself."
+            }
+            
+        ]
+	},
+    {
+		"name": "Magcargo",
+		"unitType": "Slugma-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 20,
+		"defenseStrength": 80,
+        "range": 1,
+		"movement": 1,
+		"cost": 80,
+        "uniques": [
+            "[This Unit] gains the [Fire-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [Volcanic] tiles> <starting from the [Industrial Age]>  <hidden from users>",
+            "Turn this tile into a [Volcanic] tile <every [2] turns> <for [Barbarians] Civilizations> <in [unimproved|pillaged] tiles> <in [Land] tiles> <in tiles adjacent to [Volcanic] tiles> <upon turn start> <hidden from users>",
+            "Triggers a [Drink Lava] event <every [2] turns> <for [Barbarians] Civilizations> <when [Wounded]> <in [Lava] tiles> <upon turn start> <hidden from users>",
+            "[This Unit] gains the [Magma Armor I] promotion <for [Barbarians] Civilizations> <hidden from users>"
+        ],
+		"selectSound":"magcargo",
+		"attackSound":"magcargo",
+        "civilopediaText": [
+            {
+                "text": "'Despite its small size, it can zap even adult humans. However, if it does so, it also surprises itself.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Slow Pokémon that appears in Volcanic tiles.  Can create Lava Pools from Volcanic tiles, or consume Lava Pools to heal itself.  Can wander out of Volcanic regions, slowly spreading fiery terrain."
+            }
+            
+        ]
+	},
+    {
+		"name": "Snorunt",
+		"unitType": "Snorunt-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 40,
+        "range": 1,
+		"movement": 1,
+		"cost": 20,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Ice-Type] promotion",
+            "[This Unit] gains the [Frost Breath I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Permafrost] tiles> <hidden from users>",
+            "Can transform to [Glalie] <for units with [Level 4]>",
+            "Can transform to [Froslass] <for units with [Level 4]>" //TODO: Dawn Stone
+        ],
+		"selectSound":"snorunt",
+		"attackSound":"snorunt",
+        "civilopediaText": [
+            {
+                "text": "'Snorunt survives by eating only snow and ice. Old folklore claims that a house visited by this Pokémon is sure to prosper for many generations to come.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "A common Pokémon in most colder regions.  Can freeze enemies with its freezing breath."
+            }
+            
+        ]
+	},
+    {
+		"name": "Glalie",
+		"unitType": "Snorunt-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 20,
+		"defenseStrength": 90,
+        "range": 1,
+		"movement": 1,
+		"cost": 100,
+        "uniques": [
+            "[This Unit] gains the [Ice-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [Permafrost] tiles> <not within [3] tiles of a [Mountain]> <starting from the [Industrial Age]> <hidden from users>",
+            "[This Unit] gains the [Mountaineer] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Freeze-Dry I] promotion <for [Barbarians] Civilizations> <hidden from users>"
+        ],
+		"selectSound":"glalie",
+		"attackSound":"glalie",
+        "civilopediaText": [
+            {
+                "text": "'Glalie has a body made of rock, which it hardens with an armor of ice.  This Pokémon has the ability to freeze moisture in the atmosphere into any shape it desires.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "A rare Pokémon in colder regions far from mountains.  Can slow enemies with its freezing breath.  Effective against Water-Type Pokémon."
+            }
+            
+        ]
+	},
+    {
+		"name": "Froslass",
+		"unitType": "Snorunt-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 30,
+		"defenseStrength": 50,
+        "range": 1,
+		"movement": 2,
+		"cost": 120,
+        "uniques": [
+            "[This Unit] gains the [Ice-Type] promotion",
+            "[This Unit] gains the [Ghost-Type] promotion",
+            "Turn this tile into a [Permafrost] tile <every [2] turns> <for [Barbarians] Civilizations> <in [unimproved|pillaged] tiles> <in [Land] tiles> <in tiles adjacent to [Mountain] tiles> <upon turn start> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Permafrost] tiles> <within [3] tiles of a [Mountain]> <starting from the [Industrial Age]> <hidden from users>",
+            "[This Unit] gains the [Mountaineer] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Snow Cloak] promotion <for [Barbarians] Civilizations> <hidden from users>"
+        ],
+		"selectSound":"froslass",
+		"attackSound":"froslass",
+        "civilopediaText": [
+            {
+                "text": "'Legends in snowy regions say that a woman who was lost on an icy mountain was reborn as Froslass.' - Sinnoh Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "A rare Pokémon in colder regions near mountains.  Can slow enemies with its freezing breath.  Completely undetectable on Snow, and can terraform tiles adjacent to Mountains into Snow."
+            }
+            
+        ]
+	},
+    {
+		"name": "Shinx",
+		"unitType": "Shinx-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 30,
+		"movement": 2,
+		"cost": 10,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Electric-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [Plains] tiles> <hidden from users>",
+            "[This Unit] gains the [Spark I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can transform to [Luxio] <for units with [Level 1]>"
+        ],
+		"selectSound":"shinx",
+		"attackSound":"shinx",
+        "civilopediaText": [
+            {
+                "text": "'All of its fur dazzles if danger is sensed. It flees while the foe is momentarily blinded.' - Sinnoh Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fast Pokémon that spawns in Plains.  Paralyzes enemies when attacking."
+            }
+        ]
+	},
+    {
+		"name": "Luxio",
+		"unitType": "Shinx-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 20,
+		"defenseStrength": 40,
+		"movement": 2,
+		"cost": 60,
+        "uniques": [
+            "[This Unit] gains the [Electric-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [Plains] tiles> <starting from the [Medieval Age]> <hidden from users>",
+            "[This Unit] gains the [Spark I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Rivalry] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can transform to [Luxray] <for units with [Level 3]>"
+        ],
+		"selectSound":"luxio",
+		"attackSound":"luxio",
+        "civilopediaText": [
+            {
+                "text": "'Its claws loose electricity with enough amperage to cause fainting. They live in small groups.' - Sinnoh Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fast Pokémon that spawns in Plains.  Paralyzes enemies when attacking.  When caught, can be used effectively against other wild Pokémon."
+            }
+        ]
+	},
+    {
+		"name": "Luxray",
+		"unitType": "Shinx-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 30,
+		"defenseStrength": 60,
+		"movement": 2,
+		"cost": 100,
+        "uniques": [
+            "[This Unit] gains the [Electric-Type] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [Plains] tiles> <starting from the [Industrial Age]> <hidden from users>",
+            "[This Unit] gains the [Spark I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Plainswalker I] promotion <for [Barbarians] Civilizations> <hidden from users>"
+        ],
+		"selectSound":"luxray",
+		"attackSound":"luxray",
+        "civilopediaText": [
+            {
+                "text": "'When its eyes gleam gold, it can spot hiding prey--even those taking shelter behind a wall.' - Sinnoh Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fast Pokémon that spawns in Plains.  Paralyzes enemies when attacking.  Moves faster on Plains."
+            }
+        ]
+	},
+    {
+		"name": "Roggenrola",
+		"unitType": "Roggenrola-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 40,
+        "range": 1,
+		"movement": 1,
+		"cost": 10,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Rock-Type] promotion",
+            "Cannot enter [non-[Mountain]] tiles <in [Mountain] tiles> <for [Barbarians] Civilizations> <hidden from users>",
+            "Cannot attack <in [non-[Mountain]] tiles> <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Mountain] tiles> <hidden from users>",
+            "Can enter [Mountain] tiles <hidden from users>", //Necessary for wild Pokémon to spawn on mountains
+            "Can transform to [Boldore] <for units with [Level 2]>"
+        ],
+		"selectSound":"roggenrola",
+		"attackSound":"roggenrola",
+        "civilopediaText": [
+            {
+                "text": "'The hexagonal-shaped hole is its ear. It has a tendency to walk in the direction the sound is coming from.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Weak rock Pokémon that spawns in Mountains.  Cannot naturally leave Mountains.  When trained, can be used to terraform Hills."
+            }
+        ]
+	},
+    {
+		"name": "Boldore",
+		"unitType": "Roggenrola-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 60,
+        "range": 1,
+		"movement": 1,
+		"cost": 65,
+        "uniques": [
+            "[This Unit] gains the [Rock-Type] promotion",
+            "Cannot enter [non-[Mountain]] tiles <in [Mountain] tiles> <for [Barbarians] Civilizations> <hidden from users>",
+            "Cannot attack <in [non-[Mountain]] tiles> <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Mountain] tiles> <starting from the [Exploration Age]> <hidden from users>",
+            "Can enter [Mountain] tiles <hidden from users>", //Necessary for wild Pokémon to spawn on mountains
+            "Can transform to [Gigalith] <for units with [Level 4]>" //TODO: Trade evolution
+        ],
+		"selectSound":"boldore",
+		"attackSound":"boldore",
+        "civilopediaText": [
+            {
+                "text": "'When it is healthy, its core sticks out. Always facing the same way, it swiftly moves front to back and left to right.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Rock Pokémon that spawns in Mountains, but cannot naturally leave Mountains.  When trained, can be used to terraform out Hills or create Crystallic terrain."
+            }
+        ]
+	},
+    {
+		"name": "Gigalith",
+		"unitType": "Roggenrola-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 20,
+		"defenseStrength": 100,
+        "range": 1,
+		"movement": 1,
+		"cost": 130,
+        "uniques": [
+            "[This Unit] gains the [Rock-Type] promotion",
+            "Turn this tile into a [Mountain] tile <every [2] turns> <for [Barbarians] Civilizations> <in [unimproved|pillaged] tiles> <in [Land] tiles> <in tiles adjacent to [Mountain] tiles> <upon turn start> <hidden from users>",
+            "Can enter [Mountain] tiles <hidden from users>", //Necessary for wild Pokémon to spawn on mountains
+            "Can only be built <for [Barbarians] Civilizations> <in [Mountain] tiles> <starting from the [Digital Age]> <hidden from users>"
+        ],
+		"selectSound":"gigalith",
+		"attackSound":"gigalith",
+        "civilopediaText": [
+            {
+                "text": "'The solar rays it absorbs are processed in its energy core and fired as a ball of light.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Heavy rock Pokémon that spawns in Mountains.  When trained, can be used to terraform out Hills, create Crystallic terrain, or spawn Mountains.  Wild Gigalith will automatically turn Hill tiles adjacent to Mountains into Mountains."
+            }
+            
+        ]
+	},
+    {
+		"name": "Gothita",
+		"unitType": "Gothita-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 20,
+        "minimumRange": 2,
+        "range": 2,
+		"movement": 1,
+		"cost": 5,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Psychic-Type] promotion",
+            "[This Unit] gains the [Detector] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <in [Wasteland] tiles> <hidden from users>",
+            "[This Unit] loses [5] movement <with [90]% chance> <for [Barbarians] Civilizations> <in [Ruins] tiles> <upon turn start> <hidden from users>",
+            "Can transform to [Gothorita] <for units with [Level 3]>"
+        ],
+		"selectSound":"gothita",
+		"attackSound":"gothita",
+        "civilopediaText": [
+            {
+                "text": "'Their ribbonlike feelers increase their psychic power. They are always staring at something.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Pokémon that appears in Wastelands.  Can attack at range, with a minimum range.  Can detect stealth.  Will often stand still and gaze in Ruins."
+            }
+        ]
+	},
+    {
+		"name": "Gothorita",
+		"unitType": "Gothita-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 60,
+        "minimumRange": 2,
+        "range": 2,
+		"movement": 1,
+		"cost": 60,
+        "uniques": [
+            "[This Unit] gains the [Psychic-Type] promotion",
+            "[This Unit] gains the [Detector] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Exploration Age]> <in [Wasteland] tiles> <hidden from users>",
+            "Can transform to [Gothorita] <for units with [Level 4]>"
+        ],
+		"selectSound":"gothorita",
+		"attackSound":"gothorita",
+        "civilopediaText": [
+            {
+                "text": "'They use hypnosis to control people and Pokémon. Tales of Gothorita leading people astray are told in every corner.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Pokémon that appears in Wastelands.  Can attack at range, with a minimum range.  Can detect stealth."
+            }
+        ]
+	},
+    {
+		"name": "Gothitelle",
+		"unitType": "Gothita-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 20,
+		"defenseStrength": 80,
+        "minimumRange": 2,
+        "range": 2,
+		"movement": 1,
+		"cost": 60,
+        "uniques": [
+            "[This Unit] gains the [Psychic-Type] promotion",
+            "[This Unit] gains the [Detector] promotion",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Digital Age]> <in [Wasteland] tiles> <hidden from users>"
+        ],
+		"selectSound":"gothitelle",
+		"attackSound":"gothitelle",
+        "civilopediaText": [
+            {
+                "text": "'Starry skies thousands of light-years away are visible in the space distorted by their intense psychic power.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Pokémon that appears in Wastelands.  Can detect stealth.  Can attack at range, with a minimum range.  When trained, can generate Faith passively when immobile."
+            }
+        ]
+	},
+    {
+		"name": "Silicobra",
+		"unitType": "Silicobra-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 40,
+        "range": 1,
+		"movement": 1,
+		"cost": 10,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Ground-Type] promotion",
+            "[This Unit] gains the [Sand Spit] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Desert] tiles> <hidden from users>",
+            "Can transform to [Sandaconda] <for units with [Level 3]>"
+        ],
+		"selectSound":"silicobra",
+		"attackSound":"silicobra",
+        "civilopediaText": [
+            {
+                "text": "'It spews sand from its nostrils. While the enemy is blinded, it burrows into the ground to hide.' - Galar Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Desert Pokémon that spreads Desert terrain when it defends against an attack while adjacent to Desert."
+            }
+        ]
+	},
+    {
+		"name": "Sandaconda",
+		"unitType": "Silicobra-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 20,
+		"defenseStrength": 70,
+        "range": 2,
+		"movement": 1,
+		"cost": 100,
+        "uniques": [
+            "[This Unit] gains the [Ground-Type] promotion",
+            "[This Unit] gains the [Sand Spit] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Turn this tile into a [Desert] tile <every [2] turns> <for [Barbarians] Civilizations> <in [unimproved|pillaged] tiles> <in [Savannah] tiles> <upon turn start> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <in [Desert] tiles> <starting from the [Exploration Age]> <hidden from users>",
+            "Can transform to [Sandaconda] <for units with [Level 3]>"
+        ],
+		"selectSound":"sandaconda",
+		"attackSound":"sandaconda",
+        "civilopediaText": [
+            {
+                "text": "'It spews sand from its nostrils. While the enemy is blinded, it burrows into the ground to hide.' - Galar Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Desert Pokémon that spreads Desert terrain when it defends against an attack while adjacent to Desert.  Can turn Savannah tiles into Desert."
+            }
+            
+        ]
+	},
+	////////////////////
+	// Airborne Pokémon
+	////////////////////
+	{
+		"name": "Hoothoot",
+		"unitType": "Hoothoot-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 5,
+		"defenseStrength": 40,
+        "range": 1,
+		"movement": 2,
+		"cost": 20,
+        "uniques": [
+            "Unevolved",
+            "[This Unit] gains the [Normal-Type] promotion",
+            "[This Unit] gains the [Flying-Type] promotion",
+            "Cannot move <in [Forest|Haunted] tiles> <when [non-[Wounded]]> <for [Barbarians] Civilizations> <hidden from users>",
+            "Cannot attack <in [Forest|Haunted] tiles> <when [non-[Wounded]]> <for [Barbarians] Civilizations> <hidden from users>",
+           "Can only be built <for [Barbarians] Civilizations> <within [3] tiles of a [Forest|Haunted]>  <hidden from users>",
+            "Can transform to [Noctowl] <for units with [Level 2]>"
+        ],
+		"selectSound":"hoothoot",
+		"attackSound":"hoothoot",
+        "civilopediaText": [
+            {
+                "text": "'It always stands on one foot. It changes feet so fast, the movement can rarely be seen.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Defensive bird Pokémon effective at scouting. Can see enemies at a longer line of sight in Forested and Haunted areas.  Will not naturally move from Forests."
+            }
+        ]
+	},
+	{
+		"name": "Noctowl",
+		"unitType": "Hoothoot-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 80,
+        "range": 1,
+		"movement": 2,
+		"cost": 100,
+        "uniques": [
+            "[This Unit] gains the [Normal-Type] promotion",
+            "[This Unit] gains the [Flying-Type] promotion",
+            "Cannot move <in [Forest|Haunted] tiles> <when [non-[Wounded]]> <for [Barbarians] Civilizations> <hidden from users>",
+            "Cannot attack <in [Forest|Haunted] tiles> <when [non-[Wounded]]> <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Reflect I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+			"Can only be built <for [Barbarians] Civilizations> <starting from the [Medieval Age]> <within [3] tiles of a [Forest|Haunted]> <hidden from users>"
+        ],
+		"selectSound":"noctowl",
+		"attackSound":"noctowl",
+        "civilopediaText": [
+            {
+                "text": "'When it needs to think, it rotates its head 180 degrees to sharpen its intellectual power.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Defensive bird Pokémon effective at scouting. Can see enemies at a longer line of sight in Forested and Hunted areas.  Will not naturally move from Forests.  Resists attacks from melee enemies."
+            }
+        ]
+	},
+    
+	////////////////////
+	// Amphibious Pokémon
+	////////////////////
+	{
+		"name": "Gastly",
+		"unitType": "Gastly-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 40,
+        "range": 1,
+		"movement": 1,
+		"cost": 20,
+        "uniques": [
+            "Unevolved",
+            "Ghost-Type",
+            "Poison-Type",
+            "[This Unit] gains the [Ghost-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            //"Costs [-1] Supply <in [Spooky] tiles>",
+            "Cannot enter [non-[Spooky]] tiles <in [Spooky] tiles> <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Dream Eater I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+			"Can only be built <for [Barbarians] Civilizations> <in [Haunted] tiles>  <hidden from users>",
+            "Can transform to [Haunter] <for units with [Level 2]>"
+        ],
+		"selectSound":"gastly",
+		"attackSound":"gastly",
+        "civilopediaText": [
+            {
+                "text": "'Said to appear in decrepit, deserted buildings. It has no real shape, as it appears to be made of a gas.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Ghost Pokémon that can devour dreams, dealing bonus damage against sleeping enemies.  Will lurk in Haunted terrain."
+            }
+            
+        ]
+	},
+	{
+		"name": "Haunter",
+		"unitType": "Gastly-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 10,
+		"defenseStrength": 60,
+        "range": 1,
+		"movement": 1,
+		"cost": 60,
+        "uniques": [
+            "Ghost-Type",
+            "Poison-Type",
+            "[This Unit] gains the [Ghost-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            "[This Unit] gains the [Hypnosis I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+			"Can only be built <for [Barbarians] Civilizations> <starting from the [Medieval Age]> <in [Haunted] tiles>  <hidden from users>",
+            "Cannot enter [non-[Spooky]] tiles <in [Spooky] tiles> <for [Barbarians] Civilizations> <hidden from users>",
+            "Can transform to [Gengar] <for units with [Level 3]>" //TODO: Trade evolution
+        ],
+		"selectSound":"haunter",
+		"attackSound":"haunter",
+        "civilopediaText": [
+            {
+                "text": "'By licking, it saps the victim's life. It causes shaking that won't stop until the victim's demise.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Ghost Pokémon that can devour dreams, dealing bonus damage against sleeping enemies.  Will occasionally put enemies to sleep.  Will lurk in Haunted terrain."
+            }
+            
+        ]
+	},
+    {
+		"name": "Gengar",
+		"unitType": "Gastly-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 30,
+		"defenseStrength": 80,
+        "range": 1,
+		"movement": 1,
+		"cost": 250,
+        "uniques": [
+            "Ghost-Type",
+            "Poison-Type",
+            "[This Unit] gains the [Ghost-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            "[This Unit] gains the [Hypnosis I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+			"[This Unit] gains the [Dream Eater I] promotion <for [Barbarians] Civilizations> <hidden from users>",
+			"Turn this tile into a [Red Fog] tile <every [2] turns> <for [Barbarians] Civilizations> <in [Water] tiles> <in tiles adjacent to [Red Fog] tiles> <upon turn start> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Digital Age]> <in [Haunted|Red Fog] tiles>  <hidden from users>"
+        ],
+		"selectSound":"gengar",
+		"attackSound":"gengar",
+        "civilopediaText": [
+            {
+                "text": "'By licking, it saps the victim's life. It causes shaking that won't stop until the victim's demise.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Ghost Pokémon that can devour dreams, dealing bonus damage against sleeping enemies.  Will occasionally put enemies to sleep."
+            }
+            
+        ]
+	},
+	////////////////////
+	// Abyssal Pokémon
+	////////////////////
+    {
+		"name": "Tentacool",
+		"unitType": "Tentacool-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 30,
+		"defenseStrength": 40,
+		"movement": 3,
+		"cost": 30,
+        "uniques": [
+            "Water-Type",
+            "Poison-Type",
+            "[This Unit] gains the [Water-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            "[This Unit] gains the [Ocean Swimmer] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <hidden from users>",
+            "Can transform to [Tentacruel] <for units with [Level 3]>" 
+        ],
+		"selectSound":"tentacool",
+		"attackSound":"tentacool",
+        "civilopediaText": [
+            {
+                "text": "'It can sometimes be found all dry and shriveled up on a beach. Toss it back into the sea to revive it.' - Kanto Pokédex"
+            },
+            { "separator": true },
+            {
+                "text": "Abyssal Pokémon spawned at Abyssal Dens, that floats through oceans."
+            }
+        ]
+	},
+    {
+		"name": "Tentacruel",
+		"unitType": "Tentacool-Line",
+		"secondaryUnitType": "Pokémon",
+        "attackStrength": 30,
+		"defenseStrength": 70,
+		"movement": 3,
+		"cost": 100,
+        "uniques": [
+            "Water-Type",
+            "Poison-Type",
+            "[This Unit] gains the [Water-Type] promotion",
+            "[This Unit] gains the [Poison-Type] promotion",
+            "[This Unit] gains the [Ocean Swimmer] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "[This Unit] gains the [Liquid Ooze] promotion <for [Barbarians] Civilizations> <hidden from users>",
+            "Can only be built <for [Barbarians] Civilizations> <starting from the [Exploration Age]> <hidden from users>"
+        ],
+		"selectSound":"tentacruel",
+		"attackSound":"tentacruel",
+        "civilopediaText": [
+            {
+                "text": "'Its 80 tentacles can stretch and contract freely. They wrap around prey and weaken it with poison.' - Kanto Pokédex"
+            },
+            { "separator": true },
+            {
+                "text": "Abyssal Pokémon spawned at Abyssal Dens, that floats through oceans.  Units attacking it will lose the ability to heal."
+            }
+        ]
+	}
+]

@@ -1,0 +1,1983 @@
+[
+	// Largest continent represents Eurasia + Africa
+	// Second largest continent represents the Americas
+	// Bonus resources
+	{
+		"name": "Wheat",
+		"resourceType": "Bonus",
+		"resourceCategory": "Crop",
+		"improvedBy": ["Farm","Slave Farm"],
+		"improvementStats": { "food": 2 },
+		"terrainsCanBeFoundOn": ["Rich Soil", "Grassland", "Plains", "Enchanted", "Haunted", "Tundra", "Alpine", "Ashlands", "Savannah", "Tropical"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Enchanted} {Rich Soil}] tiles>",
+					"Generated on every [20] tiles <in [{Haunted} {Rich Soil}] tiles>",
+					"Generated on every [25] tiles <in [{Grassland} {Rich Soil}] tiles>",
+					"Generated on every [30] tiles <in [Rich Soil] tiles>",
+					"Generated on every [30] tiles <in [{Grassland} {non-[Hill]}] tiles>",
+					"Generated on every [30] tiles <in [{Plains} {non-[Hill]}] tiles>",
+					"Generated on every [30] tiles <in [{Enchanted} {non-[Hill]}] tiles>",
+					"Generated on every [30] tiles <in [{Haunted} {non-[Hill]}] tiles>",
+					"Generated on every [30] tiles <in [Alpine] tiles>",
+					"Generated on every [45] tiles <in [Fertile] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "A common cereal grain, that will grow almost anywhere, especially in rich soil.  Must be processed into food, and cannot be eaten raw."}
+        ]
+	},
+	{
+		"name": "Rice",
+		"resourceType": "Bonus",
+		"resourceCategory": "Crop",
+		"improvedBy": ["Farm","Slave Farm"],
+		"improvementStats": { "food": 3 },
+		"terrainsCanBeFoundOn": ["Grassland", "Tropical", "Savannah", "Rich Soil"],
+		"uniques": [
+					"Provides a one-time bonus of [+50 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [Grassland] tiles> <in [Fresh Water] tiles> <within [6] tiles of a [Bamboo]>",
+					"Generated on every [30] tiles <in [Tropical] tiles> <in [Fresh Water] tiles> <within [6] tiles of a [Bamboo]>",
+					"Generated on every [30] tiles <in [Savannah] tiles> <in [Fresh Water] tiles> <within [6] tiles of a [Bamboo]>",
+					"Generated on every [20] tiles <in [Rich Soil] tiles> <within [6] tiles of a [Bamboo]>",
+					"Must be on [1] largest landmasses",
+					"Doesn't generate naturally <not within [6] tiles of a [Bamboo]>"
+				],
+		 "civilopediaText": [
+            {"text": "A cereal grain found in temperate climates near bamboo on the largest continent.  Can be easily propagated, and turned into some of the most high-yield food products."}
+        ]
+	},
+	{
+		"name": "Corn",
+		"resourceType": "Bonus",
+		"resourceCategory": "Crop",
+		"food": 1,
+		"improvedBy": ["Farm","Slave Farm"],
+		"improvementStats": { "food": 1 },
+		"terrainsCanBeFoundOn": ["Grassland", "Tropical", "Alpine", "Ashlands"],
+		"uniques": [
+					"Edible",
+					"Provides a one-time bonus of [+50 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [Tropical] tiles>",
+					"Generated on every [20] tiles <in [Alpine] tiles> <within [3] tiles of a [Tropical]>",
+					"Generated on every [20] tiles <in [Alpine] tiles> <within [3] tiles of a [Grassland]>",
+					"Generated on every [25] tiles <in [Grassland] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles> <within [3] tiles of a [Tropical]>",
+					"Generated on every [40] tiles <in [Ashlands] tiles> <within [3] tiles of a [Grassland]>",
+					"Generated on every [50] tiles <in [Rich Soil] tiles>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {"text": "A cereal grain found in hot and Alpine climates in smaller continents.  Can be eaten raw or processed into food or fuel."}
+        ]
+	},
+	{
+		"name": "Potatoes",
+		"resourceType": "Bonus",
+		"resourceCategory": "Crop",
+		"food": 1,
+		"improvedBy": ["Farm","Slave Farm"],
+		"improvementStats": { "food": 1 },
+		"terrainsCanBeFoundOn": ["Alpine", "Tropical", "Plains", "Grassland", "Forest", "Hill"],
+		"uniques": [
+					"Edible",
+					"Provides a one-time bonus of [+30 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [5] tiles <in [Alpine] tiles> <in [Alpine] Regions>",
+					"Generated on every [15] tiles <in [Alpine] tiles> <within [5] tiles of a [Mountain]>",
+					"Generated on every [40] tiles <in [Tropical] tiles> <within [5] tiles of a [Mountain]>",
+					"Generated on every [40] tiles <in [Plains] tiles> <within [5] tiles of a [Mountain]>",
+					"Generated on every [50] tiles <in [Grassland] tiles> <within [5] tiles of a [Mountain]>",
+					"Generated on every [50] tiles <in [Hill] tiles> <within [5] tiles of a [Mountain]>",
+					"Doesn't generate naturally <not within [5] tiles of a [Mountain]>",
+					"Doesn't generate naturally <in [non-[Fertile]] tiles>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {"text": "A starchy tuber found near Mountains or in Alpine climates in smaller continents.  Can be eaten raw or processed into snack foods."}
+        ]
+	},
+	{
+		"name": "Berries",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "food": 3 },
+		"terrainsCanBeFoundOn": ["Tundra", "Enchanted", "Haunted", "Plains", "Grassland", "Forest"],
+		"food": 1, 
+		"uniques": [
+					"Edible",
+					"Provides a one-time bonus of [+20 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [Enchanted] tiles>",
+					"Generated on every [30] tiles <in [Haunted] tiles>",
+					"Generated on every [30] tiles <in [{Tundra} {Forest}] tiles>",
+					"Generated on every [40] tiles <in [Plains] tiles>",
+					"Generated on every [40] tiles <in [{Grassland} {Forest}] tiles>",
+					"Doesn't generate naturally <not within [5] tiles of a [Cold]>"
+				],
+		 "civilopediaText": [
+            {"text": "Sweet, edible berries found in colder climates.  Can be eaten raw or baked into pastries."}
+        ]
+	},
+	{
+		"name": "Cotton",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"gold": 1,
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "gold": 3 },
+		"terrainsCanBeFoundOn": ["Grassland", "Tropical", "Savannah", "Ashlands"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [50] tiles <in [Grassland] tiles>",
+					"Generated on every [50] tiles <in [Tropical] tiles>",
+					"Generated on every [70] tiles <in [Savannah] tiles>",
+					"Generated on every [70] tiles <in [Ashlands] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "Fibrous plant that grows in flat, temperate climates.  Can be processed into a source of fiber, or used to make puffy clothing."}
+        ]
+	},
+	{
+		"name": "Spices",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"gold": 1,
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "food": 2, "gold": 1 },
+		"terrainsCanBeFoundOn": ["Tropical", "Savannah", "Desert", "Forest"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [{Tropical} {Forest}] tiles>",
+					"Generated on every [40] tiles <in [{Savannah} {Forest}] tiles>",
+					"Generated on every [40] tiles <in [{Desert} {Forest}] tiles>",
+					"Must not be on [2] largest landmasses"
+				],
+		 "civilopediaText": [
+            {"text": "Exotic herbs for seasoning found in tropical areas of smaller landmasses.  Used for fine cuisine."}
+        ]
+	},
+	{
+		"name": "Sugar",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"gold": 1,
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "food": 2, "gold": 1 },
+		"terrainsCanBeFoundOn": ["Grassland", "Tropical", "Ashlands", "Marsh", "Enchanted", "Haunted", "Hill"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [Grassland] tiles>",
+					"Generated on every [25] tiles <in [Tropical] tiles>",
+					"Generated on every [30] tiles <in [Ashlands] tiles>",
+					"Generated on every [30] tiles <in [Enchanted] tiles>",
+					"Generated on every [30] tiles <in [Haunted] tiles>",
+					"Generated on every [35] tiles <in [Marsh] tiles>",
+					"Generated on every [40] tiles <in [Hill] tiles>",
+					"Doesn't generate naturally <in [non-[Fertile]] tiles>",
+					"Must not be on [3] largest landmasses"
+				],
+		 "civilopediaText": [
+            {"text": "Plant that appear on very small continents and islands, that produces a sweet carbohydrate.  Often used for fine cuisine."}
+        ]
+	},
+	{
+		"name": "Cocoa",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"gold": 1,
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "food": 3 },
+		"terrainsCanBeFoundOn": ["Grassland", "Tropical", "Ashlands", "Marsh", "Forest"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Tropical} {Forest}] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [30] tiles <in [Marsh] tiles>",
+					"Generated on every [40] tiles <in [{Grassland} {Forest}] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [45] tiles <in [Tropical] tiles>",
+					"Generated on every [50] tiles <in [Hill] tiles>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {"text": "Tropical bean found in wet, humid biomes on smaller continents.  Used to make chocolate."}
+        ]
+	},
+	{
+		"name": "Coffee Beans",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"gold": 1,
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "food": 2, "gold": 1 },
+		"terrainsCanBeFoundOn": ["Tropical", "Ashlands", "Savannah", "Desert", "Rich Soil"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [{Savannah} {Rich Soil}] tiles>",
+					"Generated on every [25] tiles <in [Savannah] tiles>",
+					"Generated on every [25] tiles <in [Tropical] tiles>",
+					"Generated on every [30] tiles <in [{Desert} {Rich Soil}] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles>",
+					"Must be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {"text": "Tropical bean found in hot biomes on larger continents.  Used to make a stimulating beverage."}
+        ]
+	},
+	{
+		"name": "Vines",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "gold": 2, "food": 1 },
+		"terrainsCanBeFoundOn": ["Tropical", "Grassland", "Enchanted", "Haunted", "Forest"],
+		"uniques": [
+					"Provides a one-time bonus of [+10 Production] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [{Tropical} {Forest}] tiles>",
+					"Generated on every [15] tiles <in [{Haunted} {Forest}] tiles>",
+					"Generated on every [20] tiles <in [{Grassland} {Forest}] tiles>",
+					"Generated on every [20] tiles <in [{Enchanted} {Forest}] tiles>",
+					"Doesn't generate naturally <with [0] to [1] neighboring [Forest] tiles>",
+					"Doesn't generate naturally <in [non-[Forest]] tiles>",
+					"Doesn't generate naturally <in [Cold] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "Stringy growths bind the trees within this deep forest.  They provide an easy source of fiber."}
+        ]
+	},
+	{
+		"name": "Dyes",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"gold": 1,
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "gold": 1, "culture": 2 },
+		"terrainsCanBeFoundOn": ["Tropical", "Grassland", "Enchanted", "Haunted", "Marsh", "Savannah", "Desert", "Forest"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Culture] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Enchanted] tiles>",
+					"Generated on every [20] tiles <in [{Tropical} {Forest}] tiles>",
+					"Generated on every [20] tiles <in [{Grassland} {Forest}] tiles>",
+					"Generated on every [20] tiles <in [Desert] tiles>",
+					"Generated on every [25] tiles <in [Marsh] tiles>",
+					"Generated on every [40] tiles <in [{Haunted} {Forest}] tiles>",
+					"Generated on every [40] tiles <in [Savannah] tiles>",
+					"Doesn't generate naturally <in tiles not adjacent to [Coast] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "These plants like to grow near the sea and come in many vibrant colors.  They can be used to make pigments for painting or dyeing."}
+        ]
+	},
+	{
+		"name": "Papyrus",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "gold": 1, "culture": 2 },
+		"terrainsCanBeFoundOn": ["Marsh"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [5] tiles <in [Marsh] tiles>",
+					"Doesn't generate naturally <in tiles adjacent to [Natural Wonder] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "These reeds are found naturally in treacherous marsh tiles.  They can be used to craft scrolls."}
+        ]
+	},
+	{
+		"name": "Mushrooms",
+		"resourceType": "Bonus",
+		"resourceCategory": "Plant",
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "food": 2, "faith": 1 },
+		"terrainsCanBeFoundOn": ["Enchanted", "Haunted", "Tundra", "Grassland", "Ashlands", "Marsh", "Forest"],
+		"uniques": [
+					"Provides a one-time bonus of [+20 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Marsh] tiles>",
+					"Generated on every [15] tiles <in [{Tundra} {Forest}] tiles>",
+					"Generated on every [15] tiles <in [{Haunted} {Forest}] tiles>",
+					"Generated on every [15] tiles <in [{Grassland} {Forest}] tiles>",
+					"Generated on every [20] tiles <in [{Ashlands} {Forest}] tiles>",
+					"Generated on every [35] tiles <in [{Enchanted} {Forest}] tiles>",
+					"Doesn't generate naturally <in tiles without [Forest|Marsh]>",
+					"Doesn't generate naturally <not within [5] tiles of a [Marsh|Enchanted|Haunted]>"
+				],
+		 "civilopediaText": [
+            {"text": "These reeds are found naturally in treacherous marsh tiles.  They can be used to craft scrolls."}
+        ]
+	},
+	{
+		"name": "Herbs",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aromatic",
+		"faith": 1,
+		"improvedBy": ["Apothecary"],
+		"improvementStats": { "faith": 2, "food": 1 },
+		"terrainsCanBeFoundOn": ["Tundra", "Enchanted", "Haunted", "Alpine", "Tropical", "Forest"],
+		"uniques": [
+					"Provides a one-time bonus of [+20 Faith] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [Haunted] tiles>",
+					"Generated on every [35] tiles <in [Enchanted] tiles>",
+					"Generated on every [35] tiles <in [Tundra] tiles>",
+					"Generated on every [35] tiles <in [Alpine] tiles>",
+					"Generated on every [45] tiles <in [Tropical] tiles>",
+					"Doesn't generate naturally <in tiles without [Forest]>"
+				],
+		 "civilopediaText": [
+            {"text": "These mysterious herbs are found in both cold and hot forests.  They have many uses, from medicine to tea to spices to even 'recreation'."}
+        ]
+	},
+	{
+		"name": "Resin",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aromatic",
+		"gold": 1,
+		"improvedBy": ["Apothecary"],
+		"improvementStats": { "gold": 3 },
+		"terrainsCanBeFoundOn": ["Tundra", "Grassland", "Alpine", "Enchanted", "Forest"],
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [Enchanted] tiles>",
+					"Generated on every [30] tiles <in [Tundra] tiles>",
+					"Generated on every [45] tiles <in [Alpine] tiles>",
+					"Generated on every [45] tiles <in [Grassland] tiles>",
+					"Doesn't generate naturally <in tiles without [Forest]>",
+					"Doesn't generate naturally <not within [2] tiles of a [Cold]>"
+				],
+		 "civilopediaText": [
+            {"text": "These sticky saps can be found in forested parts of cold and Enchanted regions.  They can be made into a fiber or used as an aromatic."}
+        ]
+	},
+	{
+		"name": "Marble",
+		"resourceType": "Bonus",
+		"terrainsCanBeFoundOn": ["Hill"],
+		"resourceCategory": "Geologic",
+		"gold": 1,
+		"improvedBy": ["Quarry","Slave Quarry"],
+		"improvementStats": { "production": 5 },
+		"uniques": [
+					"Provides a one-time bonus of [+50 Production] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Grassland} {Hill}] tiles> <within [2] tiles of a [Coast]>",
+					"Generated on every [50] tiles <in [{Grassland} {Hill}] tiles> <not within [2] tiles of a [Coast]>",
+					"Generated on every [60] tiles <in [{non-[Grassland]} {Hill}] tiles>",
+					"Doesn't generate naturally <in [Permafrost|Tundra|Wasteland|Crystallic|Tropical] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "Bleached-white stones found in the hills of mainly temperate biomes.  Can be used to sculpt or to build monuments."}
+        ]
+	},
+	{
+		"name": "Clay",
+		"resourceType": "Bonus",
+		"resourceCategory": "Geologic",
+		"terrainsCanBeFoundOn": ["Desert", "Hill"],
+		"gold": 1,
+		"improvedBy": ["Quarry","Slave Quarry"],
+		"improvementStats": { "production": 5 },
+		"uniques": [
+					"Provides a one-time bonus of [+30 Production] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [{Desert} {Hill}] tiles> <within [2] tiles of a [River]>",
+					"Generated on every [15] tiles <in [{Desert} {Hill}] tiles> <within [2] tiles of a [Coast]>",
+					"Generated on every [20] tiles <in [{Savannah} {Hill}] tiles> <within [3] tiles of a [River]>",
+					"Generated on every [25] tiles <in [Desert] tiles> <within [3] tiles of a [River]>",
+					"Generated on every [45] tiles <in [Hill] tiles> <within [3] tiles of a [River]>",
+					"Doesn't generate naturally <in [Cold|Tropical] tiles>",
+					"Doesn't generate naturally <not within [3] tiles of a [River]>"
+				],
+		 "civilopediaText": [
+            {"text": "Dark stones found in deserts and warm hills near rivers.  Can be used for pottery or earthworks."}
+        ]
+	},
+	{
+		"name": "Obsidian",
+		"resourceType": "Bonus",
+		"resourceCategory": "Geologic",
+		"terrainsCanBeFoundOn": ["Volcanic", "Ashlands"],
+		"gold": 1,
+		"improvedBy": ["Quarry","Slave Quarry"],
+		"improvementStats": { "gold": 3 },
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Volcanic] tiles>",
+					"Generated on every [10] tiles <in [Ashlands] tiles>",
+					"Doesn't generate naturally <not within [6] tiles of a [Volcanic]>"
+				],
+		 "civilopediaText": [
+            {"text": "A dark, geological material created from intense heat, found mainly in or near Volcanic biomes.  Can be used for equipment, tools, and divination."}
+        ]
+	},
+	{
+		"name": "Glass",
+		"resourceType": "Bonus",
+		"resourceCategory": "Geologic",
+		"terrainsCanBeFoundOn": ["Crystallic", "Grassland", "Plains"],
+		"gold": 1,
+		"improvedBy": ["Quarry","Slave Quarry"],
+		"improvementStats": { "gold": 3 },
+		"uniques": [
+					"Provides a one-time bonus of [+30 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [Crystallic] tiles>",
+					"Generated on every [30] tiles <in [Grassland] tiles>",
+					"Generated on every [40] tiles <in [Plains] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "A common, bright material that can be blown from sand or found naturally in common biomes.  Needed to create many advanced objects and structures."}
+        ]
+	},
+	{
+		"name": "Salt",
+		"resourceType": "Bonus",
+		"resourceCategory": "Geologic",
+		"terrainsCanBeFoundOn": ["Lakes", "Desert"],
+		"improvedBy": ["Quarry","Slave Quarry"],
+		"improvementStats": { "gold": 2, "food":2 },
+		"uniques": [
+					"Provides a one-time bonus of [+15 Gold, +15 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [40] tiles <in [Desert] tiles>",
+					"Generated on every [40] tiles <in [Lakes] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "An electrolyte that can be processed from seawater or found rarely in Lakes and Deserts.  Has culinary and preservation uses."}
+        ]
+	},
+	{
+		"name": "Copper",
+		"resourceType": "Bonus",
+		"resourceCategory": "Metallic",
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Desert", "Alpine", "Tundra", "Wasteland", "Crystallic", "Hill", "Ruins"],
+		"gold": 1,
+		"science": 1,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { "production": 5 },
+		"uniques": [
+					"Provides a one-time bonus of [+40 Production] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Ruins] tiles>",
+					"Generated on every [20] tiles <in [Crystallic] tiles>",
+					"Generated on every [25] tiles <in [Alpine] tiles>",
+					"Generated on every [25] tiles <in [{Tundra} {Hill}] tiles>",
+					"Generated on every [30] tiles <in [{Desert} {Hill}] tiles>",
+					"Generated on every [30] tiles <in [{Plains} {Hill}] tiles>",
+					"Generated on every [40] tiles <in [{Grassland} {Hill}] tiles>",
+					"Doesn't generate naturally <in tiles without [Hill|Crystallic|Ruins]>"
+				],
+		 "civilopediaText": [
+            {"text": "A common metal found in Ruins, Crystals, and most hills, that represent materials such as bronze.  Used to make tools, wires, equipment, and advanced gadgets."}
+        ]
+	},
+	{
+		"name": "Ore",
+		"resourceType": "Bonus",
+		"resourceCategory": "Metallic",
+		"terrainsCanBeFoundOn": ["Desert", "Alpine", "Plains", "Tundra", "Crystallic", "Hill"],
+		"gold": 2,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { "gold": 5 },
+		"uniques": [
+					"Provides a one-time bonus of [+100 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [Crystallic] tiles>",
+					"Generated on every [40] tiles <in [Desert] tiles>",
+					"Generated on every [60] tiles <in [Alpine] tiles>",
+					"Generated on every [100] tiles <in [Plains] tiles>",
+					"Generated on every [120] tiles <in [Tundra] tiles>",
+					"Generated on every [240] tiles <in [Hill] tiles>",
+					"Doesn't generate naturally <in tiles without [Hill|Crystallic|Desert]>"
+				],
+		 "civilopediaText": [
+            {"text": "Represents precious metals such as gold and silver.  Used for coinage, trade, and some advanced components."}
+        ]
+	},
+	{
+		"name": "Gems",
+		"resourceType": "Bonus",
+		"resourceCategory": "Metallic",
+		"terrainsCanBeFoundOn": ["Crystallic","Crystals"],
+		"gold": 3,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { "gold": 5 },
+		"uniques": [
+					"Provides a one-time bonus of [+300 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [Crystals] tiles>",
+					"Generated on every [30] tiles <in [Crystallic] tiles>"
+				],
+		 "civilopediaText": [
+            {"text": "Represents rare crystals and gemstones such as rubies, sapphires, and emeralds.  Appears commonly in Crystallic tiles, and is often used for magic."}
+        ]
+	},
+	{
+		"name": "Ley Line",
+		"resourceType": "Bonus",
+		"terrainsCanBeFoundOn": ["Mountain"],
+		"uniques": [
+			"Generated on every [30] tiles",
+			"Doesn't generate naturally <within [10] tiles of a [Ley Line]>"
+		],
+		 "civilopediaText": [
+            {"text": "A mysterious nexus of energy found within the earth's crust, deep in the mountains.  Can be used as a resource for spellcasting."}
+        ]
+	},
+	// Bonus Pokémon resources
+	{
+		"name": "Ponytas",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Savannah", "Wasteland", "Tundra", "Ashlands", "Volcanic"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [{Featureless} {Plains}] tiles>",
+					"Generated on every [30] tiles <in [Volcanic] tiles>",
+					"Generated on every [30] tiles <in [{Featureless} {Ashlands}] tiles>",
+					"Generated on every [40] tiles <in [Savannah] tiles>",
+					"Generated on every [40] tiles <in [{Featureless} {Grassland}] tiles>",
+					"Generated on every [50] tiles <in [{Featureless} {Tundra}] tiles>",
+					"Generated on every [70] tiles <in [Tundra] tiles>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Capable of jumping over the Tokyo Tower in a single giant leap. Its hooves are ten times harder than diamonds.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Horse Pokémon, common in Plains and fiery biomes.  Most cavalry require this incredibly common Pokémon species."
+            }
+        ]
+	},
+	{
+		"name": "Galarian Ponytas",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Enchanted", "Haunted"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [Enchanted] tiles>",
+					"Generated on every [100] tiles <in [Haunted] tiles>",
+					"Must be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'This Pokémon will look into your eyes and read the contents of your heart. If it finds evil there, it promptly hides away.' - Galar Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Rare unicorn Pokémon, found in Enchanted biomes and sometimes in Haunted biomes in the largest continent.  Used to train magic cavalry."
+            }
+        ]
+	},
+	{
+		"name": "Mudbrays",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Marsh", "Plains", "Grassland", "Wasteland", "Tundra", "Ashlands", "Desert", "Savannah"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [35] tiles <in [{Featureless} {Grassland}] tiles>",
+					"Generated on every [35] tiles <in [Marsh] tiles>",
+					"Generated on every [40] tiles <in [Savannah] tiles>",
+					"Generated on every [40] tiles <in [Desert] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [45] tiles <in [Plains] tiles>",
+					"Generated on every [50] tiles <in [Wasteland] tiles>",
+					"Generated on every [55] tiles <in [Tundra] tiles>",
+					"Generated on every [60] tiles <in [Ashlands] tiles>",
+					"Must be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'It has a stubborn, individualistic disposition. Eating dirt, making mud, and playing in the mire all form part of its daily routine.' - Alola Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Donkey Pokémon, found in open tiles in the largest continent.  Used to pull heavy vehicles or equipment."
+            }
+        ]
+	},
+	{
+		"name": "Numels",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Desert", "Savannah", "Ashlands", "Volcanic", "Hill"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [Desert] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [25] tiles <in [Volcanic] tiles>",
+					"Generated on every [30] tiles <in [Ashlands] tiles>",
+					"Generated on every [40] tiles <in [Savannah] tiles>",
+					"Generated on every [40] tiles <in [Desert] tiles>",
+					"Generated on every [50] tiles <in [Hill] tiles>",
+					"Doesn't generate naturally <in tiles without [Desert|Volcanic|Ashlands|Savannah]>",
+					"Must be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'A Numel stores boiling magma in the hump on its back.  It is a hardy Pokémon that can transport a 220-pound load. It has served humans at work since long ago.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Camel Pokémon, found in hot arid and fiery terrain in the largest continent.  Effective at navigating deserts, volcanic terrain, and carrying heavy equipment."
+            }
+        ]
+	},
+	{
+		"name": "Cufants",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Desert", "Tropical", "Savannah", "Forest"],
+		"gold": 1,
+		"science": 1,
+		"improvedBy": ["Pasture"],
+		"improvementStats": { "production": 5 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+40 Production] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Tropical} {Forest}] tiles>",
+					"Generated on every [25] tiles <in [Savannah] tiles>",
+					"Generated on every [40] tiles <in [Desert] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [50] tiles <in [Tropical] tiles>",
+					"Doesn't generate naturally <in tiles without [Desert|Tropical|Savannah]>",
+					"Must be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'It digs up the ground with its trunk. It's also very strong, being able to carry loads of over five tons without any problem at all.' - Galar Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Elephant Pokémon, commonly found in hot, especially Tropical climates.  In addition to being a heavy weapons platform, its copper body allows it to serve as somewhat of a substitute for copper."
+            }
+        ]
+	},
+	{
+		"name": "Girafarigs",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Savannah"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [Savannah] tiles>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Its tail has a small brain of its own. Beware! If you get close, it may react to your scent and bite.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Giraffe Pokémon, found all over the world in Savannahs.  Its tall neck allows it to be used as an early ranged weapon platform."
+            }
+        ]
+	},
+	{
+		"name": "Happinys",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Grassland", "Enchanted", "Haunted", "Ashlands", "Tundra", "Tropical", "Forest"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+10 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [Enchanted] tiles>",
+					"Generated on every [30] tiles <in [Grassland] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles>",
+					"Generated on every [40] tiles <in [Tundra] tiles>",
+					"Generated on every [65] tiles <in [Haunted] tiles>",
+					"Generated on every [65] tiles <in [Tropical] tiles>",
+					"Doesn't generate naturally <in tiles without [Forest]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'It loves round white things. It carries an egg-shaped rock in imitation of Chansey.' - Sinnoh Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Egg Pokémon, found most commonly in Enchanted and Grassland forests.  Its eggs can be harvested for food."
+            }
+        ]
+	},
+	{
+		"name": "Miltanks",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Savannah", "Ashlands"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+30 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [Plains] tiles>",
+					"Generated on every [30] tiles <in [Grassland] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles>",
+					"Generated on every [40] tiles <in [Savannah] tiles>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'If it has just had a baby, the milk it produces contains much more nutrition than usual.' - Johto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Cow Pokémon, found most commonly in Plains and Grassland forests.  Its milk can be harvested for food."
+            }
+        ]
+	},
+	{
+		"name": "Wooloos",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Enchanted", "Haunted", "Alpine", "Tundra", "Hill"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"improvementStats": { "gold": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [{Enchanted} {Hill}] tiles>",
+					"Generated on every [25] tiles <in [{Plains} {Hill}] tiles>",
+					"Generated on every [35] tiles <in [{Grassland} {Hill}] tiles>",
+					"Generated on every [40] tiles <in [{Haunted} {Hill}] tiles>",
+					"Generated on every [40] tiles <in [Alpine] tiles>",
+					"Generated on every [50] tiles <in [{Tundra} {Hill}] tiles>",
+					"Doesn't generate naturally <in tiles without [Grassland|Plains|Enchanted|Haunted|Alpine|Tundra]>",
+					"Doesn't generate naturally <in tiles without [Hill|Alpine]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Its curly fleece is such an effective cushion that this Pokémon could fall off a cliff and stand right back up at the bottom, unharmed.' - Galar Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Sheep Pokémon, found most commonly in Enchanted and Plains hill tiles.  Can be harvested for its wool to make fiber and clothes."
+            }
+        ]
+	},
+	{
+		"name": "Tauroses",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Savannah", "Haunted", "Desert", "Ashlands"],
+		"food": 2,
+		"improvedBy": ["Pasture"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [Plains] tiles>",
+					"Generated on every [25] tiles <in [Grassland] tiles>",
+					"Generated on every [25] tiles <in [Savannah] tiles>",
+					"Generated on every [25] tiles <in [Desert] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles>",
+					"Generated on every [55] tiles <in [Haunted] tiles>",
+					"Must be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'A rowdy Pokémon with a lot of stamina. Once running, it won't stop until it hits something.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Cattle Pokémon, found in open biomes in the largest continent.  Can be herded for its meat."
+            }
+        ]
+	},
+	{
+		"name": "Bouffalants",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Savannah", "Desert"],
+		"food": 2,
+		"improvedBy": ["Pasture"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [Plains] tiles>",
+					"Generated on every [15] tiles <in [Savannah] tiles>",
+					"Generated on every [25] tiles <in [Grassland] tiles>",
+					"Generated on every [35] tiles <in [Desert] tiles> <in [Fresh Water] tiles>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Their fluffy fur absorbs damage, even if they strike foes with a fierce headbutt.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Cattle Pokémon, found in open biomes in the largest continent.  Can be herded for its meat."
+            }
+        ]
+	},
+	{
+		"name": "Skiddos",
+		"resourceType": "Bonus",
+		"resourceCategory": "Herdable",
+		"terrainsCanBeFoundOn": ["Alpine","Hill"],
+		"food": 1,
+		"improvedBy": ["Pasture"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [Hill] tiles>",
+					"Generated on every [40] tiles <in [Alpine] tiles>",
+					"Doesn't generate naturally <not within [4] tiles of a [Alpine]>",
+					"Doesn't generate naturally <in tiles without [Fertile]>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Thought to be one of the first Pokémon to live in harmony with humans, it has a placid disposition.' - Kalos Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Goat Pokémon, found in highlands in fertile lands near Alpine tiles.  Can be ridden as a useful transport."
+            }
+        ]
+	},
+	{
+		"name": "Poochyenas",
+		"resourceType": "Bonus",
+		"resourceCategory": "Pet",
+		"terrainsCanBeFoundOn": ["Wasteland","Ruins","Haunted","Forest","Savannah"],
+		"food": 1,
+		"improvedBy": ["Kennel"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+10 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Ruins] tiles>",
+					"Generated on every [10] tiles <in [Wasteland] tiles>",
+					"Generated on every [25] tiles <in [{Haunted} {Forest}] tiles>",
+					"Generated on every [35] tiles <in [Savannah] tiles>",
+					"Doesn't generate naturally <in tiles without [Haunted|Savannah|Wasteland]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'It savagely threatens foes with bared fangs. It chases after fleeing targets tenaciously. It turns tail and runs, however, if the foe strikes back.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Dog Pokémon, found in haunted, savannah, and wasteland tiles.  Can be trained as a tame animal to help hunt."
+            }
+        ]
+	},
+	{
+		"name": "Fidoughs",
+		"resourceType": "Bonus",
+		"resourceCategory": "Pet",
+		"terrainsCanBeFoundOn": ["Forest"],
+		"food": 1,
+		"improvedBy": ["Kennel"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+10 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [{Enchanted} {Forest}] tiles>",
+					"Generated on every [35] tiles <in [Forest] tiles>",
+					"Doesn't generate naturally <not within [5] tiles of a [Enchanted]>",
+					"Doesn't generate naturally <in tiles without [Fertile]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'The yeast in Fidough's breath is useful for cooking, so this Pokémon has been protected by people since long ago.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Dog Pokémon, found in fertile lands near Enchanted biomes.  Can be used to make various delicacies."
+            }
+        ]
+	},
+	{
+		"name": "Skittys",
+		"resourceType": "Bonus",
+		"resourceCategory": "Pet",
+		"terrainsCanBeFoundOn": ["Grassland","Plains","Desert","Enchanted","Forest","Hill"],
+		"food": 1,
+		"improvedBy": ["Kennel"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+10 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [{Enchanted} {Forest}] tiles>",
+					"Generated on every [35] tiles <in [Desert] tiles>",
+					"Generated on every [45] tiles <in [Grassland] tiles>",
+					"Generated on every [50] tiles <in [Plains] tiles>",
+					"Generated on every [55] tiles <in [Hill] tiles>",
+					"Doesn't generate naturally <in tiles not adjacent to [Fresh Water] tiles>",
+					"Doesn't generate naturally <in tiles without [Grassland|Plains|Desert|Enchanted]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Skitty has the habit of becoming fascinated by moving objects and chasing them around. This Pokémon is known to chase after its own tail and become dizzy.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Cat Pokémon, found in Fresh Water tiles in temperate and dry biomes.  Can have various health benefits, physical and mental."
+            }
+        ]
+	},
+	{
+		"name": "Clamperls",
+		"resourceType": "Bonus",
+		"resourceCategory": "Huntable",
+		"terrainsCanBeFoundOn": ["Grassland","Desert","Volcanic","Ashlands","Enchanted","Tundra","Tropical","Savannah"],
+		"gold": 1,
+		"improvedBy": ["Hunting Camp"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [Desert] tiles>",
+					"Generated on every [30] tiles <in [Tropical] tiles>",
+					"Generated on every [35] tiles <in [Enchanted] tiles>",
+					"Generated on every [40] tiles <in [Grassland] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles>",
+					"Generated on every [40] tiles <in [Tundra] tiles>",
+					"Generated on every [55] tiles <in [Ashlands] tiles>",
+					"Doesn't generate naturally <in tiles not adjacent to [Coast] tiles>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'A Clamperl slams its shell closed on prey to prevent escape. The pearl it creates upon evolution is said to be infused with a mysterious energy.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Clam Pokémon, found in coastal tiles.  Its pearls are especially valuable."
+            }
+        ]
+	},
+	{
+		"name": "Deerlings",
+		"resourceType": "Bonus",
+		"resourceCategory": "Huntable",
+		"terrainsCanBeFoundOn": ["Tundra","Grassland","Forest"],
+		"food": 1,
+		"improvedBy": ["Hunting Camp"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Tundra} {Forest}] tiles>",
+					"Generated on every [30] tiles <in [{Grassland} {Forest}] tiles>",
+					"Generated on every [40] tiles <in [Tundra] tiles>",
+					"Doesn't generate naturally <not within [3] tiles of a [Tundra]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'The color and scent of their fur changes to match the mountain grass. When they sense hostility, they hide in the grass.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Deer Pokémon, found in or near tundra tiles.  Can be hunted for game meat."
+            }
+        ]
+	},
+	{
+		"name": "Bidoofs",
+		"resourceType": "Bonus",
+		"resourceCategory": "Huntable",
+		"terrainsCanBeFoundOn": ["Tundra","Forest"],
+		"gold": 1,
+		"improvedBy": ["Hunting Camp"],
+		"improvementStats": { "gold": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [{Tundra} {Forest}] tiles> <in [Fresh Water] tiles>",
+					"Generated on every [40] tiles <in [Tundra] tiles> <in [Fresh Water] tiles>",
+					"Doesn't generate naturally <in tiles without [Tundra]>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'With nerves of steel, nothing can perturb it. It is more agile and active than it appears.' - Sinnoh Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Beaver Pokémon, found in tundra tiles, near Fresh Water and especially in the forests.  Can be hunted for fur or tamed to help with construction."
+            }
+        ]
+	},
+	{
+		"name": "Spearows",
+		"resourceType": "Bonus",
+		"resourceCategory": "Huntable",
+		"terrainsCanBeFoundOn": ["Plains","Desert","Savannah","Ashlands","Volcanic","Hill"],
+		"food": 1,
+		"improvedBy": ["Hunting Camp"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+15 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Plains} {Hill}] tiles>",
+					"Generated on every [30] tiles <in [{Volcanic} {Hill}] tiles>",
+					"Generated on every [40] tiles <in [{Ashlands} {Hill}] tiles>",
+					"Generated on every [40] tiles <in [{Desert} {Hill}] tiles>",
+					"Generated on every [45] tiles <in [{Savannah} {Hill}] tiles>",
+					"Doesn't generate naturally <in tiles without [Plains|Desert|Savannah|Ashlands|Volcanic]>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Its wings are short, so it can't fly a long distance. If it's not eating, it darts around in a hurry.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Crow Pokémon, found in dry tiles and usually on hills.  Can be hunted or trained with the right expertise for falconry or even riding."
+            }
+        ]
+	},
+	{
+		"name": "Pidoves",
+		"resourceType": "Bonus",
+		"resourceCategory": "Huntable",
+		"terrainsCanBeFoundOn": ["Grassland","Plains","Savannah","Desert","Ashlands","Marsh","Tundra","Enchanted","Alpine","Hill","Forest"],
+		"food": 1,
+		"improvedBy": ["Hunting Camp"],
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+10 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [30] tiles <in [Grassland] tiles>",
+					"Generated on every [30] tiles <in [Plains] tiles>",
+					"Generated on every [40] tiles <in [Enchanted] tiles>",
+					"Generated on every [40] tiles <in [Savannah] tiles>",
+					"Generated on every [40] tiles <in [Desert] tiles>",
+					"Generated on every [40] tiles <in [Marsh] tiles>",
+					"Generated on every [40] tiles <in [Tundra] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles>",
+					"Generated on every [40] tiles <in [Alpine] tiles>",
+					"Generated on every [50] tiles <in [Hill] tiles>",
+					"Doesn't generate naturally <not within [3] tiles of a [Grassland]>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Each follows its Trainer's orders as best it can, but they sometimes fail to understand complicated commands.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Pigeon Pokémon, found in or near Grassland tiles.  Can be hunted or trained with the right expertise for falconry."
+            }
+        ]
+	},
+	{
+		"name": "Scatterbugs",
+		"resourceType": "Bonus",
+		"resourceCategory": "Huntable",
+		"terrainsCanBeFoundOn": ["Grassland","Enchanted","Forest"],
+		"gold": 1,
+		"improvedBy": ["Hunting Camp"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Faith] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [35] tiles <in [{Grassland} {Forest}] tiles>",
+					"Generated on every [45] tiles <in [{Enchanted} {Forest}] tiles>",
+					"Doesn't generate naturally <in tiles without [Forest]>",
+					"Doesn't generate naturally <not within [5] tiles of a [Bamboo]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'When under attack from bird Pokémon, it spews a poisonous black powder that causes paralysis on contact.' - Kalos Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Silkworm Pokémon, found in Forests near Bamboo.  Can be harvested for its prized silk."
+            }
+        ]
+	},
+	{
+		"name": "Joltiks",
+		"resourceType": "Bonus",
+		"resourceCategory": "Huntable",
+		"terrainsCanBeFoundOn": ["Grassland","Enchanted","Haunted","Forest"],
+		"improvedBy": ["Hunting Camp"],
+		"improvementStats": { "gold": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+25 Faith] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Haunted} {Forest}] tiles>",
+					"Generated on every [25] tiles <in [{Enchanted} {Forest}] tiles>",
+					"Generated on every [40] tiles <in [{Grassland} {Forest}] tiles>",
+					"Doesn't generate naturally <in tiles without [Forest|Marsh]>",
+					"Doesn't generate naturally <in tiles without [Temperate]>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Joltik that live in cities have learned a technique for sucking electricity from the outlets in houses.' - Unova Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Spider Pokémon, found in temperate Forests and Marsh.  Hard to train, but can be used for silk or even cavalry."
+            }
+        ]
+	},
+	// Bonus Water Pokémon resources
+	{
+		"name": "Magikarps",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aquatic",
+		"terrainsCanBeFoundOn": ["Coast","Lakes","Ocean","Faebloom"],
+		"food": 2,
+		"improvedBy": ["Fishing Boats"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+40 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Lakes] tiles>",
+					"Generated on every [20] tiles <in [{Featureless} {Coast}] tiles>",
+					"Generated on every [60] tiles <in [{Featureless} {Ocean}] tiles>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'In the distant past, it was somewhat stronger than the horribly weak descendants that exist today.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fish Pokémon, found in most bodies of water.  Can be fished, and with advanced technology its powerful evolution can be domesticated."
+            }
+        ]
+	},
+	{
+		"name": "Feebases",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aquatic",
+		"terrainsCanBeFoundOn": ["Lakes"],
+		"food": 2,
+		"improvedBy": ["Fishing Boats"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+40 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [{Featureless} {Lakes}] tiles>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'While Feebas's body is in tatters, it has a hardy and tenacious life force that enables it to live anywhere. However, this Pokémon is also slow and dimwitted, making it an easy catch.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Fish Pokémon, found rarely in featureless lake tiles.  Can be fished, and with advanced magic its powerful evolution can be domesticated."
+            }
+        ]
+	},
+	{
+		"name": "Goldeens",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aquatic",
+		"terrainsCanBeFoundOn": ["Coast","Lakes","Ocean"],
+		"food": 2,
+		"improvedBy": ["Fishing Boats"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Lakes] tiles>",
+					"Generated on every [10] tiles <in [Coast] tiles>",
+					"Generated on every [20] tiles <in [Ocean] tiles>",
+					"Doesn't generate naturally <not within [10] tiles of a [Bamboo]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Its tail fin billows like an elegant ballroom dress, giving it the nickname of the Water Queen.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Goldfish Pokémon, found commonly in bodies of water close to Bamboo.  Can be fished or domesticated as a mount."
+            }
+        ]
+	},
+	{
+		"name": "Basculins",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aquatic",
+		"terrainsCanBeFoundOn": ["Coast","Lakes","Ocean"],
+		"food": 2,
+		"improvedBy": ["Fishing Boats"],
+		"improvementStats": { "food": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [25] tiles <in [Lakes] tiles>",
+					"Generated on every [25] tiles <in [Coast] tiles>",
+					"Generated on every [30] tiles <in [Ocean] tiles>",
+					"Doesn't generate naturally <within [15] tiles of a [Bamboo]>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Red and blue Basculin get along so poorly, they'll start fighting instantly. These Pokémon are very hostile.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Bass Fish Pokémon, found commonly in bodies of water far away from Bamboo in smaller landmasses.  Can be fished or domesticated as a mount."
+            }
+        ]
+	},
+	{
+		"name": "Krabbys",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aquatic",
+		"terrainsCanBeFoundOn": ["Coast"],
+		"food": 1,
+		"improvedBy": ["Fishing Boats"],
+		"improvementStats": { "gold": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [Coast] tiles>",
+					"Doesn't generate naturally <in tiles not adjacent to [Land] tiles>",
+					"Must not be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'Its pincers are not only powerful weapons, they are used for balance when walking sideways.' - Kanto Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Crab Pokémon, found commonly in bodies of water adjacent to land in smaller landmasses.  Can be domesticated as an amphibious mount."
+            }
+        ]
+	},
+	{
+		"name": "Wailmers",
+		"resourceType": "Bonus",
+		"resourceCategory": "Aquatic",
+		"terrainsCanBeFoundOn": ["Coast", "Ocean"],
+		"gold": 1,
+		"improvedBy": ["Fishing Boats"],
+		"improvementStats": { "gold": 1 },
+		"uniques": [
+					"Bonus Pokémon",
+					"Provides a one-time bonus of [+50 Food, +50 Gold] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [Coast] tiles> <within [4] tiles of a [Iceweed]>",
+					"Generated on every [35] tiles <in [Coast] tiles>",
+					"Generated on every [30] tiles <in [Ocean] tiles>",
+					"Doesn't generate naturally <in tiles adjacent to [Land] tiles>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "'While this Pokémon usually lives in the sea, it can survive on land, although not too long. It loses vitality if its body becomes dried out.' - Hoenn Pokédex"
+             },
+            { "separator": true },
+            {
+                "text": "Whale Pokémon, found commonly in bodies of water far from land, especially in colder seas.  Can be hunted or, with enough expertise, domesticated."
+            }
+        ]
+	},
+	// Stockpiled Strategic resources
+	{
+		"name": "Wonder Orb",
+		"resourceType": "Strategic",
+		"gold": 1,
+		"uniques": [
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "These orbs can be gathered by destroying Pokémon Dens or from Treasure Chests.  Used to build World Wonders, train mercenary heroes, and for some advanced forms of Pokémon evolution such as Mega Evolution."
+            }
+        ]
+	},
+	{
+		"name": "Slaves",
+		"resourceType": "Strategic",
+		"uniques": [
+			"Not shown on world screen <when number of [Slaves] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "These poor humans have been bound, flagellated, and forced to work and serve as if fleshy robots.  As your technology increases, your people will develop a distaste for slavery and will demand its abolition."
+            }
+        ]
+	},
+	{
+		"name": "Wood",
+		"resourceType": "Strategic",
+		"uniques": [
+			"Not shown on world screen <when number of [Wood] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Material gathered from trees via Lumberjacks and Lumber Camps, as a basic resource for construction of buildings, vehicles, and tile improvements."
+            }
+        ]
+	},
+	{
+		"name": "Stone",
+		"resourceType": "Strategic",
+		"uniques": [
+			"Not shown on world screen <when number of [Stone] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Material gathered from rocks via Quarries built by Diggers, as a basic resource for construction of buildings, certain weapons, and tile improvements."
+            }
+        ]
+	},
+	{
+		"name": "Fiber",
+		"resourceType": "Strategic",
+		"gold": 1,
+		"uniques": [
+			"Not shown on world screen <when number of [Fiber] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Material that can be gathered from various types of fibers, such as cotton, Wooloo wool, vines, or resin.  Needed to make strings, including bowstrings, and for other types of crafting."
+            }
+        ]
+	},
+	{
+		"name": "Water",
+		"resourceType": "Strategic",
+		"food": 1,
+		"uniques": [
+			"Not shown on world screen <when number of [Water] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Resource obtained from fresh water, either from surface, deep aquifers, or desalination.  Used for terraforming, but also for city growth."
+            }
+        ]
+	},
+	{
+		"name": "Mana",
+		"resourceType": "Strategic",
+		"uniques": [
+			"Not shown on world screen <when number of [Mana] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Resource that can be obtained from flowers and often in bursts in the Magic Tree.  Needed to cast magic abilities or train magical units."
+            }
+        ]
+	},
+	{
+		"name": "Steel",
+		"resourceType": "Strategic",
+		"uniques": [
+			"Not shown on world screen <when number of [Steel] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Iron can be smelted into Steel, a powerful metal used to build all sorts of modern structures, machines, and equipment."
+            }
+        ]
+	},
+	{
+		"name": "Great Work",
+		"resourceType": "Strategic",
+		"culture": 1,
+		"uniques": [
+			"Not shown on world screen <when number of [Great Work] is less than [1]> <hidden from users>",
+			"Stockpiled"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Resource that can be generated from certain great people, that can be used to create media luxury resources."
+            }
+        ]
+	},
+	{
+		"name": "Tourism",
+		"resourceType": "Strategic",
+		"uniques": [
+			"Stockpiled",
+			"Not shown on world screen <when number of [Tourism] is less than [1]> <hidden from users>",
+			"Cannot be traded"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Can be accumulated by many late game sources of pleasure, and triggers events that benefit your empire as you hit thresholds.  An empire that has more Tourism than every other civilization's Culture will win a Culture Victory."
+            }
+        ]
+	},
+	{
+		"name": "Data",
+		"resourceType": "Strategic",
+		"gold": 1,
+		"uniques": [
+			"Stockpiled",
+			"Not shown on world screen <when number of [Data] is less than [1]> <hidden from users>",
+			"Cannot be traded"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Late-game resource that can be generated from Data Centers.  Needed for powerful digital projects, robotics, and AI."
+            }
+        ]
+	},
+	// Accumulated strategic resources
+	{
+		"name": "Iron",
+		"resourceType": "Strategic",
+		"resourceCategory": "Metallic",
+		"revealedBy": "Bronze Working",
+		"terrainsCanBeFoundOn": [
+			"Hill",
+			"Crystallic",
+			"Tundra",
+			"Permafrost",
+			"Wasteland"
+		],
+		"gold": 1,
+		"science": 1,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { "production": 5 },
+		"uniques": [
+			"Guaranteed with Strategic Balance resource option",
+			"Provides a one-time bonus of [+80 Production] to the closest city when removed <(modified by game speed)>",
+			"Not shown on world screen <when number of [Iron] is less than [1]> <hidden from users>",
+			"Generated with weight [35] <in [Hill] tiles>",
+			"Generated on every [35] tiles <in [Hill] tiles>",
+			"Generated with weight [35] <in [Crystallic] tiles>",
+			"Generated with weight [20] <in [Wasteland] tiles> <in tiles without [Hill]>",
+			"Generated with weight [20] <in [Tundra] tiles> <in tiles without [Hill]>",
+			"Generated with weight [20] <in [Permafrost] tiles> <in tiles without [Hill]>",
+			"Minor deposits generated with weight [10] <in [{Grassland} {Hill}] tiles>",
+			"Minor deposits generated with weight [10] <in [Wasteland] tiles>",
+			"Minor deposits generated with weight [20] <in [{Plains} {Hill}] tiles>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "Metallic resource that can be commonly found in hilly or crystallic regions.  Needed to make many types of equipment, as well as producing Steel."
+            }
+        ]
+	},
+	{
+		"name": "Apricorn",
+		"resourceType": "Strategic",
+		"resourceCategory": "Fruit",
+		//"revealedBy": "Mining",
+		"terrainsCanBeFoundOn": [
+			"Forest"
+		],
+		"food": 1,
+		"improvedBy": ["Orchard"],
+		"improvementStats": { "food": 2 },
+		"uniques": [
+			"Not shown on world screen <when number of [Apricorn] is less than [1]> <hidden from users>",
+			"Provides a one-time bonus of [+50 Science] to the closest city when removed <(modified by game speed)>",
+			"Generated with weight [50] <in [Enchanted] tiles> <in tiles without [Hill]> <in [Hybrid] Regions>",
+			"Generated with weight [30] <in [Haunted] tiles> <in tiles without [Hill]> <in [Hybrid] Regions>",
+			"Generated with weight [30] <in [Forest] tiles> <in tiles without [Hill]> <in [Hybrid] Regions>",
+			"Generated with weight [20] <in [Marsh] tiles> <in tiles without [Hill]> <in [Hybrid] Regions>",
+			"Generated with weight [20] <in [Tropical] tiles> <in tiles without [Hill]> <in [Hybrid] Regions>",
+			"Minor deposits generated with weight [10] <in [Grassland] tiles> <in tiles without [Hill]> <in [Grassland] Regions>",
+			"Minor deposits generated with weight [10] <in [Forest] tiles> <in [Hybrid] Regions>",
+			"Minor deposits generated with weight [10] <in [Forest] tiles> <in [Hybrid] Regions>",
+			"Minor deposits generated with weight [30] <in [Savannah] tiles> <in [Hybrid] Regions>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "These mysterious fruits can be gathered from Apricorn trees mainly in temperate Hybrid regions, and is needed to catch Pokémon."
+            }
+        ]
+	},
+	{
+		"name": "Powder",
+		"resourceType": "Strategic",
+		"resourceCategory": "Geologic",
+		"terrainsCanBeFoundOn": [
+			"Alpine",
+			"Hill",
+			"Ruins",
+			"Wasteland"
+		],
+		"gold": 1,
+		"science": 1,
+		"improvedBy": ["Quarry","Slave Quarry"],
+		"improvementStats": { "gold": 3 },
+		"uniques": [
+			"Guaranteed with Strategic Balance resource option",
+			"Provides a one-time bonus of [+100 Production] to the closest city when removed <(modified by game speed)>",
+			"Not shown on world screen <when number of [Powder] is less than [1]> <hidden from users>",
+			"Generated with weight [40] <in [Alpine] tiles> <in tiles adjacent to [Mountain] tiles>",
+			"Generated on every [5] tiles <in [Alpine] tiles>",
+			"Generated with weight [35] <in [Hill] tiles> <in tiles adjacent to [Mountain] tiles>",
+			"Generated with weight [30] <in [Volcanic] tiles>",
+			"Generated with weight [25] <in [Crystallic] tiles>",
+			"Generated with weight [20] <in [{Desert} {Hill}] tiles>",
+			"Minor deposits generated with weight [20] <in [{Wasteland} {Ruins}] tiles>",
+			"Minor deposits generated with weight [10] <in [{Ashlands} {Hill}] tiles>",
+			"Minor deposits generated with weight [10] <in [Plains] tiles>",
+			"Minor deposits generated with weight [10] <in [{Tundra} {Hill}] tiles>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "Black powder quarried from hills in desert or mountainous climates, these can be used to make gunpowder, fireworks, or dynamite to clear rock."
+            }
+        ]
+	},
+	{
+		"name": "Coal",
+		"resourceType": "Strategic",
+		"resourceCategory": "Geologic",
+		//"revealedBy": "Mining",
+		"terrainsCanBeFoundOn": [
+			"Ashlands",
+			"Tundra",
+			"Alpine",
+			"Grassland",
+			"Haunted",
+			"Enchanted",
+			"Tropical",
+			"Marsh",
+			"Plains",
+			"Savannah"
+		],
+		"gold": 1,
+		"science": 1,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { "production": 5 },
+		"uniques": [
+			"Guaranteed with Strategic Balance resource option",
+			"Provides a one-time bonus of [+150 Production] to the closest city when removed <(modified by game speed)>",
+			"Not shown on world screen <when number of [Coal] is less than [1]> <hidden from users>",
+			"Generated on every [40] tiles <in [Tundra] tiles> <in tiles without [Hill]>",
+			"Generated with weight [30] <in [Haunted] tiles> <in tiles without [Hill]>",
+			"Generated with weight [25] <in [Grassland] tiles> <in tiles without [Hill]>",
+			"Generated on every [40] tiles <in [Grassland] tiles> <in tiles without [Hill]>",
+			"Generated with weight [20] <in [Plains] tiles> <in tiles without [Hill]>",
+			"Generated with weight [20] <in [Savannah] tiles>",
+			"Generated with weight [20] <in [Marsh] tiles>",
+			"Generated with weight [20] <in [Ashlands] tiles> <in tiles without [Hill]>",
+			"Minor deposits generated with weight [10] <in [{Fertile} {non-[Hill]}] tiles>",
+			"Minor deposits generated with weight [10] <in [Marsh] tiles>",
+			"Minor deposits generated with weight [10] <in [Enchanted] tiles> <in tiles without [Hill]>",
+			"Minor deposits generated with weight [20] <in [Plains] tiles> <in tiles without [Hill]>",
+			"Doesn't generate naturally <in [Hill] tiles>",
+			"Doesn't generate naturally <in [Hill] Regions>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "These black rocks can be found in tiles without hills, especially in Grassland and Tundra biomes.  They can be used for heat or burnt as a greenhouse gas to power an Industrial Revolution."
+            }
+        ]
+	},
+	{
+		"name": "Rubber",
+		"resourceType": "Strategic",
+		"resourceCategory": "Plant",
+		//"revealedBy": "Mining",
+		"terrainsCanBeFoundOn": [
+			"Tropical",
+			"Ashlands",
+			"Marsh",
+			"Forest"
+		],
+		"gold": 1,
+		"improvedBy": ["Plantation","Slave Plantation"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+			"Not shown on world screen <when number of [Rubber] is less than [1]> <hidden from users>",
+			"Provides a one-time bonus of [+50 Gold] to the closest city when removed <(modified by game speed)>",
+			"Generated with weight [45] <in [{Tropical} {Forest}] tiles> <in [Tropical] Regions>",
+			"Generated with weight [50] <in [{Tropical} {Forest}] tiles>",
+			"Generated on every [30] tiles <in [{Tropical} {Forest}] tiles>",
+			"Minor deposits generated with weight [10] <in [{Hot} {Forest}] tiles>",
+			"Minor deposits generated with weight [10] <in [Marsh] tiles>",
+			"Doesn't generate naturally <in [{non-[Hot]} {non-[Marsh]}] tiles>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "This plant-based material can be found in rare trees in Tropical regions, but can be propagated fairly easily in the tropics.  They can be used to produce everything from latex clothing to vehicles."
+            }
+        ]
+	},
+	{
+		"name": "Power",
+		"resourceType": "Strategic",
+		"gold": 1,
+		"uniques": [
+			"Cannot be traded"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Generated from power plants, energy is what powers the modern world."
+            }
+        ]
+	},
+	{
+		"name": "Oil",
+		"resourceType": "Strategic",
+		//"revealedBy": "Mining",
+		"terrainsCanBeFoundOn": [
+			"Coast",
+			"Ocean",
+			"Desert",
+			"Savannah",
+			"Plains",
+			"Ashlands",
+			"Volcanic",
+			"Wasteland",
+			"Tundra",
+			"Permafrost"
+		],
+		"science": 2,
+		//"improvedBy": [
+		//	"Oil well",
+		//	"Offshore Platform"
+		//],
+		//"improvementStats": {
+		//	"production": 2
+		//},
+		"uniques": [
+			"Guaranteed with Strategic Balance resource option",
+			"Not shown on world screen <when number of [Oil] is less than [1]> <hidden from users>",
+			"Provides a one-time bonus of [+80 Science] to the closest city when removed <(modified by game speed)>",
+			"Generated with weight [60] <in [Desert] tiles>",
+			"Generated with weight [60] <in [Wasteland] tiles>",
+			"Generated with weight [50] <in [{Featureless} {Volcanic}] tiles>",
+			"Generated with weight [50] <in [{Featureless} {Permafrost}] tiles>",
+			"Generated with weight [40] <in [{Featureless} {Tundra}] tiles>",
+			"Generated with weight [20] <in [{Featureless} {Plains}] tiles>",
+			"Generated with weight [100] <in [{Featureless} {Coast}] tiles>",
+			"Minor deposits generated with weight [20] <in [Savannah] tiles>",
+			"Minor deposits generated with weight [20] <in [{Featureless} {Ashlands}] tiles>",
+			"Minor deposits generated with weight [10] <in [{Featureless} {Plains}] tiles>",
+			"Deposits in [Coast] tiles always provide [4] resources",
+			"Deposits in [Ocean] tiles always provide [10] resources",
+			"Generated on every [40] tiles <in [{Featureless} {Coast}] tiles>",
+			"Generated on every [50] tiles <in [{Featureless} {Ocean}] tiles>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "Viscous liquid found deep underground or underwater, petroleum can be used as fuel for machines or energy."
+            }
+        ]
+	},
+	{
+		"name": "Uranium",
+		"resourceType": "Strategic",
+		"resourceCategory": "Metallic",
+		//"revealedBy": "Mining",
+		"terrainsCanBeFoundOn": [
+			"Hill",
+			"Crystallic",
+			"Wasteland",
+			"Tundra",
+			"Permafrost"
+		],
+		"gold": 1,
+		"science": 1,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { "science": 3, "production": 5 },
+		"uniques": [
+			"Not shown on world screen <when number of [Uranium] is less than [1]> <hidden from users>",
+			"Provides a one-time bonus of [+100 Production, +100 Science] to the closest city when removed <(modified by game speed)>",
+			"Generated with weight [45] <in [Wasteland] tiles> <in [Wasteland] Regions>",
+			"Generated with weight [50] <in [Wasteland] tiles>",
+			"Generated with weight [40] <in [Permafrost] tiles>",
+			"Generated with weight [20] <in [Crystallic] tiles>",
+			"Generated on every [10] tiles <in [Wasteland] tiles>",
+			"Minor deposits generated with weight [20] <in [Tundra] tiles>",
+			"Minor deposits generated with weight [10] <in [Crystallic] tiles>",
+			"Minor deposits generated with weight [10] <in [Hill] tiles>",
+			"Doesn't generate naturally <in [non-[Hill]] tiles>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "These rare glowing stones found heavily in wasteland regions can be used to power the nuclear technology that is said to have destroyed the first civilizations."
+            }
+        ]
+	},
+	{
+		"name": "Alloys",
+		"resourceType": "Strategic",
+		"resourceCategory": "Metallic",
+		//"revealedBy": "Mining",
+		"terrainsCanBeFoundOn": [
+			"Hill",
+			"Crystallic",
+			"Crystals",
+			"Enchanted",
+			"Alpine",
+			"Desert",
+			"Tundra",
+			"Permafrost"
+		],
+		"gold": 1,
+		"science": 1,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { "production": 5 },
+		"uniques": ["Metallic",
+			"Not shown on world screen <when number of [Alloys] is less than [1]> <hidden from users>",
+			"Provides a one-time bonus of [+150 Production] to the closest city when removed <(modified by game speed)>",
+			"Generated with weight [45] <in [{Crystallic} {Crystals}] tiles> <in [Crystallic] Regions>",
+			"Generated with weight [50] <in [{Crystallic} {Crystals}] tiles>",
+			"Generated with weight [30] <in [Enchanted] tiles>",
+			"Generated with weight [30] <in [Permafrost] tiles>",
+			"Generated with weight [30] <in [Desert] tiles>",
+			"Generated on every [5] tiles <in [{Crystallic} {Crystals}] tiles>",
+			"Minor deposits generated with weight [20] <in [Tundra] tiles>",
+			"Minor deposits generated with weight [10] <in [Alpine] tiles>",
+			"Minor deposits generated with weight [10] <in [Hill] tiles>",
+			"Doesn't generate naturally <in [{non-[Hill]} {non-[Crystallic]}] tiles>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "Rare earth elements that can be used to make everything from electronics to aircraft and satellites.  Found most frequently in crystallic regions."
+            }
+        ]
+	},
+	{
+		"name": "Element Zero",
+		"resourceType": "Strategic",
+		"resourceCategory": "Metallic",
+		//"revealedBy": "Mining",
+		"terrainsCanBeFoundOn": [
+			"Crystallic",
+			"Enchanted",
+			"Haunted",
+			"Wasteland",
+			"Ashlands",
+			"Volcanic",
+			"Marsh",
+			"Savannah",
+			"Barren",
+			"Alpine",
+			"Tropical",
+			"Desert",
+			"Grassland",
+			"Plains",
+			"Tundra",
+			"Permafrost",
+			"Ocean"
+		],
+		"production": 5,
+		"science": 3,
+		"improvedBy": ["Mine","Slave Mine"],
+		"improvementStats": { 
+			"production": 10, 
+			"science": 10 
+		},
+		"uniques": [
+			"Not shown on world screen <when number of [Element Zero] is less than [1]> <hidden from users>",
+			"Provides a one-time bonus of [+300 Production, +250 Science] to the closest city when removed <(modified by game speed)>",
+			"Generated on every [3] tiles <in [Barren] tiles> <in tiles adjacent to [Natural Wonder] tiles>",
+			"Generated on every [10] tiles <in tiles adjacent to [Natural Wonder] tiles>",
+			"Doesn't generate naturally <in tiles not adjacent to [Natural Wonder] tiles>"
+		],
+		"majorDepositAmount": { "sparse": 2, "default": 4, "abundant": 8 },
+		"minorDepositAmount": { "sparse": 1, "default": 2, "abundant": 4 },
+		 "civilopediaText": [
+            {
+                "text": "Only found on mysterious islands in the oceans, this rare resource from the stars can be used to power technology so advanced it becomes indistinguishable from magic."
+            }
+        ]
+	},
+	// Manufactured Luxury resources
+	{
+		"name": "Pots",
+		"resourceType": "Luxury",
+		"resourceCategory": "Crafts",
+		"uniques": [
+					"Doesn't generate naturally"
+				],
+		 "civilopediaText": [
+            {
+                "text": "Pottery made from clay and human craftsmanship.  Has both utilitarian and aesthetic uses, especially to making food."
+            }
+        ]
+	},
+	{
+		"name": "Scroll",
+		"resourceType": "Luxury",
+		"resourceCategory": "Crafts",
+		"uniques": [
+					"Doesn't generate naturally"
+				],
+		 "civilopediaText": [
+            {
+                "text": "Scrolls made from reeds and papyrus, useful as an early writing tool in the absence of proper paper.  Also has mystical qualities that can be used for magic."
+            }
+        ]
+	},
+	// Spawned Luxury resources
+	{
+		"name": "Apples",
+		"resourceType": "Luxury",
+		"resourceCategory": "Fruit",
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Enchanted", "Alpine", "Forest", "Hill"],
+		"food": 2,
+		"improvedBy": ["Orchard"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+					"Edible",
+					"Provides a one-time bonus of [+100 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [{Plains} {Hill}] tiles> <within [2] tiles of a [Mountain]>",
+					"Generated on every [20] tiles <in [{Grassland} {Forest}] tiles> <within [2] tiles of a [Mountain]>",
+					"Generated on every [35] tiles <in [Enchanted] tiles>",
+					"Generated on every [40] tiles <in [Alpine] tiles>",
+					"Generated on every [60] tiles <in [{Grassland} {Hill}] tiles>",
+					"Doesn't generate naturally <in [non-[Fertile]] tiles>",
+					"Doesn't generate naturally <not within [5] tiles of a [Mountain]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "A delicious fruit found mainly in Grasslands and Plains, near mountains.  They can be eaten raw or baked into delicacies."
+            }
+        ]
+	},
+	
+	{
+		"name": "Bananas",
+		"resourceType": "Luxury",
+		"resourceCategory": "Fruit",
+		"terrainsCanBeFoundOn": ["Tropical", "Savannah", "Ashlands", "Grassland", "Rich Soil", "Forest"],
+		"food": 2,
+		"improvedBy": ["Orchard"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+					"Edible",
+					"Plant",
+					"Provides a one-time bonus of [+100 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [{Tropical} {Forest}] tiles> <within [2] tiles of a [Mountain]>",
+					"Generated on every [20] tiles <in [{Savannah} {Rich Soil}] tiles>",
+					"Generated on every [40] tiles <in [{Tropical} {Forest}] tiles>",
+					"Generated on every [40] tiles <in [Savannah] tiles>",
+					"Generated on every [40] tiles <in [Ashlands] tiles>",
+					"Generated on every [40] tiles <in [{Grassland} {Forest}] tiles>",
+					"Doesn't generate naturally <not within [3] tiles of a [Tropical]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "Fruit found in or near tropical regions, especially near mountains.  Delicious even when eaten raw."
+            }
+        ]
+	},
+	{
+		"name": "Citrus",
+		"resourceType": "Luxury",
+		"resourceCategory": "Fruit",
+		"terrainsCanBeFoundOn": ["Tropical", "Savannah", "Ashlands", "Plains", "Grassland", "Forest", "Hill"],
+		"food": 2,
+		"improvedBy": ["Orchard"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+					"Edible",
+					"Plant",
+					"Provides a one-time bonus of [+100 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [{Tropical} {Forest} {Hill}] tiles>",
+					"Generated on every [25] tiles <in [{Tropical} {Hill}] tiles>",
+					"Generated on every [30] tiles <in [Savannah] tiles>",
+					"Generated on every [40] tiles <in [{Grassland} {Hill}] tiles> <within [2] tiles of a [Hot]>",
+					"Generated on every [40] tiles <in [Plains] tiles> <within [2] tiles of a [Hot]>",
+					"Generated on every [60] tiles <in [{Ashlands} {Hill}] tiles>",
+					"Doesn't generate naturally <in [non-[Fertile]] tiles>",
+					"Doesn't generate naturally <not within [3] tiles of a [Hill]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "Fruit found in hot climates, mainly in or near hills.  Even when eaten raw, it is said its juices can prevent seaborne illnesses."
+            }
+        ]
+	},
+	{
+		"name": "Flowers",
+		"resourceType": "Luxury",
+		"resourceCategory": "Aromatic",
+		"gold": 2,
+		"improvedBy": ["Apothecary"],
+		"terrainsCanBeFoundOn": ["Enchanted","Forest","Rich Soil"],
+		"uniques": [
+					"Plant",
+					"Provides a one-time bonus of [+100 Faith] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [20] tiles <in [Enchanted] tiles>",
+					"Generated on every [20] tiles <in [{Enchanted} {Forest}] tiles>",
+					"Generated on every [50] tiles <in [Rich Soil] tiles>",
+					"Doesn't generate naturally <in tiles without [Rich Soil]> <in tiles without [Enchanted]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "These beautiful plants grow most frequently in Enchanted Tiles, and can be found rarely in rich soil.  Appeals both aesthetically and magically."
+            }
+        ]
+	},
+	{
+		"name": "Grapes",
+		"resourceType": "Luxury",
+		"resourceCategory": "Fruit",
+		"terrainsCanBeFoundOn": ["Grassland", "Enchanted", "Haunted", "Hill"],
+		"food": 2, 
+		"improvedBy": ["Orchard"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+					"Edible",
+					"Plant",
+					"Provides a one-time bonus of [+100 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [15] tiles <in [{Grassland} {Hill}] tiles>",
+					"Generated on every [25] tiles <in [{Enchanted} {Hill}] tiles>",
+					"Generated on every [35] tiles <in [{Haunted} {Hill}] tiles>",
+					"Generated on every [50] tiles <in [Grassland] tiles>",
+					"Must be on [1] largest landmasses",
+					"Doesn't generate naturally <in [non-[Fertile]] tiles>",
+					"Doesn't generate naturally <not within [2] tiles of a [Coast]>"
+				],
+		 "civilopediaText": [
+            {
+                "text": "Fruits that grow on vines on hills near the sea.  Can be eaten raw or processed into wine."
+            }
+        ]
+	},
+	{
+		"name": "Oranges",
+		"resourceType": "Luxury",
+		"resourceCategory": "Fruit",
+		"terrainsCanBeFoundOn": ["Grassland", "Tropical", "Alpine", "Forest", "Hill"],
+		"food": 2, 
+		"improvedBy": ["Orchard"],
+		"improvementStats": { "gold": 2 },
+		"uniques": [
+					"Edible",
+					"Plant",
+					"Provides a one-time bonus of [+100 Food] to the closest city when removed <(modified by game speed)>",
+					"Generated on every [10] tiles <in [{Grassland} {Forest} {Hill}] tiles>",
+					"Generated on every [15] tiles <in [{Grassland} {Forest}] tiles>",
+					"Generated on every [15] tiles <in [Alpine] tiles>",
+					"Generated on every [30] tiles <in [{Tropical} {Forest}] tiles>",
+					"Doesn't generate naturally <in [non-[Fertile]] tiles>",
+					"Doesn't generate naturally <not within [9] tiles of a [Bamboo]>",
+					"Must be on [1] largest landmasses"
+				],
+		 "civilopediaText": [
+            {
+                "text": "Fruits that grow near bamboo, especially in Grassland forests.  Can be eaten raw, with many health effects."
+            }
+        ]
+	}
+	
+]

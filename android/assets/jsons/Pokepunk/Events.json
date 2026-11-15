@@ -1,0 +1,548 @@
+[
+	/*{
+		"name": "Rainfall",
+		"text": "Rainfall",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "Turn this tile into a [Rain] tile",
+				"uniques": [
+					"Turn this tile into a [Rain] tile <for [2] turns>"
+				]
+			}
+		]
+	},*/
+	//Pokémon Events
+	{
+		"name": "Drink Lava",
+		"text": "Drink Lava",
+		"presentation": "None",
+		"choices": [
+			{
+				"text": "Remove Lava from this tile and heal 100 HP",
+				"uniques": [
+					"[This Unit] heals [100] HP",
+					"Remove [Lava] features from this tile"
+				]
+			}
+		]
+	},
+	//Wonder Events
+	{
+		"name": "Searching the Land",
+		"text": "Your scouts have returned from the wilderness, bringing a cohort of many peoples from other tribes that have come to join your civilization.  What do you want to do with them?",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "Have them found a new settlement.",
+				"uniques": [
+					"Play [event_tribal] sound",
+					"Free [Settler] appears"
+				]
+			},
+			{
+				"text": "Have them join your city.",
+				"uniques": [
+					"Play [event_tribal] sound",
+					"[+3] population [in capital]"
+				]
+			},
+			{
+				"text": "Have them improve your city.",
+				"uniques": [
+					"Play [event_tribal] sound",
+					"[2] free [Builder] units appear"
+				]
+			}
+		]
+	},
+	//Worker Events
+	{
+		"name": "Crop Propagation",
+		"text": "Which crop do you want to propagate on this tile?",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "Wheat",
+				"uniques": [
+					"Play [event_tribal] sound",
+					"Add [Wheat] to this tile",
+					"Only available <in [Fertile|Arid|Rich Soil] tiles> <with [Wheat]>"
+				]
+			},
+			{
+				"text": "Rice",
+				"uniques": [
+					"Play [event_tribal] sound",
+					"Add [Rice] to this tile",
+					"Only available <in [Grassland|Tropical|Rich Soil] tiles> <with [Rice]>"
+				]
+			},
+			{
+				"text": "Corn",
+				"uniques": [
+					"Play [event_tribal] sound",
+					"Add [Corn] to this tile",
+					"Only available <in [Grassland|Tropical|Ashlands|Rich Soil] tiles> <with [Corn]>"
+				]
+			},
+			{
+				"text": "Potatoes",
+				"uniques": [
+					"Play [event_tribal] sound",
+					"Add [Potatoes] to this tile",
+					"Only available <in [Grassland|Alpine|Plains|Tropical|Rich Soil] tiles> <with [Potatoes]>"
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Pokémon",
+		"text": "Breeds a random Herdable Bonus Pokémon on Plains or Savannahs.  By default will breed a Ponytas on Plains and a Girafarig on Savannah",
+		"presentation": "None",
+		"choices": [
+			{
+				"text": "Breed Ponytas",
+				"uniques": [
+					"Triggers a [Breed Ponytas] event",
+					"Add [Ponytas] to this tile",
+					"[-50]% weight to this choice for AI decisions",
+					"Only available <in [Plains] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Girafarigs",
+				"uniques": [
+					"Triggers a [Breed Girafarigs] event",
+					"Add [Girafarigs] to this tile",
+					"[-50]% weight to this choice for AI decisions",
+					"Only available <in [Savannah] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Mudbrays",
+				"uniques": [
+					"Triggers a [Breed Mudbrays] event",
+					"Add [Mudbrays] to this tile",
+					"Only available <in [Plains|Savannah] tiles> <when number of [Owned [Mudbrays] Tiles] is more than [0]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Numels",
+				"uniques": [
+					"Triggers a [Breed Numels] event",
+					"Add [Numels] to this tile",
+					"Only available <in [Savannah] tiles> <when number of [Owned [Numels] Tiles] is more than [0]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Cufants",
+				"uniques": [
+					"Triggers a [Breed Cufants] event",
+					"Add [Cufants] to this tile",
+					"Only available <in [Savannah] tiles> <when number of [Owned [Cufants] Tiles] is more than [0]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Miltanks",
+				"uniques": [
+					"Triggers a [Breed Miltanks] event",
+					"Add [Miltanks] to this tile",
+					"Only available <in [Plains|Savannah] tiles> <when number of [Owned [Miltanks] Tiles] is more than [0]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Wooloos",
+				"uniques": [
+					"Triggers a [Breed Wooloos] event",
+					"Add [Wooloos] to this tile",
+					"Only available <in [{Plains} {Hill}] tiles> <when number of [Owned [Wooloos] Tiles] is more than [0]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Tauroses",
+				"uniques": [
+					"Triggers a [Breed Tauroses] event",
+					"Add [Tauroses] to this tile",
+					"Only available <in [Plains|Savannah] tiles> <when number of [Owned [Tauroses] Tiles] is more than [0]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Bouffalants",
+				"uniques": [
+					"Triggers a [Breed Bouffalants] event",
+					"Add [Bouffalants] to this tile",
+					"Only available <in [Plains|Savannah] tiles> <when number of [Owned [Bouffalants] Tiles] is more than [0]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Breed Skiddos",
+				"uniques": [
+					"Triggers a [Breed Skiddos] event",
+					"Add [Skiddos] to this tile",
+					"Only available <in [Plains|Savannah] tiles> <in [Hill] tiles> <when number of [Owned [Skiddos] Tiles] is more than [0]> <hidden from users>"
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Ponytas",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Ponytas!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Ponytas] to this tile" 
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Mudbrays",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Mudbrays!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Mudbrays] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Numels",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Numels!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Numels] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Cufants",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Cufants!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Cufants] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Girafarigs",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Girafarigs!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Girafarigs] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Miltanks",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Miltanks!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Miltanks] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Wooloos",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Wooloos!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Wooloos] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Tauroses",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Tauroses!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Tauroses] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Bouffalants",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Bouffalants!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Bouffalants] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Breed Skiddos",
+		"text": "Your Pokémon Breeder has managed to successfully bred a Skiddos!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Skiddos] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Excavate for Resource",
+		"text": "Attempts to expose a random geologic or metallic common resource on a Hill.",
+		"presentation": "None",
+		"choices": [
+			{
+				"text": "Excavation Failed",
+				"uniques": [
+					"Triggers a [Excavation Failed] event",
+					"[60]% weight to this choice for AI decisions"
+				]
+			},
+			{
+				"text": "Marble Revealed",
+				"uniques": [
+					"Triggers a [Marble Revealed] event",
+					"Add [Marble] to this tile",
+					"Unavailable <in [Permafrost|Tundra|Wasteland|Crystallic|Tropical] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Clay Revealed",
+				"uniques": [
+					"Triggers a [Clay Revealed] event",
+					"Add [Clay] to this tile",
+					"Unavailable <in [Cold|Tropical] tiles> <hidden from users>",
+					"Unavailable <not within [3] tiles of a [River]> <hidden from users>"
+				]
+			},
+			{
+				"text": "Copper Revealed",
+				"uniques": [
+					"Triggers a [Copper Revealed] event",
+					"Add [Copper] to this tile"
+				]
+			},
+			{
+				"text": "Ore Revealed",
+				"uniques": [
+					"Triggers a [Ore Revealed] event",
+					"Add [Ore] to this tile",
+					"[-50]% weight to this choice for AI decisions"
+				]
+			},
+			{
+				"text": "Iron Revealed",
+				"uniques": [
+					"Triggers a [Iron Revealed] event",
+					"Add [Iron] to this tile",
+					"Only available <after discovering [Printing]> <hidden from users>" //TODO: Make this whatever reveals the resource 
+				]
+			},
+			{
+				"text": "Powder Revealed",
+				"uniques": [
+					"Triggers a [Powder Revealed] event",
+					"Add [Powder] to this tile",
+					"Only available <after discovering [Printing]> <hidden from users>" //TODO: Make this whatever reveals the resource 
+				]
+			},
+			{
+				"text": "Uranium Revealed",
+				"uniques": [
+					"Triggers a [Uranium Revealed] event",
+					"Add [Uranium] to this tile",
+					"Only available <after discovering [Printing]> <hidden from users>" //TODO: Make this whatever reveals the resource 
+				]
+			},
+			{
+				"text": "Alloys Revealed",
+				"uniques": [
+					"Triggers a [Alloys Revealed] event",
+					"Add [Alloys] to this tile",
+					"Only available <after discovering [Printing]> <hidden from users>" //TODO: Make this whatever reveals the resource 
+				]
+			}
+		]
+	},
+	{
+		"name": "Excavation Failed",
+		"text": "Try as she might, your Prospector's attempt to find new resources proved to be fruitless...",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+				]
+			}
+		]
+	},
+	{
+		"name": "Marble Revealed",
+		"text": "Your Prospector has managed to successfully dig up Marble!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Marble] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Clay Revealed",
+		"text": "Your Prospector has managed to successfully dig up Clay!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Clay] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Copper Revealed",
+		"text": "Your Prospector has managed to successfully dig up Copper!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Copper] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Ore Revealed",
+		"text": "Your Prospector has managed to successfully dig up Ore!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Ore] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Iron Revealed",
+		"text": "Your Prospector has managed to successfully dig up Iron!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Iron] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Powder Revealed",
+		"text": "Your Prospector has managed to successfully dig up Powder!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Powder] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Uranium Revealed",
+		"text": "Your Prospector has managed to successfully dig up Uranium!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Uranium] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Alloys Revealed",
+		"text": "Your Prospector has managed to successfully dig up Alloys!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Alloys] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	}
+]

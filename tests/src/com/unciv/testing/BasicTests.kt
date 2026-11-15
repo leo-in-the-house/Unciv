@@ -36,7 +36,7 @@ class BasicTests {
     fun loadRulesets() {
         if (RulesetCache.isEmpty())
             RulesetCache.loadRulesets(noMods = true)
-        ruleset = RulesetCache[BaseRuleset.Civ_V_Vanilla.fullName]!!
+        ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName]!!
     }
 
     @Test
@@ -207,7 +207,7 @@ class BasicTests {
 
     @Test
     fun allBeliefRelatedUniquesHaveTheirUniqueTypes() {
-        val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName]!!.clone() // vanilla doesn't have beliefs
+        val ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName]!!.clone() // vanilla doesn't have beliefs
         val beliefs = ruleset.beliefs.values
         var allOK = true
         for (belief in beliefs) {

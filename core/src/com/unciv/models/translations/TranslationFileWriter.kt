@@ -540,7 +540,7 @@ object TranslationFileWriter {
             ::defaultFileFilter
         )
         constructor(jsonsFolder: FileHandle, fileFilter: (File) -> Boolean = ::defaultFileFilter) : this(
-            RulesetCache[jsonsFolder.parent().name()]?.takeIf { it.modOptions.isBaseRuleset } ?: RulesetCache[BaseRuleset.Civ_V_GnK.fullName]!!,
+            RulesetCache[jsonsFolder.parent().name()]?.takeIf { it.modOptions.isBaseRuleset } ?: RulesetCache[BaseRuleset.Pokepunk.fullName]!!,
             jsonsFolder, fileFilter
         )
 

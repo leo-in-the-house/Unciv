@@ -149,7 +149,7 @@ class RulesetValidatorTests {
         game.ruleset.name = ""
         game.ruleset.buildings["Park"] = Building().apply {
             name = "Park"
-            originRuleset = BaseRuleset.Civ_V_GnK.fullName
+            originRuleset = BaseRuleset.Pokepunk.fullName
             uniques.add("Unbuildable")
         }
         game.ruleset.religions.add("Park")

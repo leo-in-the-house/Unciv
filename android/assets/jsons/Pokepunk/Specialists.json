@@ -1,0 +1,19 @@
+[
+	{
+		"name":"Stoneworker",
+		"gold": 2,
+		"greatPersonPoints": {"Builder": 5},
+		"color": [200,200,55]
+	},
+	{
+		"name":"Scribe",
+		"science": 2,
+		"greatPersonPoints": {"Philosopher": 5},
+		"color": [0,125,255]
+	},
+	{
+		"name":"Factory Worker",
+		"production":5,
+		"color": [125,50,25]
+	}
+]

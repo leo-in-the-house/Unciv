@@ -26,7 +26,7 @@ class OdMapExportTests {
     @Before
     fun loadRuleset() {
         RulesetCache.loadRulesets(noMods = true)
-        ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName]!!
+        ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName]!!
     }
 
     /** A map with land, sea and several terrains, so the comparison has something to say. */

@@ -1,0 +1,109 @@
+[
+  /*
+
+      Here is a template to show what values should be filled in. 
+      Use the description at http://civdata.com/, and adjust the numbers accordingly.
+      Even then, its up to personal interpretation.
+      To generate lines with multiple parameters I used the function: (FirstParam + (SecondParam - 5) / 2)
+      Note: BNW leaders are included for now.
+  {
+      "name": "Template",
+      // Stats focused personalities
+      "culture": Culture,
+      "faith": Religion,
+      "food": Growth,
+      "gold": Gold,
+      "happiness": Happiness,
+      "production": Production,
+      "science": Science,
+      // Behavour focused personalities
+      "military": Military Training,
+      "aggressive": Offensive or (10 - defensive) which ever is higher,
+      "declareWar": War,
+      "commerce": Gold + Chattiness,
+      "diplomacy": Diplomatic Balance + Friendly,
+      "loyal": Loyalty + Defense,
+      "expansion": Expansion,
+      "denounceWillingness": Denouncing
+
+      "policypriorities": {
+          "Tradition": Culture + Wonder,
+          "Liberty": Expansion + TileImprovement,
+          "Honor": Boldness + War,
+          "Commerce": Gold + Chatiness,
+          "Patronage": CityStateCompetitiveness + CSFriendly,
+          "Piety": Faith + CS Friendly,
+          "Rationalism": Science + Spaceship,
+          "Freedom": Hapiness + Growth,
+          "Autocracy": Boldness + Military training,
+          "Order": Defensive + Production
+      },
+      "terrainpriorities": {
+      },
+      "resourcepriorities": {
+      },
+      "civilopediaText": [
+          {"text": "Alexander the Great, born in Macedon, was one of the most skilled generals, even more by his young age, and in only 17 years he conquered all the Greek known world."}
+      ]
+  },*/
+  {
+      "name": "Kane",
+      // Stats focused personalities
+      "culture": 5,
+      "faith": 5,
+      "food": 5,
+      "gold": 5,
+      "happiness": 5,
+      "production": 5,
+      "science": 5,
+      // Behavour focused personalities
+      "military": 5,
+      "aggressive": 5,
+      "declareWar": 5,
+      "commerce": 5,
+      "diplomacy": 5,
+      "loyal": 5,
+      "expansion": 5,
+      "denounceWillingness": 5,
+
+      "policypriorities": {
+      },
+      "terrainpriorities": {
+      },
+      "resourcepriorities": {
+      },
+      "civilopediaText": [
+          {"text": "This is a default personality, and is used for testing."}
+      ]
+   },
+   {
+      "name": "Slavik",
+      // Stats focused personalities
+      "culture": 5,
+      "faith": 5,
+      "food": 5,
+      "gold": 5,
+      "happiness": 5,
+      "production": 5,
+      "science": 5,
+      // Behavour focused personalities
+      "military": 5,
+      "aggressive": 5,
+      "declareWar": 5,
+      "commerce": 5,
+      "diplomacy": 5,
+      "loyal": 5,
+      "expansion": 5,
+      "denounceWillingness": 5,
+
+      "policypriorities": {
+      },
+      "terrainpriorities": {
+      },
+      "resourcepriorities": {
+      },
+      "civilopediaText": [
+          {"text": "This is a default personality, and is used for testing."}
+      ]
+  }
+]

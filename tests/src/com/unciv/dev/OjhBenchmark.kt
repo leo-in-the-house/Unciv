@@ -198,7 +198,7 @@ object OjhBenchmark {
      */
     private fun start(players: Int, size: String, mapPath: String?, seed: Long): GameInfo {
         val setup = GameSetupInfo()
-        val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName]!!
+        val ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName]!!
 
         val chosen = ArrayList<Player>()
         for (nation in ruleset.nations.values) {

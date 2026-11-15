@@ -30,7 +30,7 @@ class OdMapImportTests {
     @Before
     fun loadRuleset() {
         RulesetCache.loadRulesets(noMods = true)
-        ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName]!!
+        ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName]!!
     }
 
     /** Left half land (province 1), right half unpainted, which means water. */

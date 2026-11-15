@@ -1,0 +1,128 @@
+[
+	// Antiquity Era
+
+	// Always available
+	{
+		"name": "Palace",
+		"isNationalWonder": true,
+		"buildSound": "palace",
+		"food": 3,
+		"science": 3,
+		"gold": 3,
+		"culture": 3,
+		"cityStrength": 10,
+		"cost": 0,
+		"uniques": [
+			"Is shown",
+			"Indicates the capital city"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Marks the original capital of an empire.  Provides improved city strength, and high amounts of various yields to help kickstart your civilization."
+            }
+        ]
+	},
+	{
+		"name": "Monument",
+		"buildSound": "monument",
+		"culture": 4,
+		"cost": 50,
+		"hurryCostModifier": 25,
+		"requiredTech": "Pottery",
+		"maintenance": 1,
+		"uniques": [
+			"Creates a [Monument] improvement on a specific tile",
+			"Comment [Must be built adjacent to the City Center on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built adjacent to the city center, in flat land.  Provides culture passively."
+            }
+        ]
+	},
+	{
+		"name": "Palisade",
+		"buildSound": "palisade",
+		"cityHealth": 100,
+		"cost": 50,
+		"hurryCostModifier": 25,
+		"requiredTech": "Code of Laws",
+		"uniques": [
+			"Is shown",
+			"Destroyed when the city is captured"
+		]
+	},
+	{
+		"name": "Barracks",
+		"buildSound": "barracks",
+		"cost": 50,
+		"hurryCostModifier": 25,
+		"maintenance": 2,
+		"requiredTech": "Bronze Working",
+		"uniques": [
+			"Military",
+			"Creates a [Barracks] improvement on a specific tile",
+			"[+100]% Production when constructing [Infantry] units [in this city]",
+			"Comment [Unlocks advanced infantry units.]",
+			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Doubles build speed of infantry, and unlocks advanced infantry units."
+            }
+        ]
+	},
+	{
+		"name": "Potter",
+		"requiredNearbyImprovedResources": ["Clay"],
+		"buildSound": "potter",
+		"cost": 80,
+		"hurryCostModifier": 25,
+		"requiredTech": "Pottery",
+		"specialistSlots": { "Stoneworker": 1 },
+		"maintenance": 2,
+		"uniques": [
+			"Crafting",
+			"Costs [10] [Stone]",
+			"Creates a [Potter] improvement on a specific tile",
+			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat, in a city with improved Clay.  Provides the Pots luxury resource."
+            }
+        ]
+	},
+	{
+		"name": "Scrollmaker",
+		"requiredNearbyImprovedResources": ["Papyrus"],
+		"buildSound": "scrollmaker",
+		"cost": 80,
+		"hurryCostModifier": 25,
+		"requiredTech": "Writing",
+		"specialistSlots": { "Stoneworker": 1 },
+		"maintenance": 2,
+		"uniques": [
+			"Crafting",
+			"Costs [5] [Stone]",
+			"Creates a [Scrollmaker] improvement on a specific tile",
+			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat, in a city with improved Papyrus.  Provides the Scrolls luxury resource."
+            }
+        ]
+	},
+	//Projects
+	{
+		"name": "Search the Land",
+        "requiredTech": "Code of Laws",
+		"hurryCostModifier": 25,
+		"cost": 30,
+		"isNationalWonder": true,
+		"uniques": [
+			"Triggers a [Searching the Land] event"
+		]
+	}
+]

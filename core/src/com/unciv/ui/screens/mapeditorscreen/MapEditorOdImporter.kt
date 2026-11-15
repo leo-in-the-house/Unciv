@@ -25,7 +25,7 @@ class MapEditorOdImporter(private val editorScreen: MapEditorScreen) : Disposabl
         var lastFileFolder: FileHandle? = null
     }
 
-    private val ruleset by lazy { RulesetCache[BaseRuleset.Civ_V_GnK.fullName]!! }
+    private val ruleset by lazy { RulesetCache[BaseRuleset.Pokepunk.fullName]!! }
     private var importJob: Job? = null
 
     override fun dispose() {

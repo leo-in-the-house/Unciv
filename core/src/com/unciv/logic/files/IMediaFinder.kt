@@ -165,7 +165,7 @@ interface IMediaFinder {
             // Remember this replaces enumeration over *bundled* assets - not necessary for mods
             // Keeps unit around not for this class but for the labeled version
             fun unitAttackSounds(): Sequence<Pair<BaseUnit, String>> {
-                val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName] ?: return emptySequence()
+                val ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName] ?: return emptySequence()
                 return ruleset.units.values.asSequence()
                     .filter { it.attackSound != null }
                     .distinctBy { it.attackSound }
@@ -173,7 +173,7 @@ interface IMediaFinder {
             }
 
             fun eventSounds(): Sequence<Pair<Event, String>> {
-                val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName] ?: return emptySequence()
+                val ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName] ?: return emptySequence()
                 return ruleset.events.values.asSequence()
                     .filter { it.eventSound != null }
                     .distinctBy { it.eventSound }
@@ -181,7 +181,7 @@ interface IMediaFinder {
             }
 
             fun buildingSounds(): Sequence<Pair<Building, String>> {
-                val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName] ?: return emptySequence()
+                val ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName] ?: return emptySequence()
                 return ruleset.buildings.values.asSequence()
                     .filter { it.buildSound != null }
                     .distinctBy { it.buildSound }
@@ -189,7 +189,7 @@ interface IMediaFinder {
             }
 
             fun improvementSounds(): Sequence<Pair<TileImprovement, String>> {
-                val ruleset = RulesetCache[BaseRuleset.Civ_V_GnK.fullName] ?: return emptySequence()
+                val ruleset = RulesetCache[BaseRuleset.Pokepunk.fullName] ?: return emptySequence()
                 return ruleset.tileImprovements.values.asSequence()
                     .filter { it.buildSound != null }
                     .distinctBy { it.buildSound }

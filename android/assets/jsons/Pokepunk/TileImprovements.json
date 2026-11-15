@@ -1,0 +1,816 @@
+[
+	{
+		"name": "Farm",
+		"terrainsCanBeBuiltOn": ["Fertile","Arid","Rich Soil"],
+		"food": 2,
+		"turnsToBuild": 0,
+		"buildSound": "farm",
+	 	"techRequired": "Agriculture",
+		"uniques": [
+			"Agricultural",
+			"Cannot be built on [Marsh] tiles",
+			"Cannot be built on [Alpine] tiles",
+			"Cannot be built on [Arid] tiles <before discovering [Printing]>"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built on Fertile terrains or rich soil, mainly by Farmers.  Provides food, and can improve Crop resources.  Can be built in Arid tiles with the right tech."
+            }
+        ]
+	},
+	{
+		"name": "Slave Farm",
+		"terrainsCanBeBuiltOn": ["Fertile","Arid","Rich Soil"],
+		"food": 4,
+		"turnsToBuild": 0,
+		"buildSound": "slave_farm",
+	 	"techRequired": "Slavery",
+		"uniques": [
+			"Agricultural",
+			"Slave-Based",
+			"Costs [1] [Slaves]",
+			"Tile provides yield without assigned population",
+			"Cannot be built on [Marsh] tiles",
+			"Cannot be built on [Alpine] tiles",
+			"Cannot be built on [Arid] tiles <before discovering [Printing]>"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Farm operated by forced labor, built by Farmers.  Provides a large amount of food without assigned population, and can improve Crop resources.  Can be built in Arid tiles with the right tech.  Disabled after abolition of slavery, turning into a normal Farm."
+            }
+        ]
+	},
+	{
+		"name": "Granary",
+		"terrainsCanBeBuiltOn": ["Fertile","Arid","Rich Soil"],
+		"turnsToBuild": 0,
+		"buildSound": "granary",
+	 	"techRequired": "Calendar",
+		"uniques": [
+			"Agricultural",
+			"[+2 Food] in each adjacent [Farm]",
+			"Tile provides yield without assigned population",
+			"Cannot be built on [Marsh] tiles",
+			"Cannot be built on [Alpine] tiles",
+			"Cannot be built on [Arid] tiles <before discovering [Printing]>",
+			"Can only be built <in tiles adjacent to [Farm] tiles>"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Agricultural supporting improvement that can be built on fertile tiles or rich soil, mainly by Farmers.  Improves the food output of adjacent Farms.  Can be built in Arid tiles with the right tech."
+            }
+        ]
+	},
+	{
+		"name": "Apothecary",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"faith": 2,
+		"turnsToBuild": 0,
+		"buildSound": "apothecary",
+	 	"techRequired": "Herbalism",
+		"uniques": [
+			"Horticulture",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+15 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Aromatic resources, mainly by Gardeners.  Provides faith and improves the resource."
+            }
+        ]
+	},
+	{
+		"name": "Reedshack",
+		"terrainsCanBeBuiltOn": ["Marsh"],
+		"food": 1,
+		"turnsToBuild": 0,
+		"buildSound": "reedshack",
+	 	"techRequired": "Writing",
+		"uniques": [
+			"Horticulture",
+			"Can only be built on [resourceless] tiles",
+			"Provides [1] [Reeds]",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Marshes on any tile without a resource, mainly by Gardeners.  Provides food and a source of Papyrus."
+            }
+        ]
+	},
+	{
+		"name": "Orchard",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"food": 1,
+		"turnsToBuild": 0,
+		"buildSound": "orchard",
+	 	"techRequired": "Irrigation",
+		"uniques": [
+			"Horticulture",
+			"Costs [10] [Wood]",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+25 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Edible fruit resources, mainly by Gardeners.  Provides food and improves the resource."
+            }
+        ]
+	},
+	{
+		"name": "Lumber Mill",
+		"terrainsCanBeBuiltOn": ["Forest"],
+		"turnsToBuild": 0,
+		"resourceType": "Wood",
+		"resourceAmount": 2,
+	 	"techRequired": "Toolmaking",
+		"buildSound": "lumber_mill",
+		"uniques": [
+			"Woodcutting",
+			"Cannot be built on [Strategic resource|Luxury resource|Bonus resource] tiles",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built in Forests, mainly by Lumberjacks.  Provides a steady supply of Wood."
+            }
+        ]
+	},
+	{
+		"name": "Plantation",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"gold": 2,
+		"turnsToBuild": 0,
+		"techRequired": "Calendar",
+		"buildSound": "plantation",
+		"uniques": [
+			"Commercial",
+			"Costs [5] [Wood]",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+25 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Plant resources, mainly by Merchants.  Provides Gold and improves the resource."
+            }
+        ]
+	},
+	{
+		"name": "Slave Plantation",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"gold": 4,
+		"turnsToBuild": 0,
+	 	"techRequired": "Calendar",
+		"buildSound": "slave_plantation",
+		"uniques": [
+			"Commercial",
+			"Slave-Based",
+			"Costs [1] [Slaves]",
+			"Costs [5] [Wood]",
+			"Tile provides yield without assigned population",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+25 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Plant-based resource upgrade operated by forced labor, mainly by Merchants.  Provides Gold without needing assigned population and improves the resource.  Disabled after abolition."
+            }
+        ]
+	},
+	{
+		"name": "Pasture",
+		"turnsToBuild": 0,
+		"terrainsCanBeBuiltOn": ["Land","Hill","Rich Soil"],
+		"food": 1,
+		"gold": 1,
+	 	"techRequired": "Pokémon Domestication",
+		"buildSound": "pasture",
+		"uniques": [
+			"Pastoral",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Herdable bonus Pokémon resources, mainly by Pokémon Breeders.  Provides Food, Gold, and improves the Herdable resource over the tile."
+            }
+        ]
+	},
+	{
+		"name": "Ranch",
+		"turnsToBuild": 0,
+		"terrainsCanBeBuiltOn": ["Arid"],
+		"food": 1,
+	//	"techRequired": "Agriculture",
+		"buildSound": "ranch",
+		"uniques": [
+			"Pastoral",
+			"[+1 Food] for each adjacent [Pastoral]",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Primary food improvement for Arid terrain, mainly built by Pokémon Breeders.  Provides Food, with a higher amount of food when built next to other Pastoral improvements."
+            }
+        ]
+	},
+	{
+		"name": "Hunting Camp",
+		"turnsToBuild": 0,
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"food": 2,
+	 	"techRequired": "Pokémon Trapping",
+		"buildSound": "hunting_camp",
+		"uniques": [
+			"Huntcraft",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Huntable bonus Pokémon resources, mainly by Pokémon Hunters.  Provides Food and improves the resource."
+            }
+        ]
+	},
+	{
+		"name": "Kennel",
+		"turnsToBuild": 0,
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"production": 5,
+	 	"techRequired": "Pokémon Taming",
+		"buildSound": "kennel",
+		"uniques": [
+			"Huntcraft",
+			"Costs [15] [Wood]",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+25 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Pet bonus Pokémon resources, mainly by Pokémon Breeders.  Provides a significant amount of Production and improves the resource."
+            }
+        ]
+	},
+	{
+		"name": "Stone Pit",
+		"terrainsCanBeBuiltOn": ["Hill"],
+		"turnsToBuild": 0,
+		"resourceType": "Stone",
+		"resourceAmount": 2,
+		"techRequired": "Stonecutting",
+		"buildSound": "stone_pit",
+		"uniques": [
+			"Excavation",
+			"Cannot be built on [Strategic resource|Luxury resource|Bonus resource] tiles",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Hills, mainly by Diggers.  Provides a steady trickle of Stone."
+            }
+        ]
+	},
+	{
+		"name": "Slave Pit",
+		"terrainsCanBeBuiltOn": ["Hill"],
+		"turnsToBuild": 0,
+		"resourceType": "Stone",
+		"resourceAmount": 4,
+	 	"techRequired": "Slavery",
+		"buildSound": "slave_pit",
+		"uniques": [
+			"Excavation",
+			"Slave-Based",
+			"Costs [1] [Slaves]",
+			"Tile provides yield without assigned population",
+			"Cannot be built on [Strategic resource|Luxury resource|Bonus resource] tiles",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Stone supply on Hills operated with Forced Labor, mainly by Diggers.  Provides a large trickle of Stone without assigned population.  Disabled after abolition."
+            }
+        ]
+	},
+	{
+		"name": "Well",
+		"terrainsCanBeBuiltOn": ["Land","Rich Soil"],
+		"turnsToBuild": 0,
+		"resourceType": "Water",
+		"resourceAmount": 2,
+		"techRequired": "Irrigation",
+		"buildSound": "well",
+		"uniques": [
+			"Excavation",
+			"Costs [5] [Stone]",
+			"Can only be built on [Fresh Water] tiles",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Fresh Water flatlands, mainly by Diggers.  Provides a steady trickle of Water."
+            }
+        ]
+	},
+	{
+		"name": "Mine",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"techRequired": "Mining",
+		"turnsToBuild": 0,
+		"gold": 2,
+		"buildSound": "mine",
+		"uniques": [
+			"Minecraft",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+25 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Metallic resources, mainly by Prospectors.  Improves the resource, often leading to a large amount of production, and provides gold."
+            }
+        ]
+	},
+	{
+		"name": "Slave Mine",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"turnsToBuild": 0,
+		"gold": 4,
+	 	"techRequired": "Mining",
+		"buildSound": "slave_mine",
+		"uniques": [
+			"Minecraft",
+			"Slave-Based",
+			"Costs [1] [Slaves]",
+			"Tile provides yield without assigned population",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+25 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Metallic resource upgrading improvement operated by forced labor, mainly by Prospectors.  Improves the resource, often leading to a large amount of production, and provides a large amount of gold, all without requiring assigned population.  Disabled after abolition."
+            }
+        ]
+	},
+	{
+		"name": "Quarry",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"turnsToBuild": 0,
+	 	"techRequired": "Stonecutting",
+		"buildSound": "quarry",
+		"uniques": [
+			"Minecraft",
+			"Costs [10] [Stone]",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Geologic resources, mainly by Prospectors.  Improves the resource, usually leading to a large amount of production."
+            }
+        ]
+	},
+	{
+		"name": "Slave Quarry",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"turnsToBuild": 0,
+		"production": 5,
+	 	"techRequired": "Slavery",
+		"buildSound": "slave_quarry",
+		"uniques": [
+			"Minecraft",
+			"Slave-Based",
+			"Costs [2] [Slaves]",
+			"Costs [10] [Stone]",
+			"Tile provides yield without assigned population",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Geologic resource upgrading improvement operated by forced labor, mainly by Prospectors.  Improves the resource, usually leading to a large amount of production, and providing additional production on top of that, without assigned population.  Costs a large amount of slaves.  Disabled after abolition."
+            }
+        ]
+	},
+	{
+		"name": "Fishing Boats",
+		"terrainsCanBeBuiltOn": ["Coast", "Ocean"],
+		"food": 2,
+		"buildSound": "fishing_boats",
+		"techRequired": "Pokémon Pisciculture",
+		"uniques": [
+			"Food source",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Water resources, mainly by Mermaids.  Provides Food and improves the resource."
+            }
+        ]
+	},
+	{
+		"name": "Dredger",
+		"terrainsCanBeBuiltOn": ["Kelp", "Reef", "Iceweed"],
+		"gold": 5,
+		"science": 2,
+		"buildSound": "dredger",
+		"uniques": [
+			"Costs [5] [Steel]",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+25 Gold]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Kelp, Reefs, and Iceweeds, mainly by Mermaids.  Provides a large amount of Gold and some Science."
+            }
+        ]
+	},
+	// Building improvements
+	{
+		"name": "Monument",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "monument",
+		"uniques": [
+			"Urban Improvement",
+			"Turn this tile into a [Urban] tile",
+			"Pillaging this improvement yields approximately [+10 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [City center] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built adjacent to the city center, in flat land.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
+		"name": "Barracks",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "barracks",
+		"uniques": [
+			"Urban Improvement",
+			"Turn this tile into a [Urban] tile",
+			"Pillaging this improvement yields approximately [+20 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
+		"name": "Potter",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "potter",
+		"uniques": [
+			"Urban Improvement",
+			"Turn this tile into a [Urban] tile",
+			"Provides [1] [Pots]",
+			"Pillaging this improvement yields approximately [+20 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Provides the Pots luxury resource.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
+		"name": "Scrollmaker",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "scrollmaker",
+		"uniques": [
+			"Urban Improvement",
+			"Turn this tile into a [Urban] tile",
+			"Provides [1] [Scrolls]",
+			"Pillaging this improvement yields approximately [+30 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Provides the Scrolls luxury resource.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	// Wonder improvements
+	// Unbuildable improvements
+	{
+		"name": "Ancient ruins", //Treasure Chests
+		"terrainsCanBeBuiltOn": ["Land"],
+		"uniques": ["Unpillagable", "Provides a random bonus when entered", "Unbuildable",
+			"Does not need removal of [Forest]"]
+	},
+	{
+		"name": "Shipwreck", //Treasure Chests
+		"terrainsCanBeBuiltOn": ["Water"],
+		"uniques": ["Unpillagable", "Provides a random bonus when entered", "Unbuildable",
+			"Does not need removal of [Forest]"]
+	},
+	{
+		"name": "City ruins",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"uniques": ["Unpillagable", "Unbuildable"],
+        "civilopediaText": [{"text":"A bleak reminder of the destruction wreaked by War"}]
+	},
+	{
+		"name": "City center",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"uniques": ["Ensures a minimum tile yield of [+3 Food, +10 Production]",
+			"Turn this tile into a [Urban] tile",
+            "Unpillagable", "Irremovable", "Unbuildable", "Excluded from map editor"],
+        "civilopediaText": [
+			{"text":"Marks the center of a city"},
+			{"text":"Appearance changes with the technological era of the owning civilization"}
+		]
+	},
+	{
+		"name": "Barbarian encampment", //Pokémon Den
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Ruins","Crystals"],
+		"uniques": ["Unpillagable", "Unbuildable", "Excluded from map editor", "Marks a barbarian camp", 
+			"Provides a random bonus when entered"],
+        "civilopediaText": [{"text":"Home to wild Pokémon and will spawn a hostile Pokémon from time to time"}]
+	},
+	{
+		"name": "Abyssal Pokémon Den", //Pokémon Den
+		"terrainsCanBeBuiltOn": ["Ocean"],
+		"uniques": ["Unpillagable", "Unbuildable", "Excluded from map editor", "Marks a barbarian camp", 
+			"Provides a random bonus when entered"],
+        "civilopediaText": [{"text":"Home to wild oceanic Pokémon and will spawn a hostile Pokémon from time to time"}]
+	},
+	//Transportation
+	{
+		"name": "Road",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"turnsToBuild": 0,
+		"techRequired": "Agriculture",
+		"uniques": ["Can be built outside your borders", "Costs [1] [Gold] per turn"],
+		"shortcutKey": "R",
+        "civilopediaText": [
+            {"text":"Reduces movement cost to ¾ if the other tile also has a Road or Railroad"},
+            {"text":"Reduces movement cost to ½ with Electricity", "link":"Technology/Electricity"},
+            {"text":"Requires Engineering to bridge rivers", "link":"Technology/Engineering"}
+        ]
+	},
+	{
+		"name": "Railroad",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"turnsToBuild": 0,
+		"techRequired": "Steam Engine",
+		"uniques": ["Can be built outside your borders", "Costs [2] [Gold] per turn"],
+		"shortcutKey": "R",
+        "civilopediaText": [
+            {"text":"Reduces movement cost to ⅓ if the other tile also has a Railroad"},
+            {"text":"Provides a +25% [Production] bonus to cities connected to the capital by Railroads"}
+        ]
+	},
+	//Repair
+	{
+        "name": "Repair",
+        "terrainsCanBeBuiltOn": ["Land"],
+        "turnsToBuild": 0,
+        "shortcutKey": "E",
+        "uniques": ["Unbuildable", "Excluded from map editor"],
+        "civilopediaText": [{"text":"Repairs a pillaged Improvement or Route"}]
+    },
+	{
+		"name": "Cancel improvement order",
+		"uniques": ["Can be built outside your borders", "Excluded from map editor"],
+		"shortcutKey": "."
+	},
+	// Removals
+	{
+		"name": "Remove Road",
+		"turnsToBuild": 0,
+		"uniques": ["Can be built outside your borders", "Excluded from map editor"]
+	},
+	{
+		"name": "Remove Railroad",
+		"turnsToBuild": 0,
+		"uniques": ["Can be built outside your borders", "Excluded from map editor"]
+	},
+	{
+		"name": "Remove Forest",
+		"turnsToBuild": 0,
+		"techRequired": "Toolmaking",
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Woodcutting",
+			"Instantly gain [10] [Wood]",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Bamboo",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Woodcutting",
+			"Instantly gain [20] [Wood]",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Ruins",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Instantly gain [10] [Steel]",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Crystals",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Minecraft",
+			"Gain [200] [Gold]",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Kelp",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			//TODO: Add a unit that can build these
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Reef",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			//TODO: Add a unit that can build these
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Iceweed",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			//TODO: Add a unit that can build these
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Faebloom",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			//TODO: Add a unit that can build these
+			"Instantly gain [10] [Mana]",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Crop",
+		"turnsToBuild": 0,
+		"techRequired": "Toolmaking",
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Remove Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Plant",
+		"turnsToBuild": 0,
+		"techRequired": "Herbalism",
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Remove Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Aromatic",
+		"turnsToBuild": 0,
+		"techRequired": "Herbalism",
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Remove Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Geologic",
+		"turnsToBuild": 0,
+		"techRequired": "Toolmaking",
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Remove Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Metallic",
+		"turnsToBuild": 0,
+		"techRequired": "Mining",
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Remove Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Fruit",
+		"turnsToBuild": 0,
+		"techRequired": "Irrigation",
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Woodcutting",
+			"Remove Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Herdable",
+		"turnsToBuild": 0,
+        "requiredTech": "Pokémon Domestication",
+		"buildSound": "remove_pokemon",
+		"uniques": [
+			"Remove Pokémon Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Pet",
+		"turnsToBuild": 0,
+		"techRequired": "Pokémon Taming",
+		"buildSound": "remove_pokemon",
+		"uniques": [
+			"Remove Pokémon Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Huntable",
+		"turnsToBuild": 0,
+		"techRequired": "Pokémon Trapping",
+		"buildSound": "remove_pokemon",
+		"uniques": [
+			"Remove Pokémon Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Aquatic",
+		"turnsToBuild": 0,
+		"techRequired": "Pokémon Pisciculture",
+		"buildSound": "remove_pokemon",
+		"uniques": [
+			"Remove Pokémon Resource",
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	},
+	{
+		"name": "Remove Fallout",
+		"turnsToBuild": 0,
+		"buildSound": "remove_feature",
+		"uniques": [
+			"Can be built outside your borders", "Excluded from map editor"
+		],
+		"shortcutKey": "X"
+	}
+]
