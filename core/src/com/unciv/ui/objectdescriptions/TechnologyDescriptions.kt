@@ -19,6 +19,7 @@ import com.unciv.ui.screens.civilopediascreen.FormattedLine
 import com.unciv.ui.screens.civilopediascreen.ICivilopediaText
 import com.unciv.ui.screens.pickerscreens.TechButton
 import yairm210.purity.annotations.Readonly
+import kotlin.collections.plusAssign
 
 
 object TechnologyDescriptions {
@@ -31,6 +32,8 @@ object TechnologyDescriptions {
         val ruleset = viewingCiv.gameInfo.ruleset
         val lineList = ArrayList<String>() // more readable than StringBuilder, with same performance for our use-case
 
+        if (technology.quote.isNotEmpty()) lineList += technology.quote
+
         for (pediaText in technology.civilopediaText) {
             // This is explicitly to get the "Who knows what the future holds" of Future Tech back into
             // the Tech Picker and Tech Researched Alert display, without making it an untyped Unique.
@@ -38,6 +41,7 @@ object TechnologyDescriptions {
             if (pediaText.text.isEmpty() || pediaText.header != 0) continue
             lineList += pediaText.text
         }
+
 
         uniquesToDescription(lineList)
 
@@ -250,6 +254,8 @@ object TechnologyDescriptions {
     fun getCivilopediaTextLines(technology: Technology, ruleset: Ruleset): List<FormattedLine> = technology.run {
         val lineList = ArrayList<FormattedLine>()
 
+        if (technology.quote.isNotEmpty()) lineList += FormattedLine(technology.quote)
+
         val eraColor = ruleset.eras[era()]?.getHexColor() ?: ""
         lineList += FormattedLine(era(), header = 3, color = eraColor)
         lineList += FormattedLine()
@@ -279,7 +285,7 @@ object TechnologyDescriptions {
                 }
             }
         }
-
+        
         uniquesToCivilopediaTextLines(lineList)
 
         val affectedImprovements = getAffectedImprovements(name, ruleset)
