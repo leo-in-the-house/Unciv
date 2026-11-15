@@ -305,7 +305,8 @@
 			"Temperate",
 			"Fertile",
 			"Hazardous",
-			"Spooky"
+			"Spooky",
+			"Flat"
         ],
         "civilopediaText": [
             {
@@ -338,7 +339,8 @@
 			"Becomes [Marsh] when adjacent to [River] <with [50]% chance> <within [4] tiles of a [Coast]> <in tiles adjacent to [Marsh] tiles>",
 			"Becomes [Forest] when adjacent to [Enchanted] <with [90]% chance>",
 			"Temperate",
-			"Fertile"
+			"Fertile",
+			"Flat"
         ],
         "civilopediaText": [
             {

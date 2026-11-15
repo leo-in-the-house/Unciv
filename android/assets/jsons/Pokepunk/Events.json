@@ -56,7 +56,7 @@
 			}
 		]
 	},
-	//Worker Events
+	//Unit Events
 	{
 		"name": "Crop Propagation",
 		"text": "Which crop do you want to propagate on this tile?",
@@ -542,6 +542,70 @@
 					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
 					//However it does allow it to show up as a tooltip
 				]
+			}
+		]
+	},
+	{
+		"name": "Eureka",
+		"text": "Attempt to generate a free technology or Magic Card.",
+		"presentation": "None",
+		"choices": [
+			{
+				"text": "Free Technology",
+				"uniques": [
+					"Triggers a [Eureka - Free Technology] event",
+					"[-50]% weight to this choice for AI decisions"
+				]
+			},
+			{
+				//TODO: Make this free magic card - aka policy
+				"text": "Free Technology2",
+				"uniques": [
+					"Triggers a [Eureka - Free Technology2] event",
+					"[-50]% weight to this choice for AI decisions"
+				]
+			},
+			{
+				"text": "Eureka Failed",
+				"uniques": [
+					"Triggers a [Eureka Failed] event"
+				]
+			}
+		]
+	},
+	{
+		"name": "Eureka - Free Technology",
+		"text": "After some pondering, your Philosopher suddenly came up with an idea for a new technology!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Free Technology"
+				]
+			}
+		]
+	},
+	{
+		"name": "Eureka - Free Technology2",
+		"text": "After some pondering, your Philosopher suddenly came up with an idea for new forms of magic you can utilize!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Free Technology"
+				]
+			}
+		]
+	},
+	{
+		"name": "Eureka Failed",
+		"text": "Try as you might, your Philosopher was unable to come up with any new ideas...",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK"
 			}
 		]
 	}

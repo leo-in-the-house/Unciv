@@ -138,10 +138,10 @@ class ResourcesOverviewTab(
     ) {
         Unimproved("Unimproved", "Unimproved",
             "Number of tiles with this resource\nin your territory, without an\nappropriate improvement to use it"),
-        CelebratingWLTK("We Love The King Day", "WLTK+",
-            "Number of your cities celebrating\n'We Love The King Day' thanks\nto access to this resource"),
-        DemandingWLTK("WLTK demand", "WLTK-",
-            "Number of your cities\ndemanding this resource for\n'We Love The King Day'"),
+        CelebratingWLTK("Festivals", "Festival+",
+            "Number of your cities celebrating\na Festival thanks\nto access to this resource"),
+        DemandingWLTK("Festival demand", "Festival-",
+            "Number of your cities\ndemanding this resource for\na Festival"),
         TradeOffer("Trade offer","Trade offer", "Resources we're offering in trades"),
         Stockpile("Stockpiled resources", "Stockpile", "The currently accumulated stockpile amount"),
         ;

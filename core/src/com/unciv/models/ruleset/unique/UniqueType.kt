@@ -812,7 +812,7 @@ enum class UniqueType(
     ConditionalNotWar("when not at war", UniqueTarget.Conditional),
     ConditionalGoldenAge("during a Golden Age", UniqueTarget.Conditional),
     ConditionalNotGoldenAge("when not in a Golden Age", UniqueTarget.Conditional),
-    ConditionalWLTKD("during We Love The King Day", UniqueTarget.Conditional),
+    ConditionalWLTKD("during a Festival", UniqueTarget.Conditional),
 
     ConditionalHappy("while the empire is happy", UniqueTarget.Conditional),
     

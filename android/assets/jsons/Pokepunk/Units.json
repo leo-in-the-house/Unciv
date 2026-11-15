@@ -249,6 +249,29 @@
             }
         ]
 	},
+    //Great Civilians
+	{
+		"name": "Philosopher",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "charges": 2,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"philosopher",
+		"uniques": [
+            "Great Creative",
+			"Unbuildable",
+            "Triggers a [Eureka] event <for [2] charges>",
+			"Can build [Knowledge] improvements on tiles",
+			"Automation is a primary action"
+		],
+		"cost": 300,
+		 "civilopediaText": [
+            {
+                "text": "Knowledge worker that can attempt to generate a free technology or Magic Card through a Eureka (not guaranteed), or build Knowledge improvements."
+            }
+        ]
+	},
     //Other Civilians
     //Military Units
     {
@@ -378,7 +401,7 @@
 	},
 	{
 		"name": "Pokémon Hunter",
-		"unitType": "Civilian",
+		"unitType": "Missile Infantry",
 		"secondaryUnitType": "Human",
         "supplyCost": 2,
 		"movement": 1,

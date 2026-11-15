@@ -100,11 +100,11 @@
 		"cost": 80,
 		"hurryCostModifier": 25,
 		"requiredTech": "Writing",
-		"specialistSlots": { "Stoneworker": 1 },
+		"specialistSlots": { "Scribe": 1 },
 		"maintenance": 2,
 		"uniques": [
 			"Crafting",
-			"Costs [5] [Stone]",
+			"Costs [5] [Wood]",
 			"Creates a [Scrollmaker] improvement on a specific tile",
 			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
 		],

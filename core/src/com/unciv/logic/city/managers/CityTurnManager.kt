@@ -91,7 +91,7 @@ class CityTurnManager(val city: City) {
         // and the Resources overview mislabels the active WLTKD (celebration is flag-based).
         city.removeFlag(CityFlags.ResourceDemand)
         city.civ.addNotification(
-            "Because they have [${city.demandedResource}], the citizens of [${city.name}] are celebrating We Love The King Day!",
+            "Because they have [${city.demandedResource}], the citizens of [${city.name}] are celebrating a Festival!",
             CityAction.withLocation(city), NotificationCategory.General, NotificationIcon.City, NotificationIcon.Happiness)
     }
 
@@ -113,7 +113,7 @@ class CityTurnManager(val city: City) {
                     }
                     CityFlags.WeLoveTheKing.name -> {
                         city.civ.addNotification(
-                            "We Love The King Day in [${city.name}] has ended.",
+                            "The Festival in [${city.name}] has ended.",
                             CityAction.withLocation(city), NotificationCategory.General, NotificationIcon.City)
                         demandNewResource()
                     }

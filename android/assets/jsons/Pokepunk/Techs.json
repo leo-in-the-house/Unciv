@@ -52,31 +52,31 @@
 				"prerequisites": ["Prehistory"]
 			},
 			{
-				"name": "Toolmaking",
+				"name": "Pokémon Pisciculture",
 				"row": 6,
+				"quote": "Ever since man first gazed upon the seas, they wondered what lies in the blue yonder.  Some early civilizations met the mysterious Mermaids, who taught them how to fish, and how to tame and ride the Pokémon Goldeen.",
+				"prerequisites": ["Prehistory"]
+			},
+			{
+				"name": "Toolmaking",
+				"row": 7,
 				"quote": "Tools made of wood, stone, and metal allow for the clearing of land and gathering of wood for construction.",
 				"prerequisites": ["Prehistory"]
 			},
 			{
 				"name": "Mining",
-				"row": 7,
+				"row": 8,
 				"quote": "Some minerals from the earth are more valuable than others, and it is time to seek them out!  Already, prospectors are going out to hunt for precious minerals.",
 				"prerequisites": ["Prehistory"]
 			},
 			{
-				"name": "Code of Laws",
-				"row": 8,
-				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict or to rally our people against threats.",
-				"prerequisites": ["Prehistory"]
-			},
-			{
-				"name": "Code of Laws2",
+				"name": "Pottery",
 				"row": 9,
-				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict or to rally our people against threats.",
+				"quote": "Once the quest for food has been fulfilled, the quest for finer goods began.  Humans started to carve masterful monuments and pottery to show their prowess.",
 				"prerequisites": ["Prehistory"]
 			},
 			{
-				"name": "Code of Laws3",
+				"name": "Code of Laws",
 				"row": 10,
 				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict or to rally our people against threats.",
 				"prerequisites": ["Prehistory"]
@@ -86,7 +86,7 @@
 	{
 		"columnNumber": 2,
 		"era": "Antiquity Age", //"Bronze Age", 3000-1200 BC level tech
-		"techCost": 30,
+		"techCost": 20,
 		"buildingCost": 50,
 		"wonderCost": 180,
 		"techs": [
@@ -103,22 +103,10 @@
 				"prerequisites": ["Agriculture","Irrigation"]
 			},
 			{
-				"name": "Pottery",
-				"row": 3,
-				"quote": "Once the quest for food has been fulfilled, the quest for finer goods began.  Humans started to carve masterful monuments and pottery to show their prowess.",
-				"prerequisites": ["Agriculture","Stonecutting"]
-			},
-			{
 				"name": "Pokémon Taming",
 				"row": 4,
 				"quote": "We noticed that certain species of Pokémon were particularly kin of humans and could be easily bred as partners.  They can help in both labor and scouting, and of course make cute pets!",
 				"prerequisites": ["Pokémon Trapping", "Pokémon Domestication"]
-			},
-			{
-				"name": "Pokémon Pisciculture",
-				"row": 5,
-				"quote": "Ever since man first gazed upon the seas, they wondered what lies in the blue yonder.  Some early civilizations met the mysterious Mermaids, who taught them how to fish, and how to tame and ride the Pokémon Goldeen.",
-				"prerequisites": ["Pokémon Domestication"]
 			},
 			{
 				"name": "Bronze Working",
@@ -144,7 +132,7 @@
 	{
 		"columnNumber": 3,
 		"era": "Antiquity Age", //"Iron Age", 1200-0 BC level tech
-		"techCost": 60,
+		"techCost": 40,
 		"buildingCost": 50,
 		"wonderCost": 220,
 		"techs": [
@@ -154,7 +142,7 @@
 	{
 		"columnNumber": 4,
 		"era": "Medieval Age", //"Religious Age", 0-500 AD level tech
-		"techCost": 140,
+		"techCost": 100,
 		"buildingCost": 100,
 		"wonderCost": 250,
 		"techs": [
@@ -171,7 +159,7 @@
 	{
 		"columnNumber": 5,
 		"era": "Medieval Age", //"Feudal Age", 500-1000 AD level tech
-		"techCost": 190,
+		"techCost": 150,
 		"buildingCost": 100,
 		"wonderCost": 280,
 		"techs": [
@@ -181,7 +169,7 @@
 	{
 		"columnNumber": 6,
 		"era": "Medieval Age", //"Castle Age", 1000-1300 AD level tech
-		"techCost": 230,
+		"techCost": 200,
 		"buildingCost": 100,
 		"wonderCost": 310,
 		"techs": [
@@ -191,7 +179,7 @@
 	{
 		"columnNumber": 7,
 		"era": "Exploration Age", //"Gunpowder Age", 1300-1450 AD level tech
-		"techCost": 350,
+		"techCost": 320,
 		"buildingCost": 150,
 		"wonderCost": 360,
 		"techs": [
@@ -207,7 +195,7 @@
 	{
 		"columnNumber": 8,
 		"era": "Exploration Age", //"Renaissance Age", 1450-1600 AD level tech
-		"techCost": 430,
+		"techCost": 400,
 		"buildingCost": 150,
 		"wonderCost": 400,
 		"techs": [

@@ -592,7 +592,7 @@ class CityStats(val city: City) {
             if (city.isWeLoveTheKingDayActive() && city.civ.getHappiness() >= 0) {
                 // We Love The King Day +25%, only if not unhappy
                 val weLoveTheKingFood = Stats(food = totalFood / 4)
-                newFinalStatList.add("We Love The King Day", weLoveTheKingFood)
+                newFinalStatList.add("Festival", weLoveTheKingFood)
             }
             // recalculate only when all applied - growth bonuses are not multiplicative
             // bonuses can allow a city to grow even with -100% unhappiness penalty, this is intended

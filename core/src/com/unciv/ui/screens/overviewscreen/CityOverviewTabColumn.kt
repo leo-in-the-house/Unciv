@@ -123,7 +123,7 @@ enum class CityOverviewTabColumn : ISortableGridContentProvider<City, EmpireOver
     },
 
     WLTK {
-        override val headerTip = "We Love The King Day"
+        override val headerTip = "Festival"
         override val defaultSort get() = SortableGrid.SortDirection.Ascending
         override fun getComparator() =
             super.getComparator().thenBy { it.demandedResource.tr(hideIcons = true) }

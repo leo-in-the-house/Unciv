@@ -206,7 +206,7 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
         val (wltkIcon: Actor?, wltkLabel: Label?) = when {
             cityView.isWeLoveTheKingDayActive() ->
                 ImageGetter.getStatIcon("Food") to
-                "We Love The King Day for another [${cityView.getFlag(CityFlags.WeLoveTheKing)}] turns".toLabel(Color.LIME)
+                "Festival for another [${cityView.getFlag(CityFlags.WeLoveTheKing)}] turns".toLabel(Color.LIME)
             cityView.demandedResource.isNotEmpty() ->
                 ImageGetter.getResourcePortrait(cityView.demandedResource, 20f) to
                 "Demanding [${cityView.demandedResource}]".toLabel(Color.CORAL, hideIcons = true)
@@ -218,7 +218,7 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
                 add(wltkLabel).row()
             })
             wltkLabel.onClick {
-                cityScreen.openCivilopedia("Tutorial/We Love The King Day")
+                cityScreen.openCivilopedia("Tutorial/Festival")
             }
         }
 

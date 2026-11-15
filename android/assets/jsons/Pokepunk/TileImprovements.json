@@ -253,7 +253,7 @@
 		"buildSound": "kennel",
 		"uniques": [
 			"Huntcraft",
-			"Costs [15] [Wood]",
+			"Costs [10] [Wood]",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+25 Gold]"
 		],
@@ -377,7 +377,7 @@
 		"buildSound": "quarry",
 		"uniques": [
 			"Minecraft",
-			"Costs [10] [Stone]",
+			"Costs [5] [Stone]",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+10 Gold]"
 		],
@@ -399,7 +399,7 @@
 			"Minecraft",
 			"Slave-Based",
 			"Costs [2] [Slaves]",
-			"Costs [10] [Stone]",
+			"Costs [5] [Stone]",
 			"Tile provides yield without assigned population",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+10 Gold]"
@@ -408,6 +408,24 @@
 		 "civilopediaText": [
             {
                 "text": "Geologic resource upgrading improvement operated by forced labor, mainly by Prospectors.  Improves the resource, usually leading to a large amount of production, and providing additional production on top of that, without assigned population.  Costs a large amount of slaves.  Disabled after abolition."
+            }
+        ]
+	},
+	{
+		"name": "Archive",
+		"terrainsCanBeBuiltOn": ["Land","Forest","Hill","Rich Soil"],
+		"turnsToBuild": 0,
+		"buildSound": "archive",
+		"uniques": [
+			"Knowledge",
+			"Costs [10] [Stone]",
+			"Can only be built to improve a resource",
+			"Pillaging this improvement yields approximately [+10 Gold]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Can be built over Geologic resources, mainly by Prospectors.  Improves the resource, usually leading to a large amount of production."
             }
         ]
 	},
