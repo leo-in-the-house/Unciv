@@ -78,6 +78,7 @@
 			{
 				"name": "Pottery",
 				"row": 10,
+				"uniques": ["Only available <when number of [Owned [Clay] Tiles] is more than [0]>"],
 				"quote": "Once the quest for food has been fulfilled, the quest for finer goods began.  Humans started to carve masterful works of clay to show their prowess.",
 				"prerequisites": ["Prehistory"]
 			}

@@ -114,6 +114,28 @@
             }
         ]
 	},
+	{
+		"name": "Smokehouse",
+		"requiredNearbyImprovedResources": ["Clamperls","Deerlings","Bidoofs","Scatterbugs","Joltiks","Spearows","Pidoves"],
+		"buildSound": "smokehouse",
+		"cost": 80,
+		"hurryCostModifier": 25,
+		//"requiredTech": "Writing",
+		"specialistSlots": { "Cook": 1 },
+		"maintenance": 2,
+		"uniques": [
+			"Cooking",
+			"Costs [5] [Wood]",
+			"[+2 Food] from [Hunting Camp] tiles [in this city]",
+			"Creates a [Smokehouse] improvement on a specific tile",
+			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land, in a city with at least one improved Huntable resource.  Increases the food that these tiles provide when improved by 2."
+            }
+        ]
+	},
 	//Projects
 	{
 		"name": "Search the Land",

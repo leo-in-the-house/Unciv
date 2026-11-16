@@ -426,32 +426,33 @@ object Conditionals {
 
             //AI ability only conditionals:
             UniqueType.ConditionalUnitActionAIAlwaysUseInTile ->
-                state.relevantCiv != null && state.relevantCiv!!.isAI() && state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true
-            UniqueType.ConditionalUnitActionAIAlwaysUseCountableEqualTo -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
-                compareCountables(conditional.params[0], conditional.params[1]) {
+                state.relevantCiv != null && ((!state.relevantCiv!!.isAI()) 
+                    || (state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true))
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableEqualTo -> state.relevantCiv != null && (!state.relevantCiv!!.isAI() ||
+                (compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first == second
-                }
+                }))
 
-            UniqueType.ConditionalUnitActionAIAlwaysUseCountableDifferentThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
-                compareCountables(conditional.params[0], conditional.params[1]) {
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableDifferentThan -> state.relevantCiv != null && (!state.relevantCiv!!.isAI() ||
+                (compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first != second
-                }
+                }))
 
-            UniqueType.ConditionalUnitActionAIAlwaysUseCountableMoreThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
-                compareCountables(conditional.params[0], conditional.params[1]) {
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableMoreThan -> state.relevantCiv != null && (!state.relevantCiv!!.isAI() ||
+                (compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first > second
-                }
+                }))
 
-            UniqueType.ConditionalUnitActionAIAlwaysUseCountableLessThan -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
-                compareCountables(conditional.params[0], conditional.params[1]) {
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableLessThan -> state.relevantCiv != null && (!state.relevantCiv!!.isAI() ||
+                (compareCountables(conditional.params[0], conditional.params[1]) {
                         first, second -> first < second
-                }
+                }))
 
-            UniqueType.ConditionalUnitActionAIAlwaysUseCountableBetween -> state.relevantCiv != null && state.relevantCiv!!.isAI() &&
-                compareCountables(conditional.params[0], conditional.params[1], conditional.params[2]) {
+            UniqueType.ConditionalUnitActionAIAlwaysUseCountableBetween -> state.relevantCiv != null && (!state.relevantCiv!!.isAI() ||
+                (compareCountables(conditional.params[0], conditional.params[1], conditional.params[2]) {
                         first, second, third ->
                     first in second..third
-                }
+                }))
             
             else -> false
         }

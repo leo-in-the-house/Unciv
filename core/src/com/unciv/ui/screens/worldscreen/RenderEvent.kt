@@ -3,6 +3,7 @@ package com.unciv.ui.screens.worldscreen
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.Align
 import com.unciv.logic.map.mapunit.MapUnit
+import com.unciv.logic.map.tile.Tile
 import com.unciv.models.ruleset.Event
 import com.unciv.models.ruleset.EventChoice
 import com.unciv.models.ruleset.unique.GameContext
@@ -23,6 +24,7 @@ class RenderEvent(
     event: Event,
     val worldScreen: WorldScreen,
     val unit: MapUnit? = null,
+    val tile: Tile? = null,
     /** Width the texts wrap to - an upper limit rather than a size: [WrappableLabel.optimizePrefWidth]
      *  can bring a label below it, and a child that cannot wrap at all makes the result wider.
      *
@@ -45,7 +47,7 @@ class RenderEvent(
     init {
         defaults().fillX().center().pad(5f)
 
-        val gameContext = GameContext(gameInfo.currentPlayerCiv, unit = unit)
+        val gameContext = GameContext(gameInfo.currentPlayerCiv, unit = unit, tile = tile)
         val choices = event.getMatchingChoices(gameContext)
         isValid = choices != null
         if (isValid) {
@@ -90,7 +92,7 @@ class RenderEvent(
         val button = choice.text.toTextButton()
         button.onActivation {
             onChoice(choice)
-            choice.triggerChoice(gameInfo.currentPlayerCiv, unit)
+            choice.triggerChoice(gameInfo.currentPlayerCiv, unit, tile)
         }
         val key = KeyCharAndCode.parse(choice.keyShortcut)
         if (key != KeyCharAndCode.UNKNOWN) {

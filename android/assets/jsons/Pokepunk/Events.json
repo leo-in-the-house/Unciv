@@ -546,6 +546,478 @@
 		]
 	},
 	{
+		"name": "Miracle Blossom",
+		"text": "Sprouts a random plant, aromatic, or fruit resource on Forest, Marsh, or Rich Soil.",
+		"presentation": "None",
+		"choices": [
+			{
+				"text": "Berries Sprouted",
+				"uniques": [
+					"Triggers a [Berries Sprouted] event",
+					"Add [Berries] to this tile",
+					"Only available <in [Enchanted|Cold] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Cotton Sprouted",
+				"uniques": [
+					"Triggers a [Cotton Sprouted] event",
+					"Add [Cotton] to this tile",
+					"Only available <in [Grassland|Hot] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Spices Sprouted",
+				"uniques": [
+					"Triggers a [Spices Sprouted] event",
+					"Add [Spices] to this tile",
+					"[-50]% weight to this choice for AI decisions",
+					"Only available <in [Hot] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Sugar Sprouted",
+				"uniques": [
+					"Triggers a [Sugar Sprouted] event",
+					"Add [Sugar] to this tile",
+					"[-50]% weight to this choice for AI decisions",
+					"Only available <in [Hot|Grassland] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Cocoa Sprouted",
+				"uniques": [
+					"Triggers a [Cocoa Sprouted] event",
+					"Add [Cocoa] to this tile",
+					"[-25]% weight to this choice for AI decisions",
+					"Only available <in [Hot] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Coffee Beans Sprouted",
+				"uniques": [
+					"Triggers a [Coffee Beans Sprouted] event",
+					"Add [Coffee Beans] to this tile",
+					"[-50]% weight to this choice for AI decisions",
+					"Only available <in [Hot] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Vines Sprouted",
+				"uniques": [
+					"Triggers a [Vines Sprouted] event",
+					"Add [Vines] to this tile",
+					"Only available <in [{non-[Cold]} {Forest}] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Dyes Sprouted",
+				"uniques": [
+					"Triggers a [Dyes Sprouted] event",
+					"Add [Dyes] to this tile",
+					"Only available <in [Temperate] tiles> <in tiles adjacent to [Coast] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Papyrus Sprouted",
+				"uniques": [
+					"Triggers a [Papyrus Sprouted] event",
+					"Add [Papyrus] to this tile",
+					"Only available <in [Marsh] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Mushrooms Sprouted",
+				"uniques": [
+					"Triggers a [Mushrooms Sprouted] event",
+					"Add [Mushrooms] to this tile",
+					"Only available <in [Forest|Marsh] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Herbs Sprouted",
+				"uniques": [
+					"Triggers a [Herbs Sprouted] event",
+					"Add [Herbs] to this tile",
+					"Only available <in [Forest] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Resin Sprouted",
+				"uniques": [
+					"Triggers a [Resin Sprouted] event",
+					"Add [Resin] to this tile",
+					"Only available <in [{Cold} {Forest}] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Apricorn Sprouted",
+				"uniques": [
+					"Triggers a [Apricorn Sprouted] event",
+					"Add [Apricorn] to this tile",
+					"Only available <in [Rich Soil] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Rubber Sprouted",
+				"uniques": [
+					"Triggers a [Rubber Sprouted] event",
+					"Add [Rubber] to this tile",
+					"Only available <in [{Hot} {Forest}] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Apples Sprouted",
+				"uniques": [
+					"Triggers a [Apples Sprouted] event",
+					"Add [Apples] to this tile",
+					"Only available <in [Temperate] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Bananas Sprouted",
+				"uniques": [
+					"Triggers a [Bananas Sprouted] event",
+					"Add [Bananas] to this tile",
+					"Only available <in [Grassland|Tropical] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Citrus Sprouted",
+				"uniques": [
+					"Triggers a [Citrus Sprouted] event",
+					"Add [Citrus] to this tile",
+					"Only available <in [Tropical] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Flowers Sprouted",
+				"uniques": [
+					"Triggers a [Flowers Sprouted] event",
+					"Add [Flowers] to this tile",
+					"Only available <in [Enchanted|Rich Soil] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Grapes Sprouted",
+				"uniques": [
+					"Triggers a [Grapes Sprouted] event",
+					"Add [Grapes] to this tile",
+					"Only available <in [Enchanted|Grassland] tiles> <in tiles adjacent to [Coast] tiles> <hidden from users>"
+				]
+			},
+			{
+				"text": "Oranges Sprouted",
+				"uniques": [
+					"Triggers a [Oranges Sprouted] event",
+					"Add [Oranges] to this tile",
+					"[-60]% weight to this choice for AI decisions",
+					"Only available <in [Grassland|Tropical] tiles> <hidden from users>"
+				]
+			}
+		]
+	},
+	{
+		"name": "Berries Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Berries on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Berries] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Cotton Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Cotton on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Cotton] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Spices Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Spices on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Spices] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Sugar Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Sugar on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Sugar] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Cocoa Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Cocoa on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Cocoa] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Coffee Beans Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Coffee Beans on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Coffee Beans] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Vines Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Vines on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Vines] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Dyes Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Dyes on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Dyes] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Papyrus Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Papyrus on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Papyrus] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Mushrooms Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Mushrooms on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Mushrooms] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Herbs Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Herbs on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Herbs] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Resin Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Resin on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Resin] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Apricorn Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Apricorn on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Apricorn] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Rubber Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Rubber on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Rubber] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Apples Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Apples on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Apples] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Bananas Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Bananas on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Bananas] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Citrus Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Citrus on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Citrus] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Flowers Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Flowers on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Flowers] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Grapes Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Grapes on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Grapes] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
+		"name": "Oranges Sprouted",
+		"text": "Your Dryad's magic has managed to successfully sprout Oranges on this tile!",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK",
+				"uniques": [
+					"Add [Oranges] to this tile"
+					//Doesn't do anything because alerts do not receive event context, actual action done in the original event
+					//However it does allow it to show up as a tooltip
+				]
+			}
+		]
+	},
+	{
 		"name": "Eureka",
 		"text": "Attempt to generate a free technology or Magic Card.",
 		"presentation": "None",

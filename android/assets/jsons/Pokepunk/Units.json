@@ -66,7 +66,11 @@
 		"cost": 50,
 		 "civilopediaText": [
             {
-                "text": "Builder unit that can help provide Food.  Can build Farms on Fertile, Crop, and Rich Soil tiles, or remove Crop resources.  Can trigger a Crop Propagation event to clone any Crops that you have, although this costs Water."
+                "text": "Builder unit that can help provide Food.  Can build Farms on Fertile, Crop, and Rich Soil tiles, or remove Crop resources."
+            },
+            { "separator": true },
+            {
+                "text": "Can trigger a Crop Propagation event to clone any Crops that you have, although this costs Water."
             }
         ]
 	},
@@ -259,16 +263,42 @@
 		"hurryCostModifier": 20,
 		"selectSound":"philosopher",
 		"uniques": [
-            "Great Creative",
+            "Great Thinker",
 			"Unbuildable",
-            "Triggers a [Eureka] event <in [Archive] tiles> <for [2] charges> <AI will always use>",
+            "Triggers a [Eureka] event <in [Archive] tiles> <for [1] charges> <AI will always use>",
 			"Can build [Knowledge] improvements on tiles",
 			"Automation is a primary action"
 		],
 		"cost": 300,
 		 "civilopediaText": [
             {
-                "text": "Knowledge worker that can attempt to generate a free technology or Magic Card through a Eureka (not guaranteed) over an Archive, or build Knowledge improvements."
+                "text": "Knowledge-based Great Person that can attempt to generate a free technology or Magic Card through a Eureka (not guaranteed) over an Archive, or build Knowledge improvements."
+            }
+        ]
+	},
+	{
+		"name": "Dryad",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Fantasy",
+        "charges": 4,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"dryad",
+		"uniques": [
+            "Great Creative",
+			"Unbuildable",
+            "Turn this tile into a [Rich Soil] tile <in [{non-[Hazardous]} {Fertile}] tiles> <for [1] charges> <AI will always use when number of [Owned [Rich Soil] Tiles] is less than [3]>",
+			"Triggers a [Miracle Blossom] event <in [Forest|Marsh|Rich Soil] tiles> <for [2] charges> <AI will always use>",
+            "[+2] population [in this city] <for [4] charges>"
+		],
+		"cost": 300,
+		 "civilopediaText": [
+            {
+                "text": "Supernatural plantoid Great Person that can create Rich Soil for one charge or trigger a Miracle Blossom for two.  They can also consume all four charges to instantly boost the population of a city by 2."
+            },
+            { "separator": true },
+            {
+                "text": "Miracle Blossom is a special event that can be triggered on Forests, Marsh, and Rich Soil tiles.  It allows spawning a random Plant, Aromatic, Fruit or on the tile without costing resources, potentially even one you don't own."
             }
         ]
 	},
@@ -337,7 +367,6 @@
 		"attackSound": "maiden_spear",
         "requiredTech": "Bronze Working",
         "uniques": [
-            //"Turn this tile into a [Enchanted] tile <[3] times> <in all [Desert] tiles in [2] to [4] radius>",
             "[100]% Attack Strength <vs [Cavalry] units>",
 			"Can only be built <in cities with a [Barracks]>",
             "Never appears as a Barbarian unit",

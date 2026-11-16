@@ -2,6 +2,7 @@ package com.unciv.logic.map.mapunit.actions
 
 import com.badlogic.gdx.Gdx
 import com.unciv.Constants
+import com.unciv.GUI
 import com.unciv.UncivGame
 import com.unciv.logic.MultiFilter
 import com.unciv.logic.civilization.Civilization
@@ -26,6 +27,7 @@ import com.unciv.models.translations.fillPlaceholders
 import com.unciv.models.translations.removeConditionals
 import com.unciv.models.translations.tr
 import com.unciv.ui.components.fonts.Fonts
+import com.unciv.ui.screens.worldscreen.WorldScreen
 import com.unciv.utils.Concurrency.runBlocking
 import yairm210.purity.annotations.Readonly
 
@@ -281,10 +283,7 @@ object UnitActionsFromUniques {
                     repeat(unique.getUniqueMultiplier(unit.cache.state)) {
                             triggerFunction.invoke()
                     }
-
-                    Gdx.app.postRunnable {
-                        UnitActionModifiers.activateSideEffects(unit, unique)
-                    }
+                    UnitActionModifiers.activateSideEffects(unit, unique)
                 }
             }()
 

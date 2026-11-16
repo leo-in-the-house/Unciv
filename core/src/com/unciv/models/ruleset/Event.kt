@@ -2,6 +2,7 @@ package com.unciv.models.ruleset
 
 import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.map.mapunit.MapUnit
+import com.unciv.logic.map.tile.Tile
 import com.unciv.models.ruleset.unique.*
 import com.unciv.ui.components.input.KeyCharAndCode
 import com.unciv.ui.images.ImageGetter.getImage
@@ -54,13 +55,15 @@ class EventChoice : ICivilopediaText, RulesetObject() {
     val keyShortcut = ""
     
 
-    fun triggerChoice(civ: Civilization, unit: MapUnit? = null): Boolean {
+    fun triggerChoice(civ: Civilization, unit: MapUnit? = null, tile: Tile? = null): Boolean {
         var success = false
-        val gameContext = GameContext(civ, unit = unit)
+        var tileToTrigger = tile
+        if (tileToTrigger == null && unit != null) tileToTrigger = unit.getTile()
+        val gameContext = GameContext(civ, unit = unit, tile = tileToTrigger)
         for (unique in uniqueObjects) {
             if (!unique.isTriggerable || !unique.conditionalsApply(gameContext)) continue
             repeat(unique.getUniqueMultiplier(gameContext)) {
-                if (UniqueTriggerActivation.triggerUnique(unique, civ, unit = unit)) success = true
+                if (UniqueTriggerActivation.triggerUnique(unique, civ, unit = unit, tile = tile)) success = true
             }
         }
         return success

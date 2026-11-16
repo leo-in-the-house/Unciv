@@ -93,7 +93,7 @@
 		"uniques": [
 			"Horticulture",
 			"Can only be built on [resourceless] tiles",
-			"Provides [1] [Reeds]",
+			"Provides [1] [Papyrus]",
 			"Pillaging this improvement yields approximately [+10 Gold]"
 		],
 		"shortcutKey": "F",
@@ -535,6 +535,22 @@
             }
         ]
 	},
+	{
+		"name": "Smokehouse",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "smokehouse",
+		"uniques": [
+			"Urban Improvement",
+			"Turn this tile into a [Urban] tile",
+			"Pillaging this improvement yields approximately [+25 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
 	// Wonder improvements
 	// Unbuildable improvements
 	{
@@ -558,6 +574,7 @@
 	{
 		"name": "City center",
 		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "city_center",
 		"uniques": ["Ensures a minimum tile yield of [+3 Food, +10 Production]",
 			"Turn this tile into a [Urban] tile",
             "Unpillagable", "Irremovable", "Unbuildable", "Excluded from map editor"],

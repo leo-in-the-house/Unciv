@@ -18,6 +18,7 @@ import com.unciv.logic.civilization.PopupAlert
 import com.unciv.logic.civilization.diplomacy.*
 import com.unciv.logic.map.HexCoord
 import com.unciv.logic.map.mapunit.MapUnit
+import com.unciv.logic.map.tile.Tile
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.models.translations.fillPlaceholders
 import com.unciv.models.translations.tr
@@ -657,16 +658,28 @@ class AlertPopup(
         val splitString = popupAlert.value.split(Constants.stringSplitCharacter)
         val eventName = splitString[0]
         var unit: MapUnit? = null
+        var tilex: Int? = null
+        var tiley: Int? = null
+        var tile: Tile? = null
         for (i in 1 until splitString.size) {
             if (splitString[i].startsWith("unitId=")){
                 val unitId = splitString[i].substringAfter("unitId=").toInt()
                 unit = viewingCiv.units.getUnitById(unitId)
             }
+            if (splitString[i].startsWith("tilex=")){
+                tilex = splitString[i].substringAfter("tilex=").toInt()
+            }
+            if (splitString[i].startsWith("tiley=")){
+                tiley = splitString[i].substringAfter("tiley=").toInt()
+            }
         }
         
+        if (tilex != null && tiley != null)     {
+            tile = viewingCiv.viewableTiles.filter { it.position.x == tilex && it.position.y == tiley }.first()
+        }
         
         val event = gameInfo.ruleset.events[eventName] ?: return false
-        val render = RenderEvent(event, worldScreen, unit) { close() }
+        val render = RenderEvent(event, worldScreen, unit, tile) { close() }
         if (!render.isValid) return false
         add(render).pad(0f).row()
         getScrollPane()?.fadeScrollBars = false

@@ -71,6 +71,17 @@ object UnitActionModifiers {
     }
 
     @Readonly
+    private fun canSpendChargesCost(unit: MapUnit, actionUnique: Unique): Boolean {
+        for (conditional in actionUnique.getModifiers(UniqueType.UnitActionConsumeCharge)) {
+            val amount = conditional.params[0].toInt()
+            if (unit.curCharges < amount) {
+                return false
+            }
+        }
+        return true
+    }
+
+    @Readonly
     private fun canSpendStockpileCost(unit: MapUnit, actionUnique: Unique): Boolean {
         for (conditional in actionUnique.getModifiers(UniqueType.UnitActionStockpileCost)) {
             val amount = conditional.params[0].toInt()
@@ -109,19 +120,21 @@ object UnitActionModifiers {
     fun canActivateSideEffects(unit: MapUnit, actionUnique: Unique): Boolean {
         if (!canUse(unit, actionUnique)) return false
         if (getMovementPointsRequired(actionUnique) > ceil(unit.currentMovement).toInt()) return false
+        if (!canSpendChargesCost(unit, actionUnique)) return false
         if (!canSpendStatsCost(unit, actionUnique)) return false
         if (!canSpendStockpileCost(unit, actionUnique)) return false
         if (!canConsumeResourceOnTile(unit, actionUnique)) return false
         return true
     }
 
-    fun activateSideEffects(unit: MapUnit, actionUnique: Unique, defaultAllMovement: Boolean = false) {
+    fun activateSideEffects(unit: MapUnit, actionUnique: Unique, defaultAllMovement: Boolean = false, triggerChargeSideEffects: Boolean = true, triggerNonChargeSideEffects: Boolean = true) {
         val movementCost = getMovementPointsToUse(unit, actionUnique, defaultAllMovement)
         unit.useMovementPoints(movementCost.toFloat())
 
         for (conditional in actionUnique.modifiers) {
             when (conditional.type) {
                 UniqueType.UnitActionLimitedTimes, UniqueType.UnitActionOnce -> {
+                    if (!triggerNonChargeSideEffects) continue
                     if (usagesLeft(unit, actionUnique) == 1
                         && actionUnique.hasModifier(UniqueType.UnitActionAfterWhichConsumed)) {
                         unit.consume()
@@ -133,6 +146,7 @@ object UnitActionModifiers {
                 UniqueType.UnitActionStatsCost -> {
                     // do Stat costs, either Civ-wide or local city
                     // should have validated this doesn't send us negative
+                    if (!triggerNonChargeSideEffects) continue
                     for ((stat, value) in conditional.stats) {
                         if (stat in Stat.statsWithCivWideField) {
                             unit.civ.addStat(stat, -value.toInt())
@@ -140,6 +154,7 @@ object UnitActionModifiers {
                     }
                 }
                 UniqueType.UnitActionStockpileCost -> {
+                    if (!triggerNonChargeSideEffects) continue
                     val amount = conditional.params[0].toInt()
                     val resourceName = conditional.params[1]
                     val resource = unit.civ.gameInfo.ruleset.tileResources[resourceName]
@@ -148,6 +163,7 @@ object UnitActionModifiers {
                 }
 
                 UniqueType.UnitActionRemoveFeature -> {
+                    if (!triggerNonChargeSideEffects) continue
                     val featureName = conditional.params[0]
                     val tile = unit.getTile()
                     if (tile != null) {
@@ -167,6 +183,7 @@ object UnitActionModifiers {
                 }
 
                 UniqueType.UnitActionRemoveResource -> {
+                    if (!triggerNonChargeSideEffects) continue
                     val resourceFilter = conditional.params[0]
                     val tile = unit.getTile()
                     if (tile != null && tile.tileResource != null) {
@@ -178,6 +195,7 @@ object UnitActionModifiers {
                     }
                 }
                 UniqueType.UnitActionRemovingPromotion -> {
+                    if (!triggerNonChargeSideEffects) continue
                     val promotionName = conditional.params[0]
                     // if has a status, remove that instead - the promotion is 'safe'
                     if (unit.hasStatus(promotionName)) {
@@ -187,10 +205,14 @@ object UnitActionModifiers {
                     }
                 }
                 UniqueType.UnitActionConsumeCharge -> {
+                    if (!triggerChargeSideEffects) continue
                     val amount = conditional.params[0].toInt()
                     unit.consumeCharges(amount)
                 }
-                UniqueType.UnitActionConsumeUnit -> unit.consume()
+                UniqueType.UnitActionConsumeUnit -> {
+                    if (!triggerChargeSideEffects) continue
+                    unit.consume()
+                }
                 else -> continue
             }
         }
@@ -246,6 +268,13 @@ object UnitActionModifiers {
                 stockpileString += " ${conditionals.params[0].toInt()} {${conditionals.params[1]}}"
             effects += stockpileString.removePrefix(" ") // drop leading space
         }
+
+        if (actionUnique.hasModifier(UniqueType.UnitActionConsumeCharge)) {
+            var chargesString = ""
+            for (conditionals in actionUnique.getModifiers(UniqueType.UnitActionConsumeCharge))
+                chargesString += " ${conditionals.params[0].toInt()}"+Fonts.charges
+            effects += chargesString.removePrefix(" ") // drop leading space
+        } 
 
         if (actionUnique.hasModifier(UniqueType.UnitActionRemoveFeature)) {
             var tileFeatureString = ""

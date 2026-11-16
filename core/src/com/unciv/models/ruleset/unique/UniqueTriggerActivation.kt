@@ -160,13 +160,15 @@ object UniqueTriggerActivation {
                 }
                 
                 if (civInfo.isAI() || event.presentation == Event.Presentation.None) return {
+                    val tile = unit?.getTile()
                     val choice = choices.toList().randomWeighted(rng) { it.getWeightForAiDecision(gameContext) }
-                    choice.triggerChoice(civInfo, unit)
+                    choice.triggerChoice(civInfo, unit, tile)
                 }
                 if (event.presentation == Event.Presentation.Alert) return {
                     /** See [com.unciv.ui.screens.worldscreen.AlertPopup.addEvent] for the deserializing of this string to the context */
                     var eventText = event.name
                     if (unit != null) eventText += Constants.stringSplitCharacter + "unitId=" + unit.id
+                    if (tile != null) eventText += Constants.stringSplitCharacter + "tilex=" + tile.position.x + Constants.stringSplitCharacter + "tiley=" + tile.position.y
                     civInfo.popupAlerts.add(PopupAlert(AlertType.Event, eventText))
                     true
                 }
