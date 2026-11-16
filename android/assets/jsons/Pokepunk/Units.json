@@ -34,7 +34,7 @@
 		"selectSound":"builder",
 		"uniques": [
 			"Unbuildable",
-			"Can build [Land] improvements on tiles",
+			"Can build [{non-[Special]} {Land}] improvements on tiles",
 			"Automation is a primary action"
 		],
 		"cost": 100,

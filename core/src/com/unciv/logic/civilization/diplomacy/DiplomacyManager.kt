@@ -523,7 +523,21 @@ class DiplomacyManager() : IsPartOfGameInfoSerialization {
         return max(0f, decrement) * max(-100f, modifierPercent).toPercent()
     }
 
+    @Readonly
+    fun canDeclareFriendship() = civInfo.hasUnique(UniqueType.EnablesFriendship) && otherCiv.hasUnique(UniqueType.EnablesFriendship)
 
+    @Readonly
+    fun canDenounce() = civInfo.hasUnique(UniqueType.EnablesDenouncing)
+
+    @Readonly
+    fun canDemandFromOtherCiv() = civInfo.hasUnique(UniqueType.EnablesDemands)
+
+    @Readonly
+    fun canProvideGiftToCityStates() = civInfo.hasUnique(UniqueType.EnablesCityStateGifts)
+
+    @Readonly
+    fun canProtectCityStates() = civInfo.hasUnique(UniqueType.EnablesProtectingCityStates)
+    
     @Readonly
     fun canDeclareWar() = !civInfo.isDefeated() && !otherCiv.isDefeated()
             && turnsToPeaceTreaty() == 0 && diplomaticStatus != DiplomaticStatus.War
@@ -586,7 +600,9 @@ class DiplomacyManager() : IsPartOfGameInfoSerialization {
     // for performance reasons we don't want to call this every time we want to see if a unit can move through a tile
     fun updateHasOpenBorders() {
         // City-states can enter ally's territory (the opposite is true anyway even without open borders)
+        // Also, if border enforcement is not enabled on the otherciv, units can enter into other nations' tiles
         val newHasOpenBorders = civInfo.allyCiv == otherCiv
+                || otherCiv.hasUnique(UniqueType.EnablesEnforcingBorders)
                 || trades.flatMap { it.theirOffers }.any { it.name == Constants.openBorders && it.duration > 0 }
 
         val bordersWereClosed = hasOpenBorders && !newHasOpenBorders

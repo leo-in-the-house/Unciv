@@ -238,6 +238,7 @@ object NextTurnAutomation {
 
     private fun bullyCityStates(civView: CivView) {
         val civInfo = civView.getCiv()
+        if (!civInfo.hasUnique(UniqueType.EnablesDemands)) return
         for (state in civInfo.getKnownCivs().filter { !it.isDefeated() && it.isCityState }.toList()) {
             val diplomacyManager = state.getDiplomacyManager(civInfo)!!
             if (!diplomacyManager.isRelationshipLevelLT(RelationshipLevel.Friend)) continue
@@ -713,7 +714,8 @@ object NextTurnAutomation {
 
     private fun issueRequests(civView: CivView) {
         val civInfo = civView.getCiv()
-        for (otherCiv in civInfo.getKnownCivs().filter { it.isMajorCiv() }) {
+        for (otherCiv in civInfo.getKnownCivs().filter { it.isMajorCiv() 
+            && civInfo.getDiplomacyManager(it)!!.canDemandFromOtherCiv()}) {
             val diploManager = civInfo.getDiplomacyManager(otherCiv)!!
             for (demand in Demand.entries) {
                 if (diploManager.hasFlag(demand.violationOccurred))

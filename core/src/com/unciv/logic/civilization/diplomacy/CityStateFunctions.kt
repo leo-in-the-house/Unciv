@@ -253,6 +253,9 @@ class CityStateFunctions(val civInfo: Civilization) {
         // Must be a known city state
         if(!civInfo.isCityState || !otherCiv.isMajorCiv() || otherCiv.isDefeated() || !civInfo.knows(otherCiv))
             return false
+        val otherCivDiplomacy = otherCiv.getDiplomacyManager(civInfo)!!
+        if (!otherCivDiplomacy.canProtectCityStates()) return false
+        
         val diplomacy = civInfo.getDiplomacyManager(otherCiv)!!
         // Can't pledge too soon after withdrawing
         if (diplomacy.hasFlag(DiplomacyFlags.RecentlyWithdrewProtection))

@@ -260,8 +260,14 @@ enum class UniqueType(
     /// Diplomacy
     EnablesEmbassies("Enables establishment of embassies", UniqueTarget.Global),
     RequiresEmbassiesForDiplomacy("Requires establishing embassies to conduct advanced diplomacy", UniqueTarget.Global),
+    EnablesEnforcingBorders("Other civilizations cannot pass through your territory without Open Borders", UniqueTarget.Global),
 
     /// Agreements
+    EnablesFriendship("Enables declaring friendships", UniqueTarget.Global),
+    EnablesDenouncing("Enables denouncing other civilizations", UniqueTarget.Global),
+    EnablesDemands("Enables making demands of other civilizations", UniqueTarget.Global),
+    EnablesProtectingCityStates("Enables protecting city-states", UniqueTarget.Global),
+    EnablesCityStateGifts("Enables giving gifts to city-states for influence", UniqueTarget.Global),
     EnablesOpenBorders("Enables Open Borders agreements", UniqueTarget.Global),
     // Should the 'R' in 'Research agreements' be capitalized?
     EnablesResearchAgreements("Enables Research agreements", UniqueTarget.Global),

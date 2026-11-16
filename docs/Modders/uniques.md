@@ -965,6 +965,24 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Requires establishing embassies to conduct advanced diplomacy"
 	Applicable to: Global
 
+??? example  "Other civilizations cannot pass through your territory without Open Borders"
+	Applicable to: Global
+
+??? example  "Enables declaring friendships"
+	Applicable to: Global
+
+??? example  "Enables denouncing other civilizations"
+	Applicable to: Global
+
+??? example  "Enables making demands of other civilizations"
+	Applicable to: Global
+
+??? example  "Enables protecting city-states"
+	Applicable to: Global
+
+??? example  "Enables giving gifts to city-states for influence"
+	Applicable to: Global
+
 ??? example  "Enables Open Borders agreements"
 	Applicable to: Global
 

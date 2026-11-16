@@ -177,6 +177,7 @@ object DiplomacyAutomation {
             val ourDiploManager = civInfo.getDiplomacyManager(it)!!
             it.isMajorCiv()
                 && !civInfo.isAtWarWith(it) 
+                && it.hasUnique(UniqueType.EnablesEnforcingBorders)
                 && it.hasUnique(UniqueType.EnablesOpenBorders)
                 && !ourDiploManager.hasOpenBorders
                 && !ourDiploManager.otherCivDiplomacy().hasOpenBorders
@@ -630,6 +631,7 @@ object DiplomacyAutomation {
         val denounceableRelationships = relationships
             .onEach { debug(it, numberOfActiveDenouncements) }
             .filter { it.diplomaticStatus != DiplomaticStatus.War
+                && it.canDenounce()
                 && !it.hasFlag(DiplomacyFlags.DeclarationOfFriendship)
                 && !it.hasFlag(DiplomacyFlags.Denunciation) }
         

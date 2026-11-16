@@ -35,6 +35,7 @@ class CityStateDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
     val viewingCiv = diplomacyScreen.viewingCiv
 
     fun getCityStateDiplomacyTable(otherCiv: Civilization): Table {
+        val diplomacyManager = viewingCiv.getDiplomacyManager(otherCiv)!!
         val otherCivDiplomacyManager = otherCiv.getDiplomacyManager(viewingCiv)!!
 
         val diplomacyTable = getCityStateDiplomacyTableHeader(otherCiv)
@@ -47,15 +48,24 @@ class CityStateDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
             diplomacyScreen.rightSideTable.add(ScrollPane(getGoldGiftTable(otherCiv)))
         }
         diplomacyTable.add(giveGiftButton).row()
-        if (diplomacyScreen.isNotPlayersTurn() || viewingCiv.isAtWarWith(otherCiv)) giveGiftButton.disable()
+        if (diplomacyScreen.isNotPlayersTurn() || diplomacyManager.canProvideGiftToCityStates() 
+            || viewingCiv.isAtWarWith(otherCiv)) giveGiftButton.disable()
 
         val improveTileButton = getImproveTilesButton(otherCiv, otherCivDiplomacyManager)
         if (improveTileButton != null) diplomacyTable.add(improveTileButton).row()
 
-        if (otherCivDiplomacyManager.diplomaticStatus != DiplomaticStatus.Protector)
-            diplomacyTable.add(getPledgeToProtectButton(otherCiv)).row()
-        else
-            diplomacyTable.add(getRevokeProtectionButton(otherCiv)).row()
+        if (otherCivDiplomacyManager.diplomaticStatus != DiplomaticStatus.Protector) {
+            val protectCityStateButton = getPledgeToProtectButton(otherCiv)
+            diplomacyTable.add(protectCityStateButton).row()
+            if (!diplomacyManager.canProtectCityStates()) protectCityStateButton.disable()
+        }
+        else {
+            val revokeProtectionButton = getRevokeProtectionButton(otherCiv)
+            diplomacyTable.add(revokeProtectionButton).row()
+            if (!diplomacyManager.canProtectCityStates()) revokeProtectionButton.disable()
+            
+        }
+
 
         val demandTributeButton = "Demand Tribute".toTextButton()
         demandTributeButton.onClick {
@@ -63,9 +73,9 @@ class CityStateDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
             diplomacyScreen.rightSideTable.add(ScrollPane(getDemandTributeTable(otherCiv)))
         }
         diplomacyTable.add(demandTributeButton).row()
-        if (diplomacyScreen.isNotPlayersTurn() || viewingCiv.isAtWarWith(otherCiv)) demandTributeButton.disable()
+        if (diplomacyScreen.isNotPlayersTurn() || diplomacyManager.canDemandFromOtherCiv() ||
+            viewingCiv.isAtWarWith(otherCiv)) demandTributeButton.disable()
 
-        val diplomacyManager = viewingCiv.getDiplomacyManager(otherCiv)!!
         if (!viewingCiv.gameInfo.ruleset.modOptions.hasUnique(UniqueType.DiplomaticRelationshipsCannotChange)) {
             if (viewingCiv.isAtWarWith(otherCiv))
                 diplomacyTable.add(getNegotiatePeaceCityStateButton(otherCiv, diplomacyManager)).row()

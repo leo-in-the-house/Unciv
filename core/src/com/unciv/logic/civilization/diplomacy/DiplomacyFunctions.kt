@@ -158,6 +158,7 @@ class DiplomacyFunctions(val civInfo: Civilization) {
     @Readonly
     fun canSignDeclarationOfFriendshipWith(otherCiv: Civilization): Boolean {
         return otherCiv.isMajorCiv() && !otherCiv.isAtWarWith(civInfo)
+            && !civInfo.getDiplomacyManager(otherCiv)!!.canDeclareFriendship()
             && !civInfo.getDiplomacyManager(otherCiv)!!.hasFlag(DiplomacyFlags.Denunciation)
             && !civInfo.getDiplomacyManager(otherCiv)!!.hasFlag(DiplomacyFlags.DeclarationOfFriendship)
     }

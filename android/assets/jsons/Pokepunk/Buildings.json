@@ -28,7 +28,7 @@
 		"culture": 4,
 		"cost": 50,
 		"hurryCostModifier": 25,
-		"requiredTech": "Pottery",
+		"requiredTech": "Masonry",
 		"maintenance": 1,
 		"uniques": [
 			"Creates a [Monument] improvement on a specific tile",
@@ -46,7 +46,7 @@
 		"cityHealth": 100,
 		"cost": 50,
 		"hurryCostModifier": 25,
-		"requiredTech": "Code of Laws",
+		"requiredTech": "Masonry",
 		"uniques": [
 			"Is shown",
 			"Destroyed when the city is captured"

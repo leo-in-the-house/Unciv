@@ -68,9 +68,8 @@ class MajorCivDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
         if (!viewingCiv.isAtWarWith(otherCiv)) {
             diplomacyTable.add(getTradeButton(otherCiv)).row()
 
-
             if (!diplomacyManager.hasFlag(DiplomacyFlags.DeclarationOfFriendship))
-                diplomacyTable.add(getDeclareFriendshipButton(otherCiv)).row()
+                diplomacyTable.add(getDeclareFriendshipButton(otherCiv, diplomacyManager)).row()
 
             if (!diplomacyManager.hasFlag(DiplomacyFlags.Denunciation)
                 && !diplomacyManager.hasFlag(DiplomacyFlags.DeclarationOfFriendship)
@@ -93,7 +92,7 @@ class MajorCivDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
             diplomacyScreen.rightSideTable.add(getDemandsTable(viewingCiv, otherCiv))
         }
         diplomacyTable.add(demandsButton).row()
-        if (diplomacyScreen.isNotPlayersTurn()) demandsButton.disable()
+        if (diplomacyScreen.isNotPlayersTurn() || !diplomacyManager.canDemandFromOtherCiv()) demandsButton.disable()
 
         if (otherCiv.getCapital() != null && viewingCiv.hasExplored(otherCiv.getCapital()!!.getCenterTile()))
             diplomacyTable.add(diplomacyScreen.getGoToOnMapButton(otherCiv)).row()
@@ -158,10 +157,12 @@ class MajorCivDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
             }.open()
         }
         if (diplomacyScreen.isNotPlayersTurn()) denounceButton.disable()
+        if (!diplomacyManager.canDenounce()) denounceButton.disable()
         return denounceButton
     }
 
-    private fun getDeclareFriendshipButton(otherCiv: Civilization): TextButton {
+    private fun getDeclareFriendshipButton(otherCiv: Civilization,
+                                           diplomacyManager: DiplomacyManager): TextButton {
         val declareFriendshipButton =
             "Offer Declaration of Friendship ([30] turns)".toTextButton()
         declareFriendshipButton.onClick {
@@ -177,6 +178,7 @@ class MajorCivDiplomacyTable(private val diplomacyScreen: DiplomacyScreen) {
                 .any { it.type == AlertType.DeclarationOfFriendship && it.value == viewingCiv.civID }
         )
             declareFriendshipButton.disable()
+        if (!diplomacyManager.canDeclareFriendship()) declareFriendshipButton.disable()
         return declareFriendshipButton
     }
 

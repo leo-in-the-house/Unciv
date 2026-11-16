@@ -414,14 +414,15 @@
 	{
 		"name": "Archive",
 		"terrainsCanBeBuiltOn": ["Land"],
-		"science": 2,
+		"science": 3,
 		"culture": 1,
 		"turnsToBuild": 0,
 		"buildSound": "archive",
 		"uniques": [
+			"Special",
 			"Knowledge",
-			"Great Improvement",
 			"Tile provides yield without assigned population",
+			"Will not be replaced by automated units", 
 			"Pillaging this improvement yields approximately [+50 Science]"
 		],
 		"shortcutKey": "F",

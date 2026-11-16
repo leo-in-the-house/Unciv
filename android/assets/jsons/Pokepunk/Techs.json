@@ -34,9 +34,9 @@
 				"prerequisites": ["Prehistory"]
 			},
 			{
-				"name": "Stonecutting",
+				"name": "Pokémon Pisciculture",
 				"row": 3,
-				"quote": "Working with rocks are necessary in order to perform most construction and crafting.  They can also be fastened into a primitive ranged weapon.",
+				"quote": "Ever since man first gazed upon the seas, they wondered what lies in the blue yonder.  Some early civilizations met the mysterious Mermaids, who taught them how to fish, and how to tame and ride the Pokémon Goldeen.",
 				"prerequisites": ["Prehistory"]
 			},
 			{
@@ -52,9 +52,9 @@
 				"prerequisites": ["Prehistory"]
 			},
 			{
-				"name": "Pokémon Pisciculture",
+				"name": "Stonecutting",
 				"row": 6,
-				"quote": "Ever since man first gazed upon the seas, they wondered what lies in the blue yonder.  Some early civilizations met the mysterious Mermaids, who taught them how to fish, and how to tame and ride the Pokémon Goldeen.",
+				"quote": "Working with rocks are necessary in order to perform most construction and crafting.  They can also be fastened into a primitive ranged weapon.",
 				"prerequisites": ["Prehistory"]
 			},
 			{
@@ -70,15 +70,15 @@
 				"prerequisites": ["Prehistory"]
 			},
 			{
-				"name": "Pottery",
+				"name": "Masonry",
 				"row": 9,
-				"quote": "Once the quest for food has been fulfilled, the quest for finer goods began.  Humans started to carve masterful monuments and pottery to show their prowess.",
+				"quote": "Early architecture attempted to cut stones and tie them with mortar and mud, creating fortified structures and masterful monuments.",
 				"prerequisites": ["Prehistory"]
 			},
 			{
-				"name": "Code of Laws",
+				"name": "Pottery",
 				"row": 10,
-				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict or to rally our people against threats.",
+				"quote": "Once the quest for food has been fulfilled, the quest for finer goods began.  Humans started to carve masterful works of clay to show their prowess.",
 				"prerequisites": ["Prehistory"]
 			}
 		]
@@ -94,7 +94,7 @@
 				"name": "Slavery",
 				"row": 1,
 				"quote": "After the beast has been chained, and before robotics and artificial intelligence, wealthy humans that wanted effortless solutions to complex tasks had to shackle the human body and intellect instead.",
-				"prerequisites": ["Agriculture","Stonecutting"]
+				"prerequisites": ["Agriculture","Pokémon Domestication"]
 			},
 			{
 				"name": "Herbalism",
@@ -115,17 +115,24 @@
 				"prerequisites": ["Toolmaking","Mining"]
 			},
 			{
-				"name": "Calendar",
-				"row": 7,
-				"quote": "Human recognition of patterns of the sun, moon, and stars allow for a sense of timekeeping, useful for growing specialty crops or trade.",
-				"prerequisites": ["Mining","Code of Laws"]
-			},
-			{
 				"name": "Writing",
 				"row": 8,
-				"uniques": ["Enables establishment of embassies"],
+				"uniques": ["Enables denouncing other civilizations","Enables making demands of other civilizations"],
 				"quote": "The storage of information isn't the only use for the written word.  Eventually, diplomats began to realize the pen is mightier than the sword.",
-				"prerequisites": ["Code of Laws"]
+				"prerequisites": ["Toolmaking"]
+			},
+			{
+				"name": "Calendar",
+				"row": 9,
+				"quote": "Human recognition of patterns of the sun, moon, and stars allow for a sense of timekeeping, useful for growing specialty crops or trade.",
+				"prerequisites": ["Irrigation","Masonry"]
+			},
+			{
+				"name": "Code of Laws",
+				"row": 10,
+				"uniques": ["Enables establishment of embassies"],
+				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict and maintain diplomatic channels with other nations.",
+				"prerequisites": ["Masonry","Pottery"]
 			}
 		]
 	},
