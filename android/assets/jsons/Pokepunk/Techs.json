@@ -2,7 +2,7 @@
 	{
 		"columnNumber": 0,
 		"era": "Antiquity Age", //"Stone Age", <10000 BC level tech
-		"techCost": 5,
+		"techCost": 2,
 		"buildingCost": 30,
 		"wonderCost": 100,
 		"techs": [
@@ -17,7 +17,7 @@
 	{
 		"columnNumber": 1,
 		"era": "Antiquity Age",  //"Tool Age", 10000-3000 BC level tech
-		"techCost": 10,
+		"techCost": 8,
 		"buildingCost": 50,
 		"wonderCost": 140,
 		"techs": [
@@ -132,7 +132,7 @@
 				"row": 10,
 				"uniques": ["Enables establishment of embassies"],
 				"quote": "As civilization grows, it becomes necessary to have formal rules in order to manage conflict and maintain diplomatic channels with other nations.",
-				"prerequisites": ["Masonry","Pottery"]
+				"prerequisites": ["Masonry"]
 			}
 		]
 	},

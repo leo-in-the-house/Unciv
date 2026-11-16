@@ -37,7 +37,6 @@ class StatTreeNode {
 
     fun addStats(newStats: Stats?, vararg hierarchyList: String) {
         if (newStats == null) return
-        if (newStats.isEmpty()) return
         if (hierarchyList.isEmpty()) {
             addInnerStats(newStats)
             return
@@ -447,10 +446,8 @@ class CityStats(val city: City) {
         // We don't edit the existing baseStatList directly, in order to avoid concurrency exceptions
         val newBaseStatList = StatMap()
 
-        newBaseStatTree.addStats(Stats(
-            science = city.population.population.toFloat(),
-            production = city.population.getFreePopulation().toFloat()
-        ), "Population")
+
+        newBaseStatTree.addStats(Stats(), "Population")
         newBaseStatList["Tile yields"] = statsFromTiles
         newBaseStatList["Specialists"] = statsFromSpecialists
         newBaseStatList["Trade routes"] = getStatsFromTradeRoute()

@@ -20,6 +20,10 @@
         "movementType": "Land"
     },
     {
+        "name": "Water Cavalry",
+        "movementType": "Water"
+    },
+    {
         "name": "Human",
         "movementType": "Other"
     },

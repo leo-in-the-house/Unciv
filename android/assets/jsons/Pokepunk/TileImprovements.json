@@ -435,6 +435,7 @@
 	{
 		"name": "Fishing Boats",
 		"terrainsCanBeBuiltOn": ["Coast", "Ocean"],
+		"turnsToBuild": 0,
 		"food": 2,
 		"buildSound": "fishing_boats",
 		"techRequired": "Pokémon Pisciculture",
@@ -452,6 +453,7 @@
 	{
 		"name": "Dredger",
 		"terrainsCanBeBuiltOn": ["Kelp", "Reef", "Iceweed"],
+		"turnsToBuild": 0,
 		"gold": 5,
 		"science": 2,
 		"buildSound": "dredger",

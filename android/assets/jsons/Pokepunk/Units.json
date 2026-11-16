@@ -238,8 +238,8 @@
         "requiredTech": "Pokémon Pisciculture",
 		"uniques": [
 			"Cannot enter ocean tiles <before discovering [Steam Engine]>", //TODO: When updating tech tree
+			"Can build [Water] improvements on tiles",
 			"Can build [Remove Aquatic] improvements on tiles",
-			"May create improvements on water resources",
 			"Automation is a primary action"
 		],
 		"cost": 70,
@@ -387,6 +387,7 @@
 		"selectSound": "poochyena",
 		"attackSound": "poochyena",
 		"uniques": [
+            "[This Unit] gains the [Dark-Type] promotion",
             "[+1] Sight",
 			"Can only attack [Military] units",
 			"Can only be built <with [Poochyenas]>",
@@ -396,6 +397,33 @@
 		"civilopediaText": [
             {
                 "text": "Fast, cheap scout that is trainable in any city with upgraded Poochyenas.  Can be used to explore new lands with a long line of sight, but is frail in combat."
+            }
+        ]
+	},
+    {
+		"name": "Seaking Rider",
+		"unitType": "Water Cavalry",
+		"secondaryUnitType": "Human",
+        "supplyCost": 2,
+		"movement": 3,
+		"attackStrength": 10,
+		"defenseStrength": 30,
+		"cost": 70,
+		"selectSound": "seaking_rider",
+		"attackSound": "maiden_spear",
+        "requiredTech": "Pokémon Pisciculture",
+        "uniques": [
+            "[This Unit] gains the [Water-Type] promotion",
+            "[+1] Sight",
+            "Cannot enter ocean tiles",
+            "Can see invisible [Water] units",
+			"Can only be built <with [Goldeens]>",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Early naval scout riding on a Seaking.  Poor at combat, but has a long line of sight, and can detect hidden water units.  Cannot enter oceanic tiles."
             }
         ]
 	},
