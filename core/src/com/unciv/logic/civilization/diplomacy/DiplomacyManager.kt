@@ -602,7 +602,7 @@ class DiplomacyManager() : IsPartOfGameInfoSerialization {
         // City-states can enter ally's territory (the opposite is true anyway even without open borders)
         // Also, if border enforcement is not enabled on the otherciv, units can enter into other nations' tiles
         val newHasOpenBorders = civInfo.allyCiv == otherCiv
-                || otherCiv.hasUnique(UniqueType.EnablesEnforcingBorders)
+            || (otherCiv.gameInfo.isUniquesInitialized() && !otherCiv.hasUnique(UniqueType.EnablesEnforcingBorders))
                 || trades.flatMap { it.theirOffers }.any { it.name == Constants.openBorders && it.duration > 0 }
 
         val bordersWereClosed = hasOpenBorders && !newHasOpenBorders
