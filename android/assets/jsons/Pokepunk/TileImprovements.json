@@ -50,6 +50,7 @@
 	 	"techRequired": "Calendar",
 		"uniques": [
 			"Agricultural",
+			"Costs [5] [Wood]",
 			"[+2 Food] in each adjacent [Farm]",
 			"Tile provides yield without assigned population",
 			"Cannot be built on [Marsh] tiles",
@@ -112,7 +113,7 @@
 	 	"techRequired": "Irrigation",
 		"uniques": [
 			"Horticulture",
-			"Costs [10] [Wood]",
+			"Costs [5] [Wood]",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+25 Gold]"
 		],
@@ -152,7 +153,6 @@
 		"buildSound": "plantation",
 		"uniques": [
 			"Commercial",
-			"Costs [5] [Wood]",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+25 Gold]"
 		],
@@ -174,7 +174,6 @@
 			"Commercial",
 			"Slave-Based",
 			"Costs [1] [Slaves]",
-			"Costs [5] [Wood]",
 			"Tile provides yield without assigned population",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+25 Gold]"
@@ -377,7 +376,6 @@
 		"buildSound": "quarry",
 		"uniques": [
 			"Minecraft",
-			"Costs [5] [Stone]",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+10 Gold]"
 		],
@@ -399,7 +397,6 @@
 			"Minecraft",
 			"Slave-Based",
 			"Costs [2] [Slaves]",
-			"Costs [5] [Stone]",
 			"Tile provides yield without assigned population",
 			"Can only be built to improve a resource",
 			"Pillaging this improvement yields approximately [+10 Gold]"
@@ -475,6 +472,8 @@
 		"buildSound": "monument",
 		"uniques": [
 			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
 			"Turn this tile into a [Urban] tile",
 			"Pillaging this improvement yields approximately [+10 Gold]",
 			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [City center] tiles> <in tiles adjacent to [Urban] tiles>"
@@ -491,6 +490,8 @@
 		"buildSound": "barracks",
 		"uniques": [
 			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
 			"Turn this tile into a [Urban] tile",
 			"Pillaging this improvement yields approximately [+20 Gold]",
 			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
@@ -507,8 +508,10 @@
 		"buildSound": "potter",
 		"uniques": [
 			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
 			"Turn this tile into a [Urban] tile",
-			"Provides [1] [Pots]",
+			"Provides [3] [Pots]",
 			"Pillaging this improvement yields approximately [+20 Gold]",
 			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
 		],
@@ -524,8 +527,10 @@
 		"buildSound": "scrollmaker",
 		"uniques": [
 			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
 			"Turn this tile into a [Urban] tile",
-			"Provides [1] [Scrolls]",
+			"Provides [3] [Scrolls]",
 			"Pillaging this improvement yields approximately [+30 Gold]",
 			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
 		],
@@ -541,6 +546,8 @@
 		"buildSound": "smokehouse",
 		"uniques": [
 			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
 			"Turn this tile into a [Urban] tile",
 			"Pillaging this improvement yields approximately [+25 Gold]",
 			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
@@ -548,6 +555,24 @@
 		 "civilopediaText": [
             {
                 "text": "Urban building that must be built in flat land.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
+		"name": "Drumcrafter",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "drumcrafter",
+		"uniques": [
+			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
+			"Turn this tile into a [Urban] tile",
+			"Provides [2] [Drums]",
+			"Pillaging this improvement yields approximately [+30 Gold]",
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Provides the Drums luxury resource.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
             }
         ]
 	},

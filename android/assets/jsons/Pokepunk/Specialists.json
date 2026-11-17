@@ -6,6 +6,12 @@
 		"color": [200,200,55]
 	},
 	{
+		"name":"Craftsman",
+		"gold": 3,
+		"greatPersonPoints": {"Engineer": 3},
+		"color": [255,255,125]
+	},
+	{
 		"name":"Scribe",
 		"science": 2,
 		"greatPersonPoints": {"Philosopher": 5},

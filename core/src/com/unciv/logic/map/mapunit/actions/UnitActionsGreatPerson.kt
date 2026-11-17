@@ -21,7 +21,9 @@ object UnitActionsGreatPerson {
                 UnitActionType.HurryResearch,
                 associatedUnique = unique,
                 action = {
-                    unit.civ.tech.addScience(unit.civ.tech.getScienceFromGreatScientist())
+                    var numCharges = 1
+                    if (unit.curCharges > 1) numCharges = unit.curCharges
+                    unit.civ.tech.addScience(unit.civ.tech.getScienceFromGreatScientist() * numCharges)
                     unit.consume()
                 }.takeIf {
                     unit.hasMovement()
@@ -38,7 +40,10 @@ object UnitActionsGreatPerson {
                 UnitActionType.HurryPolicy,
                 associatedUnique = unique,
                 action = {
-                    unit.civ.policies.addCulture(unit.civ.policies.getCultureFromGreatWriter())
+                    var numCharges = 1
+                    if (unit.curCharges > 1) numCharges = unit.curCharges
+                    
+                    unit.civ.policies.addCulture(unit.civ.policies.getCultureFromGreatWriter() * numCharges)
                     unit.consume()
                 }.takeIf {unit.hasMovement()}
             ))
@@ -57,8 +62,9 @@ object UnitActionsGreatPerson {
                 associatedUnique = unique,
                 action = {
                     tile.getCity()!!.cityConstructions.apply {
-                        //http://civilization.wikia.com/wiki/Great_engineer_(Civ5)
-                        addProductionPoints(((300 + 30 * tile.getCity()!!.population.population) * unit.civ.gameInfo.speed.productionCostModifier).toInt())
+                        var numCharges = 1
+                        if (unit.curCharges > 1) numCharges = unit.curCharges
+                        addProductionPoints((((200 * numCharges) + 30 * tile.getCity()!!.population.population) * unit.civ.gameInfo.speed.productionCostModifier).toInt())
                         constructIfEnough()
                     }
 
@@ -78,10 +84,13 @@ object UnitActionsGreatPerson {
             val cityConstructions = tile.getCity()!!.cityConstructions
             val canHurryConstruction = cityConstructions.getCurrentConstruction() is Building
                 && cityConstructions.canBeHurried()
+            
+            var numCharges = 1
+            if (unit.curCharges > 1) numCharges = unit.curCharges
 
             //http://civilization.wikia.com/wiki/Great_engineer_(Civ5)
             val productionPointsToAdd = min(
-                (300 + 30 * tile.getCity()!!.population.population) * unit.civ.gameInfo.speed.productionCostModifier,
+                ((200 * numCharges) + 30 * tile.getCity()!!.population.population) * unit.civ.gameInfo.speed.productionCostModifier,
                 cityConstructions.getRemainingWork(cityConstructions. currentConstructionName()).toFloat() - 1
             ).toInt()
             if (productionPointsToAdd <= 0) continue

@@ -1826,6 +1826,19 @@
             }
         ]
 	},
+	{
+		"name": "Drums",
+		"resourceType": "Luxury",
+		"resourceCategory": "Music",
+		"uniques": [
+					"Doesn't generate naturally"
+				],
+		 "civilopediaText": [
+            {
+                "text": "These percussion instruments produce strong, thumping noises when their leather is hit.  A staple for providing beat to any musical composition."
+            }
+        ]
+	},
 	// Spawned Luxury resources
 	{
 		"name": "Apples",

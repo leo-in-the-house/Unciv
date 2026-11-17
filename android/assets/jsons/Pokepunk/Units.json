@@ -35,6 +35,7 @@
 		"uniques": [
 			"Unbuildable",
 			"Can build [{non-[Special]} {Land}] improvements on tiles",
+            "Remove [non-[Irremovable]] improvements from this tile <for all movement>",
 			"Automation is a primary action"
 		],
 		"cost": 100,
@@ -265,7 +266,7 @@
 		"uniques": [
             "Great Thinker",
 			"Unbuildable",
-            "Triggers a [Eureka] event <in [Archive] tiles> <for [1] charges> <AI will always use>",
+            "Triggers a [Eureka] event <in [Archive] tiles> <for [1] charges> <AI will always use when number of [[Science] Per Turn] is less than [40]>",
 			"Can build [Knowledge] improvements on tiles",
 			"Automation is a primary action"
 		],
@@ -273,6 +274,34 @@
 		 "civilopediaText": [
             {
                 "text": "Knowledge-based Great Person that can attempt to generate a free technology or Magic Card through a Eureka (not guaranteed) over an Archive, or build Knowledge improvements."
+            }
+        ]
+	},
+	{
+		"name": "Engineer",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "charges": 3,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"engineer",
+		"uniques": [
+            "Great Professional",
+			"Unbuildable",
+            "Turn this tile into a [Urban] tile <in [Flat] tiles> <in tiles adjacent to [Urban] tiles> <for [1] charges>",
+            "Can build [All Road] improvements on tiles",
+            "Can build [Repair] improvements on tiles",
+            "Can speed up construction of a building",
+			"Automation is a primary action"
+		],
+		"cost": 300,
+		 "civilopediaText": [
+            {
+                "text": "Urban construction Great Person that can build Urban terrain next to other Urban terrain, even in tiles with features and resources, roads, or repair pillaged improvements."
+            },
+            { "separator": true },
+            {
+                "text": "Can accelerate the production of a non-Wonder Building, consuming the unit instantly.  The maximum amount of production provided depends on the unit's remaining charges."
             }
         ]
 	},
@@ -285,11 +314,11 @@
 		"hurryCostModifier": 20,
 		"selectSound":"dryad",
 		"uniques": [
-            "Great Creative",
+            "Great Mage",
 			"Unbuildable",
             "Turn this tile into a [Rich Soil] tile <in [{non-[Hazardous]} {Fertile}] tiles> <for [1] charges> <AI will always use when number of [Owned [Rich Soil] Tiles] is less than [3]>",
 			"Triggers a [Miracle Blossom] event <in [Forest|Marsh|Rich Soil] tiles> <for [2] charges> <AI will always use>",
-            "[+2] population [in this city] <for [4] charges>"
+            "[+3] population [in this city] <for [4] charges>"
 		],
 		"cost": 300,
 		 "civilopediaText": [

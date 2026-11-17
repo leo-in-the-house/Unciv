@@ -214,7 +214,7 @@ class TechManager : IsPartOfGameInfoSerialization {
     @Readonly
     fun getScienceFromGreatScientist(): Int {
         // https://civilization.fandom.com/wiki/Great_Scientist_(Civ5)
-        return (scienceOfLast8Turns.sum() * civInfo.gameInfo.speed.scienceCostModifier).toInt()
+        return ((scienceOfLast8Turns.sum() * civInfo.gameInfo.speed.scienceCostModifier )/2).toInt()
     }
 
     private fun addCurrentScienceToScienceOfLast8Turns(science: Int) {

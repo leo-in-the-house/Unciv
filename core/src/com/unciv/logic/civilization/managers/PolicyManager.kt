@@ -333,7 +333,7 @@ class PolicyManager : IsPartOfGameInfoSerialization {
 
     @Readonly
     fun getCultureFromGreatWriter(): Int {
-        return (cultureOfLast8Turns.sum() * civInfo.gameInfo.speed.cultureCostModifier).toInt()
+        return ((cultureOfLast8Turns.sum() * civInfo.gameInfo.speed.cultureCostModifier ) / 2).toInt()
     }
 
     private fun addCurrentCultureToCultureOfLast8Turns(culture: Int) {

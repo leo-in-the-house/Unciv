@@ -415,6 +415,7 @@
 		"movementCost": 1,
         "RGB": [185, 185, 185],
         "uniques": [
+			"Flat",
 			"Doesn't generate naturally",
             "Always Fertility [-2] for Map Generation"
 		],

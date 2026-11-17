@@ -79,17 +79,17 @@
 		"cost": 80,
 		"hurryCostModifier": 25,
 		"requiredTech": "Pottery",
-		"specialistSlots": { "Stoneworker": 1 },
+		"specialistSlots": { "Stoneworker": 2 },
 		"maintenance": 2,
 		"uniques": [
 			"Crafting",
-			"Costs [10] [Stone]",
+			"Costs [5] [Stone]",
 			"Creates a [Potter] improvement on a specific tile",
 			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
 		],
 		 "civilopediaText": [
             {
-                "text": "Urban building that must be built in flat, in a city with improved Clay.  Provides the Pots luxury resource."
+                "text": "Urban building that must be built in flat, in a city with improved Clay.  Provides 3 copies of the Pots luxury resource."
             }
         ]
 	},
@@ -100,7 +100,7 @@
 		"cost": 80,
 		"hurryCostModifier": 25,
 		"requiredTech": "Writing",
-		"specialistSlots": { "Scribe": 1 },
+		"specialistSlots": { "Scribe": 2 },
 		"maintenance": 2,
 		"uniques": [
 			"Crafting",
@@ -110,7 +110,7 @@
 		],
 		 "civilopediaText": [
             {
-                "text": "Urban building that must be built in flat, in a city with improved Papyrus.  Provides the Scrolls luxury resource."
+                "text": "Urban building that must be built in flat, in a city with improved Papyrus.  Provides 3 copies of the Scrolls luxury resource."
             }
         ]
 	},
@@ -121,7 +121,7 @@
 		"cost": 80,
 		"hurryCostModifier": 25,
 		//"requiredTech": "Writing",
-		"specialistSlots": { "Cook": 1 },
+		"specialistSlots": { "Cook": 2 },
 		"maintenance": 2,
 		"uniques": [
 			"Cooking",
@@ -133,6 +133,27 @@
 		 "civilopediaText": [
             {
                 "text": "Urban building that must be built in flat land, in a city with at least one improved Huntable resource.  Increases the food that these tiles provide when improved by 2."
+            }
+        ]
+	},
+	{
+		"name": "Drumcrafter",
+		"requiredNearbyImprovedResources": ["Deerlings","Bidoofs"],
+		"buildSound": "drumcrafter",
+		"cost": 80,
+		"hurryCostModifier": 25,
+		//"requiredTech": "Writing",
+		"specialistSlots": { "Craftsman": 2 },
+		"maintenance": 2,
+		"uniques": [
+			"Crafting",
+			"Costs [5] [Wood]",
+			"Creates a [Drumcrafter] improvement on a specific tile",
+			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land, in a city with at least one improved Deerling or Bidoof resource.  Provides 2 copies of Drums, a musical luxury resource."
             }
         ]
 	},
