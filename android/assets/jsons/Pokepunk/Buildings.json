@@ -142,7 +142,7 @@
 		"cost": 50,
 		"hurryCostModifier": 25,
 		"requiredTech": "Music",
-		"specialistSlots": { "Pagan": 2 },
+		"specialistSlots": { "Worshipper": 2 },
 		"maintenance": 1,
 		"uniques": [
 			"Creates a [Shrine] improvement on a specific tile",

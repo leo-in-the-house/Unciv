@@ -307,6 +307,27 @@
         ]
 	},
 	{
+		"name": "Priestess",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "charges": 2,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"priestess",
+		"uniques": [
+            "Great Mage",
+			"Unbuildable",
+            "[This Unit] heals [50] HP <in all [All] tiles in [1] radius> <for [1] charges>",
+            "Gain [300]-[700] [Faith] <in Sacred Terrain tiles for your Pantheon> <after founding a Pantheon> <for [1] charges>"
+		],
+		"cost": 300,
+		 "civilopediaText": [
+            {
+                "text": "Religious Great Person that can spend a charge to heal all adjacent units.  If you have a Pantheon, can generate a large amount of Faith over its sacred terrain for a charge."
+            }
+        ]
+	},
+	{
 		"name": "Dryad",
 		"unitType": "Civilian",
 		"secondaryUnitType": "Fantasy",

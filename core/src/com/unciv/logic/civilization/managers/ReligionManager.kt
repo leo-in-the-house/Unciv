@@ -158,7 +158,7 @@ class ReligionManager : IsPartOfGameInfoSerialization {
                 ReligionAction(beliefName), Notification.NotificationCategory.Religion, NotificationIcon.Faith)
         }
     }
-
+    
     @Readonly fun greatProphetsEarned(): Int =
         civInfo.civConstructions.boughtItemsWithIncreasingPrice[getGreatProphetEquivalent()?.name ?: ""]
         // Counter.get never returns null, but it needs the correct key type, which is non-nullable
@@ -508,6 +508,12 @@ class ReligionManager : IsPartOfGameInfoSerialization {
             else civ.addNotification("[An unknown civilization] has founded [$displayName]!",
                 ReligionAction(name), Notification.NotificationCategory.Religion, NotificationIcon.Faith)
         }
+    }
+
+    @Readonly fun isSacredTerrainForPantheon(tile: Tile): Boolean {
+        if (religion == null) return false
+        return religion!!.getBeliefs(BeliefType.Pantheon)
+            .any { belief -> belief.getMatchingUniques(UniqueType.SacredTerrainForPantheon).any { unique -> tile.matchesFilter(unique.params[0], civInfo) } }
     }
 
     @Readonly

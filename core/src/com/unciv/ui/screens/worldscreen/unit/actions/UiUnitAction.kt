@@ -31,7 +31,7 @@ class UiUnitAction(
     val uncivSound: UncivSound = uiType.uncivSound,
     val unitAction: UnitAction? = null,
     val confirmation: UnitActionConfirmation? = null,
-    val action: (() -> Unit)? = null
+    val action: (() -> Unit)? = null //Null if disabled
 ) {
     constructor(unit: MapUnit, unitAction: UnitAction) : this(
         UiUnitActionType.of(unitAction.type), UiUnitActionType.of(unitAction.type).getUseFrequency(unit, unitAction),

@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.unciv.UncivGame
 import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.models.UpgradeUnitAction
+import com.unciv.models.ruleset.unique.UniqueTriggerActivation
+import com.unciv.models.ruleset.unique.UniqueTriggerActivation.getTriggerFunction
+import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.ui.components.extensions.brighten
 import com.unciv.ui.components.extensions.disable
 import com.unciv.ui.components.input.keyShortcuts

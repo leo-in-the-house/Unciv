@@ -83,12 +83,38 @@ object UniqueTriggerActivation {
                     maxRadius = aoemodifier.params[2].toInt()
                 }
 
+                val isUnitTriggerable = unique.isUnitTriggerable()
+                
                 tile.forEachTileInDistanceRange(IntRange(minRadius, maxRadius)) { targetTile ->
                     if (targetTile.matchesFilter(tileFilter)) {
-                        val targetTileFunction = getTriggerFunction(unique, civInfo, city, unit, targetTile, notification, triggerNotificationText)
-                        
-                        if (targetTileFunction != null) {
-                            targetTileFunction.invoke()
+                        if (isUnitTriggerable) {
+                            //Trigger against each unit
+                            targetTile.getUnits().forEach { tileUnit ->
+                                val targetTileFunction = getTriggerFunction(
+                                    unique,
+                                    civInfo,
+                                    city,
+                                    tileUnit,
+                                    targetTile,
+                                    notification,
+                                    triggerNotificationText
+                                )
+
+                                targetTileFunction?.invoke()
+                            }
+                        }
+                        else {
+                            val targetTileFunction = getTriggerFunction(
+                                unique,
+                                civInfo,
+                                city,
+                                unit,
+                                targetTile,
+                                notification,
+                                triggerNotificationText
+                            )
+
+                            targetTileFunction?.invoke()
                         }
                     }
                 }
@@ -1263,7 +1289,7 @@ object UniqueTriggerActivation {
 
             UniqueType.OneTimeUnitHeal -> {
                 if (unit == null) return null
-                if (unit.health == 100) return null
+                if (getAllUnitsInRange(unique, unit).filter { it.health < 100}.none()) return null
                 return {
                     unit.healBy(unique.params[1].toInt())
                     if (notification != null)
@@ -1315,7 +1341,7 @@ object UniqueTriggerActivation {
             }
             UniqueType.OneTimeUnitLoseStatus -> {
                 if (unit == null) return null
-                if (!unit.hasStatus(unique.params[1])) return null
+                if (getAllUnitsInRange(unique, unit).filter { it.hasStatus(unique.params[1]) }.none() ) return null
                 return {
                     unit.removeStatus(unique.params[1])
                     if (notification != null)
@@ -1597,6 +1623,54 @@ object UniqueTriggerActivation {
 
             else -> return null
         }
+    }
+    
+    fun getAllUnitsInRange (unique: Unique, unit: MapUnit): Sequence<MapUnit> {
+        val unitsInRange = mutableListOf(unit)
+        var aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffectMinRange).firstOrNull()
+        if (aoemodifier == null) aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffect).firstOrNull()
+        if (aoemodifier != null) {
+            val tileFilter = aoemodifier.params[0]
+            var minRadius = 1
+            var maxRadius = aoemodifier.params[1].toInt()
+            if (aoemodifier.type == UniqueType.UnitActionAreaOfEffectMinRange) {
+                minRadius = aoemodifier.params[1].toInt()
+                maxRadius = aoemodifier.params[2].toInt()
+            }
+
+            unit.getTile().forEachTileInDistanceRange(IntRange(minRadius, maxRadius)) { targetTile ->
+                if (targetTile.matchesFilter(tileFilter)) {
+                    targetTile.getUnits().forEach { tileUnit ->
+                        if (unique.conditionalsApply(GameContext(unit.civ, unit = tileUnit, tile = targetTile))) {
+                            unitsInRange.add(tileUnit)
+                        }
+                    }
+                }
+            }
+        }
+        return unitsInRange.asSequence()
+    }
+
+    fun getAllTilesInRange (unique: Unique, unit: MapUnit): Sequence<Tile> {
+        val tilesInRange = mutableListOf(unit.getTile())
+        var aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffectMinRange).firstOrNull()
+        if (aoemodifier == null) aoemodifier = unique.getModifiers(UniqueType.UnitActionAreaOfEffect).firstOrNull()
+        if (aoemodifier != null) {
+            val tileFilter = aoemodifier.params[0]
+            var minRadius = 1
+            var maxRadius = aoemodifier.params[1].toInt()
+            if (aoemodifier.type == UniqueType.UnitActionAreaOfEffectMinRange) {
+                minRadius = aoemodifier.params[1].toInt()
+                maxRadius = aoemodifier.params[2].toInt()
+            }
+
+            unit.getTile().forEachTileInDistanceRange(IntRange(minRadius, maxRadius)) { targetTile ->
+                if (targetTile.matchesFilter(tileFilter) && unique.conditionalsApply(GameContext(unit.civ, unit = unit, tile = targetTile))) {
+                     tilesInRange.add(targetTile)
+                }
+            }
+        }
+        return tilesInRange.asSequence()
     }
 
     @Readonly

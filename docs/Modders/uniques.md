@@ -495,6 +495,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global
 
+??? example  "Sacred Terrain: [tileFilter]"
+	Example: "Sacred Terrain: [Farm]"
+
+	Applicable to: Global, FounderBelief, FollowerBelief
+
 ??? example  "[relativeAmount] Supply Limit"
 	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
 
@@ -1514,6 +1519,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: FounderBelief, FollowerBelief
 
+??? example  "Sacred Terrain: [tileFilter]"
+	Example: "Sacred Terrain: [Farm]"
+
+	Applicable to: Global, FounderBelief, FollowerBelief
+
 ??? example  "Only available"
 	Meant to be used together with conditionals, like "Only available &lt;after adopting [policy]&gt; &lt;while the empire is happy&gt;". Only allows Building when ALL conditionals are met. Will also block Upgrade and Transform actions. See also CanOnlyBeBuiltWhen
 
@@ -1631,6 +1641,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Example: "[+20]% [Culture] from every follower, up to [+20]%"
 
 	Applicable to: FounderBelief, FollowerBelief
+
+??? example  "Sacred Terrain: [tileFilter]"
+	Example: "Sacred Terrain: [Farm]"
+
+	Applicable to: Global, FounderBelief, FollowerBelief
 
 ??? example  "[relativeAmount] Supply Limit"
 	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
@@ -4248,6 +4263,9 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "&lt;in tiles not adjacent to [tileFilter] tiles&gt;"
 	Example: "&lt;in tiles not adjacent to [Farm] tiles&gt;"
 
+	Applicable to: Conditional
+
+??? example  "&lt;in Sacred Terrain tiles for your Pantheon&gt;"
 	Applicable to: Conditional
 
 ??? example  "&lt;in [tileFilter] tiles over [mapUnitFilter] units&gt;"

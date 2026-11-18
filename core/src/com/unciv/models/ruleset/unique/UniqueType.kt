@@ -69,6 +69,7 @@ enum class UniqueType(
     StatPercentFromReligionFollowers("[relativeAmount]% [stat] from every follower, up to [relativeAmount]%", UniqueTarget.FollowerBelief, UniqueTarget.FounderBelief),
     BonusStatsFromCityStates("[relativeAmount]% [stat] from City-States", UniqueTarget.Global),
     StatPercentFromTradeRoutes("[relativeAmount]% [stat] from Trade Routes", UniqueTarget.Global),
+    SacredTerrainForPantheon("Sacred Terrain: [tileFilter]",UniqueTarget.Global, UniqueTarget.FollowerBelief, UniqueTarget.FounderBelief),
 
     // Supply
     
@@ -913,6 +914,7 @@ enum class UniqueType(
     ConditionalAdjacentTo("in tiles adjacent to [tileFilter] tiles", UniqueTarget.Conditional),
 
     ConditionalNotAdjacentTo("in tiles not adjacent to [tileFilter] tiles", UniqueTarget.Conditional),
+    ConditionalInSacredTerrainTiles("in Sacred Terrain tiles for your Pantheon", UniqueTarget.Conditional),
 
     ConditionalTileOverUnit("in [tileFilter] tiles over [mapUnitFilter] units", UniqueTarget.Conditional),
 

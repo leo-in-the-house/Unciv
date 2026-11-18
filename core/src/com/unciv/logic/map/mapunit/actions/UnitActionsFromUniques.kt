@@ -266,14 +266,29 @@ object UnitActionsFromUniques {
                             minRadius = aoemodifier.params[1].toInt()
                             maxRadius = aoemodifier.params[2].toInt()
                         }
+                        val isUnitTriggerable = unique.isUnitTriggerable()
 
                         tile.forEachTileInDistanceRange(IntRange(minRadius, maxRadius)) { targetTile ->
                             if (targetTile.matchesFilter(tileFilter)) {
-                                val targetTileFunction = getTriggerFunction(unique, unit.civ, unit = unit, tile = targetTile)
+                                if (isUnitTriggerable) {
+                                    //Trigger against each unit
+                                    targetTile.getUnits().forEach { tileUnit -> 
+                                        val targetTileFunction = getTriggerFunction(unique, unit.civ, unit = tileUnit, tile = targetTile)
 
-                                if (targetTileFunction != null) {
-                                    repeat(unique.getUniqueMultiplier(unit.cache.state)) {
-                                        targetTileFunction.invoke()
+                                        if (targetTileFunction != null) {
+                                            repeat(unique.getUniqueMultiplier(unit.cache.state)) {
+                                                targetTileFunction.invoke()
+                                            }
+                                        }
+                                    }
+                                }
+                                else {
+                                    val targetTileFunction = getTriggerFunction(unique, unit.civ, unit = unit, tile = targetTile)
+
+                                    if (targetTileFunction != null) {
+                                        repeat(unique.getUniqueMultiplier(unit.cache.state)) {
+                                            targetTileFunction.invoke()
+                                        }
                                     }
                                 }
                             }

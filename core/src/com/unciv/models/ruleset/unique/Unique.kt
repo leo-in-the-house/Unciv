@@ -12,6 +12,7 @@ import com.unciv.models.translations.getModifiers
 import com.unciv.models.translations.getPlaceholderParameters
 import com.unciv.models.translations.getPlaceholderText
 import com.unciv.models.translations.removeConditionals
+import com.unciv.models.translations.tr
 import yairm210.purity.annotations.Readonly
 import kotlin.math.max
 
@@ -57,6 +58,7 @@ class Unique(val text: String, val sourceObjectType: UniqueTarget? = null, val s
     @Readonly fun hasModifier(type: UniqueType) = modifiersMap.containsKey(type)
     @Readonly fun isModifiedByGameSpeed() = hasModifier(UniqueType.ModifiedByGameSpeed)
     @Readonly fun isModifiedByGameProgress() = hasModifier(UniqueType.ModifiedByGameProgress)
+    @Readonly fun isUnitTriggerable() = params.firstOrNull()?.tr() == "This Unit" || params.firstOrNull()?.tr() == "Target Unit"
     @Readonly
     fun getGameProgressModifier(civ: Civilization): Float {
         //According to: https://www.reddit.com/r/civ/comments/gvx44v/comment/fsrifc2/

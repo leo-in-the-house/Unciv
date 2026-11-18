@@ -3,115 +3,137 @@
     {
         "name": "Ancestor Worship",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture] from every [Shrine]"]
+        "uniques": ["[+1 Culture] from every [Shrine]",
+        "Sacred Terrain: [Grassland]"]
     },
     {
         "name": "Dance of the Aurora",
         "type": "Pantheon",
-        "uniques": ["[+1 Faith] from [Tundra] tiles without [Forest] [in this city]"]
+        "uniques": ["[+1 Faith] from [Tundra] tiles without [Forest] [in this city]",
+        "Sacred Terrain: [Tundra]"]
     },
     {
         "name": "Desert Folklore",
         "type": "Pantheon",
-        "uniques": ["[+1 Faith] from every [Desert]"]
+        "uniques": ["[+1 Faith] from every [Desert]",
+        "Sacred Terrain: [Desert]"]
     },
     {
         "name": "Faith Healers",
         "type": "Pantheon",
-        "uniques": ["[All] Units adjacent to this city heal [+30] HP per turn when healing"]
+        "uniques": ["[All] Units adjacent to this city heal [+30] HP per turn when healing",
+        "Sacred Terrain: [Hill]"]
         // This should be worded better
     },
     {
         "name": "Fertility Rites",
         "type": "Pantheon",
-        "uniques": ["[+10]% growth [in this city]"]
+        "uniques": ["[+10]% growth [in this city]",
+        "Sacred Terrain: [Farm]"]
         // Preferably I would not have a cityFilter here, but doing so requires no additional implementation
     },
     {
         "name": "God of Craftsman",
         "type": "Pantheon",
-        "uniques": ["[+1 Production] [in cities following this religion] <in cities with at least [3] [Population]>"]
+        "uniques": ["[+1 Production] [in cities following this religion] <in cities with at least [3] [Population]>",
+        "Sacred Terrain: [Urban]"]
     },
     {
         "name": "God of the Open Sky",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture] from every [Pasture]"]
+        "uniques": ["[+1 Culture] from every [Pasture]",
+        "Sacred Terrain: [Plains|Savannah]"]
     },
     {
         "name": "God of the Sea",
         "type": "Pantheon",
-        "uniques": ["[+1 Production] from every [Fishing Boats]"]
+        "uniques": ["[+1 Production] from every [Fishing Boats]",
+        "Sacred Terrain: [Coast]"]
     },
     {
         "name": "God of War",
         "type": "Pantheon",
-        "uniques": ["Earn [50]% of [Military] unit's [Strength] as [Faith] when killed within 4 tiles of a city following this religion"]
+        "uniques": ["Earn [50]% of [Military] unit's [Strength] as [Faith] when killed within 4 tiles of a city following this religion",
+        "Sacred Terrain: [Volcanic|Ashland]"]
     },
     {
         "name": "Goddess of Festivals",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture, +1 Faith] from every [Drums]"]
+        "uniques": ["[+1 Culture, +1 Faith] from every [Drums]",
+        "Sacred Terrain: [Drums]"]
     },
     {
         "name": "Goddess of Love",
         "type": "Pantheon",
-        "uniques": ["[+1 Happiness] [in cities following this religion] <in cities with at least [6] [Population]>"]
+        "uniques": ["[+1 Happiness] [in cities following this religion] <in cities with at least [6] [Population]>",
+        "Sacred Terrain: [unimproved]"]
     },
     {
         "name": "Goddess of Protection",
         "type": "Pantheon",
-        "uniques": ["[+30]% Strength for cities <when attacking>"]
+        "uniques": ["[+30]% Strength for cities <when attacking>",
+        "Sacred Terrain: [City center]"]
     },
     {
         "name": "Goddess of the Hunt",
         "type": "Pantheon",
-        "uniques": ["[+1 Food] from every [Hunting Camp]"]
+        "uniques": ["[+1 Food] from every [Hunting Camp]",
+        "Sacred Terrain: [Forest]"]
     },
     {
         "name": "Messenger of the Gods",
         "type": "Pantheon",
-        "uniques": ["[+2 Science] from each Trade Route"]
+        "uniques": ["[+2 Science] from each Trade Route",
+        "Sacred Terrain: [Road|Railroad]"]
     },
     {
         "name": "Monument to the Gods",
         "type": "Pantheon",
         "uniques": ["[+15]% Production when constructing [Ancient era] wonders [in cities following this religion]",
-            "[+15]% Production when constructing [Classical era] wonders [in cities following this religion]"]
+            "[+15]% Production when constructing [Classical era] wonders [in cities following this religion]",
+        "Sacred Terrain: [Forest]"]
     },
     {
         "name": "One with Nature",
         "type": "Pantheon",
-        "uniques": ["[+4 Faith] from every [Natural Wonder]"]
+        "uniques": ["[+4 Faith] from every [Natural Wonder]",
+        "Sacred Terrain: [Natural Wonder]"]
     },
     {
         "name": "Oral Tradition",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture] from every [Plantation]"]
+        "uniques": ["[+1 Culture] from every [Plantation]",
+        "Sacred Terrain: [Plantation]"]
     },
     {
         "name": "Religious Idols",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture, +1 Faith] from every [Ore]", "[+1 Culture, +1 Faith] from every [Gems]"]
+        "uniques": ["[+1 Culture, +1 Faith] from every [Ore]", "[+1 Culture, +1 Faith] from every [Gems]",
+        "Sacred Terrain: [Crystallic]"]
     },
     {
         "name": "Religious Settlements",
         "type": "Pantheon",
-        "uniques": ["[-15]% Culture cost of natural border growth [in cities following this religion]"]
+        "uniques": ["[-15]% Culture cost of natural border growth [in cities following this religion]",
+        "Sacred Terrain: [Wasteland]"]
     },
     {
         "name": "Sacred Path",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture] from every [Tropical]"]
+        "uniques": ["[+1 Culture] from every [Tropical]",
+        "Sacred Terrain: [Tropical]"]
     },
     {
         "name": "Sacred Waters",
         "type": "Pantheon",
-        "uniques": ["[+1 Happiness] in cities on [River] tiles"]
+        "uniques": ["[+1 Happiness] in cities on [River] tiles",
+        "Sacred Terrain: [River]"]
     },
     {
         "name": "Stone Circles",
         "type": "Pantheon",
-        "uniques": ["[+2 Faith] from every [Quarry]"]
+        "uniques": ["[+2 Faith] from every [Quarry]",
+        "Sacred Terrain: [Quarry|Mine]"]
     },
 ///////////////////////////////////////// Follower beliefs /////////////////////////////////////////
     {

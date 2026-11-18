@@ -288,6 +288,8 @@ object Conditionals {
                 state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == false
             UniqueType.ConditionalAdjacentTo -> state.relevantTile?.isAdjacentTo(conditional.params[0], state.relevantCiv) == true
             UniqueType.ConditionalNotAdjacentTo -> state.relevantTile?.isAdjacentTo(conditional.params[0], state.relevantCiv) == false
+            UniqueType.ConditionalInSacredTerrainTiles -> state.relevantTile != null && state.relevantCiv?.religionManager != null 
+                && state.relevantCiv?.religionManager!!.isSacredTerrainForPantheon(state.relevantTile!!)
             UniqueType.ConditionalTileOverUnit ->
                 state.relevantTile?.matchesFilter(conditional.params[0], state.relevantCiv) == true &&
                     state.relevantTile!!.getUnits().any {

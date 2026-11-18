@@ -18,9 +18,9 @@
 		"color": [0,125,255]
 	},
 	{
-		"name":"Pagan",
-		"faith": 5,
-		//"greatPersonPoints": {"Philosopher": 5}, //TODO: Add Priestess
+		"name":"Worshipper",
+		"faith": 3,
+		"greatPersonPoints": {"Priestess": 3},
 		"color": [235, 235, 255]
 	},
 	{
