@@ -559,6 +559,23 @@
         ]
 	},
 	{
+		"name": "Shrine",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "shrine",
+		"uniques": [
+			"Rural Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
+			"Pillaging this improvement yields approximately [+30 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Rural building that must be built in flat land, but not necessarily adjacent to Urban tiles.   Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
 		"name": "Drumcrafter",
 		"terrainsCanBeBuiltOn": ["Land"],
 		"buildSound": "drumcrafter",
@@ -569,6 +586,7 @@
 			"Turn this tile into a [Urban] tile",
 			"Provides [2] [Drums]",
 			"Pillaging this improvement yields approximately [+30 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
 		],
 		 "civilopediaText": [
             {

@@ -18,6 +18,12 @@
 		"color": [0,125,255]
 	},
 	{
+		"name":"Pagan",
+		"faith": 5,
+		//"greatPersonPoints": {"Philosopher": 5}, //TODO: Add Priestess
+		"color": [235, 235, 255]
+	},
+	{
 		"name":"Cook",
 		"food": 3,
 		"greatPersonPoints": {"Dryad": 3},

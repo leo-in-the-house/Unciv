@@ -104,10 +104,22 @@
 				"prerequisites": ["Agriculture","Irrigation"]
 			},
 			{
+				"name": "Music",
+				"row": 3,
+				"quote": "It is said that melodies are the heart of the human spirit.  As we create new musical instruments, we also try to touch on a deeper spirituality for ourselves.",
+				"prerequisites": ["Pokémon Pisciculture", "Pokémon Domestication"]
+			},
+			{
 				"name": "Pokémon Taming",
 				"row": 4,
 				"quote": "We noticed that certain species of Pokémon were particularly kin of humans and could be easily bred as partners.  They can help in both labor and scouting, and of course make cute pets!",
 				"prerequisites": ["Pokémon Trapping", "Pokémon Domestication"]
+			},
+			{
+				"name": "Cooking",
+				"row": 5,
+				"quote": "Basic means of food preservation and preparing meat included salting, smoking, and grilling.  This improved the quality and amount of food, allowing for larger populations.",
+				"prerequisites": ["Agriculture","Pokémon Trapping"]
 			},
 			{
 				"name": "Bronze Working",

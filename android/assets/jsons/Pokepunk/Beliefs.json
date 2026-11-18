@@ -50,7 +50,7 @@
     {
         "name": "Goddess of Festivals",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture, +1 Faith] from every [Wine]", "[+1 Culture, +1 Faith] from every [Incense]"]
+        "uniques": ["[+1 Culture, +1 Faith] from every [Drums]"]
     },
     {
         "name": "Goddess of Love",
@@ -65,7 +65,7 @@
     {
         "name": "Goddess of the Hunt",
         "type": "Pantheon",
-        "uniques": ["[+1 Food] from every [Camp]"]
+        "uniques": ["[+1 Food] from every [Hunting Camp]"]
     },
     {
         "name": "Messenger of the Gods",
@@ -91,7 +91,7 @@
     {
         "name": "Religious Idols",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture, +1 Faith] from every [Gold Ore]", "[+1 Culture, +1 Faith] from every [Silver]"]
+        "uniques": ["[+1 Culture, +1 Faith] from every [Ore]", "[+1 Culture, +1 Faith] from every [Gems]"]
     },
     {
         "name": "Religious Settlements",
@@ -101,7 +101,7 @@
     {
         "name": "Sacred Path",
         "type": "Pantheon",
-        "uniques": ["[+1 Culture] from every [Jungle]"]
+        "uniques": ["[+1 Culture] from every [Tropical]"]
     },
     {
         "name": "Sacred Waters",
@@ -122,7 +122,7 @@
     {
         "name": "Choral Music",
         "type": "Follower",
-        "uniques": ["[+2 Culture] from every [Temple] <in cities with at least [5] [Followers of this Religion]>"]
+        "uniques": ["[+2 Culture] from every [Shrine] <in cities with at least [5] [Followers of this Religion]>"]
     },
     {
         "name": "Divine inspiration",
@@ -132,7 +132,7 @@
     {
         "name": "Feed the World",
         "type": "Follower",
-        "uniques": ["[+1 Food] from every [Shrine]", "[+1 Food] from every [Temple]"]
+        "uniques": ["[+1 Food] from every [Shrine]"]
     },
     {
         "name": "Guruship",
@@ -142,27 +142,7 @@
     {
         "name": "Holy Warriors",
         "type": "Follower",
-        "uniques": ["May buy [{pre-[Industrial era]} {Military} {Land}] units with [Faith] for [2] times their normal Production cost <in [in cities following this religion] cities>"]
-    },
-    {
-        "name": "Liturgical Drama",
-        "type": "Follower",
-        "uniques": ["[+1 Faith] from every [Amphitheater] <in cities with at least [3] [Followers of this Religion]>"]
-    },
-    {
-        "name": "Peace Gardens",
-        "type": "Follower",
-        "uniques": ["[+2 Happiness] from every [Garden]"]
-    },
-    {
-        "name": "Religious Art",
-        "type": "Follower",
-        "uniques": ["[+8 Culture] from every [Hermitage]"]
-    },
-    {
-        "name": "Religious Center",
-        "type": "Follower",
-        "uniques": ["[+2 Happiness] from every [Temple] <in cities with at least [5] [Followers of this Religion]>"]
+        "uniques": ["May buy [{pre-[Industrial Age]} {Military} {Land}] units with [Faith] for [2] times their normal Production cost <in [in cities following this religion] cities>"]
     },
     {
         "name": "Religious Community",
@@ -232,11 +212,11 @@
         "uniques": ["[+20]% Strength <for [All] units> <when fighting in [Friendly Land] tiles>"]
         // ToDo: Should only be friendly territory of cities that follow this religion
     },
-    {
+    /*{
         "name": "Holy Order",
         "type": "Enhancer",
         "uniques": ["[Faith] cost of purchasing [Missionary] units [-30]%", "[Faith] cost of purchasing [Inquisitor] units [-30]%"]
-    },
+    },*/
     {
         "name": "Itinerant Preachers",
         "type": "Enhancer",
@@ -248,16 +228,16 @@
         "uniques": ["[+20]% Strength <for [All] units> <when fighting in [Enemy Land] tiles>"]
         // ToDo: Should only be enemy territory of cities that follow this religion
     },
-    {
+    /*{
         "name": "Messiah",
         "type": "Enhancer",
         "uniques": ["[+25]% Spread Religion Strength <for [Great Prophet] units>", "[-25]% Faith cost of generating Great Prophet equivalents"]
-    },
-    {
+    },*/
+    /*{
         "name": "Missionary Zeal",
         "type": "Enhancer",
         "uniques": ["[+25]% Spread Religion Strength <for [Missionary] units>"]
-    },
+    },*/
     {
         "name": "Religious Texts",
         "type": "Enhancer",

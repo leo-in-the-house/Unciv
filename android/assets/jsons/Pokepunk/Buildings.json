@@ -120,7 +120,7 @@
 		"buildSound": "smokehouse",
 		"cost": 80,
 		"hurryCostModifier": 25,
-		//"requiredTech": "Writing",
+		"requiredTech": "Cooking",
 		"specialistSlots": { "Cook": 2 },
 		"maintenance": 2,
 		"uniques": [
@@ -137,12 +137,30 @@
         ]
 	},
 	{
+		"name": "Shrine",
+		"buildSound": "shrine",
+		"cost": 50,
+		"hurryCostModifier": 25,
+		"requiredTech": "Music",
+		"specialistSlots": { "Pagan": 2 },
+		"maintenance": 1,
+		"uniques": [
+			"Creates a [Shrine] improvement on a specific tile",
+			"Comment [Must be built on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Rural building that can be built anywhere, in flat land.  Provides slots for Pagans that generate Faith and spawn Mikos."
+            }
+        ]
+	},
+	{
 		"name": "Drumcrafter",
 		"requiredNearbyImprovedResources": ["Deerlings","Bidoofs"],
 		"buildSound": "drumcrafter",
 		"cost": 80,
 		"hurryCostModifier": 25,
-		//"requiredTech": "Writing",
+		"requiredTech": "Music",
 		"specialistSlots": { "Craftsman": 2 },
 		"maintenance": 2,
 		"uniques": [

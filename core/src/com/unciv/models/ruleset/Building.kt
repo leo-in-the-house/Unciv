@@ -546,10 +546,16 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
         }
     }
 
+    /**
+     * Checks if a building is stat-related
+     * This is true if the building offers the stat, has a specialist that offers the stat,
+     * has a unique that provides the stat, has a unique that provides a stat percentage bonus
+     */
     @Readonly
     fun isStatRelated(stat: Stat, city: City? = null): Boolean {
         if (city != null) {
             if (getStats(city)[stat] > 0) return true
+            if (cityHasStatInSpecialistSlots(stat, city)) return true
             if (getStatPercentageBonuses(city)[stat] > 0) return true
         }
         else {
@@ -568,6 +574,13 @@ class Building : RulesetStatsObject(), INonPerpetualConstruction {
         val unique = getMatchingUniques(UniqueType.CreatesOneImprovement).firstOrNull()
         if (unique == null) null
         else unique.params[0]
+    }
+
+    @Readonly
+    private fun cityHasStatInSpecialistSlots (stat: Stat, city: City? = null): Boolean {
+        if (city == null) return false
+        if (specialistSlots.any {city.cityStats.getStatsOfSpecialist( it.key )[stat] > 0 }) return true
+        return false
     }
     
     @Readonly fun hasCreateOneImprovementUnique() = improvementToCreate != null

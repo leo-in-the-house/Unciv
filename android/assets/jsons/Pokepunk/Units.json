@@ -288,16 +288,17 @@
 		"uniques": [
             "Great Professional",
 			"Unbuildable",
-            "Turn this tile into a [Urban] tile <in [Flat] tiles> <in tiles adjacent to [Urban] tiles> <for [1] charges>",
+            "Turn this tile into a [Urban] tile <in [{Flat} {unimproved}] tiles> <in tiles adjacent to [Urban] tiles> <for [1] charges> <AI will always use in [Hill] tiles>",
             "Can build [All Road] improvements on tiles",
             "Can build [Repair] improvements on tiles",
+            "Remove [non-[Irremovable]] improvements from this tile <for all movement>",
             "Can speed up construction of a building",
 			"Automation is a primary action"
 		],
 		"cost": 300,
 		 "civilopediaText": [
             {
-                "text": "Urban construction Great Person that can build Urban terrain next to other Urban terrain, even in tiles with features and resources, roads, or repair pillaged improvements."
+                "text": "Urban construction Great Person that can build Urban terrain next to other Urban terrain, even in tiles with features and resources, build roads, repair pillaged improvements, or remove improvements."
             },
             { "separator": true },
             {
