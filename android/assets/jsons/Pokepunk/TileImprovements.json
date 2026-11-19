@@ -613,6 +613,24 @@
             }
         ]
 	},
+	{
+		"name": "Brickyard",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "brickyard",
+		"uniques": [
+			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
+			"Turn this tile into a [Urban] tile",
+			"Pillaging this improvement yields approximately [+20 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
 	// Wonder improvements
 	// Unbuildable improvements
 	{
@@ -664,7 +682,7 @@
 		"name": "Road",
 		"terrainsCanBeBuiltOn": ["Land"],
 		"turnsToBuild": 0,
-		"techRequired": "Agriculture",
+		"techRequired": "Construction",
 		"uniques": ["Can be built outside your borders", "Costs [1] [Gold] per turn"],
 		"shortcutKey": "R",
         "civilopediaText": [

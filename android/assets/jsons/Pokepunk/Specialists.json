@@ -1,6 +1,12 @@
 [
 	{
 		"name":"Stoneworker",
+		"gold": 3,
+		"greatPersonPoints": {"Builder": 3},
+		"color": [200,200,55]
+	},
+	{
+		"name":"Mason",
 		"gold": 2,
 		"greatPersonPoints": {"Builder": 5},
 		"color": [200,200,55]

@@ -171,7 +171,7 @@
 		],
 		 "civilopediaText": [
             {
-                "text": "Rural building that can be built anywhere, in flat land.  Provides slots for Pagans that generate Faith and spawn Mikos."
+                "text": "Rural building that can be built anywhere, in flat land.  Provides slots for Worshippers that generate Faith and spawn Priestesses."
             }
         ]
 	},
@@ -193,6 +193,25 @@
 		 "civilopediaText": [
             {
                 "text": "Urban building that must be built in flat land, in a city with at least one improved Deerling or Bidoof resource.  Provides 2 copies of Drums, a musical luxury resource."
+            }
+        ]
+	},
+	{
+		"name": "Brickyard",
+		"buildSound": "brickyard",
+		"cost": 100,
+		"hurryCostModifier": 25,
+		"requiredTech": "Construction",
+		"specialistSlots": { "Mason": 3 },
+		"maintenance": 4,
+		"uniques": [
+			"Creates a [Brickyard] improvement on a specific tile",
+			"[+50]% Production when constructing [All] buildings [in this city]",
+			"Comment [Must be built on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that can be built anywhere, in flat land.  Improves the construction speed of all buildings in the city.  Provides Masons that can spawn Builders."
             }
         ]
 	},

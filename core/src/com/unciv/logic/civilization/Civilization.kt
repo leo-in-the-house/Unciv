@@ -973,7 +973,6 @@ class Civilization : IsPartOfGameInfoSerialization {
         policies.setTransients(this)
         questManager.setTransients(this)
         religionManager.setTransients(this) // needs to be before tech, since tech setTransients looks at all uniques
-        tech.setTransients(this)
         ruinsManager.setTransients(this)
         espionageManager.setTransients(this)
         victoryManager.civInfo = this
@@ -986,6 +985,9 @@ class Civilization : IsPartOfGameInfoSerialization {
         for (city in cities) {
             city.setTransients(this) // must be before the city's setTransients because it depends on the tilemap, that comes from the currentPlayerCivInfo
         }
+        
+        //Need this after cities in case some tech transients depend on the city's tilemap
+        tech.setTransients(this)
 
         // Now that all tile transients have been updated, clean "worked" tiles that are not under the Civ's control
         for (city in cities)

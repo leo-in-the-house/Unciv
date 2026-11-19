@@ -419,13 +419,12 @@
         "requiredTech": "Bronze Working",
         "uniques": [
             "[100]% Attack Strength <vs [Cavalry] units>",
-			"Can only be built <in cities with a [Barracks]>",
             "Never appears as a Barbarian unit",
             "No damage penalty for wounded units"
         ],
 		"civilopediaText": [
             {
-                "text": "Early melee infantry with a sharp spear that is effective at fighting against humans riding on Pokémon.  Cheap and costs no special resources, but requires a Barracks to build."
+                "text": "Early melee infantry with a sharp spear that is effective at fighting against humans riding on Pokémon.  Cheap and costs no special resources."
             }
         ]
 	},
