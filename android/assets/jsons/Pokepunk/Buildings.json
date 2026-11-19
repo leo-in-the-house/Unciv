@@ -137,6 +137,27 @@
         ]
 	},
 	{
+		"name": "Bakery",
+		"requiredNearbyImprovedResources": ["Wheat","Corn"],
+		"buildSound": "bakery",
+		"cost": 100,
+		"hurryCostModifier": 25,
+		"requiredTech": "Cooking",
+		"specialistSlots": { "Cook": 3 },
+		"maintenance": 2,
+		"uniques": [
+			"Cooking",
+			"Costs [5] [Wood]",
+			"Creates a [Bakery] improvement on a specific tile",
+			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land, in a city with at least one improved Wheat or Corn resource.  Provides 3 copies of Bread, an edible luxury resource."
+            }
+        ]
+	},
+	{
 		"name": "Shrine",
 		"buildSound": "shrine",
 		"cost": 50,

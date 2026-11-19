@@ -120,7 +120,7 @@
 		"shortcutKey": "F",
 		 "civilopediaText": [
             {
-                "text": "Can be built over Edible fruit resources, mainly by Gardeners.  Provides food and improves the resource."
+                "text": "Can be built over Food fruit resources, mainly by Gardeners.  Provides food and improves the resource."
             }
         ]
 	},
@@ -555,6 +555,25 @@
 		 "civilopediaText": [
             {
                 "text": "Urban building that must be built in flat land.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
+		"name": "Bakery",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "bakery",
+		"uniques": [
+			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
+			"Turn this tile into a [Urban] tile",
+			"Provides [3] [Bread]",
+			"Pillaging this improvement yields approximately [+30 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Provides the Bread luxury resource.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
             }
         ]
 	},

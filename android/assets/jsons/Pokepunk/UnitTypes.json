@@ -20,6 +20,14 @@
         "movementType": "Land"
     },
     {
+        "name": "Civilian Water",
+        "movementType": "Water"
+    },
+    {
+        "name": "Ship",
+        "movementType": "Water"
+    },
+    {
         "name": "Water Cavalry",
         "movementType": "Water"
     },
@@ -78,10 +86,6 @@
     {
         "name": "Silicobra-Line",
         "movementType": "Land"
-    },
-    {
-        "name": "Civilian Water",
-        "movementType": "Water"
     },
     {
         "name": "Gastly-Line",

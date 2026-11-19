@@ -122,8 +122,15 @@
 				"prerequisites": ["Agriculture","Pokémon Trapping"]
 			},
 			{
-				"name": "Bronze Working",
+				"name": "Shipbuilding",
 				"row": 6,
+				"uniques": ["Enables embarkation for land units"],
+				"quote": "We found that certain materials, such as wood, were capable of significant bouyancy, allowing us to build structures that could float on water, and opening up the seas to exploration.",
+				"prerequisites": ["Pokémon Pisciculture","Toolmaking"]
+			},
+			{
+				"name": "Bronze Working",
+				"row": 7,
 				"quote": "We found that harder metals can, under sufficient heat, bend into any shape we want it to be.  We can use this knowledge to make better weapons and train our troops.",
 				"prerequisites": ["Toolmaking","Mining"]
 			},

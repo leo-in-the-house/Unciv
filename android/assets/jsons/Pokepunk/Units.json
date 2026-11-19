@@ -363,7 +363,7 @@
         "supplyCost": 1,
 		"movement": 1,
 		"attackStrength": 10,
-		"defenseStrength": 40,
+		"defenseStrength": 50,
 		"cost": 50,
 		"selectSound":"warrior",
 		"attackSound": "maiden_axe",
@@ -395,7 +395,7 @@
 		"selectSound":"slinger",
 		"attackSound": "maiden_rockthrow",
         "uniques": [
-			"Costs [10] [Stone]",
+			"Costs [5] [Stone]",
             "Never appears as a Barbarian unit",
             "No damage penalty for wounded units"
         ],
@@ -412,7 +412,7 @@
         "supplyCost": 1,
 		"movement": 1,
 		"attackStrength": 10,
-		"defenseStrength": 30,
+		"defenseStrength": 40,
 		"cost": 50,
 		"selectSound": "spearman",
 		"attackSound": "maiden_spear",
@@ -437,7 +437,7 @@
         "supplyCost": 2,
 		"movement": 1,
 		"attackStrength": 20,
-		"defenseStrength": 30,
+		"defenseStrength": 40,
 		"cost": 120,
 		"selectSound": "slaver",
 		"attackSound": "maiden_whip",
@@ -462,7 +462,7 @@
         "supplyCost": 1,
 		"movement": 2,
 		"attackStrength": 10,
-		"defenseStrength": 20,
+		"defenseStrength": 30,
 		"cost": 30,
 		"selectSound": "poochyena",
 		"attackSound": "poochyena",
@@ -485,10 +485,10 @@
 		"unitType": "Water Cavalry",
 		"secondaryUnitType": "Human",
         "supplyCost": 2,
-		"movement": 3,
-		"attackStrength": 10,
-		"defenseStrength": 30,
-		"cost": 70,
+		"movement": 4,
+		"attackStrength": 20,
+		"defenseStrength": 40,
+		"cost": 80,
 		"selectSound": "seaking_rider",
 		"attackSound": "maiden_spear",
         "requiredTech": "Pokémon Pisciculture",
@@ -503,7 +503,31 @@
         ],
 		"civilopediaText": [
             {
-                "text": "Early naval scout riding on a Seaking.  Poor at combat, but has a long line of sight, and can detect hidden water units.  Cannot enter oceanic tiles."
+                "text": "Early naval scout riding on a Seaking.  Has a long line of sight, and can detect hidden water units.  Hits decently hard, but has low defense.  Can only travel on coast."
+            }
+        ]
+	},
+    {
+		"name": "Galley",
+		"unitType": "Ship",
+		"secondaryUnitType": "Vehicle",
+        "supplyCost": 2,
+		"movement": 4,
+		"attackStrength": 10,
+		"defenseStrength": 60,
+		"cost": 70,
+		"selectSound": "galley",
+		"attackSound": "ramming_attack",
+        "requiredTech": "Shipbuilding",
+        "uniques": [
+			"Costs [5] [Wood]",
+            "Cannot enter ocean tiles",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Defensive coastal boat that moves fast, with good defense strength.  Effective at blocking naval ships and holding the line for stronger ships to pass through.  Can only travel on coast."
             }
         ]
 	},

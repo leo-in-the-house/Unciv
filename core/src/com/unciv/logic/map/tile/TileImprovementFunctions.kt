@@ -120,7 +120,7 @@ class TileImprovementFunctions(val tile: Tile) {
             // Then we check if there is any reason to not allow this improvement to be built
 
             // Can't build if there is already an irremovable improvement here
-            tile.tileImprovement != null && tile.tileImprovement!!.hasUnique(UniqueType.Irremovable, gameContext) -> false
+            tile.tileImprovement != null && tile.tileImprovement != improvement && tile.tileImprovement!!.hasUnique(UniqueType.Irremovable, gameContext) -> false
 
             // Can't build if this terrain is unbuildable, except when we are specifically allowed to
             tile.lastTerrain.unbuildable && !improvement.canBeBuiltOnThisUnbuildableTerrain(knownFeatureRemovals) -> false

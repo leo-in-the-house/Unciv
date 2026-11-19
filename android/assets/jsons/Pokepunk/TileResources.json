@@ -1827,6 +1827,20 @@
         ]
 	},
 	{
+		"name": "Bread",
+		"resourceType": "Luxury",
+		"resourceCategory": "Cuisine",
+		"uniques": [
+					"Edible",
+					"Doesn't generate naturally"
+				],
+		 "civilopediaText": [
+            {
+                "text": "Wheat or corn processed with yeast and water into rich loafs.  A staple carb that can feed large populations."
+            }
+        ]
+	},
+	{
 		"name": "Drums",
 		"resourceType": "Luxury",
 		"resourceCategory": "Music",
