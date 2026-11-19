@@ -614,6 +614,24 @@
         ]
 	},
 	{
+		"name": "Carpenter",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "carpenter",
+		"uniques": [
+			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
+			"Turn this tile into a [Urban] tile",
+			"Pillaging this improvement yields approximately [+30 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
 		"name": "Brickyard",
 		"terrainsCanBeBuiltOn": ["Land"],
 		"buildSound": "brickyard",
@@ -682,7 +700,7 @@
 		"name": "Road",
 		"terrainsCanBeBuiltOn": ["Land"],
 		"turnsToBuild": 0,
-		"techRequired": "Construction",
+		"techRequired": "Wheel",
 		"uniques": ["Can be built outside your borders", "Costs [1] [Gold] per turn"],
 		"shortcutKey": "R",
         "civilopediaText": [
@@ -721,6 +739,7 @@
 	{
 		"name": "Remove Road",
 		"turnsToBuild": 0,
+		"techRequired": "Wheel",
 		"uniques": ["Can be built outside your borders", "Excluded from map editor"]
 	},
 	{

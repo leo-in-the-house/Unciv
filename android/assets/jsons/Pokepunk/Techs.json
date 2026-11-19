@@ -164,9 +164,15 @@
 		"wonderCost": 220,
 		"techs": [
 			{
+				"name": "Wheel",
+				"row": 4,
+				"quote": "The wheel and axle, with the help of loyal Pokémon, allowing for true long distance travel and transportation.  Roads popped up, and military leaders quickly adopted the new technology.",
+				"prerequisites": ["Pokémon Taming"]
+			},
+			{
 				"name": "Construction",
 				"row": 6,
-				"quote": "With ready access to easy building materials humans went on a building spree, from roads to magnificent monuments to buildings that allowed for even more building materials.",
+				"quote": "With ready access to easy building materials humans went on a building spree, allowing for magnificent monuments and the mass production of even more building materials.",
 				"prerequisites": ["Slavery","Shipbuilding"]
 			}
 		]

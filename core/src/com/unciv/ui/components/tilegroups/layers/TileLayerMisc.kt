@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Align
 import com.unciv.UncivGame
+import com.unciv.logic.city.CityResources
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.view.CivView
 import com.unciv.view.TileView
@@ -273,12 +274,26 @@ class TileLayerImprovementResource(tileGroup: TileGroup, size: Float) : TileLaye
 
     private fun updateResourceIcon(viewingCiv: CivView?, showResourceIcon: Boolean) {
         val tileImprovement = tileGroup.tileView.tileImprovement ?: return
+        val tileView = tileGroup.tileView
         val effectiveVisible = showResourceIcon
 
         // If resource has changed (e.g. tech researched) - force new icon next time it's needed
         if (resourceName != tileImprovement.resourceType || resourceAmount != tileImprovement.resourceAmount) {
             resourceName = tileImprovement.resourceType
-            resourceAmount = tileImprovement.resourceAmount
+            
+            val owningCity = tileView.getTile().getCity()
+            
+            if (owningCity != null) {
+                var resourceAmountWithModifiers = tileImprovement.resourceAmount
+
+                CityResources.getResourceModifiers(owningCity).forEach { name, value -> if (name == tileImprovement.resourceType) resourceAmountWithModifiers = (resourceAmountWithModifiers.toFloat() * value).toInt()}
+                
+                resourceAmount = resourceAmountWithModifiers
+            }
+            else {
+                resourceAmount = tileImprovement.resourceAmount
+            }
+            
             resourceIcon?.let { removeOwnedActor(it) }
             resourceIcon = null
         }

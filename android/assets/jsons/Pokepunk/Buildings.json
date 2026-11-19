@@ -197,6 +197,25 @@
         ]
 	},
 	{
+		"name": "Carpenter",
+		"buildSound": "carpenter",
+		"cost": 60,
+		"hurryCostModifier": 25,
+		"requiredTech": "Construction",
+		"specialistSlots": { "Craftsman": 3 },
+		"maintenance": 4,
+		"uniques": [
+			"Creates a [Carpenter] improvement on a specific tile",
+			"[+50]% [Wood] resource production <in this city>",
+			"Comment [Must be built on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that can be built anywhere, in flat land.  Increases wood production by all sources in this city by 50%.  Provides Craftsmen that can spawn Engineers."
+            }
+        ]
+	},
+	{
 		"name": "Brickyard",
 		"buildSound": "brickyard",
 		"cost": 100,

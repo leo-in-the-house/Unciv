@@ -43,7 +43,7 @@ object CityResources {
 
     /** Does not contain any resources for which there is no specific modifier (==1) */
     @Readonly
-    private fun getResourceModifiers(city: City): Map<String, Float> {
+    fun getResourceModifiers(city: City): Map<String, Float> {
         val modifiers = mutableMapOf<String, Float>()
         val resources = city.getRuleset().tileResources.values
         city.forEachMatchingUnique(UniqueType.PercentResourceProduction) { unique ->
@@ -147,23 +147,6 @@ object CityResources {
 
         // Apply the resource modifiers.
         resourceSupplyList.applyModifiers(modifiers)
-        
-        // Calculate resources from worked resourceType/resourceAmount improvements
-        for (tileInfo in applicableTiles) {
-            if (!tileInfo.isWorked()) continue
-            
-            val tileImprovement = tileInfo.getUnpillagedTileImprovement()
-            
-            if (tileImprovement!!.resourceType != null && tileImprovement!!.resourceAmount > 0) {
-                val resource = city.getRuleset().tileResources[tileImprovement.resourceType]
-                if (resource != null) {
-                    resourceSupplyList.add(
-                        resource, "Improvements",
-                        tileImprovement.resourceAmount
-                    )
-                }
-            }
-        }
 
         // After resources have been modified, consume them.
         for (tileInfo in applicableTiles) {

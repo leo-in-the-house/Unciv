@@ -46,7 +46,7 @@ object TileDescription {
                 FormattedLine("{${tileView.resource}} (${tileView.resourceAmount})", link = "Resource/${tileView.resource}")
             else
                 FormattedLine(resource.name, link = "Resource/${resource.name}")
-
+        
         if (viewingCiv != null && resource != null)
             addNeedsResearchLine(lineList, tileView, viewingCiv, resource)
 

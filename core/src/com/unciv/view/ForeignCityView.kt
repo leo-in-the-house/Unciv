@@ -3,9 +3,11 @@ package com.unciv.view
 import com.unciv.logic.battle.CityCombatant
 import com.unciv.logic.battle.TargetHelper
 import com.unciv.logic.city.City
+import com.unciv.logic.city.CityResources
 import com.unciv.logic.civilization.Civilization
 import com.unciv.logic.civilization.diplomacy.DiplomacyManager
 import com.unciv.logic.map.HexCoord
+import com.unciv.logic.map.tile.Tile
 import com.unciv.models.ImmutableColor
 import com.unciv.models.Religion
 import com.unciv.ui.screens.civilopediascreen.FormattedLine
