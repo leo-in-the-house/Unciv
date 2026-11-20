@@ -386,9 +386,9 @@
 		"unitType": "Missile Infantry",
 		"secondaryUnitType": "Human",
         "requiredTech": "Stonecutting",
-        "supplyCost": 2,
+        "supplyCost": 1,
 		"movement": 1,
-		"attackStrength": 20,
+		"attackStrength": 10,
 		"defenseStrength": 30,
         "range": 1,
 		"cost": 60,
@@ -451,6 +451,60 @@
 		"civilopediaText": [
             {
                 "text": "These dangerous raiders can kidnap defeated Human enemies, forcing them into slavery.  Can only attack Humans, but deals very high damage to wounded targets.  Unavailable after abolishing slavery."
+            }
+        ]
+	},
+    {
+		"name": "Battering Gogoat",
+		"unitType": "Vehicle",
+        "supplyCost": 1,
+		"movement": 1,
+		"attackStrength": 20,
+		"defenseStrength": 30,
+		"cost": 60,
+		"selectSound": "battering_gogoat",
+		"attackSound": "ramming_attack",
+        "requiredTech": "Wheel",
+        "uniques": [
+			"Costs [5] [Wood]",
+            "[This Unit] gains the [Grass-Type] promotion",
+            "[+100]% Strength <vs [City]>",
+            "Can only attack [City] units",
+			"Can only be built <with [Skiddos]>",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Early siege engine pulled by Gogoats, effective at bashing down fortified cities at close range.  Can only attack cities, and requires an escort."
+            }
+        ]
+	},
+    {
+		"name": "Mudsdale Chariot",
+		"unitType": "Vehicle",
+		"secondaryUnitType": "Human",
+        "supplyCost": 4,
+		"movement": 2,
+		"attackStrength": 30,
+		"defenseStrength": 80,
+		"cost": 120,
+		"selectSound": "mudsdale_chariot",
+		"attackSound": "maiden_mudsdale",
+        "requiredTech": "Wheel",
+        "uniques": [
+			"Costs [5] [Wood]",
+            "[This Unit] gains the [Ground-Type] promotion",
+            "[-50]% Strength <when fighting in [Rough terrain] tiles>",
+            "Rough terrain penalty",
+            "[-50]% Strength <vs cities> <when attacking>",
+			"Can only be built <with [Mudbrays]>",
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Early heavy assault vehicle pulled by Mudsdales, effective mainly at fighting in open terrain.  Poor at combat in rough terrain, which consumes all of its movement.  Poor against cities."
             }
         ]
 	},

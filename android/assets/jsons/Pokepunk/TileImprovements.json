@@ -134,7 +134,7 @@
 		"buildSound": "lumber_mill",
 		"uniques": [
 			"Woodcutting",
-			"Cannot be built on [Strategic resource|Luxury resource|Bonus resource] tiles",
+			//"Cannot be built on [Strategic resource|Luxury resource|Bonus resource] tiles",
 			"Pillaging this improvement yields approximately [+10 Gold]"
 		],
 		"shortcutKey": "F",

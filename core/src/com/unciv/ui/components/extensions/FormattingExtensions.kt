@@ -21,6 +21,7 @@ import java.util.SortedMap
 /** Translate a percentage number - e.g. 25 - to the multiplication value - e.g. 1.25f */
 @Pure fun Float.toPercent() = 1 + this/100
 
+
 /**
  * Convert a [resource name][this] into "Consumes [amount] $resource" string (untranslated)
  *

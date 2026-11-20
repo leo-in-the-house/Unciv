@@ -28,6 +28,7 @@ object BaseUnitDescriptions {
     @Readonly
     fun getShortDescription(baseUnit: BaseUnit, uniqueExclusionFilter: Unique.() -> Boolean = {false}): String {
         val infoList = mutableListOf<String>()
+        if (baseUnit.supplyCost != 0) infoList += "${baseUnit.supplyCost.tr()}${Fonts.supplyCost}"
         if (baseUnit.defenseStrength != 0) infoList += "${baseUnit.defenseStrength.tr()}${Fonts.defenseStrength}"
         if (baseUnit.attackStrength != 0) infoList += "${baseUnit.attackStrength.tr()}${Fonts.attackStrength}"
         if (baseUnit.movement != 2) infoList += "${baseUnit.movement.tr()}${Fonts.movement}"
@@ -46,6 +47,8 @@ object BaseUnitDescriptions {
         val lines = mutableListOf<String>()
         val availableResources = city.civ.getCivResourcesByName()
 
+        if (baseUnit.supplyCost != 0) lines += "${baseUnit.supplyCost.tr()}${Fonts.supplyCost}"
+        
         // Consumes
         for ((resourceName, amount) in baseUnit.getResourceRequirementsPerTurn(city.civ.state)) {
             val available = availableResources[resourceName] ?: 0
@@ -122,6 +125,9 @@ object BaseUnitDescriptions {
 
         if (cost > 0) {
             stats.clear()
+            if (supplyCost != 0) {
+                stats += "${supplyCost.tr()}${Fonts.supplyCost}"
+            }
             stats += "$cost${Fonts.production}"
             if (canBePurchasedWithStat(null, Stat.Gold)) {
                 stats += "${getCivilopediaGoldCost()}${Fonts.gold}"

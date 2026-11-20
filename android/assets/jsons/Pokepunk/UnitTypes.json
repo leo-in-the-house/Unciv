@@ -20,6 +20,10 @@
         "movementType": "Land"
     },
     {
+        "name": "Vehicle",
+        "movementType": "Land"
+    },
+    {
         "name": "Civilian Water",
         "movementType": "Water"
     },

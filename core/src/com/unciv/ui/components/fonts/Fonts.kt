@@ -134,6 +134,7 @@ object Fonts {
 
     //region Symbols added to font from atlas textures
     const val turn = '⏳'               // U+23F3 'hourglass'
+    const val supplyCost = '■'            // U+25A0 'black square'
     const val defenseStrength = '†'            // U+2020 'dagger'
     const val attackStrength = '‡'      // U+2021 'double dagger'
     const val movement = '➡'            // U+27A1 'black rightwards arrow'
@@ -182,6 +183,7 @@ object Fonts {
      */
     val allSymbols = mapOf(
         turn to "EmojiIcons/Turn",
+        supplyCost to "StatIcons/Supply",
         defenseStrength to "StatIcons/Strength",
         attackStrength to "StatIcons/RangedStrength",
         minimumRange to "StatIcons/MinimumRange",
