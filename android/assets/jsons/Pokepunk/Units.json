@@ -54,7 +54,7 @@
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
         "requiredTech": "Agriculture",
-		"charges": 3,
+		"charges": 2,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"farmer",
@@ -64,7 +64,7 @@
 			"Triggers a [Crop Propagation] event <in [{unimproved} {resourceless} {Land}] tiles> <costs [20] [Water]> <for [1] charges> <AI will always use>",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		 "civilopediaText": [
             {
                 "text": "Builder unit that can help provide Food.  Can build Farms on Fertile, Crop, and Rich Soil tiles, or remove Crop resources."
@@ -80,7 +80,7 @@
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
         "requiredTech": "Herbalism",
-		"charges": 3,
+		"charges": 1,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"gardener",
@@ -91,7 +91,7 @@
 			"Turn this tile into a [Rich Soil] tile <in [{Fresh Water} {Fertile}] tiles> <costs [10] [Water]> <for [1] charges>",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		 "civilopediaText": [
             {
                 "text": "Builder unit that can improve or harvest rare flora.  Can improve Aromatics with Apothecaries and Fruits with Orchards.  Can remove Plant and Aromatic resources (use Lumberjacks to remove Fruit resources).  Can plant Rich Soil near Fresh Water, improving crop yields, though this costs water."
@@ -102,7 +102,7 @@
 		"name": "Lumberjack",
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
-		"charges": 3,
+		"charges": 2,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"lumberjack",
@@ -111,7 +111,7 @@
 			"Can build [Woodcutting] improvements on tiles",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		 "civilopediaText": [
             {
                 "text": "Builder unit that can harvest tree resources and build Lumber Camps.  Removes Forest, Bamboo, and Fruit resources."
@@ -122,7 +122,7 @@
 		"name": "Merchant",
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
-		"charges": 3,
+		"charges": 1,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"merchant",
@@ -131,7 +131,7 @@
 			"Can build [Commercial] improvements on tiles",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		 "civilopediaText": [
             {
                 "text": "Builder unit that can generate Gold and improve trade.  Can build Plantations on Plant resources (use Gardeners to remove Plant resources instead)."
@@ -143,7 +143,7 @@
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
         "requiredTech": "Stonecutting",
-		"charges": 3,
+		"charges": 2,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"digger",
@@ -153,7 +153,7 @@
 			"Can build [Remove Metallic] improvements on tiles",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		 "civilopediaText": [
             {
                 "text": "Builder unit that can excavate the earth.  Can build Stone Pits on Hills to provide Stone, and Wells on flatlands with Fresh Water to provide Water.  Can remove Geologic and Metallic resources."
@@ -165,17 +165,17 @@
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
         "requiredTech": "Mining",
-		"charges": 3,
+		"charges": 2,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"prospector",
 		"uniques": [
 			"Costs [5] [Wood]",
 			"Can build [Minecraft] improvements on tiles",
-			"Triggers a [Excavate for Resource] event <in [{unimproved} {resourceless}] tiles> <in [Hill] tiles> <costs [10] [Water]> <for [3] charges>",
+			"Triggers a [Excavate for Resource] event <in [{unimproved} {resourceless}] tiles> <in [Hill] tiles> <costs [20] [Water]> <for [2] charges>",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		 "civilopediaText": [
             {
                 "text": "Builder unit that improves rare earth resources.  Can build Mines on metallic and Quarries on geologic resources (use Diggers to remove these)."
@@ -190,16 +190,16 @@
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
         "requiredTech": "Pokémon Domestication",
-		"charges": 3,
+		"charges": 1,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"pokemon_breeder",
 		"uniques": [
 			"Can build [Pastoral] improvements on tiles",
-            "Triggers a [Breed Pokémon] event <in [{unimproved} {Featureless} {resourceless}] tiles> <in [Plains|Savannah] tiles> <costs [20] [Water]> <for [3] charges> <AI will always use>",
+            "Triggers a [Breed Pokémon] event <in [{unimproved} {Featureless} {resourceless}] tiles> <in [Plains|Savannah] tiles> <costs [50] [Water]> <for [1] charges> <AI will always use>",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		"civilopediaText": [
             {
                 "text": "Builder unit that can herd or propagate Pokémon.  Builds Pastures on Herdable Bonus Pokémon."
@@ -214,7 +214,7 @@
 		"unitType": "Civilian",
 		"secondaryUnitType": "Human",
         "requiredTech": "Pokémon Trapping",
-		"charges": 3,
+		"charges": 1,
 		"movement": 2,
 		"hurryCostModifier": 20,
 		"selectSound":"pokemon_trapper",
@@ -225,7 +225,7 @@
 			"Can build [Remove Huntable] improvements on tiles",
 			"Automation is a primary action"
 		],
-		"cost": 50,
+		"cost": 30,
 		"civilopediaText": [
             {
                 "text": "Builder unit that can hunt wild Pokémon resources.  Can build Hunting Camps on Huntables, Kennels on Pets, and remove bonus Pokémon resources on land."
@@ -237,7 +237,7 @@
 		"name": "Mermaid",
 		"unitType": "Civilian Water",
 		"secondaryUnitType": "Fantasy",
-		"charges": 2,
+		"charges": 1,
 		"movement": 2,
 		"selectSound":"mermaid",
         "requiredTech": "Pokémon Pisciculture",
@@ -247,7 +247,7 @@
 			"Can build [Remove Aquatic] improvements on tiles",
 			"Automation is a primary action"
 		],
-		"cost": 70,
+		"cost": 40,
 		"civilopediaText": [
             {
                 "text": "Mystical aquatic builder unit that can construct or remove resources on Water."
@@ -363,21 +363,20 @@
         "supplyCost": 1,
 		"movement": 1,
 		"attackStrength": 10,
-		"defenseStrength": 50,
+		"defenseStrength": 40,
 		"cost": 50,
 		"selectSound":"warrior",
 		"attackSound": "maiden_axe",
+        "upgradesTo": "Swordsman",
+        "obsoleteTech": "Iron Working",
         "uniques": [
             //"Turn this tile into a [Enchanted] tile <[3] times> <in all [Desert] tiles in [2] to [4] radius>",
-            "Can only attack [Military] units", 
-            "Can only attack [Civilian] units",
-            "Cannot enter [Foreign Land] tiles",
             "Never appears as a Barbarian unit",
             "No damage penalty for wounded units"
         ],
 		"civilopediaText": [
             {
-                "text": "Basic melee infantry available at the start of the game.  Does not cost resources and is cheap, with good defense for its cost, but weak.  Cannot attack cities nor enter hostile tiles.  Can be upgraded as you advance through the ages."
+                "text": "Basic melee infantry available at the start of the game.  Does not cost resources and is cheap, with good defense for its cost, but weak.  Can be upgraded as you advance through the ages."
             }
         ]
 	},
@@ -411,20 +410,68 @@
 		"secondaryUnitType": "Human",
         "supplyCost": 1,
 		"movement": 1,
-		"attackStrength": 10,
+		"attackStrength": 5,
 		"defenseStrength": 40,
 		"cost": 50,
 		"selectSound": "spearman",
 		"attackSound": "maiden_spear",
         "requiredTech": "Bronze Working",
         "uniques": [
-            "[100]% Attack Strength <vs [Cavalry] units>",
+            "[300]% Attack Strength <vs [Cavalry] units>",
             "Never appears as a Barbarian unit",
             "No damage penalty for wounded units"
         ],
 		"civilopediaText": [
             {
-                "text": "Early melee infantry with a sharp spear that is effective at fighting against humans riding on Pokémon.  Cheap and costs no special resources."
+                "text": "Early melee infantry with a spear that is only effective against humans riding on Pokémon.  Cheap and costs no special resources."
+            }
+        ]
+	},
+    {
+		"name": "Swordsman",
+		"unitType": "Infantry",
+		"secondaryUnitType": "Human",
+        "supplyCost": 1,
+		"movement": 1,
+		"attackStrength": 10,
+		"defenseStrength": 50,
+		"cost": 50,
+		"selectSound": "swordsman",
+		"attackSound": "maiden_sword",
+        "requiredTech": "Iron Working",
+        "uniques": [
+            "Never appears as a Barbarian unit",
+            "No damage penalty for wounded units"
+        ],
+		"civilopediaText": [
+            {
+                "text": "Late Antiquity melee infantry with a sword and shield that replaces the Warrior, with more defensive strength.  Cheap and costs no special resources.  Can be upgraded as you advance through the ages."
+            }
+        ]
+	},
+	{
+		"name": "Archer",
+		"unitType": "Missile Infantry",
+		"secondaryUnitType": "Human",
+        "supplyCost": 2,
+		"hurryCostModifier": 20,
+		"attackStrength": 20,
+		"defenseStrength": 40,
+        "range": 2,
+		"movement": 1,
+		"selectSound":"archer",
+		"attackSound": "maiden_archer",
+        "requiredTech": "Iron Working",
+		"uniques": [
+			"Costs [5] [Fiber]",
+            "Ranged attacks may be performed over obstacles",
+            "No damage penalty for wounded units",
+            "Never appears as a Barbarian unit"
+		],
+		"cost": 120,
+		"civilopediaText": [
+            {
+                "text": "Ranged unit effective at long range against most enemies.  Can fire over obstacles.  Has a high construction cost, and costs fiber."
             }
         ]
 	},
@@ -598,6 +645,7 @@
         "range": 2,
 		"uniques": [
             "Never appears as a Barbarian unit",
+            "Ranged attacks may be performed over obstacles",
             "No damage penalty for wounded units",
 			"Can build [Hunting Camp] improvements on tiles",
             "Can only attack [{Barbarian} {Pokémon}] units",

@@ -63,6 +63,7 @@
 			"Military",
 			"Creates a [Barracks] improvement on a specific tile",
 			"[+100]% Production when constructing [Infantry] units [in this city]",
+			"[+100]% Production when constructing [Missile Infantry] units [in this city]",
 			"Comment [Unlocks advanced infantry units.]",
 			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
 		],
@@ -172,6 +173,27 @@
 		 "civilopediaText": [
             {
                 "text": "Rural building that can be built anywhere, in flat land.  Provides slots for Worshippers that generate Faith and spawn Priestesses."
+            }
+        ]
+	},
+	{
+		"name": "Weaver",
+		"requiredNearbyImprovedResources": ["Vines","Resin","Cotton","Wooloos","Bouffalants","Bidoofs","Scatterbugs","Joltiks"],
+		"buildSound": "weaver",
+		"cost": 80,
+		"hurryCostModifier": 25,
+		"requiredTech": "Textiles",
+		"specialistSlots": { "Craftsman": 2 },
+		"maintenance": 2,
+		"uniques": [
+			"Crafting",
+			"Costs [5] [Wood]",
+			"Creates a [Weaver] improvement on a specific tile",
+			"Comment [Must be built adjacent to Urban on a flat, featureless land tile.]"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land, in a city with at least one Weavable resource.  Provides +2 Fiber per turn for each of these resources that are improved (+3 Fiber for Vines)."
             }
         ]
 	},

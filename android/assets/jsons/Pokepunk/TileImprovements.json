@@ -614,6 +614,32 @@
         ]
 	},
 	{
+		"name": "Weaver",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"buildSound": "weaver",
+		"uniques": [
+			"Urban Improvement",
+			"Irremovable",
+			"Will not be replaced by automated units",
+			"Turn this tile into a [Urban] tile",
+			"Provides [3] [Fiber] <for every [[{improved} {unpillaged} {Vines}] Tiles in this city]>",
+			"Provides [2] [Fiber] <for every [[{improved} {unpillaged} {Resin}] Tiles in this city]>",
+			"Provides [2] [Fiber] <for every [[{improved} {unpillaged} {Cotton}] Tiles in this city]>",
+			"Provides [2] [Fiber] <for every [[{improved} {unpillaged} {Wooloos}] Tiles in this city]>",
+			"Provides [2] [Fiber] <for every [[{improved} {unpillaged} {Bouffalants}] Tiles in this city]>",
+			"Provides [2] [Fiber] <for every [[{improved} {unpillaged} {Bidoofs}] Tiles in this city]>",
+			"Provides [2] [Fiber] <for every [[{improved} {unpillaged} {Scatterbugs}] Tiles in this city]>",
+			"Provides [2] [Fiber] <for every [[{improved} {unpillaged} {Joltiks}] Tiles in this city]>",
+			"Pillaging this improvement yields approximately [+30 Gold]",
+			"Can only be built <in [{Flat} {Featureless} {unimproved} {resourceless}] tiles> <in tiles adjacent to [Urban] tiles>"
+		],
+		 "civilopediaText": [
+            {
+                "text": "Urban building that must be built in flat land.  Provides 2 Fibers per improved Weavable resource in this city (+3 for Vines).  Tied to a building with the same name in the city.  If pillaged, the building will be disabled until repaired (on the tile improvement by a worker unit)."
+            }
+        ]
+	},
+	{
 		"name": "Carpenter",
 		"terrainsCanBeBuiltOn": ["Land"],
 		"buildSound": "carpenter",

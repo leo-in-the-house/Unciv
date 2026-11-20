@@ -502,6 +502,13 @@ class City : IsPartOfGameInfoSerialization, INamed {
         // to find which city a spy is stationed in (after save/load when the transient city field is null).
         // If we relinquish ownership first, owningCity becomes null and spies are not found/evacuated.
         espionage.removeAllPresentSpies(SpyFleeReason.CityDestroyed)
+        
+        for (tile in getTiles()) {
+            //Destroy all linked improvements tied to the city
+            if (tile.tileImprovement != null && tile.linkedBuilding != null) {
+                tile.setImprovement(null)
+            }
+        }
 
         // The relinquish ownership MUST come before removing the city,
         // because it updates the city stats which assumes there is a capital, so if you remove the capital it crashes

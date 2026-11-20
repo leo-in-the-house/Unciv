@@ -116,10 +116,10 @@
 				"prerequisites": ["Pokémon Trapping", "Pokémon Domestication"]
 			},
 			{
-				"name": "Cooking",
+				"name": "Textiles",
 				"row": 5,
-				"quote": "Basic means of food preservation and preparing meat included salting, smoking, and grilling.  This improved the quality and amount of food, allowing for larger populations.",
-				"prerequisites": ["Agriculture","Pokémon Trapping"]
+				"quote": "We have found ways to weave both plant and Pokémon materials into a string, suitable for clothes, decorations, tools and weapons.",
+				"prerequisites": ["Irrigation","Pokémon Domestication"]
 			},
 			{
 				"name": "Shipbuilding",
@@ -174,6 +174,18 @@
 				"row": 6,
 				"quote": "With ready access to easy building materials humans went on a building spree, allowing for magnificent monuments and the mass production of even more building materials.",
 				"prerequisites": ["Slavery","Shipbuilding"]
+			},
+			{
+				"name": "Iron Working",
+				"row": 7,
+				"quote": "The rising rate of conflict between new empires has created the need to craft new weapons out of harder metals, from arrowheads to iron swords.",
+				"prerequisites": ["Bronze Working","Writing"]
+			},
+			{
+				"name": "Cooking",
+				"row": 9,
+				"quote": "Basic means of food preservation and preparing meat included salting, smoking, and grilling.  This improved the quality and amount of food, allowing for larger populations.",
+				"prerequisites": ["Calendar"]
 			}
 		]
 	},
@@ -187,7 +199,7 @@
 			{
 				"name": "Engineering",
 				"row": 6,
-				"prerequisites": ["Agriculture"],
+				"prerequisites": ["Wheel","Construction"],
                 "uniques": ["[+100]% weight to this choice for AI decisions"],
 				"quote": "'Shall the clay say to him that fashioneth it, what makest thou?' - Bible Isaiah 45:9"
 			}

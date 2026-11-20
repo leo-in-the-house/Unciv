@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Align
 import com.unciv.UncivGame
 import com.unciv.logic.city.CityResources
+import com.unciv.models.ruleset.unique.GameContext
 import com.unciv.models.ruleset.unique.UniqueType
 import com.unciv.view.CivView
 import com.unciv.view.TileView
@@ -122,7 +123,13 @@ class TileLayerResource(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup
 
     private fun updateResourceIcon(viewingCiv: CivView?, showResourceIcon: Boolean) {
         val tileView = tileGroup.tileView
-        val tileImprovementProvidesResource = tileView.tileImprovement?.hasUnique(UniqueType.ProvidesResources) == true
+        var gameContext = GameContext.EmptyState
+        
+        if (viewingCiv != null) {
+            gameContext = GameContext(viewingCiv.getCiv(), tile = tileView.getTile(), city = tileView.getTile().owningCity)
+        }
+        val tileImprovementProvidesResource = tileView.tileImprovement?.hasUnique(UniqueType.ProvidesResources, gameContext) == true 
+            && tileView.tileImprovement?.getMatchingUniques(UniqueType.ProvidesResources, gameContext)!!.count() > 0
         // This could change on any turn, since resources need certain techs to reveal them
         val effectiveVisible = showResourceIcon && (tileView.isForceVisible() || tileView.getViewableResource(viewingCiv) != null || tileImprovementProvidesResource)
 
@@ -135,12 +142,14 @@ class TileLayerResource(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup
         }
         
         //If there is no resource on the tile, but the improvement provides a resource, the resource icon is the first resource the improvement provides.
+        //However, this implementation so far will only support one type of resource being produced by each building, for UI limits.
+        //It will use the resource of the last Provides [amount] [resourceType] unique.
         //Used for urban buildings.
-
         if (resourceName == null && tileImprovementProvidesResource) {
-            val resourceUnique = tileView.tileImprovement?.getMatchingUniques(UniqueType.ProvidesResources)!!.first()
-            resourceName = resourceUnique.params[1]
-            resourceAmount = resourceUnique.params[0].toInt()
+             tileView.tileImprovement?.getMatchingUniques(UniqueType.ProvidesResources, gameContext)!!.forEach {
+                 resourceName = it.params[1]
+                 resourceAmount += it.params[0].toInt()
+             }
         }
 
         // Get a fresh Icon if and only if necessary

@@ -562,7 +562,9 @@ class Tile : IsPartOfGameInfoSerialization {
         if ((improvement == null || improvementIsPillaged) && filter == "unimproved") return true
         if (improvement != null && !improvementIsPillaged && filter == "improved") return true
         if (isPillaged() && filter == "pillaged") return true
+        if (!isPillaged() && filter == "unpillaged") return true
         if (filter == "worked" && isWorked()) return true
+        if (filter == "unworked" && !isWorked()) return true
         if (getUnpillagedTileImprovement()?.matchesFilter(filter, stateThisTile, false) == true) return true
         return getUnpillagedRoadImprovement()?.matchesFilter(filter, stateThisTile, false) == true
     }
