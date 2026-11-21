@@ -2391,14 +2391,14 @@ TileSets/HexaRealm/Tiles/AcademyT-Pillaged
   orig: 64, 64
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Customs house-Pillaged
+TileSets/HexaRealm/Tiles/Customs House-Pillaged
   rotate: false
   xy: 1972, 1304
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Customs houseT-Pillaged
+TileSets/HexaRealm/Tiles/Customs HouseT-Pillaged
   rotate: false
   xy: 1972, 1304
   size: 64, 64
@@ -3203,28 +3203,28 @@ TileSets/HexaRealm/Tiles/Crystals2
   orig: 64, 56
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Customs house
+TileSets/HexaRealm/Tiles/Customs House
   rotate: false
   xy: 1516, 326
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Customs house-Atomic era
+TileSets/HexaRealm/Tiles/Customs House-Atomic era
   rotate: false
   xy: 1588, 326
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Customs houseT
+TileSets/HexaRealm/Tiles/Customs HouseT
   rotate: false
   xy: 724, 325
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Customs houseT-Atomic era
+TileSets/HexaRealm/Tiles/Customs HouseT-Atomic era
   rotate: false
   xy: 796, 325
   size: 64, 64
@@ -9103,21 +9103,21 @@ TileSets/HexaRealm/Tiles/Toxin
   orig: 64, 56
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Trading post
+TileSets/HexaRealm/Tiles/Trading Post
   rotate: false
   xy: 436, 281
   size: 64, 56
   orig: 64, 56
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Trading post-Industrial era
+TileSets/HexaRealm/Tiles/Trading Post-Industrial era
   rotate: false
   xy: 436, 217
   size: 64, 56
   orig: 64, 56
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Trading post-Pillaged
+TileSets/HexaRealm/Tiles/Trading Post-Pillaged
   rotate: false
   xy: 436, 145
   size: 64, 64
@@ -9131,14 +9131,14 @@ TileSets/HexaRealm/Tiles/Trading postT-Pillaged
   orig: 64, 64
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Trading postT
+TileSets/HexaRealm/Tiles/Trading PostT
   rotate: false
   xy: 436, 81
   size: 64, 56
   orig: 64, 56
   offset: 0, 0
   index: -1
-TileSets/HexaRealm/Tiles/Trading postT-Industrial era
+TileSets/HexaRealm/Tiles/Trading PostT-Industrial era
   rotate: false
   xy: 436, 17
   size: 64, 56

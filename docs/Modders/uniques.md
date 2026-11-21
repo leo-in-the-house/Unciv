@@ -2024,7 +2024,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Must not be next to [tileFilter]"
 	Example: "Must not be next to [Farm]"
 
-	Applicable to: Building
+	Applicable to: Building, Improvement
 
 ??? example  "Unsellable"
 	Applicable to: Building
@@ -3228,6 +3228,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Building, Improvement
 
+??? example  "Must not be next to [tileFilter]"
+	Example: "Must not be next to [Farm]"
+
+	Applicable to: Building, Improvement
+
 ??? example  "Obsolete with [tech]"
 	Example: "Obsolete with [Agriculture]"
 
@@ -3285,6 +3290,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 ??? example  "Cannot be built on [tileFilter] tiles"
 	Example: "Cannot be built on [Farm] tiles"
+
+	Applicable to: Improvement
+
+??? example  "Cannot be built within [amount] tiles of a [tileFilter] tile"
+	Example: "Cannot be built within [3] tiles of a [Farm] tile"
 
 	Applicable to: Improvement
 

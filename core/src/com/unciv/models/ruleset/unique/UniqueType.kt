@@ -404,7 +404,7 @@ enum class UniqueType(
     MustBeOn("Must be on [tileFilter]", UniqueTarget.Building),
     MustNotBeOn("Must not be on [tileFilter]", UniqueTarget.Building),
     MustBeNextTo("Must be next to [tileFilter]", UniqueTarget.Building, UniqueTarget.Improvement),
-    MustNotBeNextTo("Must not be next to [tileFilter]", UniqueTarget.Building),
+    MustNotBeNextTo("Must not be next to [tileFilter]", UniqueTarget.Building, UniqueTarget.Improvement),
 
     Unsellable("Unsellable", UniqueTarget.Building),
     ObsoleteWith("Obsolete with [tech]", UniqueTarget.Building, UniqueTarget.Resource, UniqueTarget.Improvement),
@@ -756,6 +756,7 @@ enum class UniqueType(
     CanBuildJustOutsideBorders("Can be built just outside your borders", UniqueTarget.Improvement),
     CanOnlyBeBuiltOnTile("Can only be built on [tileFilter] tiles", UniqueTarget.Improvement),
     CannotBuildOnTile("Cannot be built on [tileFilter] tiles", UniqueTarget.Improvement),
+    CannotBuildWithTileNearby("Cannot be built within [amount] tiles of a [tileFilter] tile", UniqueTarget.Improvement),
     CanOnlyImproveResource("Can only be built to improve a resource", UniqueTarget.Improvement),
     NoFeatureRemovalNeeded("Does not need removal of [terrainFeature]", UniqueTarget.Improvement),
     RemovesFeaturesIfBuilt("Removes removable features when built", UniqueTarget.Improvement),

@@ -565,6 +565,7 @@ class Tile : IsPartOfGameInfoSerialization {
         if (!isPillaged() && filter == "unpillaged") return true
         if (filter == "worked" && isWorked()) return true
         if (filter == "unworked" && !isWorked()) return true
+        if (getCity() != null && getCity()!!.matchesFilter(filter, stateThisTile.civInfo, false)) return true
         if (getUnpillagedTileImprovement()?.matchesFilter(filter, stateThisTile, false) == true) return true
         return getUnpillagedRoadImprovement()?.matchesFilter(filter, stateThisTile, false) == true
     }
@@ -589,7 +590,7 @@ class Tile : IsPartOfGameInfoSerialization {
             Constants.river -> return isAdjacentToRiver()
             "Unowned" -> return getOwner() == null
             "your" -> return observingCiv != null && getOwner() == observingCiv
-            "Foreign Land", "Foreign" -> return observingCiv != null && !isFriendlyTerritory(observingCiv)
+            "Foreign Land", "Foreign" -> return observingCiv != null && getOwner() != null && getOwner() != observingCiv
             "Friendly Land", "Friendly" -> return observingCiv != null && isFriendlyTerritory(observingCiv)
             "Enemy Land", "Enemy" -> return observingCiv != null && isEnemyTerritory(observingCiv)
             "resource" -> return observingCiv != null && observingCiv.canSeeResource(tileResource)

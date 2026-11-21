@@ -137,6 +137,11 @@ class TileImprovementFunctions(val tile: Tile) {
             } ->
                 false
 
+            // Can't build if an improvement is within a certain distance of a specific tile
+            improvement.getMatchingUniques(UniqueType.CannotBuildWithTileNearby, gameContext).let { uniqueSequence ->
+                uniqueSequence.any() && uniqueSequence.any { unique -> tile.getTilesInDistance(unique.params[0].toInt()).any { tile -> tile.matchesFilter(unique.params[1], gameContext.civInfo) } }
+            } -> false
+
             // Can't build if an improvement is only allowed to be built on specific tiles and this is not one of them
             // If multiple uniques of this type exists, we want all to match (e.g. Hill _and_ Forest would be meaningful)
             improvement.getMatchingUniques(UniqueType.CanOnlyBeBuiltOnTile, gameContext).let {
@@ -148,6 +153,11 @@ class TileImprovementFunctions(val tile: Tile) {
                 !tile.isAdjacentTo(it.params[0])
             } -> false
 
+            // Can't build if the improvement requires no adjacent terrain that is present
+            improvement.getMatchingUniques(UniqueType.MustNotBeNextTo, gameContext).any {
+                tile.isAdjacentTo(it.params[0])
+            } -> false
+            
             // Can't build it if it is only allowed to improve resources and it doesn't improve this resource
             improvement.hasUnique(UniqueType.CanOnlyImproveResource, gameContext) && (
                     !resourceIsVisible || !tile.tileResource!!.isImprovedBy(improvement.name)

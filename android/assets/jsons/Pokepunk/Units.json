@@ -7,8 +7,7 @@
 		"selectSound":"settler",
         "uniques": [
 			"Unbuildable",
-            "Founds a new city <by consuming this unit> <in [{Fertile} {non-[Strategic resource]} {non-[Luxury resource]}] tiles>",
-            "Founds a new city <by consuming this unit> <in [{Arid} {non-[Strategic resource]} {non-[Luxury resource]}] tiles>",
+            "Founds a new city <by consuming this unit> <in [Fertile|Arid] tiles>",
             "Founds a new city <by consuming this unit> <in [Desert] tiles> <in tiles adjacent to [Fresh Water] tiles>",
             "Requires at least [2] population"
         ],

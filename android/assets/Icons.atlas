@@ -298,7 +298,7 @@ ImprovementIcons/City ruins
   orig: 100, 100
   offset: 0, 0
   index: -1
-ImprovementIcons/Customs house
+ImprovementIcons/Customs House
   rotate: false
   xy: 328, 366
   size: 100, 100
@@ -746,7 +746,7 @@ ImprovementIcons/Terrace farm
   orig: 100, 100
   offset: 0, 0
   index: -1
-ImprovementIcons/Trading post
+ImprovementIcons/Trading Post
   rotate: false
   xy: 1423, 400
   size: 100, 100
