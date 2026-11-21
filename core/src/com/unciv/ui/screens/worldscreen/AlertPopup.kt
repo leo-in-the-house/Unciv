@@ -683,6 +683,7 @@ class AlertPopup(
         if (!render.isValid) return false
         add(render).pad(0f).row()
         getScrollPane()?.fadeScrollBars = false
+        worldScreen.shouldUpdate = true
         return true
     }
 

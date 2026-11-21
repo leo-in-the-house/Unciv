@@ -87,3 +87,10 @@ EventImages/Searching the Land
   orig: 400, 310
   offset: 0, 0
   index: -1
+EventImages/Tax Collection
+  rotate: false
+  xy: 1460, 702
+  size: 400, 310
+  orig: 400, 310
+  offset: 0, 0
+  index: -1

@@ -12,6 +12,7 @@
     "maxRiverLength":999,
     "naturalWonderCountMultiplier":0.3,
     "naturalWonderCountAddedConstant":0.5,
+    "greatPersonPointScalingMultiplier":1.2,
     "maxXPfromBarbarians": 99999
     }
 }

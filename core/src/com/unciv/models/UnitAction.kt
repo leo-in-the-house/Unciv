@@ -105,6 +105,7 @@ enum class UnitActionType(val value: String) {
     HurryWonder("{Hurry Wonder} (${Fonts.death})"),
     HurryBuilding("{Hurry Construction} (${Fonts.death})"),
     ConductTradeMission("{Conduct Trade Mission} (${Fonts.death})"),
+    ConductDiplomaticMission("{Conduct Diplomatic Mission} (${Fonts.death})"),
     FoundReligion("Found a Religion"),
     TriggerUnique("Trigger unique"),
     SpreadReligion("Spread [religionName]"),

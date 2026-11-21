@@ -56,6 +56,21 @@
 			}
 		]
 	},
+	{
+		"name": "Tax Collection",
+		"text": "Your aristocrat demands that the people of this city pay higher taxes this year.  They will not be happy about this.",
+		"presentation": "Alert",
+		"choices": [
+			{
+				"text": "OK.",
+				"uniques": [
+					"Play [coin] sound",
+					"Gain [100] [Gold] <for every [[Population] in [in this city] Cities]>",
+					"[-10 Happiness] <for [5] turns>"
+				]
+			}
+		]
+	},
 	//Unit Events
 	{
 		"name": "Crop Propagation",

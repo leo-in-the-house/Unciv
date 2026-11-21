@@ -122,7 +122,8 @@ class MapUnitCache(private val mapUnit: MapUnit) {
         canEnterForeignTerrain = mapUnit.hasUnique(UniqueType.CanEnterForeignTiles)
                 || mapUnit.hasUnique(UniqueType.CanEnterForeignTilesButLosesReligiousStrength)
 
-        canEnterCityStates = mapUnit.hasUnique(UniqueType.CanTradeWithCityStateForGoldAndInfluence)
+        canEnterCityStates = mapUnit.hasUnique(UniqueType.CanTradeWithCityStateForGoldAndInfluence) || mapUnit.hasUnique(
+            UniqueType.CanTradeWithCityStateForInfluence)
 
         hasStrengthBonusInRadiusUnique = mapUnit.hasUnique(UniqueType.StrengthBonusInRadius, GameContext.IgnoreConditionals)
         hasCitadelPlacementUnique = mapUnit.getMatchingUniques(UniqueType.ConstructImprovementInstantly)

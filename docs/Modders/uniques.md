@@ -2315,8 +2315,18 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Can generate a large amount of culture"
 	Applicable to: Unit
 
+??? example  "Can undertake a diplomatic mission with City-State, giving [amount] Influence"
+	Example: "Can undertake a diplomatic mission with City-State, giving [3] Influence"
+
+	Applicable to: Unit
+
 ??? example  "Can undertake a trade mission with City-State, giving a large sum of gold and [amount] Influence"
 	Example: "Can undertake a trade mission with City-State, giving a large sum of gold and [3] Influence"
+
+	Applicable to: Unit
+
+??? example  "Can attempt to change relations with a major civilization with Open Borders, generate [amount]-[amount] friendship points which will decay over time."
+	Example: "Can attempt to change relations with a major civilization with Open Borders, generate [3]-[3] friendship points which will decay over time."
 
 	Applicable to: Unit
 

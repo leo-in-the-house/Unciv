@@ -410,6 +410,26 @@ enum class Countables(
         override fun getKnownValuesForAutocomplete(ruleset: Ruleset) = ruleset.tileResources.keys
     },
 
+    TileResourceTypes("type of [resourceFilter] resource") {
+        override val documentationStrings = listOf(
+            "Counts all types of resources that are both owned by your civilization AND match the resource filter.  Does not take into account the amount.",
+        )
+        override fun eval(parameterText: String, gameContext: GameContext): Int? {
+            val (resourceFilter) = parameterText.getPlaceholderParameters()
+            val civ = gameContext.civInfo ?: return null
+            val gameInfo = gameContext.gameInfo ?: return null
+            val ruleset = gameInfo.ruleset
+            return ruleset.tileResources.values.count {
+                it.matchesFilter(resourceFilter, gameContext) && civ.getResourceAmount(it.name) > 0
+            }
+        }
+        override fun getErrorSeverity(parameterText: String, ruleset: Ruleset): UniqueType.UniqueParameterErrorSeverity? {
+            val params = parameterText.getPlaceholderParameters()
+            return UniqueParameterType.ResourceFilter.getErrorSeverity(params[0], ruleset)
+        }
+        override fun getKnownValuesForAutocomplete(ruleset: Ruleset) = setOf<String>()
+    },
+    
     TileResourcesByCivs("[resourceFilter] resource of [civFilter] Civilizations") {
         override fun eval(parameterText: String, gameContext: GameContext): Int? {
             val (resouceFilter, civFilter) = parameterText.getPlaceholderParameters()

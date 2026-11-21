@@ -108,6 +108,9 @@ class ModConstants {
     var minimumWarDuration = 10
     var baseTurnsUntilRevolt = 4
     var cityStateElectionTurns = 15
+    
+    // Great Person Points scale by multiplying by this value with each Great Person earned
+    var greatPersonPointScalingMultiplier = 2 
 
     // Economy
     var maxGoldTradeOffer = 10000

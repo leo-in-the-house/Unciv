@@ -81,7 +81,7 @@ class GreatPersonManager : IsPartOfGameInfoSerialization {
             val requiredPoints = getPointsRequiredForGreatPerson(greatPerson)
             if (value >= requiredPoints) {
                 greatPersonPointsCounter.add(greatPerson, -requiredPoints)
-                pointsForNextGreatPersonCounter[getPoolKey(greatPerson)] *= 2
+                pointsForNextGreatPersonCounter[getPoolKey(greatPerson)] *= civInfo.gameInfo.ruleset.modOptions.constants.greatPersonPointScalingMultiplier
                 return greatPerson
             }
         }

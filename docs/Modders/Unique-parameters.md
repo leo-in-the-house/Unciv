@@ -450,6 +450,9 @@ Allowed values:
     - Can be city stats or civilization stats, depending on where the unique is used
     - For example: If a unique is placed on a building, then the retrieved resources will be of the city. If placed on a policy, they will be of the civilization.
     - This can make a difference for e.g. local resources, which are counted per city.
+-   `type of [resourceFilter] resource`
+    - Example: `Only available <when number of [type of [Strategic] resource] is more than [0]>`
+    - Counts all types of resources that are both owned by your civilization AND match the resource filter.  Does not take into account the amount.
 -   `[resourceFilter] resource of [civFilter] Civilizations`
     - Example: `Only available <when number of [[Strategic] resource of [City-States] Civilizations] is more than [0]>`
 -   `Era number` - Number of the era the current player is in

@@ -125,7 +125,7 @@ object CivilianUnitAutomation {
         // Great merchant -> Conduct trade mission if late game and if not at war.
         // TODO: This could be more complex to walk to the city state that is most beneficial to
         //  also have more influence.
-        if (unit.hasUnique(UniqueType.CanTradeWithCityStateForGoldAndInfluence)
+        if (unit.hasUnique(UniqueType.CanTradeWithCityStateForGoldAndInfluence) || unit.hasUnique(UniqueType.CanTradeWithCityStateForInfluence)
             // There's a risk our merchant gets intercepted and killed by the enemy during war.
             // If such happens, it is a failure of our military unit movement to protect our merchant.
             // Barbs might also be a problem, but hopefully by the time we have a great merchant, they're under control.

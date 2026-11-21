@@ -115,6 +115,22 @@ object UnitActionsGreatPerson {
         val canConductTradeMission = tile.owningCity?.civ?.isCityState == true
             && tile.owningCity?.civ != unit.civ
             && tile.owningCity?.civ?.isAtWarWith(unit.civ) == false
+        for (unique in unit.getMatchingUniques(UniqueType.CanTradeWithCityStateForInfluence)) {
+            val influenceEarned = unique.params[0].toFloat()
+
+            yield(UnitAction(
+                UnitActionType.ConductDiplomaticMission,
+                associatedUnique = unique,
+                action = {
+                    val tileOwningCiv = tile.owningCity!!.civ
+
+                    tileOwningCiv.getDiplomacyManager(unit.civ)!!.addInfluence(influenceEarned)
+                    unit.civ.addNotification("Your diplomatic mission to [$tileOwningCiv] has earned you [${influenceEarned.tr()}] influence!",
+                        NotificationCategory.General, tileOwningCiv.civName, NotificationIcon.Gold, NotificationIcon.Culture)
+                    unit.consume()
+                }.takeIf { unit.hasMovement() && canConductTradeMission }
+            ))
+        }
         for (unique in unit.getMatchingUniques(UniqueType.CanTradeWithCityStateForGoldAndInfluence)) {
             val influenceEarned = unique.params[0].toFloat()
 

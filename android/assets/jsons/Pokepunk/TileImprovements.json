@@ -430,6 +430,27 @@
         ]
 	},
 	{
+		"name": "Mansion",
+		"terrainsCanBeBuiltOn": ["Land"],
+		"turnsToBuild": 0,
+		"buildSound": "mansion",
+		"uniques": [
+			"Special",
+			"Luxury",
+			"Tile provides yield without assigned population",
+			"[+2 Culture] <for every [type of [Luxury] resource]>",
+			"Costs [5] [Gold] per turn when in your territory",
+			"Will not be replaced by automated units", 
+			"Pillaging this improvement yields approximately [+100 Gold, +30 Culture]"
+		],
+		"shortcutKey": "F",
+		 "civilopediaText": [
+            {
+                "text": "Build by Aristocrats, these not-so-humble-abodes consume a large amount of Gold, but provide 2 Culture for each Luxury Resource you have in your empire."
+            }
+        ]
+	},
+	{
 		"name": "Fishing Boats",
 		"terrainsCanBeBuiltOn": ["Coast", "Ocean"],
 		"turnsToBuild": 0,

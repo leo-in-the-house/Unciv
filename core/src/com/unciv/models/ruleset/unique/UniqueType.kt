@@ -457,7 +457,9 @@ enum class UniqueType(
     CanSpeedupWonderConstruction("Can speed up the construction of a wonder", UniqueTarget.Unit),
     CanHurryResearch("Can hurry technology research", UniqueTarget.Unit),
     CanHurryPolicy("Can generate a large amount of culture", UniqueTarget.Unit),
+    CanTradeWithCityStateForInfluence("Can undertake a diplomatic mission with City-State, giving [amount] Influence", UniqueTarget.Unit),
     CanTradeWithCityStateForGoldAndInfluence("Can undertake a trade mission with City-State, giving a large sum of gold and [amount] Influence", UniqueTarget.Unit),
+    CanChangeRelations("Can attempt to change relations with a major civilization with Open Borders, generate [amount]-[amount] friendship points which will decay over time.",  UniqueTarget.Unit),
     CanTransform("Can transform to [unit]", UniqueTarget.UnitAction,
         docDescription = "By default consumes all movement"),
 

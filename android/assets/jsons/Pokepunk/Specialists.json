@@ -24,6 +24,12 @@
 		"color": [0,125,255]
 	},
 	{
+		"name":"Tailor",
+		"gold": 3,
+		"greatPersonPoints": {"Aristocrat": 3},
+		"color": [185,137,59]
+	},
+	{
 		"name":"Worshipper",
 		"faith": 3,
 		"greatPersonPoints": {"Priestess": 3},

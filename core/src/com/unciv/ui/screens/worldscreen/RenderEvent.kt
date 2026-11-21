@@ -47,7 +47,7 @@ class RenderEvent(
     init {
         defaults().fillX().center().pad(5f)
 
-        val gameContext = GameContext(gameInfo.currentPlayerCiv, unit = unit, tile = tile)
+        val gameContext = GameContext(gameInfo.currentPlayerCiv, unit = unit, tile = tile, city = tile?.getCity())
         val choices = event.getMatchingChoices(gameContext)
         isValid = choices != null
         if (isValid) {

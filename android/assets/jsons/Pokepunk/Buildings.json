@@ -183,7 +183,7 @@
 		"cost": 80,
 		"hurryCostModifier": 25,
 		"requiredTech": "Textiles",
-		"specialistSlots": { "Craftsman": 2 },
+		"specialistSlots": { "Tailor": 2 },
 		"maintenance": 2,
 		"uniques": [
 			"Crafting",

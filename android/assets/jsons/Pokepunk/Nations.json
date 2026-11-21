@@ -5,6 +5,7 @@
 		"outerColor": [255, 255, 255]
 		// "innerColor": [255,255,255]
 	},
+	//Major Nation
     {
 		"name": "Adelle Corp",
 		"leaderName": "Kane",
@@ -45,6 +46,46 @@
 		"uniques": ["[+30]% Strength <vs [Barbarians|City-States]>","No damage penalty for wounded units <for [non-air] units>"],
 		"cities": ["Ketilsstaoir","Frooaross","Hraun","Geirhildarvatn","Dumbshaf","Leioolfsstaoir","Hraunsass","Mosfell","Geirmundarstaoir","Holmgaror","Selaeyrr",
 "Horga","Fellshverfi","Kalfborgara","Reykir inir efri","Bolstaor","Beruvikrhraun","Berghylr","Rauosgil"]
+	},
+	//City States
+		{
+		"name": "Liberal",
+		"adjective": ["Liberal"],
+		"cityStateType": "Mercantile",
+		"startBias": ["Tropical"],
+
+		"declaringWar": "You leave us no choice. War it must be.",
+		"attacked": "Very well, this shall not be forgotten.",
+		"defeated": "We never fully trusted you from the start.",
+		"outerColor": [50, 50, 50],
+		"innerColor": [252,219,3],
+		"cities": ["Liberal"]
+	},
+	{
+		"name": "Garden City",
+		"adjective": ["Gardenite"],
+		"cityStateType": "Religious",
+		"startBias": ["Grassland"],
+
+		"declaringWar": "You leave us no choice. War it must be.",
+		"attacked": "Very well, this shall not be forgotten.",
+		"defeated": "We never fully trusted you from the start.",
+		"outerColor": [50, 50, 50],
+		"innerColor": [252,219,3],
+		"cities": ["Garden City"]
+	},
+	{
+		"name": "Dodge City",
+		"adjective": ["Dodgeite"],
+		"cityStateType": "Cultured",
+		"startBias": ["Tundra"],
+
+		"declaringWar": "You leave us no choice. War it must be.",
+		"attacked": "Very well, this shall not be forgotten.",
+		"defeated": "We never fully trusted you from the start.",
+		"outerColor": [50, 50, 50],
+		"innerColor": [252,219,3],
+		"cities": ["Dodge City"]
 	},
 	{
 		"name": "Barbarians",

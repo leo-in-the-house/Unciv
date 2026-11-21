@@ -135,6 +135,37 @@ class CivInfoStatsForNextTurn(val civInfo: Civilization) {
     }
 
     @Readonly
+    fun getImprovementUpkeep(): Stats {
+        val improvementUpkeep = Stats()
+        // we no longer use .flatMap, because there are a lot of tiles and keeping them all in a list
+        // just to go over them once is a waste of memory - there are low-end phones who don't have much ram
+
+        val ignoredTileTypes =
+            civInfo.getMatchingUniques(UniqueType.NoImprovementMaintenanceInSpecificTiles)
+                .map { it.params[0] }.toHashSet() // needs to be .toHashSet()ed,
+        // Because we go over every tile in every city and check if it's in this list, which can get real heavy.
+
+        fun addMaintenanceUniques(improvement: TileImprovement, type: UniqueType, state: GameContext) {
+            improvement.forEachMatchingUnique(type, state) { unique ->
+                improvementUpkeep.add(Stat.valueOf(unique.params[1]), unique.params[0].toFloat())
+            }
+        }
+
+        for (city in civInfo.cities) {
+            for (tile in city.getTiles()) {
+                if (tile.isCityCenter()) continue
+                if (tile.tileImprovement == null) continue
+                if (ignoredTileTypes.any { tile.matchesFilter(it, civInfo) }) continue
+                val gameContext = GameContext(civInfo, tile = tile)
+                addMaintenanceUniques(tile.tileImprovement!!, UniqueType.ImprovementMaintenance, gameContext)
+                addMaintenanceUniques(tile.tileImprovement!!, UniqueType.ImprovementAllMaintenance, gameContext)
+            }
+        }
+
+        return improvementUpkeep
+    }
+    
+    @Readonly
     fun getUnitSupply(): Int {
         /* TotalSupply = BaseSupply + NumCities*modifier + Population*modifier
         * In civ5, it seems population modifier is always 0.5, so i hardcoded it down below */
@@ -228,6 +259,7 @@ class CivInfoStatsForNextTurn(val civInfo: Civilization) {
         }
 
         statMap["Transportation upkeep"] = getTransportationUpkeep() * -1
+        statMap["Improvement upkeep"] = getImprovementUpkeep() * -1
         statMap["Unit upkeep"] = Stats(gold = -getUnitMaintenance().toFloat())
 
 

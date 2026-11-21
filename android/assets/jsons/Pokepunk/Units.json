@@ -134,7 +134,7 @@
 		"cost": 30,
 		 "civilopediaText": [
             {
-                "text": "Builder unit that can generate Gold and improve trade.  Can build Plantations on Plant resources (use Gardeners to remove Plant resources instead)."
+                "text": "Builder unit that can generate Gold and purchase stockpiled resources over a Market.  Can build Plantations on Plant resources (use Gardeners to remove Plant resources instead)."
             }
         ]
 	},
@@ -324,6 +324,33 @@
 		 "civilopediaText": [
             {
                 "text": "Religious Great Person that can spend a charge to heal all adjacent units.  If you have a Pantheon, can generate a large amount of Faith over its sacred terrain for a charge."
+            }
+        ]
+	},
+	{
+		"name": "Aristocrat",
+		"unitType": "Civilian",
+		"secondaryUnitType": "Human",
+        "charges": 1,
+		"movement": 2,
+		"hurryCostModifier": 20,
+		"selectSound":"aristocrat",
+		"uniques": [
+            "Great Noble",
+			"Unbuildable",
+            "Can build [Luxury] improvements on tiles",
+            "Triggers a [Tax Collection] event <in [{Friendly} {City center}] tiles> <for [1] charges> <AI will always use when number of [Gold] is less than [100]>",
+            "Instantly gain [4] [Slaves] <costs [+500 Gold] stats> <for [1] charges>",
+            "Automation is a primary action"
+		],
+		"cost": 300,
+		 "civilopediaText": [
+            {
+                "text": "Noble Great Person that can build Luxury improvements like Mansions which provide culture for each Luxury Resource in the city.  Can purchase slaves before Abolition, granting 4 slaves by paying 500 Gold."
+            },
+            { "separator": true },
+            {
+                "text": "Can trigger a Tax Collection in a friendly City Center, which grants you an immediate burst of +100 Gold for each population in that city, but also reduces your happiness by -10 for 5 turns."
             }
         ]
 	},
